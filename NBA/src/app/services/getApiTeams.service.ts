@@ -18,6 +18,12 @@ export class GetApiServiceTeams {
         Pacific: [],
     };
     getSearchTeams() {
+        this.teams.NorthWest=[];
+        this.teams.SouthWest=[];
+        this.teams.SoutHeast=[];
+        this.teams.Atlantic=[];
+        this.teams.Central=[];
+        this.teams.Pacific=[];
         return this.apiService.SearchTeams().pipe(
             map((res: any) => {
                 res.forEach((singleTeam: any) => {

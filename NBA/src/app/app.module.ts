@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { ClassificaComponent } from './components/classifica-component/classifica.component';
 import { PartiteDelGiornoPreviewComponent } from './components/partite-del-giorno-preview/partite-del-giorno-preview.component';
 import { CardPartitaComponent } from './components/card-partita/card-partita.component';
+import { PartitaPageComponent } from './views/partita-page/partita-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CardPartitaComponent } from './components/card-partita/card-partita.com
     ErrorePageComponent,
     ClassificaComponent,
     PartiteDelGiornoPreviewComponent,
-    CardPartitaComponent
+    CardPartitaComponent,
+    PartitaPageComponent
   ],
   imports: [
     BrowserModule,

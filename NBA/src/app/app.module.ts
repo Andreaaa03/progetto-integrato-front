@@ -36,7 +36,7 @@ import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-
     ClassificaComponent,
     PartiteDelGiornoPreviewComponent,
     CardPartitaComponent,
-    PartitaPageComponent
+    PartitaPageComponent,
     SquadraDetailPageComponent,
   ],
   imports: [

@@ -1,25 +1,123 @@
-<nav>
-    <div class="bg-black w-full h-24 flex flex-nowrap">
-        <div class="bg-red-400 w-[10%] flex justify-center">
-            <img [routerLink]="['/home']" class="object-cover h-full w-auto" src="assets/logo-slam-stats.png" alt="">
+<!-- <nav class="h-16">
+    <div class="bg-secondary w-full flex flex-nowrap fixed top-0 h-16">
+        <div class="w-[10%] flex justify-center items-center">
+            <img [routerLink]="['/home']" class="object-contain h-[80%]" src="assets/logo-slam-stats.png" alt="">
         </div>
-        <div class="w-full flex flex-nowrap">
-            <div class="w-[60%] ">
-                <ul class="flex justify-around items-end h-full pb-5 text-white">
-                    <li [routerLink]="['/home']">NBA</li>
-                    <li [routerLink]="['/classifica']">CLASSIFICA</li>
-                    <li [routerLink]="['/calendario']">CALENDARIO</li>
-                    <li [routerLink]="['/squadre']">SQUADRE</li>
-                    <li [routerLink]="['/storia&regole']">STORIA & REGOLE</li>
-                    <li [routerLink]="['/blog']">BLOG</li>
-                </ul>
+        <div class="w-[60%] flex justify-center">
+            <ul class="h-full w-full flex justify-around items-center text-white">
+                <li [routerLink]="['/home']"><button>NBA</button></li>
+                <li [routerLink]="['/classifica']"><button>CLASSIFICA</button></li>
+                <li [routerLink]="['/calendario']"><button>CALENDARIO</button></li>
+                <li [routerLink]="['/squadre']"><button>SQUADRE</button></li>
+                <li [routerLink]="['/storia&regole']"><button>STORIA & REGOLE</button></li>
+                <li [routerLink]="['/blog']"><button>BLOG</button></li>
+            </ul>
+        </div>
+        <div class="w-[30%] flex justify-end h-full items-center">
+            <div class="h-16 w-60 mr-10 flex flex-nowrap">
+                <form action="" class="flex items-center">
+                    <input type="text" placeholder="cerca" class="rounded-full text-center flex items-center">
+                    <button>
+                        <i class="">🔍</i>
+                    </button>
+                </form>
+                <p class="ml-5">O</p>
             </div>
-            <div class="w-[40%] bg-red-300 flex justify-end items-end pb-5 h-full">
-                <div class="bg-gray-500 h-5 w-60 mr-5">
+        </div>
+    </div>
+</nav> -->
 
-                </div>
-                <p class="mr-5">ciaooo</p>
+<nav class="h-16">
+    <div class="bg-secondary w-full flex flex-nowrap fixed top-0 h-16">
+        <div class="w-[10%] flex justify-center items-center">
+            <img [routerLink]="['/home']" class="object-contain h-[80%]" src="assets/logo-slam-stats.png" alt="">
+        </div>
+        <div class="w-[50%]">
+            <ul class="h-full flex justify-around items-center text-white">
+                <li [routerLink]="['/home']"><button>NBA</button></li>
+                <li [routerLink]="['/classifica']"><button>CLASSIFICA</button></li>
+                <li [routerLink]="['/calendario']"><button>CALENDARIO</button></li>
+                <li [routerLink]="['/squadre']"><button>SQUADRE</button></li>
+                <li [routerLink]="['/storia&regole']"><button>STORIA & REGOLE</button></li>
+                <li [routerLink]="['/blog']"><button>BLOG</button></li>
+            </ul>
+        </div>
+        <div class="w-[40%] flex justify-end h-full items-center flex-nowrap mr-10">
+            <div class="w-2/4">
+                <form action="" class="flex items-center justify-end">
+                    <input type="text" placeholder="cerca" class="rounded-full text-center flex items-center mr-2">
+                    <button class="h-16 w-[10%]">
+                        <img src="./assets/icon/lente-arancione-1.png" alt="" class="object-contain w-auto">
+                    </button>
+                </form>
+            </div>
+            <div class="h-16 w-[10%] flex justify-center">
+                <button class="h-16 w-2/4">
+                    <img src="./assets/icon/profilo-arancione-3.png" alt="" class="object-contain w-auto">
+                </button>
             </div>
         </div>
     </div>
 </nav>
+
+<!-- <nav class="h-20">
+    <div class="bg-secondary w-full flex flex-nowrap fixed top-0 h-20">
+        <div class="w-[10%] flex justify-center items-center">
+            <img [routerLink]="['/home']" class="object-contain h-full py-3" src="assets/logo-slam-stats.png" alt="">
+        </div>
+        <div class="w-[90%] flex flex-nowrap justify-between">
+            <div class="w-[60%]">
+                <ul class="w-full h-full flex justify-around items-end pb-3 text-white">
+                    <li [routerLink]="['/home']"><button>NBA</button></li>
+                    <li [routerLink]="['/classifica']"><button>CLASSIFICA</button></li>
+                    <li [routerLink]="['/calendario']"><button>CALENDARIO</button></li>
+                    <li [routerLink]="['/squadre']"><button>SQUADRE</button></li>
+                    <li [routerLink]="['/storia&regole']"><button>STORIA & REGOLE</button></li>
+                    <li [routerLink]="['/blog']"><button>BLOG</button></li>
+                </ul>
+            </div>
+            <div class="w-[40%] flex justify-end h-full items-end">
+                <div class="h-16 w-60 mr-10 flex flex-nowrap">
+                    <form action="" class="flex items-center">
+                        <input type="text" placeholder="cerca" class="rounded-full text-center flex items-center">
+                        <button>
+                            <i class="">🔍</i>
+                        </button>
+                    </form>
+                    <p class="ml-5">O</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav> -->
+<!-- 
+<nav class="h-20">
+    <div class="bg-secondary w-full flex flex-nowrap fixed top-0 h-20">
+        <div class="w-[10%] flex justify-center items-center">
+            <img [routerLink]="['/home']" class="object-contain h-full py-3" src="assets/logo-slam-stats.png" alt="">
+        </div>
+        <div class="w-[90%] flex flex-nowrap justify-between">
+            <div class="w-[60%]">
+                <ul class="w-full h-full flex justify-around items-center text-white">
+                    <li [routerLink]="['/home']"><button>NBA</button></li>
+                    <li [routerLink]="['/classifica']"><button>CLASSIFICA</button></li>
+                    <li [routerLink]="['/calendario']"><button>CALENDARIO</button></li>
+                    <li [routerLink]="['/squadre']"><button>SQUADRE</button></li>
+                    <li [routerLink]="['/storia&regole']"><button>STORIA & REGOLE</button></li>
+                    <li [routerLink]="['/blog']"><button>BLOG</button></li>
+                </ul>
+            </div>
+            <div class="w-[40%] flex justify-end h-full items-center">
+                <div class="h-16 w-60 mr-10 flex flex-nowrap">
+                    <form action="" class="flex items-center">
+                        <input type="text" placeholder="cerca" class="rounded-full text-center flex items-center">
+                        <button>
+                            <i class="">🔍</i>
+                        </button>
+                    </form>
+                    <p class="ml-5">O</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav> -->

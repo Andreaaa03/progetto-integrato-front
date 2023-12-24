@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Classifica, StandingShow } from 'src/app/models/typeStanding';
 
@@ -30,6 +30,12 @@ export class ClassificaComponent implements OnInit {
     westConference: [],
   }
   countForStanding: number=5;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.cambiaTesto();
+  }
+  
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(
       ({ ResolveStanding }) => {
@@ -40,7 +46,7 @@ export class ClassificaComponent implements OnInit {
         this.standingToShow.eastConference = this.standings.allStanding.eastConference;
         this.standingToShow.westConference = this.standings.allStanding.westConference;
       })
-    
+    this.cambiaTesto();
     if (this.isParziale === true)
       this.countForStanding = 5;
     else
@@ -119,7 +125,6 @@ export class ClassificaComponent implements OnInit {
     this.selectedConference = selectedConference;
   }
 
-
   //ordina in base ai parametri che riceve
   bubbleSort(array: any[], key: string, isString: boolean): any[] {
     for (let i = 0; i < array.length - 1; i++) {
@@ -183,5 +188,17 @@ export class ClassificaComponent implements OnInit {
       res = res[value];
     }
     return res;
+  }
+
+  vittore: string = "% Vittore";
+  vinte: string = "Vinte";
+  sconfitte: string = "Sconfitte";
+
+  private cambiaTesto() {
+    const isMobile = window.innerWidth < 1024; 
+
+    this.vittore = isMobile ? "% V." : "% Vittore";
+    this.vinte = isMobile ? "V." : "Vinte";
+    this.sconfitte = isMobile ? "S." : "Sconfitte";
   }
 }

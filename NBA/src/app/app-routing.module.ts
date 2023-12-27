@@ -23,7 +23,7 @@ const routes: Routes = [
         return inject(GetApiServiceStanding).getSearchStanding();
       }
     }, title: "SLAM STATS - Classifica"
-},
+  },
   { path: "calendario", component: CalendarioPageComponent, title: "SLAM STATS - Calendario"},
   {
     path: "squadre", component: SquadrePageComponent, resolve: {
@@ -39,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

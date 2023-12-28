@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class StoriaERegolePageComponent {
 
+  selectedRegole : boolean = true
+
+
+  functionSelectionRegole(selectedRegole: boolean) {
+    this.selectedRegole = selectedRegole;
+  }
+
 }

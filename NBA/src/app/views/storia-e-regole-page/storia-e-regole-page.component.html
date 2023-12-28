@@ -1,38 +1,51 @@
 <app-navbar></app-navbar>
 <section>
   <div class="mb-10">
-      <div class="w-full h-20 bg-primary flex justify-center items-center">
-          <h2 class=" text-white text-4xl font-bold">
-              STORIE & REGOLE
-          </h2>
-      </div>
-      <div class="w-full h-6 bg-secondary"></div>
+    <div class="w-full h-20 bg-primary flex justify-center items-center">
+      <h2 class="text-white text-4xl font-bold">STORIE & REGOLE</h2>
+    </div>
+    <div class="w-full h-6 bg-secondary"></div>
   </div>
   <div class="flex justify-center h-full">
     <div class="container h-full flex justify-center">
       <div class="w-[85%]">
         <section>
-          <div class="w-[20%] flex justify-between p-2">
-            <div class="mt-10 text-white">
-              <ul class="flex flex-nowrap justify-center text-center">
-                <li class="me-2 w-full" role="presentation">
-                  <button
-                    class="w-full inline-block p-4 focus:border-b-2 hover:border-b-2  rounded-t-lg bg-secondary"
-                    type="button"
-                  >
-                    Regole
-                  </button>
-                </li>
-                <li class="me-2 w-full" role="presentation">
-                  <button
-                    class="w-full inline-block p-4 focus:border-b-2 hover:border-b-2 rounded-t-lg bg-secondary"
-                    type="button"
-                  >
-                    Glossario
-                  </button>
-                </li>
-              </ul>
-            </div>
+          <div class="w-[50%] p-2 mt-10">
+            <ul class="w-full lg:h-16 h-10 flex flex-nowrap">
+              <li
+                [ngClass]="{
+                  'bg-secondary': selectedRegole === true,
+                  'border-secondary lg:border-4 border-2 hover:bg-[#DCF1FF]':
+                    selectedRegole === false
+                }"
+                class="lg:w-full w-[45%] h-full flex justify-center items-center rounded-2xl mr-4"
+              >
+                <button
+                  (click)="functionSelectionRegole(true)"
+                  [class.text-white]="selectedRegole === true"
+                  class="w-full text-center text-white lg:text-3xl"
+                >
+                  Regole
+                </button>
+              </li>
+
+              <li
+                [ngClass]="{
+                  'border-secondary lg:border-4 border-2 hover:bg-[#DCF1FF]':
+                    selectedRegole === true,
+                  'bg-secondary': selectedRegole === false
+                }"
+                class="lg:w-full w-[45%] h-full flex justify-center items-center rounded-2xl"
+              >
+                <button
+                  (click)="functionSelectionRegole(false)"
+                  [class.text-white]="selectedRegole === false"
+                  class="w-full text-center lg:text-3xl"
+                >
+                  Glossario
+                </button>
+              </li>
+            </ul>
           </div>
           <div class="w-full h-[50vh] inline-flex justify-center mb-2 mt-12">
             <img
@@ -48,7 +61,7 @@
               class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify w-[45%] h-full"
             >
               <div
-                class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary"
+                class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary text-center"
               >
                 Regole di Base dell'NBA
               </div>
@@ -94,7 +107,7 @@
                     capire, mentre l'hockey è una via di mezzo.
                   </li>
                 </ul>
-                <p class="mb-4 text-base">
+                <p class="mt-4 text-base">
                   In breve, se volete avvicinarvi al clima delle partite negli
                   Stati Uniti e preferite uno sport più facile da seguire, l'NBA
                   potrebbe essere la scelta giusta per voi.
@@ -105,7 +118,7 @@
               class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify w-[45%] h-full"
             >
               <div
-                class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary"
+                class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary text-center"
               >
                 Durata partita
               </div>
@@ -145,7 +158,7 @@
                     queste interruzioni.
                   </li>
                 </ul>
-                <p class="mb-4 text-base">
+                <p class="mt-4 text-base">
                   In breve, la partita si divide in quarti di 12 minuti, ci sono
                   pause lunghe e brevi, e il cronometro si ferma quando la palla
                   non è in gioco, rendendo la durata totale della partita più
@@ -173,21 +186,18 @@
               class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify w-[45%] h-full"
             >
               <div
-                class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary"
+                class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary text-center"
               >
-                Regole di Base dell'NBA
+                Punti
               </div>
               <div class="p-6">
                 <h3 class="mb-2 text-xl font-medium leading-tight">
-                  Il basket è uno sport molto diffuso in tutto il mondo, e forse
-                  avete già visto partite della nazionale italiana ai mondiali o
-                  alle olimpiadi.
+                  Vince chi fa più punti, ed ecco perché l'NBA è semplice
+                  rispetto ad altre leghe.
                 </h3>
                 <p class="mb-4 text-base">
-                  A differenza di altri sport americani come il football
-                  americano, il baseball e l'hockey, il basket è molto popolare
-                  in Italia. Potrebbe essere che non abbiate mai visto una
-                  partita di football americano, baseball o hockey sul ghiaccio.
+                  Segnare, o fare canestro, è il modo principale per ottenere
+                  punti e rendere più facile seguire la partita con entusiasmo.
                 </p>
                 <p class="mb-4 text-base">
                   Se non siete grandi appassionati di sport, ma volete vivere
@@ -195,34 +205,33 @@
                   potrebbe essere la scelta migliore.
                 </p>
                 <ul>
-                  Ecco perché:
+                  Ci sono tre modi di segnare punti:
                   <li>
-                    1. Gli stadi di NBA sono spesso situati nelle zone più
-                    turistiche delle città, quindi sono facili da raggiungere.
-                    Questo è simile anche per l'hockey, dato che molte arene
-                    ospitano sia partite di basket che di hockey, talvolta nello
-                    stesso giorno. Al contrario, gli stadi di MLB e NFL sono
-                    spesso fuori città, richiedendo spostamenti più lunghi sia
-                    in auto che con i mezzi pubblici.
+                    1. <span class="font-bold">Tiri liberi:</span> Si fanno
+                    quando il gioco è fermo, dopo un fallo, e valgono 1 punto.
+                    Il giocatore tira da una linea posta a 5,80 metri dal fondo.
                   </li>
                   <li>
-                    2. Nonostante ci siano timeout, la partita di basket scorre
-                    veloce, anche se ci sono pause. Questo è diverso nel
-                    baseball e nel football, dove le pause possono essere più
-                    lunghe e noiose.
+                    2. <span class="font-bold">Canestro da 2 punti:</span> Si fa
+                    in situazioni di gioco normale, e conta ogni canestro fatto
+                    all'interno della linea dei 3 punti, che è a 7,24 metri di
+                    distanza (6,72 metri negli angoli). Sia una schiacciata che
+                    un tiro da 6 metri valgono 2 punti.
                   </li>
                   <li>
-                    3. Le regole del basket sono più facili da capire rispetto
-                    ad altri sport, e anche se non ne conoscete nessuna, potete
-                    comunque seguire la partita. Al contrario, il football
-                    americano e il baseball possono essere più complicati da
-                    capire, mentre l'hockey è una via di mezzo.
+                    3. <span class="font-bold">Canestro da 3 punti:</span> Ogni
+                    tiro oltre la linea dei tre punti conta come un canestro da
+                    3 punti. Attenzione, se anche solo un centimetro della
+                    scarpa del tiratore tocca la linea, il canestro vale solo 2
+                    punti.
                   </li>
                 </ul>
-                <p class="mb-4 text-base">
-                  In breve, se volete avvicinarvi al clima delle partite negli
-                  Stati Uniti e preferite uno sport più facile da seguire, l'NBA
-                  potrebbe essere la scelta giusta per voi.
+                <p class="mt-4 text-base">
+                  Può capitare di segnare 4 punti? Sì, è possibile quando un
+                  giocatore fa una tripla e subisce un fallo. In questo caso,
+                  oltre ai 3 punti per il canestro, il giocatore ha la
+                  possibilità di fare un tiro supplementare dalla lunetta. Se lo
+                  fa, completa un gioco da 4 punti.
                 </p>
               </div>
             </div>
@@ -230,20 +239,22 @@
               class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify w-[45%] h-full"
             >
               <div
-                class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary"
+                class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary text-center"
               >
-                Durata partita
+                Infrazioni
               </div>
               <div class="p-6">
                 <h3 class="mb-2 text-xl font-medium leading-tight">
-                  La prima cosa importante è capire come funziona il cronometro
-                  durante una partita e quanto durano i vari periodi di gioco.
+                  Andiamo a vedere alcune situazioni che si vedono spesso
+                  durante una partita di basket, quando si tratta di infrazioni
+                  o falli:
                 </h3>
                 <ul>
-                  Ecco perché:
                   <li>
-                    1. Ci sono 4 periodi di gioco, chiamati anche quarti, e
-                    ognuno dura 12 minuti.
+                    1. <span class="font-bold">Palla Fuori:</span> Se il giocatore sta dribblando o ha il
+                    controllo del pallone e tocca con il piede le linee che
+                    delimitano il campo, la palla viene considerata fuori gioco.
+                    La squadra avversaria riprende con una rimessa.
                   </li>
                   <li>
                     2. Dopo il secondo quarto c'è una pausa lunga, chiamata
@@ -270,7 +281,7 @@
                     queste interruzioni.
                   </li>
                 </ul>
-                <p class="mb-4 text-base">
+                <p class="mt-4 text-base">
                   In breve, la partita si divide in quarti di 12 minuti, ci sono
                   pause lunghe e brevi, e il cronometro si ferma quando la palla
                   non è in gioco, rendendo la durata totale della partita più
@@ -325,7 +336,7 @@
                     queste interruzioni.
                   </li>
                 </ul>
-                <p class="mb-4 text-base">
+                <p class="mt-4 text-base">
                   In breve, la partita si divide in quarti di 12 minuti, ci sono
                   pause lunghe e brevi, e il cronometro si ferma quando la palla
                   non è in gioco, rendendo la durata totale della partita più
@@ -423,15 +434,15 @@
                   In breve, se volete avvicinarvi al clima delle partite negli
                   Stati Uniti e preferite uno sport più facile da seguire, l'NBA
                   potrebbe essere la scelta giusta per voi.
-                </p> 
+                </p>
               </div>
               <div class="w-[50%]">
-                  <img
-                    class="object-cover w-full h-full rounded-xl"
-                    src="https://i.eurosport.com/2021/05/15/3132859.jpg"
-                    alt=""
-                  />
-                </div>
+                <img
+                  class="object-cover w-full h-full rounded-xl"
+                  src="https://i.eurosport.com/2021/05/15/3132859.jpg"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
           <div
@@ -440,7 +451,7 @@
             <div
               class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary"
             >
-             Cosa Vincono i Compioni
+              Cosa Vincono i Compioni
             </div>
             <div class="flex flex-row-reverse flex-nowrap items-center">
               <div class="p-6 w-[45%] justify-start">
@@ -454,15 +465,15 @@
                   In breve, se volete avvicinarvi al clima delle partite negli
                   Stati Uniti e preferite uno sport più facile da seguire, l'NBA
                   potrebbe essere la scelta giusta per voi.
-                </p> 
+                </p>
               </div>
               <div class="w-[50%] flex justify-center">
-                  <img
-                    class="object-cover w-full h-full rounded-xl"
-                    src="https://www.corriere.it/methode_image/2021/01/22/Sport/Foto%20Sport%20-%20Trattate/anello1-kYB-U32408487884ptD-656x492@Corriere-Web-Sezioni.JPG"
-                    alt=""
-                  />
-                </div>
+                <img
+                  class="object-cover w-full h-full rounded-xl"
+                  src="https://www.corriere.it/methode_image/2021/01/22/Sport/Foto%20Sport%20-%20Trattate/anello1-kYB-U32408487884ptD-656x492@Corriere-Web-Sezioni.JPG"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         </section>

@@ -119,7 +119,7 @@ export class ClassificaComponent implements OnInit {
       this.standingToShow.westConference = this.bubbleSort(this.standings.allStanding.westConference, 'win.percentage', false);
     }
   }
-  selectedConference = true;
+  selectedConference: boolean = true;
 
   functionSelectionConference(selectedConference: boolean) {
     this.selectedConference = selectedConference;

@@ -12,37 +12,33 @@ export class CalendarioPageComponent implements OnInit {
     this.getNoOfDaysLeft();
     this.getNoOfDaysCentral();
     this.getNoOfDaysRigth();
-    console.log(this.MONTH_NAMES[this.currentMonthRigth]);
-    console.log("onIniti");
+    this.isToday(this.currentYearCentral, this.currentMonthCentral, this.daySelected);
   }
   MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
+  daySelected: number = 0;
   currentMonthCentral: number = 0;
   currentYearCentral: number = 2023;
-  currentDayCentral: number = 0;
   currentMonthLeft: number = 0;
   currentYearLeft: number = 2023;
-  currentDayLeft: number = 0;
   currentMonthRigth: number = 0;
   currentYearRigth: number = 2023;
-  currentDayRigth: number = 0;
   no_of_days_central: number[] = [];
   no_of_days_left: number[] = [];
   no_of_days_rigth: number[] = [];
   blankdays_central: number[] = [];
   blankdays_left: number[] = [];
   blankdays_rigth: number[] = [];
-  days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
-  openEventModal = false;
+  isTodayYear: number = 2023;
+  isTodayMonth: number = 0;
+  isTodayDay: number = 0;
 
   initDate() {
     let today = new Date();
-    this.currentMonthCentral = today.getMonth();
-    this.currentYearCentral = today.getFullYear();
-    this.currentDayCentral = today.getDay();
-    console.log(today);
+    this.currentMonthCentral = this.isTodayMonth = today.getMonth();
+    this.currentYearCentral = this.isTodayYear = today.getFullYear();
+    this.daySelected = today.getDate();
     this.currentMonthLeft = this.currentMonthCentral - 1;
 
     if (this.currentMonthCentral + 1 >= 11) {
@@ -61,13 +57,26 @@ export class CalendarioPageComponent implements OnInit {
     // this.datepickerValue = new Date(this.year, this.month, today.getDate()).toDateString();
   };
 
-  isToday(date: number) {
-    const today = new Date();
-    const d = new Date(this.currentYearCentral, this.currentMonthCentral, this.currentDayCentral, date);
-
-    return today.toDateString() === d.toDateString() ? true : false;
+  isToday(Year: number, Month: number, Day: number) {
+    const d = new Date(Year, Month, Day);
+    this.isTodayYear = Year;
+    this.isTodayMonth = Month;
+    this.isTodayDay = Day;
+    console.log(d);
   };
-
+  controlForIsToday(Year: number, Month: number, Day: number): boolean {
+    let res: boolean = false;
+    if (
+      this.isTodayYear === Year &&
+      this.isTodayMonth === Month &&
+      this.isTodayDay === Day
+    ) {
+      res = true;
+    }
+    else
+    res = false;
+    return res;
+  }
 
   getNoOfDaysLeft() {
     let daysInMonthLeft = new Date(this.currentYearLeft, this.currentMonthLeft + 1, 0).getDate();
@@ -91,7 +100,6 @@ export class CalendarioPageComponent implements OnInit {
   }
   getNoOfDaysCentral() {
     let daysInMonthCentral = new Date(this.currentYearCentral, this.currentMonthCentral + 1, 0).getDate();
-    console.log(this.currentYearCentral);
 
     // find where to start calendar day of week
     let dayOfWeekCentral = new Date(this.currentYearCentral, this.currentMonthCentral).getDay();
@@ -128,7 +136,6 @@ export class CalendarioPageComponent implements OnInit {
     this.blankdays_rigth = blankdaysArrayRigth;
     this.no_of_days_rigth = daysArrayRigth;
   }
-
   incrementMonth(currentMonthLeft: number, currentMonthCentral: number, currentMonthRigth: number) {
     if (this.currentMonthLeft + 1 > 11) {
       this.currentMonthLeft = 0;
@@ -152,7 +159,6 @@ export class CalendarioPageComponent implements OnInit {
     this.getNoOfDaysCentral();
     this.getNoOfDaysRigth();
   }
-
   decrementMonth(currentMonthLeft: number, currentMonthCentral: number, currentMonthRigth: number) {
     if (this.currentMonthLeft - 1 < 0) {
       this.currentMonthLeft = 11;

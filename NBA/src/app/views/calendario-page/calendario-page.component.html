@@ -40,8 +40,11 @@
                                             <div *ngIf="blankdays_left.length===blankday" class="text-center h-full border-r px-4 pt-2"></div>
                                         </div>
                                         <div *ngFor="let date of no_of_days_left" class="border-r border-b w-[14.28%]" id="no_of_days">
-                                            <div class="py-2 relative">
-                                                <div class="flex items-center justify-center cursor-pointer text-center" :class="{'bg-blue-500 text-white': isToday(date) == true, 'text-gray-700 hover:bg-blue-200': isToday(date) == false }"><p class="w-full text-center">{{date}}</p></div>
+                                            <div class="py-2 hover:cursor-pointer" [ngClass]="{
+                                                    'bg-black text-white': controlForIsToday(currentYearLeft, currentMonthLeft, date) }">
+                                                <div (click)="daySelected=date; isToday(currentYearLeft, currentMonthLeft, daySelected)" class="flex items-center justify-center cursor-pointer text-center">
+                                                    <p class="w-full text-center">{{date}}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -72,8 +75,11 @@
                                             <div *ngIf="blankdays_central.length===blankday" class="text-center h-full border-r px-4 pt-2"></div>
                                         </div>
                                         <div *ngFor="let date of no_of_days_central" class="border-r border-b w-[14.28%]" id="no_of_days">
-                                            <div class="py-2 relative">
-                                                <div class="flex items-center justify-center cursor-pointer text-center" :class="{'bg-blue-500 text-white': isToday(date) == true, 'text-gray-700 hover:bg-blue-200': isToday(date) == false }"><p class="w-full text-center">{{date}}</p></div>
+                                            <div class="py-2 hover:cursor-pointer " [ngClass]="{
+                                                    'bg-black text-white': controlForIsToday(currentYearCentral, currentMonthCentral, date) }">
+                                                <div (click)="daySelected=date; isToday(currentYearCentral, currentMonthCentral, daySelected)" class="flex items-center justify-center text-center">
+                                                    <p class="w-full text-center">{{date}}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -104,8 +110,11 @@
                                             <div *ngIf="blankdays_rigth.length===blankday" class="text-center h-full border-r px-4 pt-2"></div>
                                         </div>
                                         <div *ngFor="let date of no_of_days_rigth" class="border-r border-b w-[14.28%]" id="no_of_days">
-                                            <div class="py-2 relative">
-                                                <div class="flex items-center justify-center cursor-pointer text-center" :class="{'bg-blue-500 text-white': isToday(date) == true, 'text-gray-700 hover:bg-blue-200': isToday(date) == false }"><p class="w-full text-center">{{date}}</p></div>
+                                            <div class="py-2 hover:cursor-pointer" [ngClass]="{
+                                                    'bg-black text-white': controlForIsToday(currentYearRigth, currentMonthRigth, date) }">
+                                                <div (click)="daySelected=date; isToday(currentYearRigth, currentMonthRigth, daySelected)" class="flex items-center justify-center cursor-pointer text-center">
+                                                    <p class="w-full text-center">{{date}}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

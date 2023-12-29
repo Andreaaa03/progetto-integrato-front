@@ -14,6 +14,6 @@ export class ApiService {
     }
     
     SearchTeams(){
-        return this.http.get("./assets/json/teamsNBA.json");
+        return this.http.get("./assets/json/squadre.json");
     }
 }

@@ -37,6 +37,13 @@ export class ClassificaComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    let checkbox = document.getElementById('cuore') as HTMLInputElement;
+    let cuoreLabel = document.getElementById('cuoreLabel'); 
+    if (checkbox.checked){
+      cuoreLabel?.classList.add('heart-selected');
+    } else {
+      cuoreLabel?.classList.remove('heart-selected');
+    }
     this.activatedRoute.data.subscribe(
       ({ ResolveStanding }) => {
         this.standings.allStanding.eastConference = this.bubbleSort(ResolveStanding.allStanding.eastConference, 'win.percentage', false);
@@ -200,5 +207,11 @@ export class ClassificaComponent implements OnInit {
     this.vittore = isMobile ? "% V." : "% Vittore";
     this.vinte = isMobile ? "V." : "Vinte";
     this.sconfitte = isMobile ? "S." : "Sconfitte";
+  }
+
+  toggleChecked(){
+    let checkbox = document.getElementById('cuore') as HTMLInputElement;
+    if(checkbox)
+      checkbox.checked = !checkbox.checked;
   }
 }

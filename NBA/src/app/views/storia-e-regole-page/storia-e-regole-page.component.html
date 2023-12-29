@@ -449,7 +449,7 @@
                 Cosa Vincono i Compioni
               </div>
               <div class="flex flex-row-reverse flex-nowrap items-center">
-                <div class="p-6 w-[45%] justify-start">
+                <div class="p-6 w-[50%] justify-start">
                   <p class="mb-4 text-base">
                     <span class="font-bold"
                       >Cosa vincono i campioni delle Finals?</span
@@ -497,11 +497,11 @@
                 </div>
                 <div class="w-[50%]">
                   <figure>
-                    <figcaption class="font-bold text-2xl">
+                    <figcaption class="font-bold text-2xl ml-2">
                       Anello dei Lakers 2020
                     </figcaption>
                     <img
-                      class="object-cover w-full h-full rounded-xl"
+                      class="object-cover w-full h-full rounded-xl justify-center"
                       src="https://www.corriere.it/methode_image/2021/01/22/Sport/Foto%20Sport%20-%20Trattate/anello1-kYB-U32408487884ptD-656x492@Corriere-Web-Sezioni.JPG"
                       alt=""
                     />
@@ -519,7 +519,7 @@
               analizzare e capire al meglio le statistiche e risultati delle
               partite
             </h3>
-            <div class="w-full h-72 inline-flex justify-center mb-2 mt-12">
+            <div class="w-full h-72 inline-flex justify-center mb-12 mt-12">
               <img
                 class="object-cover w-full rounded-[25px]"
                 src="https://edukai.kai.id/pluginfile.php/60254/course/overviewfiles/glossary%20letters.png"
@@ -527,11 +527,24 @@
               />
             </div>
           </section>
+          <div class="w-full">
           <section>
-
+            <div class="w-[20%] h-full bg-[#ACDEFF] rounded-xl pt-2 pb-2">
+              <div class="flex justify-center  bg-primary rounded-xl m-4 text-center" *ngFor="let item of jsonInfo; let i = index">
+                <button  class="m-4 text-base  text-white">{{jsonInfo[i].titolo}}</button>
+              </div>
+            </div>
+            <div class="w-[80%] h-full">
+              <div class=" bg-[#ACDEFF]" *ngFor="let item of jsonInfo; let i = index">
+                <p [id]="jsonInfo[i].id" class="m-4 text-basefont-bold text-xl">{{jsonInfo[i].titolo}}</p>
+                <div class=" bg-[#ACDEFF]">
+                  <p class="text-lg mt-2">{{jsonInfo[i].sottotitolo}}</p>
+                  <p class="text-lg mt-2">{{jsonInfo[i].descrizione}}</p>
+                </div>
+              </div>
+            </div>
           </section>
-          
-
+          </div>
         </section>
       </div>
     </div>

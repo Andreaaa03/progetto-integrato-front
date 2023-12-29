@@ -21,6 +21,21 @@
             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)">
             RESET FILTRI
         </button>
+        <div class="toggle-wrapper rounded-full lg:px-6 px-3 lg:py-1 text-sm hover:underline">
+            <div class="heart-rollover">
+                <input id="cuore" type="checkbox" />
+                <label class="toggle-item" for="cuore">
+                    <div class="heart">
+                    </div>
+                </label>
+            </div>
+        </div>
+        <button class="rounded-full bg-[#BAD5E6] lg:px-6 px-3 lg:py-1 text-sm hover:underline" >
+            REGOLAMENTO 
+        </button>
+        <button class="rounded-full bg-[#BAD5E6] lg:px-6 px-3 lg:py-1 text-sm hover:underline" >
+            GLOASSRIO 
+        </button>
     </div>
     <div class="border-2 border-white" id="contenitore-tabella-classifica">
         <table class="w-full " *ngIf="selectedConference===true">

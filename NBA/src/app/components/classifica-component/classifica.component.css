@@ -48,16 +48,262 @@
     }
 
     #contenitore-tabella-classifica td {
-    height: 4rem !important;
-    max-height: 4rem !important;
+        height: 4rem !important;
+        max-height: 4rem !important;
+    }
+
+    #contenitore-tabella-classifica td:last-child {
+        border: 0;
+    }
+
+    #contenitore-tabella-classifica td div {
+        height: 3rem !important;
+        max-height: 3rem !important;
+    }
 }
 
-#contenitore-tabella-classifica td:last-child {
-    border: 0;
+input {
+    opacity: 0;
+    position: relative;
 }
 
-#contenitore-tabella-classifica td div {
-    height: 3rem !important;
-    max-height: 3rem !important;
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.toggle {
+    position: relative;
+}
+
+label.toggle-item {
+    width: 6rem;
+    background: #ACDEFF;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+
+    &:before {
+        display: block;
+        width: 2.3em;
+        height: 2.3em;
+        top: 0.25em;
+        left: 0.25em;
+        border-radius: 2em;
+    }
+}
+
+.heart-rollover {
+    label {
+        .heart {
+            position: relative;
+            width: 40px;
+            height: 60px;
+            animation: heartbeat 1s infinite;
+            margin: 0;
+            bottom: .5em;
+            left: -.5em;
+        }
+
+        .heart:before,
+        .heart:after {
+            position: absolute;
+            content: "";
+            left: 20px;
+            top: 0;
+            width: 20px;
+            height: 35px;
+            background: black;
+            -moz-border-radius: 20px 20px 0 0;
+            border-radius: 20px 20px 0 0;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            -webkit-transform-origin: 0 100%;
+            -moz-transform-origin: 0 100%;
+            -ms-transform-origin: 0 100%;
+            -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+        }
+
+        .heart:after {
+            left: 0;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transform-origin: 100% 100%;
+            -moz-transform-origin: 100% 100%;
+            -ms-transform-origin: 100% 100%;
+            -o-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+        }
+    }
+}
+
+#cuore:checked {
+    +label {
+        .heart {
+            &:after {
+                animation: colorChangeAfter .3s steps(1) 0.3s forwards;
+            }
+
+            &:before {
+                animation: colorChangeBefore .3s steps(1) 0.3s forwards;
+            }
+        }
+    }
+}
+
+@keyframes colorChangeAfter {
+    0% {
+        background-color: black;
+        transform: translateX(.5rem);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transform-origin: 100% 100%;
+        -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+        -o-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+
+    25% {
+        background-color: rgb(71, 51, 51);
+        transform: translateX(1.5rem) rotate(45deg);
+        transform-origin: 100% 100%;
+        @include prefix('transform', translateX(1.5rem) rotate(45deg));
+    @include prefix('transform-origin', 100% 100%);
+    }
+
+    50% {
+        background-color: rgb(133, 66, 66);
+        transform: translateX(2.5rem);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transform-origin: 100% 100%;
+        -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+        -o-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+
+    75% {
+        background-color: rgb(180, 40, 40);
+        transform: translateX(3.5rem);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transform-origin: 100% 100%;
+        -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+        -o-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+
+    100% {
+        background-color: red;
+        transform: translateX(4.5rem);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        -webkit-transform-origin: 100% 100%;
+        -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+        -o-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+}
+
+@keyframes colorChangeBefore {
+    0% {
+        background-color: black;
+        transform: translateX(.5rem);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transform-origin: 0 100%;
+        -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+        -o-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+    }
+
+    25% {
+        background-color: rgb(71, 51, 51);
+        transform: translateX(1.5rem);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transform-origin: 0 100%;
+        -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+        -o-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+    }
+
+    50% {
+        background-color: rgb(133, 66, 66);
+        transform: translateX(2.5rem);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transform-origin: 0 100%;
+        -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+        -o-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+    }
+
+    75% {
+        background-color: rgb(180, 40, 40);
+        transform: translateX(3.5rem);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transform-origin: 0 100%;
+        -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+        -o-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+    }
+
+    100% {
+        background-color: red;
+        transform: translateX(4.5rem);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        -webkit-transform-origin: 0 100%;
+        -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+        -o-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+    }
 }

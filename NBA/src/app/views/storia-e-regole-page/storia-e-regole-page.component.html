@@ -531,7 +531,7 @@
             <div class="w-full flex flex-nowrap">
               <div class="w-[20%] h-full rounded-xl pt-2 pb-2">
                 <p class="text-xl font-bold text-center">SALTA A:</p>
-                <div (click)="scrollToSection(i)" [class.selected]="selectedSection === i" class="flex justify-center bg-primary rounded-xl m-4 text-center" *ngFor="let item of jsonInfo; let i = index">
+                <div (click)="scrollToSection(i)" [class.selected]="selectedSection === i" class="hover:cursor-pointer flex justify-center bg-primary rounded-xl m-4 text-center" *ngFor="let item of jsonInfo; let i = index">
                   <button class="m-4 text-base  text-white">{{jsonInfo[i].titolo}}</button>
                 </div>
               </div>

@@ -64,6 +64,8 @@
 
 input {
     opacity: 0;
+    width: 0;
+    height: 0;
     position: relative;
 }
 
@@ -78,7 +80,7 @@ input {
 }
 
 label.toggle-item {
-    width: 6rem;
+    width: 5rem;
     background: #ACDEFF;
     height: 20px;
     display: inline-block;
@@ -97,6 +99,7 @@ label.toggle-item {
 }
 
 .heart-rollover {
+    width: 5.5rem;
     label {
         .heart {
             position: relative;
@@ -161,16 +164,9 @@ label.toggle-item {
     }
 }
 
-#heart:not(.heart-selected) + label .heart:after {
-    /* Stili per il cuore non selezionato quando non cliccato */
-    animation: none; /* Disabilita l'animazione quando non cliccato */
-}
-#heart:not(.heart-selected)+ label .heart:before {
-    /* Stili per il cuore non selezionato quando non cliccato */
-    animation: none; /* Disabilita l'animazione quando non cliccato */
-}
 
-#cuore:not(:checked){
+
+#cuore:focus:not(:checked){
     +label {
         .heart {
             &:after {
@@ -187,31 +183,31 @@ label.toggle-item {
 @keyframes colorChangeAfter {
     0% {
         background-color: black;
-        transform: translateX(1rem) rotate(45deg);
+        transform: translateX(0rem) rotate(45deg);
         transform-origin: 100% 100%;
     }
 
     25% {
         background-color: rgb(71, 51, 51);
-        transform: translateX(2rem) rotate(45deg);
+        transform: translateX(1rem) rotate(45deg);
         transform-origin: 100% 100%;
     }
 
     50% {
         background-color: rgb(133, 66, 66);
-        transform: translateX(3rem) rotate(45deg);
+        transform: translateX(2rem) rotate(45deg);
         transform-origin: 100% 100%;
     }
 
     75% {
         background-color: rgb(180, 40, 40);
-        transform: translateX(4rem) rotate(45deg);
+        transform: translateX(3rem) rotate(45deg);
         transform-origin: 100% 100%;
     }
 
     100% {
         background-color: red;
-        transform: translateX(5rem) rotate(45deg);
+        transform: translateX(4rem) rotate(45deg);
         transform-origin: 100% 100%;
     }
 }
@@ -219,31 +215,31 @@ label.toggle-item {
 @keyframes colorChangeBefore {
     0% {
         background-color: black;
-        transform: translateX(1rem) rotate(-45deg);
+        transform: translateX(0rem) rotate(-45deg);
         transform-origin: 0 100%;
     }
 
     25% {
         background-color: rgb(71, 51, 51);
-        transform: translateX(2rem) rotate(-45deg);
+        transform: translateX(1rem) rotate(-45deg);
         transform-origin: 0 100%;
     }
 
     50% {
         background-color: rgb(133, 66, 66);
-        transform: translateX(3rem) rotate(-45deg);
+        transform: translateX(2rem) rotate(-45deg);
         transform-origin: 0 100%;
     }
 
     75% {
         background-color: rgb(180, 40, 40);
-        transform: translateX(4rem) rotate(-45deg);
+        transform: translateX(3rem) rotate(-45deg);
         transform-origin: 0 100%;
     }
 
     100% {
         background-color: red;
-        transform: translateX(5rem) rotate(-45deg);
+        transform: translateX(4rem) rotate(-45deg);
         transform-origin: 0 100%;
     }
 }

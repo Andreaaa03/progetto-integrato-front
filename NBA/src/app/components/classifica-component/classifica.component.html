@@ -18,6 +18,7 @@
             crescente=false;
             winStanding=false;
             lossStanding=false;
+            favouriteStanding=false;
             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)">
             RESET FILTRI
         </button>
@@ -32,10 +33,10 @@
                 </label>
             </div>
         </div>
-        <button class="rounded-full bg-[#BAD5E6] lg:px-6 px-3 lg:py-1 text-sm hover:underline">
+        <button *ngIf="isParziale===false" class="rounded-full bg-secondary text-white lg:mr-2 lg:px-6 px-3 lg:py-1 text-sm hover:underline">
             REGOLAMENTO
         </button>
-        <button class="rounded-full bg-[#BAD5E6] lg:px-6 px-3 lg:py-1 text-sm hover:underline">
+        <button *ngIf="isParziale===false" class="rounded-full bg-secondary text-white lg:ml-2 lg:px-6 px-3 lg:py-1 text-sm hover:underline">
             GLOASSRIO
         </button>
     </div>

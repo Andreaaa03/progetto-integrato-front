@@ -53,7 +53,7 @@ export class ClassificaComponent implements OnInit {
       this.countForStanding = 15;
   }
 
-  percentageStanding: boolean = false;
+  percentageStanding: boolean = true;
   favouriteStanding: boolean = false;
   nameStanding: boolean = false;
   winStanding: boolean = false;
@@ -250,7 +250,20 @@ export class ClassificaComponent implements OnInit {
 
   toggleChecked() {
     let checkbox = document.getElementById('cuore') as HTMLInputElement;
-    if (checkbox)
+    checkbox.checked = !checkbox.checked;
+    
+  }
+  ToggleCheckedForReset() {
+    let checkbox = document.getElementById('cuore') as HTMLInputElement;
+    if(checkbox.checked==true) 
       checkbox.checked = !checkbox.checked;
+  }
+
+  ControlChecked():boolean {
+    let checkbox = document.getElementById('cuore') as HTMLInputElement;
+    if (checkbox.checked == true)
+      return true;
+    else
+      return false;
   }
 }

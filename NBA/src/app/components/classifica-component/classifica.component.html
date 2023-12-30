@@ -13,12 +13,16 @@
         </ul>
     </div>
     <div class="lg:w-full w-[95%] lg:h-8 h-5 lg:mt-10 mt-5 lg:mb-5 mb-2 flex justify-end" id="bottoni-classifica">
-        <button class="rounded-full bg-[#BAD5E6] lg:px-6 px-3 lg:py-1 text-sm hover:underline" (click)="percentageStanding=true;
+        <button *ngIf="percentageStanding==true && crescente==false && ControlChecked()==false" class="rounded-full lg:px-6 px-3 lg:py-1 text-sm hover:underline disabled:opacity-20">
+            RESET FILTRI
+        </button>
+        <button *ngIf="percentageStanding==false || crescente==true || ControlChecked()==true" class="rounded-full bg-[#BAD5E6] lg:px-6 px-3 lg:py-1 text-sm hover:underline" (click)="percentageStanding=true;
             nameStanding=false;
             crescente=false;
             winStanding=false;
             lossStanding=false;
             favouriteStanding=false;
+            ToggleCheckedForReset();
             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)">
             RESET FILTRI
         </button>

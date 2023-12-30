@@ -9,9 +9,9 @@ import { Classifica, StandingShow } from 'src/app/models/typeStanding';
 })
 export class ClassificaComponent implements OnInit {
   @Input() isParziale!: boolean;
-  
+
   constructor(private activatedRoute: ActivatedRoute) {
-    
+
   }
 
 
@@ -29,13 +29,13 @@ export class ClassificaComponent implements OnInit {
     eastConference: [],
     westConference: [],
   }
-  countForStanding: number=5;
+  countForStanding: number = 5;
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
+  onResize() {
     this.cambiaTesto();
   }
-  
+
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(
       ({ ResolveStanding }) => {
@@ -63,48 +63,93 @@ export class ClassificaComponent implements OnInit {
   functionChangeFilterStanding(percentageStanding: boolean, nameStanding: boolean, winStanding: boolean, lossStanding: boolean, crescente: boolean, event: Event) {
     event.preventDefault();
 
-    //perc.
-    if (percentageStanding === true) {
-      if (crescente === true) {
-        this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.allStanding.eastConference, 'win.percentage', false);
-        this.standingToShow.westConference = this.bubbleSortReverse(this.standings.allStanding.westConference, 'win.percentage', false);
-      } else if (crescente === false) {
-        this.standingToShow.eastConference = this.bubbleSort(this.standings.allStanding.eastConference, 'win.percentage', false);
-        this.standingToShow.westConference = this.bubbleSort(this.standings.allStanding.westConference, 'win.percentage', false);
+    if (this.favouriteStanding === false) {
+      if (percentageStanding === true) {
+        if (crescente === true) {
+          this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.allStanding.eastConference, 'win.percentage', false);
+          this.standingToShow.westConference = this.bubbleSortReverse(this.standings.allStanding.westConference, 'win.percentage', false);
+        } else if (crescente === false) {
+          this.standingToShow.eastConference = this.bubbleSort(this.standings.allStanding.eastConference, 'win.percentage', false);
+          this.standingToShow.westConference = this.bubbleSort(this.standings.allStanding.westConference, 'win.percentage', false);
+        }
       }
-    }
 
-    //nome
-    if (nameStanding === true) {
-      if (crescente === true) {
-        this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.allStanding.eastConference, 'team.name', true);
-        this.standingToShow.westConference = this.bubbleSortReverse(this.standings.allStanding.westConference, 'team.name', true);
-      } else if (crescente === false) {
-        this.standingToShow.eastConference = this.bubbleSort(this.standings.allStanding.eastConference, 'team.name', true);
-        this.standingToShow.westConference = this.bubbleSort(this.standings.allStanding.westConference, 'team.name', true);
+      //nome
+      if (nameStanding === true) {
+        if (crescente === true) {
+          this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.allStanding.eastConference, 'team.name', true);
+          this.standingToShow.westConference = this.bubbleSortReverse(this.standings.allStanding.westConference, 'team.name', true);
+        } else if (crescente === false) {
+          this.standingToShow.eastConference = this.bubbleSort(this.standings.allStanding.eastConference, 'team.name', true);
+          this.standingToShow.westConference = this.bubbleSort(this.standings.allStanding.westConference, 'team.name', true);
+        }
       }
-    }
 
 
-    //win
-    if (winStanding === true) {
-      if (crescente === true) {
-        this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.allStanding.eastConference, 'win.total', false);
-        this.standingToShow.westConference = this.bubbleSortReverse(this.standings.allStanding.westConference, 'win.total', false);
-      } else if (crescente === false) {
-        this.standingToShow.eastConference = this.bubbleSort(this.standings.allStanding.eastConference, 'win.total', false);
-        this.standingToShow.westConference = this.bubbleSort(this.standings.allStanding.westConference, 'win.total', false);
+      //win
+      if (winStanding === true) {
+        if (crescente === true) {
+          this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.allStanding.eastConference, 'win.total', false);
+          this.standingToShow.westConference = this.bubbleSortReverse(this.standings.allStanding.westConference, 'win.total', false);
+        } else if (crescente === false) {
+          this.standingToShow.eastConference = this.bubbleSort(this.standings.allStanding.eastConference, 'win.total', false);
+          this.standingToShow.westConference = this.bubbleSort(this.standings.allStanding.westConference, 'win.total', false);
+        }
       }
-    }
 
-    //loss
-    if (lossStanding === true) {
-      if (crescente === true) {
-        this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.allStanding.eastConference, 'loss.total', false);
-        this.standingToShow.westConference = this.bubbleSortReverse(this.standings.allStanding.westConference, 'loss.total', false);
-      } else if (crescente === false) {
-        this.standingToShow.eastConference = this.bubbleSort(this.standings.allStanding.eastConference, 'loss.total', false);
-        this.standingToShow.westConference = this.bubbleSort(this.standings.allStanding.westConference, 'loss.total', false);
+      //loss
+      if (lossStanding === true) {
+        if (crescente === true) {
+          this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.allStanding.eastConference, 'loss.total', false);
+          this.standingToShow.westConference = this.bubbleSortReverse(this.standings.allStanding.westConference, 'loss.total', false);
+        } else if (crescente === false) {
+          this.standingToShow.eastConference = this.bubbleSort(this.standings.allStanding.eastConference, 'loss.total', false);
+          this.standingToShow.westConference = this.bubbleSort(this.standings.allStanding.westConference, 'loss.total', false);
+        }
+      }
+    } else {
+      if (percentageStanding === true) {
+        if (crescente === true) {
+          this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.favouriteStandings.eastConference, 'win.percentage', false);
+          this.standingToShow.westConference = this.bubbleSortReverse(this.standings.favouriteStandings.westConference, 'win.percentage', false);
+        } else if (crescente === false) {
+          this.standingToShow.eastConference = this.bubbleSort(this.standings.favouriteStandings.eastConference, 'win.percentage', false);
+          this.standingToShow.westConference = this.bubbleSort(this.standings.favouriteStandings.westConference, 'win.percentage', false);
+        }
+      }
+
+      //nome
+      if (nameStanding === true) {
+        if (crescente === true) {
+          this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.favouriteStandings.eastConference, 'team.name', true);
+          this.standingToShow.westConference = this.bubbleSortReverse(this.standings.favouriteStandings.westConference, 'team.name', true);
+        } else if (crescente === false) {
+          this.standingToShow.eastConference = this.bubbleSort(this.standings.favouriteStandings.eastConference, 'team.name', true);
+          this.standingToShow.westConference = this.bubbleSort(this.standings.favouriteStandings.westConference, 'team.name', true);
+        }
+      }
+
+
+      //win
+      if (winStanding === true) {
+        if (crescente === true) {
+          this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.favouriteStandings.eastConference, 'win.total', false);
+          this.standingToShow.westConference = this.bubbleSortReverse(this.standings.favouriteStandings.westConference, 'win.total', false);
+        } else if (crescente === false) {
+          this.standingToShow.eastConference = this.bubbleSort(this.standings.favouriteStandings.eastConference, 'win.total', false);
+          this.standingToShow.westConference = this.bubbleSort(this.standings.favouriteStandings.westConference, 'win.total', false);
+        }
+      }
+
+      //loss
+      if (lossStanding === true) {
+        if (crescente === true) {
+          this.standingToShow.eastConference = this.bubbleSortReverse(this.standings.favouriteStandings.eastConference, 'loss.total', false);
+          this.standingToShow.westConference = this.bubbleSortReverse(this.standings.favouriteStandings.westConference, 'loss.total', false);
+        } else if (crescente === false) {
+          this.standingToShow.eastConference = this.bubbleSort(this.standings.favouriteStandings.eastConference, 'loss.total', false);
+          this.standingToShow.westConference = this.bubbleSort(this.standings.favouriteStandings.westConference, 'loss.total', false);
+        }
       }
     }
   }
@@ -119,6 +164,7 @@ export class ClassificaComponent implements OnInit {
       this.standingToShow.westConference = this.bubbleSort(this.standings.allStanding.westConference, 'win.percentage', false);
     }
   }
+
   selectedConference: boolean = true;
 
   functionSelectionConference(selectedConference: boolean) {
@@ -195,10 +241,16 @@ export class ClassificaComponent implements OnInit {
   sconfitte: string = "Sconfitte";
 
   private cambiaTesto() {
-    const isMobile = window.innerWidth < 1024; 
+    const isMobile = window.innerWidth < 1024;
 
     this.vittore = isMobile ? "% V." : "% Vittore";
     this.vinte = isMobile ? "V." : "Vinte";
     this.sconfitte = isMobile ? "S." : "Sconfitte";
+  }
+
+  toggleChecked() {
+    let checkbox = document.getElementById('cuore') as HTMLInputElement;
+    if (checkbox)
+      checkbox.checked = !checkbox.checked;
   }
 }

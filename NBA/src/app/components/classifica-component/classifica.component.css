@@ -10,16 +10,16 @@
     border-bottom: 2px solid white;
 }
 
-#contenitore-tabella-classifica tbody tr:last-child td {
-    border-bottom: 0px;
-}
-
 #contenitore-tabella-classifica tbody tr:nth-child(odd) td:first-child {
     background-color: #acdeff;
 }
 
 #contenitore-tabella-classifica tbody tr td:first-child {
     border-bottom: 2px solid #dcf1ff;
+}
+
+#contenitore-tabella-classifica tbody tr:last-child td {
+    border-bottom: 0;
 }
 
 #contenitore-tabella-classifica td {
@@ -48,16 +48,187 @@
     }
 
     #contenitore-tabella-classifica td {
-    height: 4rem !important;
-    max-height: 4rem !important;
+        height: 4rem !important;
+        max-height: 4rem !important;
+    }
+
+    #contenitore-tabella-classifica td:last-child {
+        border: 0;
+    }
+
+    #contenitore-tabella-classifica td div {
+        height: 3rem !important;
+        max-height: 3rem !important;
+    }
 }
 
-#contenitore-tabella-classifica td:last-child {
-    border: 0;
+
+#bottoni-classifica input {
+	height: 0px;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	width: 0px;
 }
 
-#contenitore-tabella-classifica td div {
-    height: 3rem !important;
-    max-height: 3rem !important;
+#bottoni-classifica label.toggle-item {
+	width: 5rem;
+	background: #00000083;
+	height: 20px;
+	display: inline-block;
+	border-radius: 50px;
+	position: relative;
+	transition: all .3s ease;
+	cursor: pointer;
 }
+
+#bottoni-classifica .heart-rollover {
+	label {
+		&:before {
+			content: none;
+		}
+		.block-heart {
+			display: inline-block;
+			position: absolute;
+			width: 2.5em;
+			height: 2.5em;
+			top: 0;
+			left: 0;
+			transition: .6s ease;
+		}
+        .heart {
+            position: relative;
+            width: 40px;
+            height: 50px;
+            animation: heartbeat 1s infinite;
+            margin: 0;
+            bottom: .5em;
+            left: -.5em;
+        }
+        
+        .heart:before,
+        .heart:after {
+            position: absolute;
+            content: "";
+            left: 20px;
+            top: 0;
+            width: 20px;
+            height: 35px;
+            background: #acdeff;
+            -moz-border-radius: 20px 20px 0 0;
+            border-radius: 20px 20px 0 0;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            -webkit-transform-origin: 0 100%;
+            -moz-transform-origin: 0 100%;
+            -ms-transform-origin: 0 100%;
+            -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+        }
+
+        .heart:after {
+            left: 0;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transform-origin: 100% 100%;
+            -moz-transform-origin: 100% 100%;
+            -ms-transform-origin: 100% 100%;
+            -o-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+        }
+
+		&:before {
+			border-color: white;
+			background: white;
+		}
+	}
+}
+
+#bottoni-classifica #cuore:checked  {
+	+ label {
+		.block-heart {
+			left: 3.5rem;
+		}
+        .heart {
+            &:after {
+                animation: colorChangeAfter .3s 0s forwards;
+            }
+
+            &:before {
+                animation: colorChangeBefore .3s 0s forwards;
+            }
+        }
+	}
+}
+
+
+@keyframes colorChangeAfter {
+    0% {
+        background-color: #acdeff;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+    }
+
+    25% {
+        background-color: #c2a2ba;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+    }
+
+    50% {
+        background-color: #d47182;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+    }
+
+    75% {
+        background-color: #ee2c33;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+    }
+
+    100% {
+        background-color: red;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+    }
+}
+
+@keyframes colorChangeBefore {
+    0% {
+        background-color: #acdeff;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+
+    25% {
+        background-color: #c2a2ba;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+
+    50% {
+        background-color: #d47182;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+
+    75% {
+        background-color: #ee2c33;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+
+    100% {
+        background-color: red;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
 }

@@ -12,16 +12,35 @@
             </li>
         </ul>
     </div>
-    <div class="lg:w-full w-[95%] lg:h-8 h-5 lg:mt-10 mt-5 lg:mb-5 mb-2 flex justify-end">
+    <div class="lg:w-full w-[95%] lg:h-8 h-5 lg:mt-10 mt-5 lg:mb-5 mb-2 flex justify-end" id="bottoni-classifica">
         <button class="rounded-full bg-[#BAD5E6] lg:px-6 px-3 lg:py-1 text-sm hover:underline" (click)="percentageStanding=true;
             nameStanding=false;
             crescente=false;
             winStanding=false;
             lossStanding=false;
+            favouriteStanding=false;
             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)">
             RESET FILTRI
         </button>
+        <div class="rounded-full lg:px-6 px-3 lg:py-1 text-sm hover:underline">
+            <div class="heart-rollover" (click)="favouriteStanding=!favouriteStanding; toggleChecked(); functionChangeStandingWithFavourite(favouriteStanding, $event);">
+                <input id="cuore" type="checkbox" />
+                <label class="toggle-item" for="cuore">
+                    <div class="block-heart">
+                        <div class="heart">
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <button *ngIf="isParziale===false" class="rounded-full bg-secondary text-white lg:mr-2 lg:px-6 px-3 lg:py-1 text-sm hover:underline">
+            REGOLAMENTO
+        </button>
+        <button *ngIf="isParziale===false" class="rounded-full bg-secondary text-white lg:ml-2 lg:px-6 px-3 lg:py-1 text-sm hover:underline">
+            GLOASSRIO
+        </button>
     </div>
+
     <div class="border-2 border-white" id="contenitore-tabella-classifica">
         <table class="w-full " *ngIf="selectedConference===true">
             <thead class="w-full bg-primary text-white">
@@ -35,7 +54,6 @@
                             crescente=!crescente;
                             winStanding=false;
                             lossStanding=false;
-                            favouriteStanding=false;
                             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)
                         ">Nome </p>
                     </td>
@@ -46,7 +64,6 @@
                             nameStanding=false;
                             winStanding=false;
                             lossStanding=false;
-                            favouriteStanding=false;
                             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)
                         ">{{vittore}}</p>
                     </td>
@@ -57,7 +74,6 @@
                             winStanding=true;
                             crescente=!crescente;
                             lossStanding=false;
-                            favouriteStanding=false;
                             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)
                         ">{{vinte}}</p>
                     </td>
@@ -68,7 +84,6 @@
                             winStanding=false;
                             lossStanding=true;
                             crescente=!crescente;
-                            favouriteStanding=false;
                             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)
                         ">{{sconfitte}}</p>
                     </td>
@@ -84,9 +99,7 @@
                         <p class="w-full text-center">Ultimi Match</p>
                     </td>
                     <td class="lg:w-[8%] w-[6%]">
-                        <p class="w-full text-center hover:underline" (click)="
-                            favouriteStanding=!favouriteStanding;
-                            functionChangeStandingWithFavourite(favouriteStanding, $event) ">❤️</p>
+                        <p class="w-full text-center">❤️</p>
                     </td>
                 </tr>
             </thead>
@@ -146,7 +159,7 @@
                             crescente=!crescente;
                             winStanding=false;
                             lossStanding=false;
-                            favouriteStanding=false;
+
                             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)
                         ">Nome </p>
                     </td>
@@ -157,7 +170,7 @@
                             nameStanding=false;
                             winStanding=false;
                             lossStanding=false;
-                            favouriteStanding=false;
+
                             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)
                         ">{{vittore}}</p>
                     </td>
@@ -168,7 +181,7 @@
                             winStanding=true;
                             crescente=!crescente;
                             lossStanding=false;
-                            favouriteStanding=false;
+
                             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)
                         ">{{vinte}}</p>
                     </td>
@@ -179,7 +192,7 @@
                             winStanding=false;
                             lossStanding=true;
                             crescente=!crescente;
-                            favouriteStanding=false;
+
                             functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)
                         ">{{sconfitte}}</p>
                     </td>
@@ -195,9 +208,7 @@
                         <p class="w-full text-center">Ultimi Match</p>
                     </td>
                     <td class="lg:w-[8%] w-[6%]">
-                        <p class="w-full text-center hover:underline" (click)="
-                            favouriteStanding=!favouriteStanding;
-                            functionChangeStandingWithFavourite(favouriteStanding, $event) ">❤️</p>
+                        <p class="w-full text-center">❤️</p>
                     </td>
                 </tr>
             </thead>

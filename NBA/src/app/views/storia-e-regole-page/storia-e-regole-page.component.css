@@ -1,0 +1,11 @@
+.altezza{
+    height: 450px;
+}
+
+.highlighted{
+    transition: background-color 1s;
+}
+
+.selected.highlighted{
+    background-color: darken(#ACDEFF, 10%); 
+}

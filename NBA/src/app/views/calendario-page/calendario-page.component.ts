@@ -182,4 +182,5 @@ export class CalendarioPageComponent implements OnInit {
     this.getNoOfDaysCentral();
     this.getNoOfDaysRigth();
   }
+
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-card-partita',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./card-partita.component.css']
 })
 export class CardPartitaComponent {
-
+  @Input() id:number=0; 
 }

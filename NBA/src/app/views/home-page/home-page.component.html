@@ -1,7 +1,8 @@
-<header class="min-h-screen w-full">
+<header class="h-screen w-full">
+    <img class="object-fill w-full h-screen" src="../../../assets/sfondo-home.png" alt="">
     <app-navbar></app-navbar>
 </header>
-<section>
+<section class="mt-16">
     <div class="flex justify-center h-full">
         <div class="container flex justify-center h-full">
             <div class="lg:w-[90%] w-full h-full flex flex-wrap justify-center">
@@ -40,6 +41,18 @@
                 </div>
             </div>
         </div>
+    </div>
+</section>
+<section>
+    <div class="w-full pt-12">
+        <div class="flex justify-center h-[150px] z-10">
+            <img class="object-cover w-[50%] rounded-full z-10" src="../../../assets/foto-spotify.png" alt="">
+        </div>
+        <div class="flex justify-center items-end z-0">
+            <button class="w-[40%] rounded-full h-[70px] z-0 relative bottom-6 bg-secondary lg:px-8 px-5 pt-6 text-white font-bold text-sm lg:text-xl hover:underline" [routerLink]="['/']">
+                SCOPRI IL NOSTRO PODCACAST
+            </button>
+        </div> 
     </div>
 </section>
 <footer class="mt-20">

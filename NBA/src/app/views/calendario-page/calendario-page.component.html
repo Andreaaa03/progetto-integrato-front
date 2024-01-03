@@ -170,16 +170,16 @@
     </div>
 </section>
 <section>
-  <div class="flex justify-center w-full h-full mt-20">
+  <div class="flex justify-center w-full h-full mt-10">
     <div class="lg:w-[90%] w-full flex justify-center h-full flex-wrap">
-      <div class="w-full h-full flex flex-wrap">
+      <div class="w-full h-full flex flex-wrap mb-20">
         <div class="w-full h-20 bg-primary flex justify-center items-center">
           <h2 class="text-white text-4xl font-bold">ULTIMI MATCH</h2>
         </div>
         <div class="w-full h-6 bg-secondary"></div>
       </div>
-      <div class="w-full h-auto">
-        <div class="w-[50%] flex flex-wrap mt-20">
+      <div class="w-[75%] h-auto flex flex-wrap mb-20">
+        <div class="w-[50%]">
           <table class="w-[50%] ml-32">
             <thead class="bg-primary text-white">
               <tr>
@@ -189,47 +189,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>ora</td>
-                <td>squadre</td>
-                <td>punteggio</td>
-              </tr>
-              <tr>
-                <td>ora</td>
-                <td>squadre</td>
-                <td>punteggio</td>
-              </tr>
-              <tr>
-                <td>ora</td>
-                <td>squadre</td>
-                <td>punteggio</td>
-              </tr>
-              <tr>
-                <td>ora</td>
-                <td>squadre</td>
-                <td>punteggio</td>
-              </tr>
-              <tr>
-                <td>ora</td>
-                <td>squadre</td>
-                <td>punteggio</td>
-              </tr>
-              <tr>
-                <td>ora</td>
-                <td>squadre</td>
-                <td>punteggio</td>
-              </tr>
-              <tr>
-                <td>ora</td>
-                <td>squadre</td>
-                <td>punteggio</td>
-              </tr>
-              <tr>
-                <td>ora</td>
-                <td>squadre</td>
-                <td>punteggio</td>
-              </tr>
-              <tr>
+              <tr *ngFor="let _ of ripetiArray">
                 <td>ora</td>
                 <td>squadre</td>
                 <td>punteggio</td>
@@ -237,34 +197,11 @@
             </tbody>
           </table>
         </div>
-        <div class="w-[50%] flex-col">
-          <div><button class="bg-primary rounded-xl p-2">
+        <div class="w-[50%] flex flex-col justify-end align-middle text-white">
+          <div *ngFor="let _ of ripetiArray"><button class="bg-primary rounded-xl pl-10 pr-10 m-1">
             <p>TABELLINO</p>
           </button></div>
-          <div><button class="bg-primary rounded-xl p-2">
-            <p>TABELLINO</p>
-          </button></div>
-          <div><button class="bg-primary rounded-xl p-2">
-            <p>TABELLINO</p>
-          </button></div>
-          <div><button class="bg-primary rounded-xl p-2">
-            <p>TABELLINO</p>
-          </button></div>
-          <div><button class="bg-primary rounded-xl p-2">
-            <p>TABELLINO</p>
-          </button></div>
-          <div><button class="bg-primary rounded-xl p-2">
-            <p>TABELLINO</p>
-          </button></div>
-          <div><button class="bg-primary rounded-xl p-2">
-            <p>TABELLINO</p>
-          </button></div>
-          <div><button class="bg-primary rounded-xl p-2">
-            <p>TABELLINO</p>
-          </button></div>
-          <div><button class="bg-primary rounded-xl p-2">
-            <p>TABELLINO</p>
-          </button></div>
+          
         </div>
       </div>
     </div>

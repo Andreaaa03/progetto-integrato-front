@@ -44,6 +44,7 @@ export class CalendarioPageComponent implements OnInit {
   isTodayYear: number = 2023;
   isTodayMonth: number = 0;
   isTodayDay: number = 0;
+  ripetiArray = new Array(10).fill(null);
 
   initDate() {
     let today = new Date();

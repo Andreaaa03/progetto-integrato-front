@@ -1,4 +1,6 @@
-
+.margine{
+    margin-bottom: 6px;
+}
 
 
 tr{
@@ -9,6 +11,11 @@ tr{
 tr:not(:last-child){
     border-bottom: 5px solid white;
 }
+
+td{
+    height: 60px;
+}
+=======
 
 
 td:first-child{

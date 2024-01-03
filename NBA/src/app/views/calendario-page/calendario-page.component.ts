@@ -45,7 +45,7 @@ export class CalendarioPageComponent implements OnInit {
   isTodayMonth: number = 0;
   isTodayDay: number = 0;
   ripetiArray = new Array(10).fill(null);
-
+  
   initDate() {
     let today = new Date();
     this.currentMonthCentral = this.isTodayMonth = today.getMonth();

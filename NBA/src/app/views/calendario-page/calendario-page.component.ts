@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarioPageComponent implements OnInit {
 
+  matchToday: number[] = [1, 2, 3, 4, 5, 6, 7];
+  cardToShow: number = 3;
+
+  changeCardToShow(cardToShow: number): void {
+    if (cardToShow == 3)
+      this.cardToShow = this.matchToday.length;
+    else
+      this.cardToShow = 3;
+
+    console.log(this.cardToShow);
+  }
   ngOnInit(): void {
     this.initDate();
     this.getNoOfDaysLeft();
@@ -45,13 +56,15 @@ export class CalendarioPageComponent implements OnInit {
       this.currentYearRigth = this.currentYearCentral + 1;
       this.currentMonthRigth = 0;
     } else {
-      this.currentMonthRigth = this.currentMonthCentral;
+      this.currentYearRigth = this.currentYearCentral;
+      this.currentMonthRigth = this.currentMonthCentral + 1;
     }
 
     if (this.currentMonthLeft - 1 <= 0) {
       this.currentYearLeft = this.currentYearCentral - 1;
       this.currentMonthLeft = 11;
     } else {
+      this.currentYearLeft = this.currentYearCentral;
       this.currentMonthLeft = this.currentMonthCentral - 1;
     }
     // this.datepickerValue = new Date(this.year, this.month, today.getDate()).toDateString();
@@ -74,7 +87,7 @@ export class CalendarioPageComponent implements OnInit {
       res = true;
     }
     else
-    res = false;
+      res = false;
     return res;
   }
 
@@ -182,5 +195,4 @@ export class CalendarioPageComponent implements OnInit {
     this.getNoOfDaysCentral();
     this.getNoOfDaysRigth();
   }
-
 }

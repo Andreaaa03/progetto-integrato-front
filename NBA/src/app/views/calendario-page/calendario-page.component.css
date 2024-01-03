@@ -10,8 +10,10 @@ tr:not(:last-child){
     border-bottom: 5px solid white;
 }
 
+
 td:first-child{
     background-color: #ACDEFF;
+    
 }
 
 td:not(:first-child){

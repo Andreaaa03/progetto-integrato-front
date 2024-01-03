@@ -15,9 +15,12 @@ tr:not(:last-child){
 td{
     height: 60px;
 }
+=======
+
 
 td:first-child{
     background-color: #ACDEFF;
+    
 }
 
 td:not(:first-child){

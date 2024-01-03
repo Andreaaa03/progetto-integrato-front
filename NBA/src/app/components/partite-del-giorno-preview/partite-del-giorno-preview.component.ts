@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-partite-del-giorno-preview',
@@ -10,7 +10,19 @@ export class PartiteDelGiornoPreviewComponent implements OnInit {
     1,2,3,4,5,6
   ];
 
+  isMobile: boolean = false;
+
   ngOnInit(): void {
+    this.checkIfMobile();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.checkIfMobile();
+  }
+
+  checkIfMobile(): void {
+    this.isMobile = window.innerWidth < 768; // Cambia questo valore in base alle tue esigenze
   }
   currentIndexAfter: number = 2;
   currentIndex: number = 1;

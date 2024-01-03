@@ -13,9 +13,10 @@
                 <div class="rounded-lg w-full h-full flex flex-nowrap justify-center">
                     <div *ngFor="let card of cards; let i=index" [style.order]="calculateOrder(i)" class=" m-0 p-0" [ngClass]="{
                                     'hidden w-0': currentIndex !== i && currentIndexAfter !== i && currentIndexBefore !== i,
-                                    'w-full': currentIndex === i || currentIndexAfter === i || currentIndexBefore === i,
-                            }" id={{i}} data-carousel-item="">
-                        <app-card-partita></app-card-partita>
+                                    'w-full': isMobile && currentIndex === i,
+                            }" id={{i}}>
+                        <app-card-partita *ngIf="i===currentIndex && isMobile" [id]="i"></app-card-partita>
+                        <app-card-partita *ngIf="!isMobile" [id]="i"></app-card-partita>
                     </div>
                 </div>
 

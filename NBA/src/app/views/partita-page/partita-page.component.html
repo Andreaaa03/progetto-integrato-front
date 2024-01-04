@@ -1,12 +1,132 @@
 <app-navbar></app-navbar>
-<section>
+<section class="mb-10">
     <div class="mb-10">
         <div class="w-full h-20 bg-primary flex justify-center items-center">
             <h2 class=" text-white text-4xl font-bold">
-                TEBELLINO
+                TABELLINO
             </h2>
         </div>
         <div class="w-full h-6 bg-secondary"></div>
+    </div>
+    <div class="flex justify-center">
+        <div class="container w-full flex flex-wrap justify-center">
+            <div class="lg:w-[75%] w-full rounded-3xl h-[40vh] flex justify-center bg-[#DCF1FF]">
+                <div class="w-1/3 flex flex-wrap justify-center items-center">
+                    <div class="h-1/4 w-full flex justify-center"></div>
+                    <div class="h-1/4 w-full flex justify-center"><img src="" alt="img"></div>
+                    <div class="h-1/4 w-full flex justify-center">
+                        <p class="font-bold text-2xl">nome squadra</p>
+                    </div>
+                    <div class="h-1/4 w-full flex justify-center">
+                        <p class="font-bold text-xl">(1-20)</p>
+                    </div>
+                </div>
+                <div class="w-1/3 flex flex-wrap justify-center items-center">
+                    <div class="h-1/4 w-full flex justify-center">
+                        <p class="font-bold text-xl">04/01/2024</p>
+                    </div>
+                    <div class="h-1/4 w-full flex justify-center">
+                        <p class="font-bold text-4xl">78-100</p>
+                    </div>
+                    <div class="h-1/4 w-full flex justify-center"></div>
+                    <div class="h-1/4 w-full flex justify-center">barra</div>
+                </div>
+                <div class="w-1/3 flex flex-wrap justify-center items-center">
+                    <div class="h-1/4 w-full flex justify-center"></div>
+                    <div class="h-1/4 w-full flex justify-center"><img src="" alt="img"></div>
+                    <div class="h-1/4 w-full flex justify-center">
+                        <p class="font-bold text-2xl">nome squadra</p>
+                    </div>
+                    <div class="h-1/4 w-full flex justify-center">
+                        <p class="font-bold text-xl">(17-3)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-[75%] w-full flex flex-nowrap justify-between mt-5" *ngFor="let _ of quarti">
+                <div class="w-[7%] bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
+                    <p class="text-xl">
+                        1°
+                    </p>
+                </div>
+                <div class="w-[42%] bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
+                    <p class="text-xl">22</p>
+                </div>
+                <div class="w-[42%] bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
+                    <p class="text-xl">22</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="h-4 bg-secondary w-full my-10"></div>
+    <div class="flex justify-center">
+        <div class="container w-full flex flex-wrap justify-center">
+            <div class="w-full flex justify-center">
+                <div class="flex flex-wrap justify-center">
+                    <button class="h-12 w-40 px-4 py-2 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='teamHome'" [class.text-white]="tabsSelected=='teamHome'" (click)="tabsSelected='teamHome'">
+                        nome squadra
+                    </button>
+                    <div class="w-[70%] h-2 rounded-full bg-secondary mt-2" *ngIf="tabsSelected==='teamHome'"></div>
+                </div>
+                <div class="flex flex-wrap justify-center">
+                    <button class="h-12 w-40 px-4 py-2 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='teamAway'" [class.text-white]="tabsSelected=='teamAway'" (click)="tabsSelected='teamAway'">
+                        nome squadra
+                    </button>
+                    <div class="w-[70%] h-2 rounded-full bg-secondary mt-2" *ngIf="tabsSelected==='teamAway'"></div>
+                </div>
+                <div class="flex flex-wrap justify-center">
+                    <button class="h-12 w-40 px-4 py-2 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='statics'" [class.text-white]="tabsSelected=='statics'" (click)="tabsSelected='statics'">
+                        statics
+                    </button>
+                    <div class="w-[70%] h-2 rounded-full bg-secondary mt-2" *ngIf="tabsSelected==='statics'"></div>
+                </div>
+            </div>
+            <div class="lg:w-[75%] w-full h-full mt-5">
+                <table class="w-full">
+                    <thead>
+                        <tr class="h-10">
+                            <th class="w-[40%] bg-primary text-white border-r-2 border-white">
+                                <p>GIOCATORE</p>
+                            </th>
+                            <th class="w-[15%] bg-secondary text-white border-r-2 border-white">
+                                <p>MIN</p>
+                            </th>
+                            <th class="w-[15%] bg-secondary text-white border-r-2 border-white">
+                                <p>MIN</p>
+                            </th>
+                            <th class="w-[15%] bg-secondary text-white border-r-2 border-white">
+                                <p>MIN</p>
+                            </th>
+                            <th class="w-[15%] bg-secondary text-white">
+                                <p>MIN</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="h-10 p-0" *ngFor="let _ of staticsToShow">
+                            <td class="w-[40%] p-0 border-b-2 border-r-2 border-white">
+                                <div class="flex flex-nowrap justify-center w-full">
+                                    <div class="w-1/4 flex justify-center items-center bg-[#ACDEFF] border-r-2 border-white h-10"><p>23</p></div>
+                                    <div class="w-3/4 flex justify-center items-center bg-[#ACDEFF] h-10"><p>Lebron James</p></div>
+                                </div>
+                            </td>
+                            <td class="w-[15%] p-0 border-b-2 border-r-2 border-white bg-[#ACDEFF]">
+                                <p class="text-center">50</p>
+                            </td>
+                            <td class="w-[15%] p-0 border-b-2 border-r-2 border-white bg-[#ACDEFF]">
+                                <p class="text-center">50</p>
+                            </td>
+                            <td class="w-[15%] p-0 border-b-2 border-r-2 border-white bg-[#ACDEFF]">
+                                <p class="text-center">50</p>
+                            </td>
+                            <td class="w-[15%] p-0 border-b-2 border-white bg-[#ACDEFF]">
+                                <p class="text-center">50</p>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </section>
 <app-footer></app-footer>

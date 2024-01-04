@@ -65,35 +65,35 @@
                     <button class="h-12 w-40 px-4 py-2 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='teamHome'" [class.text-white]="tabsSelected=='teamHome'" (click)="tabsSelected='teamHome'">
                         nome squadra
                     </button>
-                    <div class="w-[70%] h-2 rounded-full bg-secondary mt-2" *ngIf="tabsSelected==='teamHome'"></div>
+                    <div class="w-[60%] h-1 bg-secondary mt-1" *ngIf="tabsSelected==='teamHome'"></div>
                 </div>
                 <div class="flex flex-wrap justify-center">
                     <button class="h-12 w-40 px-4 py-2 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='teamAway'" [class.text-white]="tabsSelected=='teamAway'" (click)="tabsSelected='teamAway'">
                         nome squadra
                     </button>
-                    <div class="w-[70%] h-2 rounded-full bg-secondary mt-2" *ngIf="tabsSelected==='teamAway'"></div>
+                    <div class="w-[60%] h-1 bg-secondary mt-1" *ngIf="tabsSelected==='teamAway'"></div>
                 </div>
                 <div class="flex flex-wrap justify-center">
                     <button class="h-12 w-40 px-4 py-2 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='statics'" [class.text-white]="tabsSelected=='statics'" (click)="tabsSelected='statics'">
                         statics
                     </button>
-                    <div class="w-[70%] h-2 rounded-full bg-secondary mt-2" *ngIf="tabsSelected==='statics'"></div>
+                    <div class="w-[60%] h-1 bg-secondary mt-1" *ngIf="tabsSelected==='statics'"></div>
                 </div>
             </div>
             <div class="lg:w-[75%] w-full h-full mt-5">
-                <table class="w-full">
+                <table class="w-full" *ngIf="tabsSelected==='teamHome' || tabsSelected==='teamAway'">
                     <thead>
-                        <tr class="h-10">
-                            <th class="w-[40%] bg-primary text-white border-r-2 border-white">
+                        <tr class="h-10 border-b-4 border-white">
+                            <th class="w-[40%] bg-primary text-white border-r-4 border-white">
                                 <p>GIOCATORE</p>
                             </th>
-                            <th class="w-[15%] bg-secondary text-white border-r-2 border-white">
+                            <th class="w-[15%] bg-secondary text-white border-r-4 border-white">
                                 <p>MIN</p>
                             </th>
-                            <th class="w-[15%] bg-secondary text-white border-r-2 border-white">
+                            <th class="w-[15%] bg-secondary text-white border-r-4 border-white">
                                 <p>MIN</p>
                             </th>
-                            <th class="w-[15%] bg-secondary text-white border-r-2 border-white">
+                            <th class="w-[15%] bg-secondary text-white border-r-4 border-white">
                                 <p>MIN</p>
                             </th>
                             <th class="w-[15%] bg-secondary text-white">
@@ -103,22 +103,59 @@
                     </thead>
                     <tbody>
                         <tr class="h-10 p-0" *ngFor="let _ of staticsToShow">
-                            <td class="w-[40%] p-0 border-b-2 border-r-2 border-white">
+                            <td class="w-[40%] p-0 border-b-4 border-r-4 border-white">
                                 <div class="flex flex-nowrap justify-center w-full">
-                                    <div class="w-1/4 flex justify-center items-center bg-[#ACDEFF] border-r-2 border-white h-10"><p>23</p></div>
-                                    <div class="w-3/4 flex justify-center items-center bg-[#ACDEFF] h-10"><p>Lebron James</p></div>
+                                    <div class="w-1/4 flex justify-center items-center bg-[#ACDEFF] border-r-4 border-white h-10">
+                                        <p>23</p>
+                                    </div>
+                                    <div class="w-3/4 flex justify-center items-center bg-[#ACDEFF] h-10">
+                                        <p>Lebron James</p>
+                                    </div>
                                 </div>
                             </td>
-                            <td class="w-[15%] p-0 border-b-2 border-r-2 border-white bg-[#ACDEFF]">
+                            <td class="w-[15%] p-0 border-b-4 border-r-4 border-white bg-[#ACDEFF]">
                                 <p class="text-center">50</p>
                             </td>
-                            <td class="w-[15%] p-0 border-b-2 border-r-2 border-white bg-[#ACDEFF]">
+                            <td class="w-[15%] p-0 border-b-4 border-r-4 border-white bg-[#ACDEFF]">
                                 <p class="text-center">50</p>
                             </td>
-                            <td class="w-[15%] p-0 border-b-2 border-r-2 border-white bg-[#ACDEFF]">
+                            <td class="w-[15%] p-0 border-b-4 border-r-4 border-white bg-[#ACDEFF]">
                                 <p class="text-center">50</p>
                             </td>
-                            <td class="w-[15%] p-0 border-b-2 border-white bg-[#ACDEFF]">
+                            <td class="w-[15%] p-0 border-b-4 border-white bg-[#ACDEFF]">
+                                <p class="text-center">50</p>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <table class="w-full" *ngIf="tabsSelected==='statics'">
+                    <thead>
+                        <tr class="h-10 border-b-4 border-white">
+                            <th class="w-[20%] bg-secondary text-white border-r-4 border-white">
+                                <p>SQUADRA</p>
+                            </th>
+                            <th class="w-[60%] bg-secondary text-white border-r-4 border-white">
+                                <p>STATISTICHE</p>
+                            </th>
+                            <th class="w-[20%] bg-secondary text-white">
+                                <p>SQUADRA</p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="h-10 p-0" *ngFor="let _ of staticsToShow">
+                            <td class="w-[20%] p-0 border-b-4 border-r-4 border-white bg-[#ACDEFF]">
+                                <p class="text-center">10</p>
+                            </td>
+                            <td class="w-[60%] p-0 border-b-4 border-r-4 border-white bg-[#ACDEFF]">
+                                <div class="flex flex-nowrap justify-center">
+                                    <div class="w-1/2">
+                                        <div multiHandleRangeSlider [defaultValues]="defaultValues" [newSelectionValues]="newSelectionValues" name="range-slider"></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="w-[20%] p-0 border-b-4 border-white bg-[#ACDEFF]">
                                 <p class="text-center">50</p>
                             </td>
                         </tr>

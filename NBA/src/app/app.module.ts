@@ -19,6 +19,8 @@ import { PartiteDelGiornoPreviewComponent } from './components/partite-del-giorn
 import { CardPartitaComponent } from './components/card-partita/card-partita.component';
 import { PartitaPageComponent } from './views/partita-page/partita-page.component'
 import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-detail-page.component';
+import { RangeSlideDirective } from './directives/range.directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -38,11 +40,13 @@ import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-
     CardPartitaComponent,
     PartitaPageComponent,
     SquadraDetailPageComponent,
+    RangeSlideDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
   ],
   providers: [],

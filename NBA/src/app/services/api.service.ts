@@ -10,10 +10,10 @@ export class ApiService {
     baseURL="";
 
     SearchStanding(){
-        return this.http.get("./assets/json/standing.json");
+        return this.http.get("http://localhost:8080/standings/All");
     }
     
     SearchTeams(){
-        return this.http.get("./assets/json/squadre.json");
+        return this.http.get("http://localhost:8080/teams/All");
     }
 }

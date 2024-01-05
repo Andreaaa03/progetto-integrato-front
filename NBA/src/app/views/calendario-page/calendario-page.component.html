@@ -15,7 +15,7 @@
                     <div class="flex flex-nowrap p-4 pb-0">
                         <div class="flex items-center w-[10%]">
                             <div class="w-12 h-12 bg-secondary">
-                                <button class="h-full w-full hover:cursor-pointer" (click)="decrementMonth(currentMonthLeft,currentMonthCentral, currentMonthRigth);">
+                                <button class="h-full w-full hover:cursor-pointer" (click)="decrementMonth(currentMonthLeft,currentMonthCentral, currentMonthRight);">
                                     <img src="./assets/icon/freccia-indietro-100.png" alt="">
                                 </button>
                             </div>
@@ -47,6 +47,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <div *ngFor="let i of remain_days_left, let last=last" class="border-b w-[14.28%]" id="blankday">
+                                <div *ngIf="i!==34" class="text-center h-full px-4 pt-2"></div>
+                                <div *ngIf="i===34" class="text-center h-full border-r px-4 pt-2"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,7 +58,7 @@
                     <div class="flex flex-nowrap justify-between lg:justify-center p-4 pb-0">
                         <div class="flex items-center w-[10%] lg:hidden">
                             <div class="w-8 h-12 bg-secondary">
-                                <button class="h-full w-full hover:cursor-pointer" (click)="decrementMonth(currentMonthLeft,currentMonthCentral, currentMonthRigth);">
+                                <button class="h-full w-full hover:cursor-pointer" (click)="decrementMonth(currentMonthLeft,currentMonthCentral, currentMonthRight);">
                                     <img src="./assets/icon/freccia-indietro-100.png" alt="">
                                 </button>
                             </div>
@@ -66,9 +70,8 @@
                         </div>
                         <div class="flex items-center w-[10%] lg:hidden lg:w-0">
                             <div class="w-8 h-12 bg-secondary">
-                                <button class="h-full w-full hover:cursor-pointer" (click)="incrementMonth(currentMonthLeft,currentMonthCentral, currentMonthRigth);">
+                                <button class="h-full w-full hover:cursor-pointer" (click)="incrementMonth(currentMonthLeft,currentMonthCentral, currentMonthRight);">
                                     <img src="./assets/icon/freccia-avanti-100.png" alt="">
-
                                 </button>
                             </div>
                         </div>
@@ -94,6 +97,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <div *ngFor="let i of remain_days_central, let last=last" class="border-b w-[14.28%]" id="blankday">
+                                <div *ngIf="i!==34" class="text-center h-full px-4 pt-2"></div>
+                                <div *ngIf="i===34" class="text-center h-full border-r px-4 pt-2"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -101,12 +108,12 @@
                     <div class="flex flex-nowrap p-4 pb-0">
                         <div class="flex justify-center w-[90%] ">
                             <div class="bg-secondary w-[70%] h-12 flex justify-center items-center ">
-                                <p class="text-lg font-bold text-white text-center">{{MONTH_NAMES[currentMonthRigth]}} {{currentYearRigth}}</p>
+                                <p class="text-lg font-bold text-white text-center">{{MONTH_NAMES[currentMonthRight]}} {{currentYearRight}}</p>
                             </div>
                         </div>
                         <div class="flex items-center w-[10%]">
                             <div class="w-12 h-12 bg-secondary">
-                                <button class="h-full w-full hover:cursor-pointer" (click)="incrementMonth(currentMonthLeft,currentMonthCentral, currentMonthRigth);">
+                                <button class="h-full w-full hover:cursor-pointer" (click)="incrementMonth(currentMonthLeft,currentMonthCentral, currentMonthRight);">
                                     <img src="./assets/icon/freccia-avanti-100.png" alt="">
                                 </button>
                             </div>
@@ -121,17 +128,21 @@
                             </div>
                         </div>
                         <div class="w-full flex flex-wrap border-t border-l">
-                            <div *ngFor="let blankday of blankdays_rigth, let last=last" class="border-b w-[14.28%]" id="blankday">
-                                <div *ngIf="blankdays_rigth.length!=blankday" class="text-center h-full px-4 pt-2"></div>
-                                <div *ngIf="blankdays_rigth.length===blankday" class="text-center h-full border-r px-4 pt-2"></div>
+                            <div *ngFor="let blankday of blankdays_right, let last=last" class="border-b w-[14.28%]" id="blankday">
+                                <div *ngIf="blankdays_right.length!=blankday" class="text-center h-full px-4 pt-2"></div>
+                                <div *ngIf="blankdays_right.length===blankday" class="text-center h-full border-r px-4 pt-2"></div>
                             </div>
-                            <div *ngFor="let date of no_of_days_rigth" class="border-r border-b w-[14.28%]" id="no_of_days">
+                            <div *ngFor="let date of no_of_days_right" class="border-r border-b w-[14.28%]" id="no_of_days">
                                 <div class="py-2 hover:cursor-pointer" [ngClass]="{
-                                                        'bg-black text-white': controlForIsToday(currentYearRigth, currentMonthRigth, date) }">
-                                    <div (click)="daySelected=date; isToday(currentYearRigth, currentMonthRigth, daySelected)" class="flex items-center justify-center cursor-pointer text-center">
+                                                        'bg-black text-white': controlForIsToday(currentYearRight, currentMonthRight, date) }">
+                                    <div (click)="daySelected=date; isToday(currentYearRight, currentMonthRight, daySelected)" class="flex items-center justify-center cursor-pointer text-center">
                                         <p class="w-full text-center">{{date}}</p>
                                     </div>
                                 </div>
+                            </div>
+                            <div *ngFor="let i of remain_days_right, let last=last" class="border-b w-[14.28%]" id="blankday">
+                                <div *ngIf="i!==34" class="text-center h-full px-4 pt-2"></div>
+                                <div *ngIf="i===34" class="text-center h-full border-r px-4 pt-2"></div>
                             </div>
                         </div>
                     </div>

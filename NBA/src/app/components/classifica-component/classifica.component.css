@@ -62,112 +62,84 @@
     }
 }
 
-
 #bottoni-classifica input {
-	height: 0px;
-	left: 0;
-	opacity: 0;
-	position: absolute;
-	top: 0;
-	width: 0px;
+    height: 0px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 0px;
 }
 
 #bottoni-classifica label.toggle-item {
-	width: 5rem;
-	background: #00000083;
-	height: 20px;
-	display: inline-block;
-	border-radius: 50px;
-	position: relative;
-	transition: all .3s ease;
-	cursor: pointer;
+    width: 5rem;
+    background: #00000083;
+    height: 20px;
+    display: inline-block;
+    border-radius: 50px;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-#bottoni-classifica .heart-rollover {
-	label {
-		&:before {
-			content: none;
-		}
-		.block-heart {
-			display: inline-block;
-			position: absolute;
-			width: 2.5em;
-			height: 2.5em;
-			top: 0;
-			left: 0;
-			transition: .6s ease;
-		}
-        .heart {
-            position: relative;
-            width: 40px;
-            height: 50px;
-            animation: heartbeat 1s infinite;
-            margin: 0;
-            bottom: .5em;
-            left: -.5em;
-        }
-        
-        .heart:before,
-        .heart:after {
-            position: absolute;
-            content: "";
-            left: 20px;
-            top: 0;
-            width: 20px;
-            height: 35px;
-            background: #acdeff;
-            -moz-border-radius: 20px 20px 0 0;
-            border-radius: 20px 20px 0 0;
-            -webkit-transform: rotate(-45deg);
-            -moz-transform: rotate(-45deg);
-            -ms-transform: rotate(-45deg);
-            -o-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-            -webkit-transform-origin: 0 100%;
-            -moz-transform-origin: 0 100%;
-            -ms-transform-origin: 0 100%;
-            -o-transform-origin: 0 100%;
-            transform-origin: 0 100%;
-        }
-
-        .heart:after {
-            left: 0;
-            -webkit-transform: rotate(45deg);
-            -moz-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            -o-transform: rotate(45deg);
-            transform: rotate(45deg);
-            -webkit-transform-origin: 100% 100%;
-            -moz-transform-origin: 100% 100%;
-            -ms-transform-origin: 100% 100%;
-            -o-transform-origin: 100% 100%;
-            transform-origin: 100% 100%;
-        }
-
-		&:before {
-			border-color: white;
-			background: white;
-		}
-	}
+#bottoni-classifica .heart-rollover label::before {
+    content: none;
 }
 
-#bottoni-classifica #cuore:checked  {
-	+ label {
-		.block-heart {
-			left: 3.5rem;
-		}
-        .heart {
-            &:after {
-                animation: colorChangeAfter .3s 0s forwards;
-            }
-
-            &:before {
-                animation: colorChangeBefore .3s 0s forwards;
-            }
-        }
-	}
+#bottoni-classifica .heart-rollover label .block-heart {
+    display: inline-block;
+    position: absolute;
+    width: 2.5em;
+    height: 2.5em;
+    top: 0;
+    left: 0;
+    transition: 0.6s ease;
 }
 
+#bottoni-classifica .heart-rollover label .heart {
+    position: relative;
+    width: 40px;
+    height: 50px;
+    animation: heartbeat 1s infinite;
+    margin: 0;
+    bottom: 0.5em;
+    left: -0.5em;
+}
+
+#bottoni-classifica .heart-rollover label .heart:before,
+.heart:after {
+    position: absolute;
+    content: "";
+    left: 20px;
+    top: 0;
+    width: 20px;
+    height: 35px;
+    background: #acdeff;
+    border-radius: 20px 20px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+#bottoni-classifica .heart-rollover label .heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+
+
+
+#bottoni-classifica #cuore:checked+label .block-heart {
+    left: 3.5rem;
+}
+
+#bottoni-classifica #cuore:checked+label .heart:after {
+    animation: colorChangeAfter 0.3s 0s forwards;
+}
+
+#bottoni-classifica #cuore:checked+label .heart:before {
+    animation: colorChangeBefore 0.3s 0s forwards;
+}
 
 @keyframes colorChangeAfter {
     0% {

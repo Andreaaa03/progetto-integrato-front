@@ -112,39 +112,40 @@
                     <ng-container *ngIf="i < countForStanding">
                         <tr class="">
                             <td class="lg:w-[8%] w-[6%]" class="">
-                                <p>{{squadra.conference.rank}}</p>
+                                <p>{{squadra.conferenceRank}}</p>
                             </td>
                             <td class="lg:w-[24%] w-[40%]" class="">
                                 <div class="flex flex-nowrap items-center pl-3">
                                     <div class="w-1/4 flex justify-center">
                                         <img class="object-contain h-full" src={{squadra.team.logo}} alt="">
                                     </div>
-                                    <p class="w-3/4 p-2 flex justify-center items-center text-center">{{squadra.team.name}}</p>
+                                    <p class="w-3/4 p-2 flex justify-center items-center text-center">{{squadra.team.teamName}}</p>
                                 </div>
                             </td>
                             <td class="w-[10%]">
-                                <p>{{squadra.win.percentage}}</p>
+                                <p>{{squadra.winPercentage}}</p>
                             </td>
                             <td class="w-[10%]">
-                                <p class="">{{squadra.win.total}}</p>
+                                <p class="">{{squadra.totalWin}}</p>
                             </td>
                             <td class="w-[10%]">
-                                <p class="">{{squadra.loss.total}}</p>
+                                <p class="">{{squadra.totalLoss}}</p>
                             </td>
                             <td class="lg:w-[10%] lg:table-cell w-0 hidden">
-                                <p>{{squadra.win.home}} <span>-</span>
-                                    {{squadra.loss.home}}</p>
+                                <p>{{squadra.homeWin}} <span>-</span>
+                                    {{squadra.homeLoss}}</p>
                             </td>
                             <td class="lg:w-[10%] lg:table-cell w-0 hidden">
-                                <p>{{squadra.win.away}} <span>-</span>
-                                    {{squadra.loss.away}}
+                                <p>{{squadra.awayWin}} <span>-</span>
+                                    {{squadra.awayLoss}}
                             </td>
                             <td class="lg:w-[10%] lg:table-cell w-0 hidden">
-                                <p>{{squadra.win.lastTen}} <span>-</span> {{squadra.loss.lastTen}}</p>
+                                <p>{{squadra.lastTenWin}} <span>-</span> {{squadra.lastTenLoss}}</p>
                             </td>
                             <td class="lg:w-[8%] w-[6%]">
-                                <p class="" *ngIf="squadra.preferiti===true">❤️</p>
-                                <p class="" *ngIf="squadra.preferiti===false">🖤</p>
+                                <!-- <p class="" *ngIf="squadra.preferiti===true">❤️</p>
+                                <p class="" *ngIf="squadra.preferiti===false">🖤</p> -->
+                                <p class="">🖤</p>
                             </td>
                         </tr>
                     </ng-container>
@@ -221,39 +222,40 @@
                     <ng-container *ngIf="i < countForStanding">
                         <tr class="">
                             <td class="lg:w-[8%] w-[6%]" class="">
-                                <p>{{squadra.conference.rank}}</p>
+                                <p>{{squadra.conferenceRank}}</p>
                             </td>
-                            <td class="w-[24%]" class="">
+                            <td class="lg:w-[24%] w-[40%]" class="">
                                 <div class="flex flex-nowrap items-center pl-3">
                                     <div class="w-1/4 flex justify-center">
                                         <img class="object-contain h-full" src={{squadra.team.logo}} alt="">
                                     </div>
-                                    <p class="w-3/4 p-2 flex justify-center items-center text-center">{{squadra.team.name}}</p>
+                                    <p class="w-3/4 p-2 flex justify-center items-center text-center">{{squadra.team.teamName}}</p>
                                 </div>
                             </td>
                             <td class="w-[10%]">
-                                <p>{{squadra.win.percentage}}</p>
+                                <p>{{squadra.winPercentage}}</p>
                             </td>
                             <td class="w-[10%]">
-                                <p class="">{{squadra.win.total}}</p>
+                                <p class="">{{squadra.totalWin}}</p>
                             </td>
                             <td class="w-[10%]">
-                                <p class="">{{squadra.loss.total}}</p>
+                                <p class="">{{squadra.totalLoss}}</p>
                             </td>
                             <td class="lg:w-[10%] lg:table-cell w-0 hidden">
-                                <p>{{squadra.win.home}} <span>-</span>
-                                    {{squadra.loss.home}}</p>
+                                <p>{{squadra.homeWin}} <span>-</span>
+                                    {{squadra.homeLoss}}</p>
                             </td>
                             <td class="lg:w-[10%] lg:table-cell w-0 hidden">
-                                <p>{{squadra.win.away}} <span>-</span>
-                                    {{squadra.loss.away}}
+                                <p>{{squadra.awayWin}} <span>-</span>
+                                    {{squadra.awayLoss}}
                             </td>
                             <td class="lg:w-[10%] lg:table-cell w-0 hidden">
-                                <p>{{squadra.win.lastTen}} <span>-</span> {{squadra.loss.lastTen}}</p>
+                                <p>{{squadra.lastTenWin}} <span>-</span> {{squadra.lastTenLoss}}</p>
                             </td>
                             <td class="lg:w-[8%] w-[6%]">
-                                <p class="" *ngIf="squadra.preferiti===true">❤️</p>
-                                <p class="" *ngIf="squadra.preferiti===false">🖤</p>
+                                <!-- <p class="" *ngIf="squadra.preferiti===true">❤️</p>
+                                <p class="" *ngIf="squadra.preferiti===false">🖤</p> -->
+                                <p class="">🖤</p>
                             </td>
                         </tr>
                     </ng-container>

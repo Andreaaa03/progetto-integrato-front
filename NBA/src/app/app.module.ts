@@ -21,6 +21,7 @@ import { PartitaPageComponent } from './views/partita-page/partita-page.componen
 import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-detail-page.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

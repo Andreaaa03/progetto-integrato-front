@@ -22,8 +22,9 @@ export class CalendarioPageComponent implements OnInit {
     this.initDate();
     this.getNoOfDaysLeft();
     this.getNoOfDaysCentral();
-    this.getNoOfDaysRigth();
+    this.getNoOfDaysRight();
     this.isToday(this.currentYearCentral, this.currentMonthCentral, this.daySelected);
+    this.remainDay();
   }
   MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -33,14 +34,14 @@ export class CalendarioPageComponent implements OnInit {
   currentYearCentral: number = 2023;
   currentMonthLeft: number = 0;
   currentYearLeft: number = 2023;
-  currentMonthRigth: number = 0;
-  currentYearRigth: number = 2023;
+  currentMonthRight: number = 0;
+  currentYearRight: number = 2023;
   no_of_days_central: number[] = [];
   no_of_days_left: number[] = [];
-  no_of_days_rigth: number[] = [];
+  no_of_days_right: number[] = [];
   blankdays_central: number[] = [];
   blankdays_left: number[] = [];
-  blankdays_rigth: number[] = [];
+  blankdays_right: number[] = [];
   isTodayYear: number = 2023;
   isTodayMonth: number = 0;
   isTodayDay: number = 0;
@@ -54,11 +55,11 @@ export class CalendarioPageComponent implements OnInit {
     this.currentMonthLeft = this.currentMonthCentral - 1;
 
     if (this.currentMonthCentral + 1 >= 11) {
-      this.currentYearRigth = this.currentYearCentral + 1;
-      this.currentMonthRigth = 0;
+      this.currentYearRight = this.currentYearCentral + 1;
+      this.currentMonthRight = 0;
     } else {
-      this.currentYearRigth = this.currentYearCentral;
-      this.currentMonthRigth = this.currentMonthCentral + 1;
+      this.currentYearRight = this.currentYearCentral;
+      this.currentMonthRight = this.currentMonthCentral + 1;
     }
 
     if (this.currentMonthLeft - 1 <= 0) {
@@ -131,26 +132,41 @@ export class CalendarioPageComponent implements OnInit {
     this.blankdays_central = blankdaysArrayCentral;
     this.no_of_days_central = daysArrayCentral;
   }
-  getNoOfDaysRigth() {
-    let daysInMonthRigth = new Date(this.currentYearRigth, this.currentMonthRigth + 1, 0).getDate();
+  getNoOfDaysRight() {
+    let daysInMonthRight = new Date(this.currentYearRight, this.currentMonthRight + 1, 0).getDate();
 
     // find where to start calendar day of week
-    let dayOfWeekRigth = new Date(this.currentYearRigth, this.currentMonthRigth).getDay();
+    let dayOfWeekRight = new Date(this.currentYearRight, this.currentMonthRight).getDay();
 
-    let blankdaysArrayRigth = [];
-    for (let i = 1; i < dayOfWeekRigth; i++) {
-      blankdaysArrayRigth.push(i);
+    let blankdaysArrayRight = [];
+    for (let i = 1; i < dayOfWeekRight; i++) {
+      blankdaysArrayRight.push(i);
     }
 
-    let daysArrayRigth = [];
-    for (let i = 1; i <= daysInMonthRigth; i++) {
-      daysArrayRigth.push(i);
+    let daysArrayRight = [];
+    for (let i = 1; i <= daysInMonthRight; i++) {
+      daysArrayRight.push(i);
     }
 
-    this.blankdays_rigth = blankdaysArrayRigth;
-    this.no_of_days_rigth = daysArrayRigth;
+    this.blankdays_right = blankdaysArrayRight;
+    this.no_of_days_right = daysArrayRight;
   }
-  incrementMonth(currentMonthLeft: number, currentMonthCentral: number, currentMonthRigth: number) {
+
+  remain_days_left:number[]=[];
+  remain_days_central:number[]=[];
+  remain_days_right:number[]=[];
+  remainDay(){
+    for(let i=this.blankdays_left.length+this.no_of_days_left.length; i<35; i++){
+      this.remain_days_left.push(i);
+    }
+    for(let i=this.blankdays_central.length+this.no_of_days_central.length; i<35; i++){
+      this.remain_days_central.push(i);
+    }
+    for(let i=this.blankdays_right.length+this.no_of_days_right.length; i<35; i++){
+      this.remain_days_right.push(i);
+    }
+  }
+  incrementMonth(currentMonthLeft: number, currentMonthCentral: number, currentMonthRight: number) {
     if (this.currentMonthLeft + 1 > 11) {
       this.currentMonthLeft = 0;
       this.currentYearLeft++;
@@ -163,17 +179,17 @@ export class CalendarioPageComponent implements OnInit {
     } else
       this.currentMonthCentral = currentMonthCentral + 1;
 
-    if (currentMonthRigth + 1 > 11) {
-      this.currentMonthRigth = 0;
-      this.currentYearRigth++;
+    if (currentMonthRight + 1 > 11) {
+      this.currentMonthRight = 0;
+      this.currentYearRight++;
     } else
-      this.currentMonthRigth = currentMonthRigth + 1;
+      this.currentMonthRight = currentMonthRight + 1;
 
     this.getNoOfDaysLeft();
     this.getNoOfDaysCentral();
-    this.getNoOfDaysRigth();
+    this.getNoOfDaysRight();
   }
-  decrementMonth(currentMonthLeft: number, currentMonthCentral: number, currentMonthRigth: number) {
+  decrementMonth(currentMonthLeft: number, currentMonthCentral: number, currentMonthRight: number) {
     if (this.currentMonthLeft - 1 < 0) {
       this.currentMonthLeft = 11;
       this.currentYearLeft--;
@@ -186,14 +202,14 @@ export class CalendarioPageComponent implements OnInit {
     } else
       this.currentMonthCentral = currentMonthCentral - 1;
 
-    if (currentMonthRigth - 1 < 0) {
-      this.currentMonthRigth = 11;
-      this.currentYearRigth--;
+    if (currentMonthRight - 1 < 0) {
+      this.currentMonthRight = 11;
+      this.currentYearRight--;
     } else
-      this.currentMonthRigth = currentMonthRigth - 1;
+      this.currentMonthRight = currentMonthRight - 1;
 
     this.getNoOfDaysLeft();
     this.getNoOfDaysCentral();
-    this.getNoOfDaysRigth();
+    this.getNoOfDaysRight();
   }
 }

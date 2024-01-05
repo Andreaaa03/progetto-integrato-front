@@ -9,8 +9,8 @@
   <div class="flex justify-center h-full">
     <div class="container h-full flex justify-center">
       <div class="w-[85%]">
-        <section>
-          <div class="w-[50%] p-2 mt-10">
+        <section class="flex lg:justify-start justify-center">
+          <div class="lg:w-[50%] w-full  p-2 mt-10">
             <ul class="w-full lg:h-16 h-10 flex flex-nowrap">
               <li
                 [ngClass]="{
@@ -49,16 +49,16 @@
         </section>
         <section *ngIf="selectedRegole === true">
           <section>
-            <div class="w-full altezza inline-flex justify-center mb-2 mt-12">
+            <div class="w-full altezza flex justify-center mb-2 mt-12">
               <img
                 class="object-cover w-full rounded-[25px]"
                 src="https://www.outpump.com/wp-content/uploads/2020/01/outpump-sport-logo-basketball-nba.jpg"
                 alt=""
               />
             </div>
-            <div class="flex justify-between">
+            <div class="flex lg:justify-between flex-wrap">
               <div
-                class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify w-[45%] h-full"
+                class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify lg:w-[45%] w-full h-auto"
               >
                 <div
                   class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary text-center text-white"
@@ -83,6 +83,7 @@
                     l'atmosfera unica delle partite negli Stati Uniti, l'NBA
                     potrebbe essere la scelta migliore.
                   </p>
+                  <!-- <div><button (click)="functionIsShorter(isShorter)">mostra tutto</button></div> -->
                   <ul>
                     Ecco perché:
                     <li>
@@ -116,7 +117,7 @@
                 </div>
               </div>
               <div
-                class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify w-[45%] h-full"
+                class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify lg:w-[45%] w-full h-auto"
               >
                 <div
                   class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary text-center text-white"
@@ -297,9 +298,9 @@
                 </p>
               </div>
             </div>
-            <div class="flex justify-between">
+            <div class="flex lg:justify-between flex-wrap">
               <div
-                class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify w-[45%] h-full"
+                class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify lg:w-[45%] w-full h-auto"
               >
                 <div
                   class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary text-center text-white"
@@ -340,7 +341,7 @@
                 </div>
               </div>
               <div
-                class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify w-[45%] h-full"
+                class="block rounded-xl border-[1px] border-blue-600 mt-10 bg-white text-justify lg:w-[45%] w-full h-auto"
               >
                 <div
                   class="border-b-2 rounded-t-xl font-bold text-lg px-6 py-3 bg-secondary text-center text-white"

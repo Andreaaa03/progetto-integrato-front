@@ -1,12 +1,6 @@
-.margine{
-    margin-bottom: 6px;
-}
-
-
 tr{
     text-align: center;
 }
-
 
 tr:not(:last-child){
     border-bottom: 5px solid white;
@@ -17,10 +11,10 @@ td{
 }
 
 td:first-child{
-    background-color: #ACDEFF;
-    
+    background-color: #ACDEFF; 
 }
 
-td:not(:first-child){
+td:nth-child(2), td:nth-child(3){
     background-color: #DCF1FF;
 }
+

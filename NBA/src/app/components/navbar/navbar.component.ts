@@ -7,4 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent{
 
+  isMobileMenuOpen: boolean = false;
+
+  toggleMenu(isMobileMenuOpen: boolean) {
+    this.isMobileMenuOpen = isMobileMenuOpen;
+  }
 }

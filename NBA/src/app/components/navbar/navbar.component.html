@@ -29,10 +29,40 @@
 
 <nav class="h-16 z-50">
     <div class="bg-secondary w-full flex flex-nowrap fixed top-0 h-16 z-50">
-        <div class="lg:w-[10%] w-1/3 flex justify-center">
+        <div class="lg:w-[10%] w-1/3 flex justify-center h-full items-center">
             <img routerLink="/home" class="object-contain h-[80%]" src="assets/logo-slam-stats.png" alt="">
         </div>
-        <div class="w-[50%]">
+        <!-- Nel tuo file di componente .html -->
+<div class="w-[50%]">
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex justify-around md:items-center h-full text-white">
+        <li routerLink="/home"><button>NBA</button></li>
+        <li routerLink="/classifica"><button>CLASSIFICA</button></li>
+        <li routerLink="/calendario"><button>CALENDARIO</button></li>
+        <li routerLink="/squadre"><button>SQUADRE</button></li>
+        <li routerLink="/storia&regole"><button>REGOLE & GLOSSARIO</button></li>
+        <li routerLink="/blog"><button>BLOG</button></li>
+    </ul>
+
+    <!-- Burger Menu Icon for Mobile -->
+    <div class="md:hidden cursor-pointer" (click)="toggleMenu(isMobileMenuOpen)">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+    </div>
+
+    <!-- Mobile Menu (Initially Hidden) -->
+    <ul class="md:hidden mobile-menu bg-secondary w-full h-screen text-white absolute top-[64px]" [class.hidden]="!isMobileMenuOpen">
+        <li routerLink="/home"><button>NBA</button></li>
+        <li routerLink="/classifica"><button>CLASSIFICA</button></li>
+        <li routerLink="/calendario"><button>CALENDARIO</button></li>
+        <li routerLink="/squadre"><button>SQUADRE</button></li>
+        <li routerLink="/storia&regole"><button>REGOLE & GLOSSARIO</button></li>
+        <li routerLink="/blog"><button>BLOG</button></li>
+    </ul>
+</div>
+
+        <!-- <div class="w-[50%]">
             <ul class="h-full flex justify-around items-center text-white">
                 <li routerLink="/home"><button>NBA</button></li>
                 <li routerLink="/classifica"><button>CLASSIFICA</button></li>
@@ -41,7 +71,7 @@
                 <li routerLink="/storia&regole"><button>REGOLE & GLOSSARIO</button></li>
                 <li routerLink="/blog"><button>BLOG</button></li>
             </ul>
-        </div>
+        </div> -->
         <div class="w-[40%] flex justify-end h-full items-center flex-nowrap mr-10">
             <div class="w-2/4">
                 <form action="" class="flex items-center justify-end">

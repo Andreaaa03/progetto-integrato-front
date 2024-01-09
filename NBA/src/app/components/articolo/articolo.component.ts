@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-articolo',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./articolo.component.css']
 })
 export class ArticoloComponent {
-
+  @Input() extended: boolean = true;
 }

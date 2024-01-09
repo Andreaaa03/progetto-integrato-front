@@ -10,6 +10,7 @@ import { ErrorePageComponent } from './views/errore-page/errore-page.component';
 import { GetApiServiceStanding } from './services/getApiStending.service';
 import { GetApiServiceTeams } from './services/getApiTeams.service';
 import { PartitaPageComponent } from './views/partita-page/partita-page.component';
+import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-detail-page.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
         return inject(GetApiServiceTeams).getSearchTeams();
       }
     }, title: "SLAM STATS - Squadre"},
-  {path: "tabellino", component: PartitaPageComponent, title: "SLAM STATS - Tabellino"},
+  { path: "squadraDetail", component: SquadraDetailPageComponent, title: "SLAM STATS - Squadra"},
+  { path: "tabellino", component: PartitaPageComponent, title: "SLAM STATS - Tabellino"},
   { path: "storia&regole", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole"},
   { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog"},
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore

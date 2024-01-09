@@ -17,11 +17,16 @@ interface glossaryItem{
 export class StoriaERegolePageComponent {
 
   selectedRegole : boolean = true
+  isShorter: boolean = true
   selectedSection : number | null = null;
 
 
   functionSelectionRegole(selectedRegole: boolean) {
     this.selectedRegole = selectedRegole;
+  }
+
+  functionIsShorter(isShorter: boolean){
+    this.isShorter = !isShorter;
   }
 
  

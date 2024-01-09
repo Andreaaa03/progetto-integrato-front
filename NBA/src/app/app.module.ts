@@ -19,6 +19,7 @@ import { PartiteDelGiornoPreviewComponent } from './components/partite-del-giorn
 import { CardPartitaComponent } from './components/card-partita/card-partita.component';
 import { PartitaPageComponent } from './views/partita-page/partita-page.component'
 import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-detail-page.component';
+import { ArticoloComponent } from './components/articolo/articolo.component';
 
 
 
@@ -39,6 +40,7 @@ import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-
     CardPartitaComponent,
     PartitaPageComponent,
     SquadraDetailPageComponent,
+    ArticoloComponent,
   ],
   imports: [
     BrowserModule,

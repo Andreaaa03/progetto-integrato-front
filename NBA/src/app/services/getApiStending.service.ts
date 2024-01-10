@@ -29,12 +29,12 @@ export class GetApiServiceStanding {
         return this.apiService.SearchStanding().pipe(
             map((res: any) => {
                 res.forEach((singleTeam: any) => {
-                    if (singleTeam.conferenceName === "East") {
+                    if (singleTeam.team.conferenceName === "East") {
                         this.standings.allStanding.eastConference.push(singleTeam);
                         // if (singleTeam.preferiti === true) {
                         //     this.standings.favouriteStandings.eastConference.push(singleTeam);
                         // }
-                    } else if (singleTeam.conferenceName === "Weast") {
+                    } else if (singleTeam.team.conferenceName === "West") {
                         this.standings.allStanding.westConference.push(singleTeam);
                         // if (singleTeam.preferiti === true) {
                         //     this.standings.favouriteStandings.westConference.push(singleTeam);

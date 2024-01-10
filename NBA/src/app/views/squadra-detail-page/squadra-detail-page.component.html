@@ -51,8 +51,8 @@
                             </div>
                         </div>
                         <div class="w-2/4 flex flex-wrap justify-center items-center">
-                            <p class="w-full h-1/2 text-white flex items-end text-3xl">NOME SQUADRA</p>
-                            <p class="w-full h-1/2 text-white text-2xl">N pos° East Conference</p>
+                            <p class="w-full h-1/2 text-white flex items-end text-3xl">{{teamStatistics.team.teamName}}</p>
+                            <p class="w-full h-1/2 text-white text-2xl">N pos° {{teamStatistics.team.conferenceName}} Conference</p>
                         </div>
                     </div>
                 </div>
@@ -63,4 +63,14 @@
         </div>
     </div>
 </section>
+<div class="" *ngFor="let match of matchCalendar.previousMatch, let i=index">
+    <div class="">
+        {{match.gameid}} , {{match.gameStartDate}}
+    </div>
+</div>
+<div class="" *ngFor="let player of teamsPlayer, let i=index">
+    <div class="">
+        {{player.firstName}}  {{player.lastName}}
+    </div>
+</div>
 <app-footer></app-footer>

@@ -7,13 +7,26 @@ import { Injectable } from '@angular/core';
 export class ApiService {
     constructor(private http: HttpClient) { }
 
-    baseURL="";
+    baseURL ="http://localhost:8080/";
 
+    //classifica
     SearchStanding(){
-        return this.http.get("http://localhost:8080/standings/All");
+        return this.http.get(this.baseURL + "standings/All");
     }
     
+    //tutti i team
     SearchTeams(){
-        return this.http.get("http://localhost:8080/teams/All");
+        return this.http.get(this.baseURL + "teams/All");
+    }
+
+    //statistiche singolo team, calendario singolo team, giocatori per team
+    SearchSingleTeamStatistics(id:string){
+        return this.http.get(this.baseURL + "teams/statistics?id="+ id);
+    }
+    SearchSingleTeamCalendar(id:string){
+        return this.http.get(this.baseURL + "games/teamId?teamId="+ id);
+    }
+    SearchSingleTeamPlayer(id:string){
+        return this.http.get(this.baseURL + "player/teamId?Id="+ id);
     }
 }

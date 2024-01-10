@@ -27,7 +27,6 @@ export class GetApiServiceTeams {
         return this.apiService.SearchTeams().pipe(
             map((res: any) => {
                 res.forEach((singleTeam: any) => {
-                    console.log(singleTeam);
                     if (singleTeam.divisionName === "Northwest") {
                         this.teams.NorthWest.push(singleTeam);
                     }

@@ -23,7 +23,6 @@ export class SquadrePageComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(
       ({ ResolveTeams }) => {
-        console.log(ResolveTeams);
         this.teams.NorthWest=ResolveTeams.NorthWest;
         this.teams.SouthWest=ResolveTeams.SouthWest;
         this.teams.SoutHeast=ResolveTeams.SoutHeast;

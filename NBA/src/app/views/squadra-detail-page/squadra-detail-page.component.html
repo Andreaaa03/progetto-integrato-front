@@ -4,23 +4,33 @@
         <div class="container h-full flex flex-wrap justify-center">
             <div class="lg:h-16 h-10 w-full flex justify-around mt-10">
                 <ul class="w-full lg:h-16 h-10 flex flex-nowrap justify-around items-center">
-                    <li class="w-1/3 h-full flex justify-center items-center rounded-2xl">
-                        <button class="w-full text-cente lg:text-3xl">SQUADRA</button>
+                    
+                    <li [ngClass]="{'bg-secondary': isSelectedTeam === true, 'border-secondary lg:border-4 border-2 hover:bg-[#DCF1FF]': isSelectedTeam === false}" class="lg:w-1/3 w-[45%] h-full flex justify-center items-center rounded-2xl">
+                        <button (click)="selectedTeam(true)" [class.text-white]="isSelectedTeam === true" class="w-full text-center text-white lg:text-3xl">SQUADRA & CALENDARIO</button>
                     </li>
-
-                    <li class="w-1/3 h-full flex justify-center items-center rounded-2xl">
-                        <button class="w-full text-center lg:text-3xl">GLOSSARIO</button>
-                    </li>
-
-                    <li class="w-1/3 h-full flex justify-center items-center rounded-2xl">
-                        <button class="w-full text-center lg:text-3xl">GIOCATORI</button>
+        
+                    <!-- Secondo elemento della lista -->
+                    <li [ngClass]="{'border-secondary lg:border-4 border-2 hover:bg-[#DCF1FF]': isSelectedTeam === true, 'bg-secondary': isSelectedTeam === false}" class="lg:w-1/3 w-[45%] h-full flex justify-center items-center rounded-2xl">
+                        <button (click)="selectedTeam(false)" [class.text-white]="isSelectedTeam === false" class="w-full text-center lg:text-3xl">GIOCATORI</button>
                     </li>
                 </ul>
             </div>
-            <div class="h-[50vh] w-[90%] bg-secondary flex flex-wrap my-10">
+
+            <div class="my-10 flex w-full justify-center"  *ngIf="isSelectedTeam === true">
+                <div class="lg:w-[90%] w-full flex flex-wrap justify-center">
+                    <div class="w-full h-20 bg-primary flex justify-center items-center">
+                        <h2 class=" text-white text-4xl font-bold">
+                            SQUADRA
+                        </h2>
+                    </div>
+                    <div class="w-full h-6 bg-secondary"></div>
+                </div>
+            </div>
+
+            <div class="h-[50vh] w-[90%] bg-secondary flex flex-wrap my-10"  *ngIf="isSelectedTeam === true">
                 <div class="w-1/2 h-1/3 border-r-2 border-white flex justify-around flex-nowrap">
                     <div class="w-1/4 h-full flex justify-center items-center">
-                        <div class="rounded-full bg-white w-24 h-24">
+                        <div class="rounded-full bg-white lg:w-24 lg:h-24">
                             <img src="../../../assets/logo-slam-stats.png" class="object-contain h-full" alt="">
                         </div>
                     </div>
@@ -38,32 +48,60 @@
                         </p></li>
                     </ul>
                 </div>
-                <div class="w-full h-2/3 border-t-4 border-white">
+                <div class="w-full h-full border-t-4 border-white">
 
                 </div>
             </div>
-            <div class="h-[50vh] w-[90%] bg-secondary flex flex-wrap my-10">
-                <div class="w-full h-1/3 border-r-2 border-white flex items-center">
-                    <div class="w-1/2 flex flex-nowrap">
-                        <div class="w-1/4 h-full flex justify-center items-center">
-                            <div class="rounded-full bg-white w-24 h-24">
-                                <img src="../../../assets/logo-slam-stats.png" class="object-contain h-full" alt="">
-                            </div>
-                        </div>
-                        <div class="w-2/4 flex flex-wrap justify-center items-center">
-                            <p class="w-full h-1/2 text-white flex items-end text-3xl">{{teamStatistics.team.teamName}}</p>
-                            <p class="w-full h-1/2 text-white text-2xl">N pos° {{teamStatistics.team.conferenceName}} Conference</p>
-                        </div>
+            <div class="my-10 flex w-full justify-center"  *ngIf="isSelectedTeam === true">
+                <div class="lg:w-[90%] w-full flex flex-wrap justify-center">
+                    <div class="w-full h-20 bg-primary flex justify-center items-center">
+                        <h2 class=" text-white text-4xl font-bold">
+                            CALENDARIO
+                        </h2>
                     </div>
+                    <div class="w-full h-6 bg-secondary"></div>
                 </div>
-                <div class="w-full h-2/3 border-t-4 border-white">
+            </div>
+            <table class="lg:w-[75%] w-full" *ngIf="isSelectedTeam === true">
+                <thead class="bg-primary text-white lg:w-full w-full">
+                    <tr>
+                        <th class="lg:w-[5%] w-[5%]">DATA</th>
+                        <th class="lg:w-[10%] w-[5%]">ORA</th>
+                        <th class="lg:w-[15%] w-[20%]">AVVERSARIO</th>
+                        <th class="lg:w-[10%] w-[5%]">RISULTATO</th>
+                        <th class="lg:w-[10%] w-[5%]">PUNTEGGIO</th>
+                        <th class="lg:w-[50%] w-[60%] bg-white"></th>
+                    </tr>
+                </thead>
+                <tbody class="w-full">
+                    <tr *ngFor="let _ of ripetiArray.slice(0, cardToShow), let i = index">
+                        <td class="lg:w-[5%] w-[5%]">11/01/2024</td>
+                        <td class="lg:w-[10%] w-[5%]">02:00</td>
+                        <td class="lg:w-[15%] w-[20%]">LAL</td>
+                        <td class="lg:w-[10%] w-[5%]">W</td>
+                        <td class="lg:w-[10%] w-[5%]">88-91</td>
+                        <td class="lg:w-[50%] w-[60%]">
+                            <div class="w-full flex justify-end"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="w-full h-auto mb-10 mt-10 flex justify-center items-center" *ngIf="isSelectedTeam === true">
+                <button *ngIf="cardToShow < ripetiArray.length" class="rounded-full bg-secondary lg:px-8 px-5 py-2 text-white font-bold text-sm lg:text-xl hover:underline" (click)="showMore()">
+                    Scopri altro
+                </button>
+            </div>
 
-                </div>
+            <div *ngIf=" isSelectedTeam === false" class="w-full">
+                
             </div>
         </div>
     </div>
 </section>
-<div class="" *ngFor="let match of matchCalendar.nextMatch, let i=index">
+
+
+<!-- <div class="" *ngFor="let match of matchCalendar.nextMatch, let i=index">
+
     <div class="">
         {{match.gameid}} , {{match.gameStartDate}}
     </div>
@@ -72,5 +110,5 @@
     <div class="">
         {{player.firstName}}  {{player.lastName}}
     </div>
-</div>
+</div> -->
 <app-footer></app-footer>

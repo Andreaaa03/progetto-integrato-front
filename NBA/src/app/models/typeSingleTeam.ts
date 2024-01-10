@@ -67,6 +67,7 @@ export type teamCalendar = {
 export type matchCalendar = {
     previousMatch: teamCalendar[];
     nextMatch: teamCalendar[];
+    totalMatch: teamCalendar[];
 };
 
 export type teamPlayer = {

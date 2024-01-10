@@ -9,6 +9,18 @@ import { allPlayer, matchCalendar, teamPlayer, teamStatistic } from 'src/app/mod
 })
 export class SquadraDetailPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
+  ripetiArray = new Array(82).fill(null);
+  cardToShow : number = 10;
+
+  isSelectedTeam : boolean = true;
+
+  selectedTeam(isSelectedTeam : boolean){
+    this.isSelectedTeam = isSelectedTeam;
+  }
+
+  showMore(){
+    this.cardToShow += 10;
+  }
   teamStatistics:teamStatistic= {
     team: {
       id: 0,
@@ -52,6 +64,7 @@ export class SquadraDetailPageComponent implements OnInit {
   matchCalendar:matchCalendar={
     previousMatch: [],
     nextMatch: [],
+    totalMatch: [],
   }
   teamsPlayer: teamPlayer | null = null;
   ngOnInit(): void {

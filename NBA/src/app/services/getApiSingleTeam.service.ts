@@ -20,13 +20,18 @@ export class GetApiServiceSingleTeam {
     }
     match: matchCalendar = {
         previousMatch: [],
-        nextMatch: []
+        nextMatch: [],
+        totalMatch: [],
     }
     getSearchSingleTeamCalendar(id: string) {
         return this.apiService.SearchSingleTeamCalendar(id).pipe(
             map((res: any) => {
+                /* chiedere a giorgio per tutte le partite */
+                /* console.log(res.length); */
                 let todayDate = dayjs().format('YYYY-MM-DD HH:mm:ss');
                 res.forEach((singleTeam: any) => {
+                   /*  console.log(singleTeam.gameid); */
+                    this.match.totalMatch.push(singleTeam);
                     if (singleTeam.gameStartDate <= todayDate) {
                         this.match.previousMatch.unshift(singleTeam);
                     } else {

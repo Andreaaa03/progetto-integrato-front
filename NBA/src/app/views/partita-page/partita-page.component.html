@@ -43,15 +43,15 @@
                 </div>
             </div>
             <div class="lg:w-[75%] w-full flex flex-nowrap justify-between mt-5" *ngFor="let _ of quarti">
-                <div class="w-[7%] bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
+                <div class="lg:w-[7%] w-[15%] bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
                     <p class="text-xl">
                         1°
                     </p>
                 </div>
-                <div class="w-[42%] bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
+                <div class="lg:w-[42%] w-[35%]  bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
                     <p class="text-xl">22</p>
                 </div>
-                <div class="w-[42%] bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
+                <div class="lg:w-[42%] w-[35%]  bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
                     <p class="text-xl">22</p>
                 </div>
             </div>
@@ -60,24 +60,24 @@
     <div class="h-4 bg-secondary w-full my-10"></div>
     <div class="flex justify-center">
         <div class="container w-full flex flex-wrap justify-center">
-            <div class="w-full flex justify-center">
-                <div class="flex flex-wrap justify-center">
-                    <button class="h-8 w-40 px-4 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='teamHome'" [class.text-white]="tabsSelected=='teamHome'" (click)="tabsSelected='teamHome'">
-                        nome squadra
+            <div class="w-full md:w-auto flex flex-wrap md:flex-nowrap justify-center">
+                <div class="w-full flex flex-wrap justify-center mb-5 md:m-0">
+                    <button class="h-8 w-[90%] md:w-40 px-4 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='teamHome'" [class.text-white]="tabsSelected=='teamHome'" (click)="tabsSelected='teamHome'">
+                        ATLANTA
                     </button>
-                    <div class="w-[60%] h-1 bg-secondary mt-1" *ngIf="tabsSelected==='teamHome'"></div>
+                    <div class="md:w-[60%] w-[80%] h-1 bg-secondary mt-1" *ngIf="tabsSelected==='teamHome'"></div>
                 </div>
-                <div class="flex flex-wrap justify-center">
-                    <button class="h-8 w-40 px-4 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='teamAway'" [class.text-white]="tabsSelected=='teamAway'" (click)="tabsSelected='teamAway'">
-                        nome squadra
+                <div class="w-full flex flex-wrap justify-center mb-5 lg:m-0">
+                    <button class="h-8 w-[90%] md:w-40 px-4 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='statics'" [class.text-white]="tabsSelected=='statics'" (click)="tabsSelected='statics'">
+                        CONFRONTO
                     </button>
-                    <div class="w-[60%] h-1 bg-secondary mt-1" *ngIf="tabsSelected==='teamAway'"></div>
+                    <div class="md:w-[60%] w-[80%] h-1 bg-secondary mt-1" *ngIf="tabsSelected==='statics'"></div>
                 </div>
-                <div class="flex flex-wrap justify-center">
-                    <button class="h-8 w-40 px-4 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='statics'" [class.text-white]="tabsSelected=='statics'" (click)="tabsSelected='statics'">
-                        statics
+                <div class="w-full flex flex-wrap justify-center mb-5 lg:m-0">
+                    <button class="h-8 w-[90%] md:w-40 px-4 mx-2 rounded-full bg-[#DCF1FF]" [class.bg-secondary]="tabsSelected=='teamAway'" [class.text-white]="tabsSelected=='teamAway'" (click)="tabsSelected='teamAway'">
+                        LAKERS
                     </button>
-                    <div class="w-[60%] h-1 bg-secondary mt-1" *ngIf="tabsSelected==='statics'"></div>
+                    <div class="md:w-[60%] w-[80%] h-1 bg-secondary mt-1" *ngIf="tabsSelected==='teamAway'"></div>
                 </div>
             </div>
             <div class="lg:w-[75%] w-full h-full mt-5">
@@ -133,39 +133,36 @@
                     <thead>
                         <tr class="h-10 border-b-4 border-white">
                             <th class="w-[20%] bg-secondary text-white border-r-4 border-white">
-                                <p>SQUADRA</p>
+                                <p>DCV</p>
                             </th>
                             <th class="w-[60%] bg-secondary text-white border-r-4 border-white">
                                 <p>STATISTICHE</p>
                             </th>
                             <th class="w-[20%] bg-secondary text-white">
-                                <p>SQUADRA</p>
+                                <p>DCV</p>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="h-10 p-0" *ngFor="let _ of staticsToShow">
-                            <td class="w-[20%] p-0 border-b-4 border-r-4 border-white bg-[#ACDEFF]">
-                                <p class="text-center">10</p>
-                            </td>
-                            <td class="w-[60%] p-0 border-b-4 border-r-4 border-white bg-[#ACDEFF]">
-                                <div class="flex flex-wrap justify-center">
-                                    <p class="w-full text-center">tiri da 3 punti</p>
-                                    <div class="w-[50%] h-4 flex justify-center items-center flex-nowrap">
-                                        <div class="w-[50%] h-4 flex justify-end bg-black">
-                                            <div class="w-[{{lato1}}%] bg-red-500"></div>
+                        <tr class="h-20 p-0" *ngFor="let _ of staticsToShow">
+                            <td colspan="3" class="w-full p-0 border-b-4 border-white bg-[#ACDEFF]">
+                                <div class="flex flex-col flex-wrap justify-around items-center">
+                                    <p class="w-full text-center text-lg">tiri da 3 punti</p>
+                                    <div class="w-[80%] flex justify-center items-center flex-nowrap">
+                                        <div class="w-[50%] flex justify-end bg-[#DCF1FF] rounded-l-full">
+                                            <div [style.width.%]="functionCalculatePercentage(lato1, lato2, true)" class="bg-red-500 rounded-l-full">
+                                                <p class="w-full text-center">{{ lato1 }}</p>
+                                            </div>
                                         </div>
-                                        <div class="w-[50%] h-4 flex justify-start bg-black">
-                                            <div class="w-[{{lato2}}%] bg-blue-500"></div>
+                                        <div class="w-[50%] flex justify-start bg-[#DCF1FF] rounded-r-full">
+                                            <div [style.width.%]="functionCalculatePercentage(lato1, lato2, false)" class="bg-blue-500 rounded-r-full">
+                                                <p class="w-full text-center">{{ lato2 }}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            <td class="w-[20%] p-0 border-b-4 border-white bg-[#ACDEFF]">
-                                <p class="text-center">50</p>
-                            </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>

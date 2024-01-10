@@ -12,7 +12,7 @@
             </li>
         </ul>
     </div>
-    <div class="lg:w-full w-[95%] lg:h-8 h-5 lg:mt-10 mt-5 lg:mb-5 mb-4 flex justify-end" id="bottoni-classifica">
+    <div class="hidden lg:flex  w-full lg:h-8 h-5 lg:mt-10 mt-5 lg:mb-5 mb-4 justify-end" id="bottoni-classifica">
         <div *ngIf="percentageStanding==true && crescente==false && ControlChecked()==false" class="flex items-center rounded-full lg:px-6 px-3 lg:py-1 text-sm bg-[#BAD5E6] opacity-50 ">
             <p>RESET FILTRI</p>
         </div>
@@ -43,6 +43,52 @@
         <button *ngIf="isParziale===false" class="rounded-full bg-secondary text-white lg:ml-2 lg:px-6 px-3 lg:py-1 text-sm hover:underline">
             GLOASSRIO
         </button>
+    </div>
+    <div class="w-full lg:h-8 h-auto lg:mt-10 mt-10 lg:mb-5 mb-4 flex flex-wrap lg:hidden justify-center" id="bottoni-classifica">
+        <div class="w-full mb-4 flex flex-nowrap">
+            <div class="w-1/2 flex justify-center">
+                <button *ngIf="isParziale===false" class="rounded-full bg-secondary text-white lg:mr-2 lg:px-6 px-3 lg:py-1 text-sm hover:underline">
+                    REGOLAMENTO
+                </button>
+            </div>
+            <div class="w-1/2 flex justify-center">
+                <button *ngIf="isParziale===false" class="rounded-full bg-secondary text-white lg:ml-2 lg:px-6 px-3 lg:py-1 text-sm hover:underline">
+                    GLOASSRIO
+                </button>
+            </div>
+        </div>
+        <div class="w-full flex flex-nowrap">
+            <div *ngIf="percentageStanding==true && crescente==false && ControlChecked()==false" class="w-1/2 flex justify-center ">
+                <div class="flex items-center rounded-full lg:px-6 px-3 lg:py-1 text-sm bg-[#BAD5E6] opacity-50 ">
+                    <p>RESET FILTRI</p>
+                </div>
+            </div>
+            <div *ngIf="percentageStanding==false || crescente==true || ControlChecked()==true" class="w-1/2 flex justify-center ">
+                <button class="rounded-full bg-[#BAD5E6] lg:px-6 px-3 lg:py-1 text-sm hover:underline" (click)="percentageStanding=true;
+                    nameStanding=false;
+                    crescente=false;
+                    winStanding=false;
+                    lossStanding=false;
+                    favouriteStanding=false;
+                    ToggleCheckedForReset();
+                    functionChangeFilterStanding(percentageStanding,nameStanding,winStanding,lossStanding, crescente, $event)">
+                    RESET FILTRI
+                </button>
+            </div>
+            <div class="w-1/2 flex justify-center">
+                <div class="rounded-full lg:px-6 px-3 lg:py-1 text-sm hover:underline flex justify-center">
+                    <div class="heart-rollover" (click)="favouriteStanding=!favouriteStanding; toggleChecked(); functionChangeStandingWithFavourite(favouriteStanding, $event);">
+                        <input id="cuore" type="checkbox" />
+                        <label class="toggle-item" for="cuore">
+                            <div class="block-heart">
+                                <div class="heart">
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="border-2 border-white" id="contenitore-tabella-classifica">

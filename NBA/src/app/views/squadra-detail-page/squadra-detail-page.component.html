@@ -62,30 +62,33 @@
                     <div class="w-full h-6 bg-secondary"></div>
                 </div>
             </div>
-            <table class="lg:w-[75%] w-full" *ngIf="isSelectedTeam === true">
-                <thead class="bg-primary text-white lg:w-full w-full">
-                    <tr>
-                        <th class="lg:w-[5%] w-[5%]">DATA</th>
-                        <th class="lg:w-[10%] w-[5%]">ORA</th>
-                        <th class="lg:w-[15%] w-[20%]">AVVERSARIO</th>
-                        <th class="lg:w-[10%] w-[5%]">RISULTATO</th>
-                        <th class="lg:w-[10%] w-[5%]">PUNTEGGIO</th>
-                        <th class="lg:w-[50%] w-[60%] bg-white"></th>
-                    </tr>
-                </thead>
-                <tbody class="w-full">
-                    <tr *ngFor="let _ of ripetiArray.slice(0, cardToShow), let i = index">
-                        <td class="lg:w-[5%] w-[5%]">11/01/2024</td>
-                        <td class="lg:w-[10%] w-[5%]">02:00</td>
-                        <td class="lg:w-[15%] w-[20%]">LAL</td>
-                        <td class="lg:w-[10%] w-[5%]">W</td>
-                        <td class="lg:w-[10%] w-[5%]">88-91</td>
-                        <td class="lg:w-[50%] w-[60%]">
-                            <div class="w-full flex justify-end"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="w-full flex justify-center">
+               <table class="lg:w-[75%] w-full" *ngIf="isSelectedTeam === true">
+                    <thead class="bg-primary text-white lg:w-full w-full">
+                        <tr>
+                            <th class="lg:w-[5%] w-[10%]">DATA</th>
+                            <th class="lg:w-[10%] w-[10%]">ORA</th>
+                            <th class="lg:w-[15%] w-[10%]">AVVERSARIO</th>
+                            <th class="lg:w-[10%] w-[10%]">RISULTATO</th>
+                            <th class="lg:w-[10%] w-[10%]">PUNTEGGIO</th>
+                            <th class="lg:w-[50%] w-[30%] bg-white"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="lg:w-full w-full">
+                        <tr *ngFor="let _ of ripetiArray.slice(0, cardToShow), let i = index">
+                            <td class="lg:w-[15%] w-[5%]">11/01/2024</td>
+                            <td class="lg:w-[10%] w-[5%]">02:00</td>
+                            <td class="lg:w-[5%] w-[5%]">LAL</td>
+                            <td class="lg:w-[10%] w-[5%]">W</td>
+                            <td class="lg:w-[10%] w-[5%]">88-91</td>
+                            <td class="lg:w-[50%] w-[30%]">
+                                <div class="w-full flex justify-end" routerLink="/tabellino"><button  class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+            
             <div class="w-full h-auto mb-10 mt-10 flex justify-center items-center" *ngIf="isSelectedTeam === true">
                 <button *ngIf="cardToShow < ripetiArray.length" class="rounded-full bg-secondary lg:px-8 px-5 py-2 text-white font-bold text-sm lg:text-xl hover:underline" (click)="showMore()">
                     Scopri altro

@@ -1,5 +1,5 @@
 import { NgModule, inject } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { ClassificaPageComponent } from './views/classifica-page/classifica-page.component';
 import { SquadrePageComponent } from './views/squadre-page/squadre-page.component';
@@ -11,6 +11,7 @@ import { GetApiServiceStanding } from './services/getApiStending.service';
 import { GetApiServiceTeams } from './services/getApiTeams.service';
 import { PartitaPageComponent } from './views/partita-page/partita-page.component';
 import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-detail-page.component';
+import { GetApiServiceSingleTeam } from './services/getApiSingleTeam.service';
 
 const routes: Routes = [
   {
@@ -33,7 +34,18 @@ const routes: Routes = [
         return inject(GetApiServiceTeams).getSearchTeams();
       }
     }, title: "SLAM STATS - Squadre"},
-  { path: "squadraDetail", component: SquadraDetailPageComponent, title: "SLAM STATS - Squadra"},
+  {
+    path: "squadraDetail/:id", component: SquadraDetailPageComponent, resolve: {
+      ResolveSingleTeamStatistics: (route: ActivatedRouteSnapshot) => {
+        return inject(GetApiServiceSingleTeam).getSearchSingleTeamStatistics(route.paramMap.get("id")!);
+      },
+      ResolveSingleTeamCalendar: (route: ActivatedRouteSnapshot) => {
+        return inject(GetApiServiceSingleTeam).getSearchSingleTeamCalendar(route.paramMap.get("id")!);
+      },
+      ResolveSingleTeamPlayer: (route: ActivatedRouteSnapshot) => {
+        return inject(GetApiServiceSingleTeam).getSearchSingleTeamPlayer(route.paramMap.get("id")!);
+      }
+    }, title: "SLAM STATS - Squadra"},
   { path: "tabellino", component: PartitaPageComponent, title: "SLAM STATS - Tabellino"},
   { path: "storia&regole", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole"},
   { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog"},

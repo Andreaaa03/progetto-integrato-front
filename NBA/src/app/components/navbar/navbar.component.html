@@ -29,14 +29,14 @@
 
 <nav class="h-16 z-50">
         <div class="bg-secondary w-full flex flex-nowrap fixed top-0 h-16 z-50">
-            <div class="md:flex-row flex flex-row-reverse w-full md:justify-normal justify-around">
+            <div class="md:flex-row flex flex-row-reverse w-full md:justify-normal justify-end">
 
             
-            <div class="md:w-[10%] w-1/4 flex justify-center h-full items-center md:mr-20">
+            <div class="md:w-[10%] w-1/2 flex md:justify-center justify-start h-full items-center md:mr-20 pl-6 ">
                 <img routerLink="/home" class="object-contain h-[80%]" src="assets/logo-slam-stats.png" alt="">
             </div>
             <!-- Nel tuo file di componente .html -->
-            <div class="md:w-[70%] w-1/4">
+            <div class="md:w-[70%] w-1/2">
             <!-- Desktop Menu -->
                 <ul class="hidden md:flex justify-around md:items-center h-full text-white">
                     <li routerLink="/home"><button>NBA</button></li>
@@ -48,12 +48,12 @@
                 </ul>
     
             <!-- Burger Menu Icon for Mobile -->
-            <div class="md:hidden cursor-pointer w-full h-16" (click)="toggleMenu(isMobileMenuOpen)">
-                <img src="../../../assets/icon/burger-menu.png" alt="" class="object-contain flex justify-start items-center mt-2">
+            <div class="md:hidden flex justify-start items-center cursor-pointer w-full h-16 pl-5" (click)="toggleMenu(isMobileMenuOpen)">
+                <img src="../../../assets/icon/burger-menu.png" alt="" class="object-contain h-[80%]">
             </div>
     
             <!-- Mobile Menu (Initially Hidden) -->
-                <ul class="md:hidden mobile-menu bg-secondary w-full h-auto text-white absolute top-[64px] pl-2" [class.hidden]="!isMobileMenuOpen">
+                <ul class="md:hidden mobile-menu bg-secondary w-full h-auto text-white absolute top-[64px] pl-4 pb-10" [class.hidden]="!isMobileMenuOpen">
                     <li routerLink="/home"><button>NBA</button></li>
                     <li routerLink="/classifica"><button>CLASSIFICA</button></li>
                     <li routerLink="/calendario"><button>CALENDARIO</button></li>

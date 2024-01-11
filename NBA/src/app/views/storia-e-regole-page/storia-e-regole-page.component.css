@@ -1,5 +1,12 @@
-.altezza{
-    height: 450px;
+@media (min-width: 1024px) {
+    .altezza {
+      height: 420px;
+    }
+}
+@media (min-width: 1024px) {
+    .altezza2 {
+      height: 320px;
+    }
 }
 
 .highlighted{

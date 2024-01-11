@@ -27,22 +27,22 @@
                     <div class="h-auto w-full lg:w-[90%] bg-secondary flex flex-wrap my-10">
                         <div class="w-1/2 h-28 border-r-2 border-white flex justify-around flex-nowrap bg-primary">
                             <div class="w-1/4 h-full flex justify-center items-center">
-                                <div class="rounded-full bg-white lg:w-24 lg:h-24">
+                                <div class="rounded-full bg-white lg:w-24 w-12 lg:h-24 h-12">
                                     <img src="../../../assets/logo-slam-stats.png" class="object-contain h-full" alt="">
                                 </div>
                             </div>
-                            <div class="w-2/4 flex flex-wrap justify-center items-center ">
-                                <p class="w-full h-1/2 text-white flex items-end text-3xl">NOME SQUADRA</p>
-                                <p class="w-full h-1/2 text-white text-2xl">N pos° East Conference</p>
+                            <div class="w-1/2 flex lg:flex-wrap flex-wrap justify-center items-center ">
+                                <p class="lg:w-full w-full text-sm h-1/2 text-white flex items-end lg:text-3xl">NOME SQUADRA</p>
+                                <p class="lg:w-full w-full text-sm h-1/2 text-white lg:text-2xl">N pos° East Conference</p>
                             </div>
                         </div>
-                        <div class="w-1/2 h-28 border-l-2 border-white text-white flex justify-center items-center bg-primary">
+                        <div class="w-1/2 h-28 border-l-2 border-white text-white flex flex-wrap justify-center items-center bg-primary">
                             <ul class="px-8">
-                                <li class="w-full">
-                                    <p class="text-xl"><b class="text-2xl">Campo</b><span>:</span> TD Garden</p>
+                                <li class="lg:w-full w-full h-1/2 text-sm">
+                                    <p class="lg:text-xl text-xs"><b class="lg:text-2xl text-sm">Campo</b><span>:</span> TD Garden</p>
                                 </li>
-                                <li class="w-full">
-                                    <p class="text-xl"><b class="text-2xl">Località</b><span>:</span>
+                                <li class="lg:w-full w-full h-1/2 text-sm">
+                                    <p class="lg:text-xl text-xs"><b class="lg:text-2xl text-sm">Località</b><span>:</span>
                                         Boston, Massachusetts, Stati Uniti,
                                         New Egland, Stati Uniti
                                     </p>
@@ -50,7 +50,9 @@
                             </ul>
                         </div>
                         <div class="w-full h-full border-t-4 border-white">
-                            caio
+                            <div class="w-full flex flex-wrap justify-between">
+                                <div class="w-[30%] bg-white m-4" *ngFor="let item of jsonInfo; let i = index">{{jsonInfo[i].titolo}}</div>
+                            </div>
                         </div>
                     </div>
                     <div class="my-10 flex w-full justify-center">
@@ -116,18 +118,17 @@
                 </div>
                 <div class="w-full flex justify-center flex-wrap" *ngIf=" isSelectedTeam === false">
                     <div class="h-28 w-full lg:w-[90%] bg-secondary flex flex-wrap my-10">
-                        <div class="w-1/2 h-28 flex justify-around flex-nowrap bg-primary">
-                            <div class="w-1/4 h-full flex justify-center items-center">
-                                <div class="rounded-full bg-white lg:w-24 lg:h-24">
+                        <div class="w-full h-28 flex justify-around flex-nowrap bg-primary">
+                            <div class="w-1/4 h-full flex justify-center items-center mr-4">
+                                <div class="rounded-full bg-white lg:w-24 w-12 lg:h-24 h-12">
                                     <img src="../../../assets/logo-slam-stats.png" class="object-contain h-full" alt="">
                                 </div>
                             </div>
-                            <div class="w-2/4 flex flex-wrap justify-center items-center ">
-                                <p class="w-full h-1/2 text-white flex items-end text-3xl">NOME SQUADRA</p>
-                                <p class="w-full h-1/2 text-white text-2xl">N pos° East Conference</p>
+                            <div class="lg:w-full w-full flex flex-wrap justify-center items-center ">
+                                <p class="w-full h-1/2 text-white flex items-end lg:text-3xl text-sm">NOME SQUADRA</p>
+                                <p class="w-full h-1/2 text-white lg:text-2xl text-sm">N pos° East Conference</p>
                             </div>
                         </div>
-                        <div class="w-1/2 h-28 bg-primary"></div>
                     </div>
                     <div class="my-5 w-[90%]" *ngFor="let player of teamsPlayer">
                         <div class="w-full h-auto flex lg:flex-nowrap flex-wrap justify-between">

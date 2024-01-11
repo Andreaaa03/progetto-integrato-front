@@ -42,10 +42,10 @@
                     </div>
                 </div>
             </div>
-            <div class="lg:w-[75%] w-full flex flex-nowrap justify-between mt-5" *ngFor="let _ of quarti">
+            <div class="lg:w-[75%] w-full flex flex-nowrap justify-between mt-5" *ngFor="let _ of quarti, let i = index">
                 <div class="lg:w-[7%] w-[15%] bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
                     <p class="text-xl">
-                        1°
+                        {{quarti[i]}}°
                     </p>
                 </div>
                 <div class="lg:w-[42%] w-[35%]  bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">

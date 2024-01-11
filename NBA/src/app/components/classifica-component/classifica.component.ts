@@ -14,7 +14,6 @@ export class ClassificaComponent implements OnInit {
 
   }
 
-
   standings: Classifica = {
     allStanding: {
       eastConference: [],

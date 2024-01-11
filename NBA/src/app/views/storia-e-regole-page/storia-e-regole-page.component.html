@@ -22,6 +22,7 @@
               >
                 <button
                   (click)="functionSelectionRegole(true)"
+
                   [class.text-white]="selectedRegole === true"
                   class="w-full text-center text-white lg:text-3xl"
                 >
@@ -620,7 +621,7 @@
                 <div
                   (click)="scrollToSection(i)"
                   [class.selected]="selectedSection === i"
-                  class="hover:cursor-pointer flex justify-center bg-primary rounded-xl m-4 text-center w-full lg:w-auto"
+                  class="hover:cursor-pointer flex justify-center bg-secondary rounded-xl m-4 text-center w-full lg:w-auto"
                   *ngFor="let item of jsonInfo; let i = index"
                 >
                   <button class="m-4 lg:text-base text-xs text-white">

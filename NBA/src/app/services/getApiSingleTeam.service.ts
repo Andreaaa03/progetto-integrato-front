@@ -39,6 +39,7 @@ export class GetApiServiceSingleTeam {
                     }
                 });
                 return this.match as matchCalendar;
+                
             })
         )
     }

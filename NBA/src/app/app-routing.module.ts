@@ -47,7 +47,7 @@ const routes: Routes = [
       }
     }, title: "SLAM STATS - Squadra"},
   { path: "tabellino", component: PartitaPageComponent, title: "SLAM STATS - Tabellino"},
-  { path: "storia&regole", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole"},
+  { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole"},
   { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog"},
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore
   { path: "errore", component: ErrorePageComponent, pathMatch: "full" },

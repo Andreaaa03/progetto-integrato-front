@@ -20,6 +20,8 @@ import { CardPartitaComponent } from './components/card-partita/card-partita.com
 import { PartitaPageComponent } from './views/partita-page/partita-page.component'
 import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-detail-page.component';
 import { PostArticoloComponent } from './components/post-articolo/post-articolo.component';
+import { ArticoloDetailComponent } from './views/articolo-detail/articolo-detail.component';
+import { ArticoloDetailPageComponent } from './views/articolo-detail-page/articolo-detail-page.component';
 
 
 
@@ -41,6 +43,8 @@ import { PostArticoloComponent } from './components/post-articolo/post-articolo.
     PartitaPageComponent,
     SquadraDetailPageComponent,
     PostArticoloComponent,
+    ArticoloDetailComponent,
+    ArticoloDetailPageComponent,
   ],
   imports: [
     BrowserModule,

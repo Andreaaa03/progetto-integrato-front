@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 interface glossaryItem{
@@ -14,12 +15,23 @@ interface glossaryItem{
   templateUrl: './storia-e-regole-page.component.html',
   styleUrls: ['./storia-e-regole-page.component.css']
 })
-export class StoriaERegolePageComponent {
-
+export class StoriaERegolePageComponent implements OnInit {
+  constructor(private route: ActivatedRoute){}
   selectedRegole : boolean = true
   isShorter: boolean = true
   selectedSection : number | null = null;
+  ngOnInit(): void {
+    const url = this.route.snapshot.url.join('/');
+    // Dividere l'URL in segmenti
+    const segments = url.split('/');
 
+    // Ottenere l'ultimo segmento dell'URL
+    const ultimaParteUrl = segments[segments.length - 1];
+
+    // Confrontare l'ultimo segmento con la stringa desiderata
+    ultimaParteUrl==="regole" ? this.functionSelectionRegole(true) : this.functionSelectionRegole(false);
+      
+  }
 
   functionSelectionRegole(selectedRegole: boolean) {
     this.selectedRegole = selectedRegole;

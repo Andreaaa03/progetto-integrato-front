@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { division } from 'src/app/models/typeTeams';
 import { GetApiServiceTeams } from 'src/app/services/getApiTeams.service';
@@ -10,6 +10,11 @@ import { GetApiServiceTeams } from 'src/app/services/getApiTeams.service';
 })
 export class SquadrePageComponent implements OnInit {
 
+  isConferenceSelected: boolean=true;
+  functionChangeConferenceSelected(){
+    this.isConferenceSelected=!this.isConferenceSelected;
+  }
+
   teams: division = {
     NorthWest: [],
     SouthWest: [],
@@ -18,9 +23,20 @@ export class SquadrePageComponent implements OnInit {
     Central: [],
     Pacific: [],
   };
+  isMobile: boolean = false;
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.checkIfMobile();
+  }
+
+  checkIfMobile(): void {
+    this.isMobile = window.innerWidth < 768; // Cambia questo valore in base alle tue esigenze
+  }
 
   constructor(private activatedRoute: ActivatedRoute){}
   ngOnInit(): void {
+    this.checkIfMobile();
     this.activatedRoute.data.subscribe(
       ({ ResolveTeams }) => {
         this.teams.NorthWest=ResolveTeams.NorthWest;

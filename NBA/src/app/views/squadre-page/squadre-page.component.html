@@ -8,9 +8,22 @@
         </div>
         <div class="w-full h-6 bg-secondary"></div>
     </div>
+    <div class="lg:h-16 h-10">
+        <ul class="w-full lg:h-16 h-10 flex flex-nowrap justify-around items-center">
+            <!-- Primo elemento della lista -->
+            <li [ngClass]="{'bg-secondary': isConferenceSelected === true, 'border-secondary lg:border-4 border-2 hover:bg-[#DCF1FF]': isConferenceSelected === false}" class="lg:w-1/3 w-[45%] h-full flex justify-center items-center rounded-2xl">
+                <button (click)="functionChangeConferenceSelected()" [class.text-white]="isConferenceSelected === true" class="w-full text-center text-white lg:text-3xl">EAST CONFERENCE</button>
+            </li>
+
+            <!-- Secondo elemento della lista -->
+            <li [ngClass]="{'border-secondary lg:border-4 border-2 hover:bg-[#DCF1FF]': isConferenceSelected === true, 'bg-secondary': isConferenceSelected === false}" class="lg:w-1/3 w-[45%] h-full flex justify-center items-center rounded-2xl">
+                <button (click)="functionChangeConferenceSelected()" [class.text-white]="isConferenceSelected === false" class="w-full text-center lg:text-3xl">WEST CONFERENCE</button>
+            </li>
+        </ul>
+    </div>
     <div class="flex h-full justify-center">
         <div class="container h-full flex flex-wrap justify-center">
-            <div class="lg:w-[75%] w-full h-full flex flex-wrap justify-center lg:my-12 ">
+            <div class="lg:w-[75%] w-full h-full flex flex-wrap justify-center lg:my-12 " *ngIf="isConferenceSelected===true && isMobile===true || isMobile===false">
                 <div class="w-full flex justify-end pb-2">
                     <button>preferiti</button>
                 </div>
@@ -80,7 +93,7 @@
                     </div>
                 </div>
             </div>
-            <div class="lg:w-[75%] w-full h-full flex flex-wrap justify-center lg:my-12">
+            <div class="lg:w-[75%] w-full h-full flex flex-wrap justify-center lg:my-12" *ngIf="isConferenceSelected===false && isMobile===true || isMobile===false">
                 <div class="w-full flex justify-end pb-2">
                     <button>preferiti</button>
                 </div>

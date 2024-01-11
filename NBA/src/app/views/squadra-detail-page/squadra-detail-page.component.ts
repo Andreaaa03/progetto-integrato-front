@@ -10,7 +10,7 @@ import { allPlayer, matchCalendar, teamPlayer, teamStatistic } from 'src/app/mod
 export class SquadraDetailPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
   cardToShow: number = 10;
-  isSelectedTeam: boolean = false;
+  isSelectedTeam: boolean = true;
   selectedTeam(isSelectedTeam: boolean) {
     this.isSelectedTeam = isSelectedTeam;
   }

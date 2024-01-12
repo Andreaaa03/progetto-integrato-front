@@ -12,6 +12,7 @@ import { GetApiServiceTeams } from './services/getApiTeams.service';
 import { PartitaPageComponent } from './views/partita-page/partita-page.component';
 import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-detail-page.component';
 import { GetApiServiceSingleTeam } from './services/getApiSingleTeam.service';
+import { ArticoloDetailPageComponent } from './views/articolo-detail-page/articolo-detail-page.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,7 @@ const routes: Routes = [
   { path: "tabellino", component: PartitaPageComponent, title: "SLAM STATS - Tabellino"},
   { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole"},
   { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog"},
+  { path: "articolo", component: ArticoloDetailPageComponent, title: "SLAM STATS - Articolo"},
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore
   { path: "errore", component: ErrorePageComponent, pathMatch: "full" },
   { path: "**", component: ErrorePageComponent, title: "ERR. 404 - pagina non trovata"},

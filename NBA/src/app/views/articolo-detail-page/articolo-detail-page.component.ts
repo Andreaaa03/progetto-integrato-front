@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./articolo-detail-page.component.css']
 })
 export class ArticoloDetailPageComponent {
-
+  CountCommentForArticle: number[]= [1,2,3,4,5];
 }

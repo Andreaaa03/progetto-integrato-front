@@ -13,7 +13,7 @@ import { PartitaPageComponent } from './views/partita-page/partita-page.componen
 import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-detail-page.component';
 import { GetApiServiceSingleTeam } from './services/getApiSingleTeam.service';
 import { ArticoloDetailPageComponent } from './views/articolo-detail-page/articolo-detail-page.component';
-import { LoginPageComponent } from './views/login-page/login-page.component';
+import { ProfiloPageComponent } from './views/profilo-page/profilo-page.component';
 
 const routes: Routes = [
   {
@@ -51,7 +51,7 @@ const routes: Routes = [
   { path: "tabellino", component: PartitaPageComponent, title: "SLAM STATS - Tabellino"},
   { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole"},
   { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog"},
-  { path: "login-page", component: LoginPageComponent, title: "SLAM STATS - Login"},
+  { path: "profilo", component: ProfiloPageComponent, title: "SLAM STATS - Profilo"},
   { path: "articolo", component: ArticoloDetailPageComponent, title: "SLAM STATS - Articolo"},
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore
   { path: "errore", component: ErrorePageComponent, pathMatch: "full" },

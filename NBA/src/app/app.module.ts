@@ -22,7 +22,7 @@ import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-
 import { PostArticoloComponent } from './components/post-articolo/post-articolo.component';
 import { ArticoloDetailPageComponent } from './views/articolo-detail-page/articolo-detail-page.component';
 import { CardCommentoComponent } from './components/card-commento/card-commento.component';
-import { LoginPageComponent } from './views/login-page/login-page.component';
+import { ProfiloPageComponent } from './views/profilo-page/profilo-page.component';
 
 
 
@@ -46,7 +46,7 @@ import { LoginPageComponent } from './views/login-page/login-page.component';
     ArticoloDetailPageComponent,
     PostArticoloComponent,
     CardCommentoComponent,
-    LoginPageComponent,
+    ProfiloPageComponent,
   ],
   imports: [
     BrowserModule,

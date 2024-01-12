@@ -62,7 +62,7 @@
     }
 }
 
-#bottoni-classifica input {
+.bottoni-classifica input {
     height: 0px;
     left: 0;
     opacity: 0;
@@ -71,7 +71,10 @@
     width: 0px;
 }
 
-#bottoni-classifica label.toggle-item {
+
+
+
+.bottoni-classifica label.toggle-item {
     width: 5rem;
     background: #00000083;
     height: 20px;
@@ -82,11 +85,11 @@
     cursor: pointer;
 }
 
-#bottoni-classifica .heart-rollover label::before {
+.bottoni-classifica .heart-rollover label::before {
     content: none;
 }
 
-#bottoni-classifica .heart-rollover label .block-heart {
+.bottoni-classifica .heart-rollover label .block-heart {
     display: inline-block;
     position: absolute;
     width: 2.5em;
@@ -96,7 +99,7 @@
     transition: 0.6s ease;
 }
 
-#bottoni-classifica .heart-rollover label .heart {
+.bottoni-classifica .heart-rollover label .heart {
     position: relative;
     width: 40px;
     height: 50px;
@@ -106,8 +109,8 @@
     left: -0.5em;
 }
 
-#bottoni-classifica .heart-rollover label .heart:before,
-.heart:after {
+.bottoni-classifica .heart-rollover label .heart:before,
+.bottoni-classifica .heart-rollover label .heart:after {
     position: absolute;
     content: "";
     left: 20px;
@@ -120,24 +123,34 @@
     transform-origin: 0 100%;
 }
 
-#bottoni-classifica .heart-rollover label .heart:after {
+.bottoni-classifica .heart-rollover label .heart:after {
     left: 0;
     transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
     transform-origin: 100% 100%;
+    -webkit-transform-origin: 100% 100%;
 }
 
-
-
-
-#bottoni-classifica #cuore:checked+label .block-heart {
+.bottoni-classifica #cuore:checked+label .block-heart {
     left: 3.5rem;
 }
 
-#bottoni-classifica #cuore:checked+label .heart:after {
+.bottoni-classifica #cuore:checked+label .heart:after {
     animation: colorChangeAfter 0.3s 0s forwards;
 }
 
-#bottoni-classifica #cuore:checked+label .heart:before {
+.bottoni-classifica #cuore:checked+label .heart:before {
+    animation: colorChangeBefore 0.3s 0s forwards;
+}
+.bottoni-classifica #cuore2:checked+label .block-heart {
+    left: 3.5rem;
+}
+
+.bottoni-classifica #cuore2:checked+label .heart:after {
+    animation: colorChangeAfter 0.3s 0s forwards;
+}
+
+.bottoni-classifica #cuore2:checked+label .heart:before {
     animation: colorChangeBefore 0.3s 0s forwards;
 }
 
@@ -145,31 +158,41 @@
     0% {
         background-color: #acdeff;
         transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
         transform-origin: 100% 100%;
+        -webkit-transform-origin: 100% 100%;
     }
 
     25% {
         background-color: #c2a2ba;
         transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
         transform-origin: 100% 100%;
+        -webkit-transform-origin: 100% 100%;
     }
 
     50% {
         background-color: #d47182;
         transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
         transform-origin: 100% 100%;
+        -webkit-transform-origin: 100% 100%;
     }
 
     75% {
         background-color: #ee2c33;
         transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
         transform-origin: 100% 100%;
+        -webkit-transform-origin: 100% 100%;
     }
 
     100% {
         background-color: red;
         transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
         transform-origin: 100% 100%;
+        -webkit-transform-origin: 100% 100%;
     }
 }
 

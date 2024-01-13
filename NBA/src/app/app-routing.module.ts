@@ -21,7 +21,8 @@ const routes: Routes = [
       ResolveStanding: () => {
         return inject(GetApiServiceStanding).getSearchStanding();
       }
-    }, title: "SLAM STATS"}, //title: "SLAM STATS"
+    }, title: "SLAM STATS"
+  }, //title: "SLAM STATS"
   {
     path: "classifica", component: ClassificaPageComponent, resolve: {
       ResolveStanding: () => {
@@ -29,13 +30,14 @@ const routes: Routes = [
       }
     }, title: "SLAM STATS - Classifica"
   },
-  { path: "calendario", component: CalendarioPageComponent, title: "SLAM STATS - Calendario"},
+  { path: "calendario", component: CalendarioPageComponent, title: "SLAM STATS - Calendario" },
   {
     path: "squadre", component: SquadrePageComponent, resolve: {
       ResolveTeams: () => {
         return inject(GetApiServiceTeams).getSearchTeams();
       }
-    }, title: "SLAM STATS - Squadre"},
+    }, title: "SLAM STATS - Squadre"
+  },
   {
     path: "squadraDetail/:id", component: SquadraDetailPageComponent, resolve: {
       ResolveSingleTeamStatistics: (route: ActivatedRouteSnapshot) => {
@@ -47,15 +49,22 @@ const routes: Routes = [
       ResolveSingleTeamPlayer: (route: ActivatedRouteSnapshot) => {
         return inject(GetApiServiceSingleTeam).getSearchSingleTeamPlayer(route.paramMap.get("id")!);
       }
-    }, title: "SLAM STATS - Squadra"},
-  { path: "tabellino", component: PartitaPageComponent, title: "SLAM STATS - Tabellino"},
-  { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole"},
-  { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog"},
-  { path: "profilo", component: ProfiloPageComponent, title: "SLAM STATS - Profilo"},
-  { path: "articolo", component: ArticoloDetailPageComponent, title: "SLAM STATS - Articolo"},
+    }, title: "SLAM STATS - Squadra"
+  },
+  { path: "tabellino", component: PartitaPageComponent, title: "SLAM STATS - Tabellino" },
+  { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole" },
+  { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog" },
+  {
+    path: "profilo", component: ProfiloPageComponent, resolve: {
+      ResolveTeams: () => {
+        return inject(GetApiServiceTeams).getSearchTeams();
+      }
+    }, title: "SLAM STATS - Profilo"
+  },
+  { path: "articolo", component: ArticoloDetailPageComponent, title: "SLAM STATS - Articolo" },
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore
   { path: "errore", component: ErrorePageComponent, pathMatch: "full" },
-  { path: "**", component: ErrorePageComponent, title: "ERR. 404 - pagina non trovata"},
+  { path: "**", component: ErrorePageComponent, title: "ERR. 404 - pagina non trovata" },
 ];
 
 @NgModule({

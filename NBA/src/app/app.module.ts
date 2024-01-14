@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
@@ -23,6 +24,8 @@ import { PostArticoloComponent } from './components/post-articolo/post-articolo.
 import { ArticoloDetailPageComponent } from './views/articolo-detail-page/articolo-detail-page.component';
 import { CardCommentoComponent } from './components/card-commento/card-commento.component';
 import { ProfiloPageComponent } from './views/profilo-page/profilo-page.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { LoginPageComponent } from './views/login-page/login-page.component';
 
 
 
@@ -47,6 +50,8 @@ import { ProfiloPageComponent } from './views/profilo-page/profilo-page.componen
     PostArticoloComponent,
     CardCommentoComponent,
     ProfiloPageComponent,
+    PieChartComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,

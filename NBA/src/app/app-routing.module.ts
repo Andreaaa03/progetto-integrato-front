@@ -14,6 +14,7 @@ import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-
 import { GetApiServiceSingleTeam } from './services/getApiSingleTeam.service';
 import { ArticoloDetailPageComponent } from './views/articolo-detail-page/articolo-detail-page.component';
 import { ProfiloPageComponent } from './views/profilo-page/profilo-page.component';
+import { LoginPageComponent } from './views/login-page/login-page.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,8 @@ const routes: Routes = [
       }
     }, title: "SLAM STATS - Profilo"
   },
+  
+  { path: "login", component: LoginPageComponent, title: "SLAM STATS - Articolo" },
   { path: "articolo", component: ArticoloDetailPageComponent, title: "SLAM STATS - Articolo" },
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore
   { path: "errore", component: ErrorePageComponent, pathMatch: "full" },

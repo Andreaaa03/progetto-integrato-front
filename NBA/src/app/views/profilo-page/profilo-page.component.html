@@ -64,11 +64,13 @@
                 <div class="" *ngIf="menuSelected==='risultato'">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
                         <h2 class=" text-white text-4xl font-bold">
-                            SONDAAGI
+                            SONDAGGI
                         </h2>
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
-
+                    <div class="w-full">
+                        <!-- <app-piechart></app-piechart> --> <!-- diagramma a torta -->
+                    </div>
                 </div>
                 <div class="" *ngIf="menuSelected==='notifiche'">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
@@ -220,7 +222,7 @@
                         </div>
                         <!-- fino a qui -->
                     </div>
-                    <div *ngIf="menuPreferitiSelected==='squadre'" class="w-full flex flex-wrap mt-5">
+                    <div *ngIf="menuPreferitiSelected==='articoli'" class="w-full flex flex-wrap mt-5">
                         <div class="w-1/3 flex flex-wrap my-8">
                             <div class="w-[80%] bg-primary h-24 rounded-3xl flex items-center justify-center text-xl">
                                 <p class="text-white">Titolo articolo</p>
@@ -238,7 +240,7 @@
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="menuPreferitiSelected==='articoli'" class="w-full flex flex-wrap mt-5">
+                    <div *ngIf="menuPreferitiSelected==='squadre'" class="w-full flex flex-wrap mt-5">
                         <div class="w-1/3 flex flex-wrap my-8">
                             <div class="w-[80%] bg-primary h-24 rounded-3xl flex flex-wrap">
                                 <div class="w-2/5 flex justify-center">
@@ -510,7 +512,7 @@
                         </div>
                         <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
-                                <p class="font-bold">Attiva/Disattiva notifiche fooolower (attivata)</p>
+                                <p class="font-bold">Attiva/Disattiva notifiche follower (attivata)</p>
                             </div>
                             <form action="" class="w-3/4 flex flex-nowrap justify-around pl-4">
 

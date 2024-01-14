@@ -150,12 +150,16 @@ export class CalendarioPageComponent implements OnInit {
 
     this.blankdays_right = blankdaysArrayRight;
     this.no_of_days_right = daysArrayRight;
+    this.remainDay();
   }
 
   remain_days_left:number[]=[];
   remain_days_central:number[]=[];
   remain_days_right:number[]=[];
   remainDay(){
+    this.remain_days_left=[];
+    this.remain_days_central=[];
+    this.remain_days_right=[];
     for(let i=this.blankdays_left.length+this.no_of_days_left.length; i<35; i++){
       this.remain_days_left.push(i);
     }

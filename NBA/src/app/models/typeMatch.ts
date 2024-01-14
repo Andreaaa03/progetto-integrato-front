@@ -1,0 +1,24 @@
+export type match = {
+    gameid: number | null;
+    gameStartDate: string | null;
+    teamHomeName: string | null;
+    teamAwayName: string | null;
+    scoreTeamHome: null | null;
+    scoreTeamAway: number | null;
+    conferenceNameHome: string | null;
+    conferenceNameAway: string | null;
+    divisionNameHome: string | null;
+    divisionNameAway: string | null;
+    teamIdHome: number | null;
+    teamIdAway: number | null;
+    allStarHome: boolean;
+    allStarAway: boolean;
+    nicknameHome: string | null;
+    nicknameAway: string | null;
+    logoHome: string | null;
+    logoAway: string | null;
+    cityHome: string | null;
+    cityAway: string | null;
+    codeHome: string | null;
+    codeAway: string | null;
+};

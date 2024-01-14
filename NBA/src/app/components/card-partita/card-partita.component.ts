@@ -1,10 +1,26 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { match } from 'src/app/models/typeMatch';
+import { GetApiMatch } from 'src/app/services/getApiMatch.service';
 
 @Component({
   selector: 'app-card-partita',
   templateUrl: './card-partita.component.html',
   styleUrls: ['./card-partita.component.css']
 })
-export class CardPartitaComponent {
-  @Input() id:number=0; 
+export class CardPartitaComponent implements OnInit {
+  constructor(private getApiService: GetApiMatch) { }
+  @Input() gameId!: string;
+
+  ngOnInit(): void {
+    this.functionGetMatch(this.gameId!);
+  }
+
+  match!: match;
+  functionGetMatch(id: string) {
+    this?.getApiService.getSearchMatch(id).subscribe(
+      (match) => {
+        this.match = match;
+      }
+    )
+  }
 }

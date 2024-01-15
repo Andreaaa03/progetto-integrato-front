@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent {
 
-  utente: string = 'garne';
-  password: string = '9090';
+  utente: string = 'admin';
+  password: string = 'admin';
   errorMessage: string = '';
 
   constructor(private router: Router) { }
 
   login(): void {
-    if (this.utente === 'garne' && this.password === '9090') {
+    if (this.utente === 'admin' && this.password === 'admin') {
       console.log('ciao');
       this.router.navigate(['/profilo']);
     } else {

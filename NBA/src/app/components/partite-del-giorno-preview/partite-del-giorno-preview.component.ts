@@ -7,7 +7,7 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
 })
 export class PartiteDelGiornoPreviewComponent implements OnInit {
   @Input() cards: any[] = [
-    1,2
+    1,2,3
   ];
   idgame ="12478";
 

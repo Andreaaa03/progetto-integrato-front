@@ -22,3 +22,58 @@ export type match = {
     codeHome: string | null;
     codeAway: string | null;
 };
+
+type playerStats = {
+    id: number;
+    nome: string;
+    points: number;
+    pos: string;
+    min: string;
+    fgm: number;
+    fga: number;
+    fgp: number;
+    ftm: number;
+    fta: number;
+    ftp: number;
+    tpm: number;
+    tpa: number;
+    tpp: number;
+    offReb: number;
+    defReb: number;
+    totReb: number;
+    assists: number;
+    pFouls: number;
+    steals: number;
+    turnovers: number;
+    blocks: number;
+    plusMinus: number;
+    pfouls: number;
+};
+
+type stats = {
+    fgm: number;
+    fga: number;
+    fgp: number;
+    ftm: number;
+    fta: number;
+    ftp: number;
+    tpm: number;
+    tpa: number;
+    tpp: number;
+    offReb: number;
+    defReb: number;
+    totReb: number;
+    assists: number;
+    pFouls: number;
+    steals: number;
+    turnovers: number;
+    blocks: number;
+    plusMinus: number;
+    playersStatistics: playerStats[];
+};
+
+export type matchStats = {
+    calendarioDateResponse: match;
+    homeTeam: stats;
+    awayTeam: stats;
+};

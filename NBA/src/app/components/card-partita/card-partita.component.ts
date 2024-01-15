@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { match } from 'src/app/models/typeMatch';
-import { GetApiMatch } from 'src/app/services/getApiMatch.service';
+import { GetApiServiceMatch } from 'src/app/services/getApiMatch.service';
 
 @Component({
   selector: 'app-card-partita',
@@ -8,7 +8,7 @@ import { GetApiMatch } from 'src/app/services/getApiMatch.service';
   styleUrls: ['./card-partita.component.css']
 })
 export class CardPartitaComponent implements OnInit {
-  constructor(private getApiService: GetApiMatch) { }
+  constructor(private getApiService: GetApiServiceMatch) { }
   @Input() gameId!: string;
 
   ngOnInit(): void {

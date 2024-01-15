@@ -13,6 +13,7 @@ import { PartitaPageComponent } from './views/partita-page/partita-page.componen
 import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-detail-page.component';
 import { GetApiServiceSingleTeam } from './services/getApiSingleTeam.service';
 import { ArticoloDetailPageComponent } from './views/articolo-detail-page/articolo-detail-page.component';
+import { GetApiServiceMatch } from './services/getApiMatch.service';
 
 const routes: Routes = [
   {
@@ -47,7 +48,12 @@ const routes: Routes = [
         return inject(GetApiServiceSingleTeam).getSearchSingleTeamPlayer(route.paramMap.get("id")!);
       }
     }, title: "SLAM STATS - Squadra"},
-  { path: "tabellino", component: PartitaPageComponent, title: "SLAM STATS - Tabellino"},
+  {
+    path: "tabellino/:id", component: PartitaPageComponent, resolve: {
+      ResolveMatchStats: (route: ActivatedRouteSnapshot) => {
+        return inject(GetApiServiceMatch).getSearchMatchStats(route.paramMap.get("id")!);
+      }
+    }, title: "SLAM STATS - Tabellino"},
   { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole"},
   { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog"},
   { path: "articolo", component: ArticoloDetailPageComponent, title: "SLAM STATS - Articolo"},

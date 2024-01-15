@@ -10,6 +10,7 @@ export class CalendarioPageComponent implements OnInit {
   matchToday: number[] = [1, 2, 3, 4, 5, 6, 7];
   cardToShow: number = 3;
 
+  gameId="12478";
   changeCardToShow(cardToShow: number): void {
     if (cardToShow == 3)
       this.cardToShow = this.matchToday.length;

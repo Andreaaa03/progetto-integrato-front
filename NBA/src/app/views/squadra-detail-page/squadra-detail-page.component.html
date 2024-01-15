@@ -65,46 +65,52 @@
                             <div class="w-full h-6 bg-secondary"></div>
                         </div>
                     </div>
-                    <div class="lg:w-[90%] w-full lg:flex lg:justify-center overflow-x-auto">
-                        <table class="w-full table-auto">
+                    <div class="lg:w-[90%] w-full flex justify-center">
+                        <table class="w-full">
                             <thead class="bg-primary text-white lg:w-full w-full">
                                 <tr>
-                                    <th class="lg:w-[5%]  w-auto">
+                                    <th class="lg:w-[5%]  w-[3%]">
                                         <p class="w-full text-center px-3">DATA</p>
                                     </th>
-                                    <th class="lg:w-[10%] w-auto">
-                                        <p class="w-full text-center px-3">ORARIO</p>
+                                    <th class="lg:w-[10%] w-[3%]">
+                                        <p class="lg:block w-full hidden text-center px-3">ORARIO</p>
+                                        <p class="lg:hidden text-center px-3">ORA</p>
                                     </th>
-                                    <th class="lg:w-[15%] w-auto">
-                                        <p class="w-full text-center px-3">AVVERSARIO</p>
+                                    <th class="lg:w-[15%] w-[3%]">
+                                        <p class="lg:block w-full hidden text-center px-3">AVVERSARIO</p>
+                                        <p class="lg:hidden text-center px-3">VS</p>
                                     </th>
-                                    <th class="lg:w-[10%] w-auto">
-                                        <p class="w-full text-center px-3">RISULTATO</p>
+                                    <th class="lg:w-[10%] w-[2%]">
+                                        <p class="lg:block w-full hidden text-center px-3">RISULTATO</p>
+                                        <p class="lg:hidden text-center px-3">RIS</p>
                                     </th>
-                                    <th class="lg:w-[15%] w-auto">
-                                        <p class="w-full text-center px-3">PUNTEGGIO</p>
+                                    <th class="lg:w-[15%] w-[55%]">
+                                        <p class="lg:block w-full hidden text-center px-3">PUNTEGGIO</p>
+                                        <p class="lg:hidden text-center px-3">PTS</p>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody class="lg:w-full w-full">
                                 <tr *ngFor="let _ of ripetiArray.slice(0, cardToShow)">
-                                    <td class="lg:w-[15%] w-auto">
-                                        <p class="w-full text-center px-3">11/01/2024</p>
+                                    <td class="lg:w-[15%] w-[3%]">
+                                        <p class="lg:block hidden w-full text-center px-3">11/01/2024</p>
+                                        <p class="lg:hidden w-full text-center px-3">11/01/24</p>
                                     </td>
-                                    <td class="lg:w-[10%] w-auto">
+                                    <td class="lg:w-[10%] w-[3%]">
                                         <p class="w-full text-center px-3">02:00</p>
                                     </td>
-                                    <td class="lg:w-[5%]  w-auto">
+                                    <td class="lg:w-[5%]  w-[3%]">
                                         <p class="w-full text-center px-3">LAL</p>
                                     </td>
-                                    <td class="lg:w-[10%] w-auto">
+                                    <td class="lg:w-[10%] w-[2%]">
                                         <p class="w-full text-center px-3">W</p>
                                     </td>
-                                    <td class="lg:w-[10%] w-auto">
+                                    <td class="lg:w-[10%] w-[55%]">
                                         <p class="w-full text-center px-3">88-91</p>
                                     </td>
-                                    <td class="lg:w-[50%] w-auto">
-                                        <div class="w-full flex justify-end mx-2 lg:mx-0" routerLink="/tabellino"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
+                                    <td class="lg:w-[50%] w-[34%]">
+                                        <div class="w-full hidden lg:flex lg:justify-end lg:mx-0" routerLink="/tabellino"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
+                                        <div class="w-full flex lg:hidden lg:justify-end lg:mx-0" routerLink="/tabellino"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1 w-full">TAB</button></div>
                                     </td>
                                 </tr>
                             </tbody>

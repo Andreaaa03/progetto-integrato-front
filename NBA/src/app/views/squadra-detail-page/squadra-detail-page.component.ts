@@ -225,7 +225,7 @@ export class SquadraDetailPageComponent implements OnInit {
         this.teamStatistics = ResolveSingleTeamStatistics;
         this.matchCalendar = ResolveSingleTeamCalendar;
         this.teamsPlayer = ResolveSingleTeamPlayer;
-        console.log(this.teamsPlayer);
+        console.log(this.teamStatistics)
         this.ripetiArray=new Array(this.matchCalendar.totalMatch.length).fill(null);
       })
   }

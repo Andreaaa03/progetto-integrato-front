@@ -14,8 +14,8 @@
                                     'hidden w-0': (isMobile && currentIndex===i) || currentIndex !== i && currentIndexAfter !== i && currentIndexBefore !== i,
                                     'w-full': isMobile && currentIndex === i,
                             }" id={{i}}>
-                        <app-card-partita *ngIf="i===currentIndexBefore && isMobile" [id]="i" class="w-full"></app-card-partita>
-                        <app-card-partita *ngIf="!isMobile" [id]="i"></app-card-partita>
+                        <app-card-partita *ngIf="i===currentIndexBefore && isMobile" [gameId]="idgame" class="w-full"></app-card-partita>
+                        <app-card-partita *ngIf="!isMobile" [gameId]="idgame"></app-card-partita>
                     </div>
                 </div>
 

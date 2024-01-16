@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { allPlayer, matchCalendar, teamPlayer, teamStatistic } from 'src/app/models/typeSingleTeam';
+import { allPlayer, matchCalendar, teamPlayer, teamStatistic, teamCalendar } from 'src/app/models/typeSingleTeam';
 
 
 interface glossaryItem{
@@ -18,6 +18,8 @@ export class SquadraDetailPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
   cardToShow: number = 10;
   isSelectedTeam: boolean = true;
+  
+
   
 
   jsonInfo: glossaryItem[] = [
@@ -203,6 +205,9 @@ export class SquadraDetailPageComponent implements OnInit {
     },
   ]
 
+
+  
+
   selectedTeam(isSelectedTeam: boolean) {
     this.isSelectedTeam = isSelectedTeam;
   }
@@ -211,7 +216,9 @@ export class SquadraDetailPageComponent implements OnInit {
       this.cardToShow += 10;
   }
 
-  teamStatistics: teamStatistic | undefined = undefined;
+  
+
+  teamStatistics!: teamStatistic ;
   matchCalendar: matchCalendar = {
     previousMatch: [],
     nextMatch: [],
@@ -225,8 +232,10 @@ export class SquadraDetailPageComponent implements OnInit {
         this.teamStatistics = ResolveSingleTeamStatistics;
         this.matchCalendar = ResolveSingleTeamCalendar;
         this.teamsPlayer = ResolveSingleTeamPlayer;
-        console.log(this.teamStatistics?.assists)
+        console.log(this.teamStatistics?.team.code)
         this.ripetiArray=new Array(this.matchCalendar.totalMatch.length).fill(null);
       })
   }
+
+  
 }

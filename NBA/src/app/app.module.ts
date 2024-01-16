@@ -25,7 +25,7 @@ import { ArticoloDetailPageComponent } from './views/articolo-detail-page/artico
 import { CardCommentoComponent } from './components/card-commento/card-commento.component';
 import { ProfiloPageComponent } from './views/profilo-page/profilo-page.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
-import { LoginPageComponent } from './views/login-page/login-page.component';
+import { LoginPageComponent } from './components/login/login.component';
 
 
 

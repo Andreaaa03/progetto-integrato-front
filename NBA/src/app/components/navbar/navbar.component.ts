@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent{
 
   isMobileMenuOpen: boolean = false;
-
+  modal:boolean=false;
   toggleMenu(isMobileMenuOpen: boolean) {
     console.log(isMobileMenuOpen);
     this.isMobileMenuOpen = !isMobileMenuOpen;

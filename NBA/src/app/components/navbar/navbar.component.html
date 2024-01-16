@@ -26,7 +26,12 @@
         </div>
     </div>
 </nav> -->
-
+<div *ngIf="modal===true" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full flex justify-center items-center bg-[#acdeff81]">
+    <div class="w-[80%] h-[80%] bg-[#ACDEFF] border-2 border-primary">
+        <div class="" routerLink="/profilo">ACCEDI</div>
+        <div (click)="modal=false" class="">X</div>
+    </div>
+</div>
 <nav class="h-16 z-50">
         <div class="bg-secondary w-full flex flex-nowrap fixed top-0 h-16 z-50">
             <div class="md:flex-row flex flex-row-reverse w-full md:justify-normal justify-end">
@@ -74,7 +79,7 @@
                 </form>
             </div>
             <div class="h-16 lg:w-[10%] w-1/2 flex md:justify-center justify-end">
-                <button routerLink="/login" class="h-16 lg:w-2/4 w-[50%]">
+                <button (click)="modal=!modal;" class="h-16 lg:w-2/4 w-[50%]">
                     <img src="./assets/icon/profilo-arancione-3.png" alt="" class="object-contain w-auto">
                 </button>
             </div>

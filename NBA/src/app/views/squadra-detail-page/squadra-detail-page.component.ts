@@ -218,7 +218,7 @@ export class SquadraDetailPageComponent implements OnInit {
 
   
 
-  teamStatistics!: teamStatistic ;
+  teamStatistics?: teamStatistic;
   matchCalendar: matchCalendar = {
     previousMatch: [],
     nextMatch: [],
@@ -230,7 +230,7 @@ export class SquadraDetailPageComponent implements OnInit {
     this.activatedRoute.data.subscribe(
       ({ ResolveSingleTeamStatistics, ResolveSingleTeamCalendar, ResolveSingleTeamPlayer }) => {
         this.teamStatistics = ResolveSingleTeamStatistics;
-        this.matchCalendar = ResolveSingleTeamCalendar;
+        this.matchCalendar.totalMatch = ResolveSingleTeamCalendar.totalMatch;
         this.teamsPlayer = ResolveSingleTeamPlayer;
         console.log(this.teamStatistics?.team.code)
         this.ripetiArray=new Array(this.matchCalendar.totalMatch.length).fill(null);

@@ -24,12 +24,21 @@ export class GetApiServiceSingleTeam {
         totalMatch: [],
     }
     getSearchSingleTeamCalendar(id: string) {
+        this.match.previousMatch= [];
+        this.match.nextMatch= [];
+        this.match.totalMatch= [];
         return this.apiService.SearchSingleTeamCalendar(id).pipe(
             map((res: any) => {
                 /* chiedere a giorgio per tutte le partite */
                 /* console.log(res.length); */
                 let todayDate = dayjs().format('YYYY-MM-DD HH:mm:ss');
                 res.forEach((singleTeam: any) => {
+                    let matchDate = dayjs(singleTeam.gameStartDate).format('DD/MM/YY').toString();
+                    let matchTime = dayjs(singleTeam.gameStartDate).format('HH:mm').toString();
+                    singleTeam.matchDate = matchDate;
+                    singleTeam.matchTime = matchTime;
+                    console.log(matchDate, matchTime)
+
                    /*  console.log(singleTeam.gameid); */
                     this.match.totalMatch.push(singleTeam);
                     if (singleTeam.gameStartDate <= todayDate) {

@@ -43,10 +43,12 @@ export type teamStatistic = {
 export type teamCalendar = {
     gameid: number;
     gameStartDate: string;
+    matchDate: string;
+    matchTime: string;
     teamHomeName: string;
     teamAwayName: string;
     scoreTeamHome: number;
-    scoreTeamAway: null;
+    scoreTeamAway: number;
     conferenceNameHome: string;
     conferenceNameAway: string;
     divisionNameHome: string;

@@ -10,6 +10,7 @@ import { GetApiServiceMatch } from 'src/app/services/getApiMatch.service';
 export class CalendarioPageComponent implements OnInit {
 
   matchToday: number[] = [];
+  matchTodayLastTwenty: number[] = [];
   cardToShow: number = 3;
 
   gameId="12478";
@@ -59,6 +60,9 @@ export class CalendarioPageComponent implements OnInit {
         this.matchToday=[];
         for(let i=0; i<game.length; i++){
           this.matchToday.push(game[i].gameid);
+          if (this.matchTodayLastTwenty.length <= 20){
+            this.matchTodayLastTwenty.push(game[i].gameid);
+          }
         }
       }
     )

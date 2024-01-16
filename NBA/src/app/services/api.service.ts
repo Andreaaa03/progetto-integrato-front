@@ -37,7 +37,6 @@ export class ApiService {
         return this.http.get(this.baseURL + "games/partitaStat?IdPartita="+ id);
     }
     SearchMatchDate(date:string){
-        // "2023-12-24"
         return this.http.get(this.baseURL + "games/date?date="+ date);
     }
 }

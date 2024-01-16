@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="max-w-md w-full p-6 bg-white rounded-md shadow-md">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-semibold text-gray-800">Login</h2>
+      </div>
+      <form (submit)="login()" ngDefaultControl>
+        <div class="mb-4">
+          <label for="username" class="block text-sm font-medium text-gray-600">Username</label>
+          <input type="text" id="username" name="username" [(ngModel)]="utente" class="mt-1 p-2 w-full border rounded-md">
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
+          <input type="password" id="password" name="password" [(ngModel)]="password" class="mt-1 p-2 w-full border rounded-md">
+        </div>
+        <button type="submit" class="w-full p-2 bg-primary text-white rounded-md hover:bg-blue-600">Login</button>
+      </form>
+      <div class="text-center mt-4">
+        <p class="text-sm text-gray-600">{{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>
+  
+      
+<footer class="">
+    <app-footer></app-footer>
+</footer>
+

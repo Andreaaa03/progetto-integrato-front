@@ -38,12 +38,12 @@
                             </div>
                             <div class="flex justify-center">
                                 <ul class="w-[90%] flex-col">
-                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.SoutHeast" [routerLink]="['/squadraDetail', team.id]">
+                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.SoutHeast">
                                         <div class="w-1/3 flex justify-center">
-                                            <img class="object-contain h-full hover:cursor-pointer" src={{team.logo}} alt="" />
+                                            <img class="object-contain h-full hover:cursor-pointer" src={{team.logo}} alt="" [routerLink]="['/squadraDetail', team.id]"/>
                                         </div>
                                         <div class="w-2/3 pl-4">
-                                            <p class="w-auto hover:cursor-pointer">{{team.teamName}}</p>
+                                            <p class="w-auto hover:cursor-pointer" [routerLink]="['/squadraDetail', team.id]">{{team.teamName}}</p>
                                             <p class="w-[10%] hover:cursor-pointer">🖤</p>
                                         </div>
                                     </li>
@@ -58,12 +58,12 @@
                             </div>
                             <div class="flex justify-center">
                                 <ul class="w-[90%] flex-col">
-                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.Atlantic" [routerLink]="['/squadraDetail', team.id]">
+                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.Atlantic">
                                         <div class="w-1/3 flex justify-center">
-                                            <img class="object-contain h-full hover:cursor-pointer" src={{team.logo}} alt="" />
+                                            <img class="object-contain h-full hover:cursor-pointer" src={{team.logo}} alt="" [routerLink]="['/squadraDetail', team.id]"/>
                                         </div>
                                         <div class="w-2/3 pl-4">
-                                            <p class="w-auto hover:cursor-pointer">{{team.teamName}}</p>
+                                            <p class="w-auto hover:cursor-pointer" [routerLink]="['/squadraDetail', team.id]">{{team.teamName}}</p>
                                             <p class="w-[10%] hover:cursor-pointer">🖤</p>
                                         </div>
                                     </li>
@@ -78,12 +78,12 @@
                             </div>
                             <div class="flex justify-center">
                                 <ul class="w-[90%] flex-col">
-                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.Central" [routerLink]="['/squadraDetail', team.id]">
+                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.Central">
                                         <div class="w-1/3 flex justify-center">
-                                            <img class="object-contain h-full" src={{team.logo}} alt="" />
+                                            <img class="object-contain h-full" src={{team.logo}} alt="" [routerLink]="['/squadraDetail', team.id]"/>
                                         </div>
                                         <div class="w-2/3 pl-4">
-                                            <p class="w-full">{{team.teamName}}</p>
+                                            <p class="w-full" [routerLink]="['/squadraDetail', team.id]">{{team.teamName}}</p>
                                             <p class="w-full">🖤</p>
                                         </div>
                                     </li>
@@ -108,12 +108,12 @@
                             </div>
                             <div class="flex justify-center">
                                 <ul class="w-[90%] flex-col">
-                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.SouthWest" [routerLink]="['/squadraDetail', team.id]">
+                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.SouthWest">
                                         <div class="w-1/3 flex justify-center">
-                                            <img class="object-contain h-full" src={{team.logo}} alt="" />
+                                            <img class="object-contain h-full" src={{team.logo}} alt="" [routerLink]="['/squadraDetail', team.id]"/>
                                         </div>
                                         <div class="w-2/3 pl-4">
-                                            <p class="w-full">{{team.teamName}}</p>
+                                            <p class="w-full" [routerLink]="['/squadraDetail', team.id]">{{team.teamName}}</p>
                                             <p class="w-full">🖤</p>
                                         </div>
                                     </li>
@@ -128,12 +128,12 @@
                             </div>
                             <div class="flex justify-center">
                                 <ul class="w-[90%] flex-col">
-                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.NorthWest" [routerLink]="['/squadraDetail', team.id]">
+                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.NorthWest">
                                         <div class="w-1/3 flex justify-center">
-                                            <img class="object-contain h-full" src={{team.logo}} alt="" />
+                                            <img class="object-contain h-full" src={{team.logo}} alt="" [routerLink]="['/squadraDetail', team.id]"/>
                                         </div>
                                         <div class="w-2/3 pl-4">
-                                            <p class="w-full">{{team.teamName}}</p>
+                                            <p class="w-full" [routerLink]="['/squadraDetail', team.id]">{{team.teamName}}</p>
                                             <p class="w-full">🖤</p>
                                         </div>
                                     </li>
@@ -148,12 +148,12 @@
                             </div>
                             <div class="flex justify-center">
                                 <ul class="w-[90%] flex-col">
-                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.Pacific" [routerLink]="['/squadraDetail', team.id]">
+                                    <li class="h-16 flex justify-center my-4" *ngFor="let team of teams.Pacific">
                                         <div class="w-1/3 flex justify-center">
-                                            <img class="object-contain h-full" src={{team.logo}} alt="" />
+                                            <img class="object-contain h-full" src={{team.logo}} alt="" [routerLink]="['/squadraDetail', team.id]"/>
                                         </div>
                                         <div class="w-2/3 pl-4">
-                                            <p class="w-full">{{team.teamName}}</p>
+                                            <p class="w-full" [routerLink]="['/squadraDetail', team.id]">{{team.teamName}}</p>
                                             <p class="w-full">🖤</p>
                                         </div>
                                     </li>

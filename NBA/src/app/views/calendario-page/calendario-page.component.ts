@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as dayjs from 'dayjs';
+import { GetApiServiceMatch } from 'src/app/services/getApiMatch.service';
 
 @Component({
   selector: 'app-calendario-page',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarioPageComponent implements OnInit {
 
-  matchToday: number[] = [1, 2, 3, 4, 5, 6, 7];
+  matchToday: number[] = [];
   cardToShow: number = 3;
 
   gameId="12478";
@@ -19,17 +21,9 @@ export class CalendarioPageComponent implements OnInit {
 
     console.log(this.cardToShow);
   }
-  ngOnInit(): void {
-    this.initDate();
-    this.getNoOfDaysLeft();
-    this.getNoOfDaysCentral();
-    this.getNoOfDaysRight();
-    this.isToday(this.currentYearCentral, this.currentMonthCentral, this.daySelected);
-    this.remainDay();
-  }
   MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
+  
   daySelected: number = 0;
   currentMonthCentral: number = 0;
   currentYearCentral: number = 2023;
@@ -46,7 +40,29 @@ export class CalendarioPageComponent implements OnInit {
   isTodayYear: number = 2023;
   isTodayMonth: number = 0;
   isTodayDay: number = 0;
+  finalDay:string="";
   ripetiArray = new Array(10).fill(null);
+
+  constructor(private getApiServiceMatch: GetApiServiceMatch){}
+  ngOnInit(): void {
+    this.initDate();
+    this.getNoOfDaysLeft();
+    this.getNoOfDaysCentral();
+    this.getNoOfDaysRight();
+    this.isToday(this.currentYearCentral, this.currentMonthCentral, this.daySelected);
+    this.remainDay();
+  }
+  
+  functionGetMatchDate(){
+    this.getApiServiceMatch.getSearchMatchDate(this.finalDay).subscribe(
+      (game)=>{
+        this.matchToday=[];
+        for(let i=0; i<game.length; i++){
+          this.matchToday.push(game[i].gameid);
+        }
+      }
+    )
+  }
   
   initDate() {
     let today = new Date();
@@ -74,11 +90,15 @@ export class CalendarioPageComponent implements OnInit {
   };
 
   isToday(Year: number, Month: number, Day: number) {
-    const d = new Date(Year, Month, Day);
+    if(Month+1>=1 && Month+1<=9)
+      this.finalDay = Year+"-0"+(Month+1)+"-"+Day;
+    else
+      this.finalDay = Year+"-"+(Month+1)+"-"+Day;
     this.isTodayYear = Year;
     this.isTodayMonth = Month;
     this.isTodayDay = Day;
-    console.log(d);
+    console.log(this.finalDay);
+    this.functionGetMatchDate();
   };
   controlForIsToday(Year: number, Month: number, Day: number): boolean {
     let res: boolean = false;

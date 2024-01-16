@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { map } from 'rxjs';
-import { match, matchStats } from '../models/typeMatch';
+import { match, matchDate, matchStats } from '../models/typeMatch';
 import * as dayjs from 'dayjs';
 
 
@@ -25,12 +25,20 @@ export class GetApiServiceMatch {
             map((res: any) => {
                 res.calendarioDateResponse.gameStartDate = dayjs(res.calendarioDateResponse.gameStartDate).format("YY-MM-DD HH:mm");
                 res.homeTeam.playersStatistics.forEach((info: any) => {
-                    info.min = info.min.split(":")[2];;
+                    info.min = info.min.split(":")[2];
                 })
                 res.awayTeam.playersStatistics.forEach((info: any) => {
-                    info.min = info.min.split(":")[2];;
+                    info.min = info.min.split(":")[2];
                 })
                 return res as matchStats;
+            })
+        )
+    }
+    getSearchMatchDate(date: string) {
+        return this.apiService.SearchMatchDate(date).pipe(
+            map((res: any) => {
+                console.log(res);
+                return res as matchDate;
             })
         )
     }

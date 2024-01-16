@@ -155,7 +155,7 @@
             <div class="w-[90%] flex flex-wrap">
                 <div class="lg:w-1/3 w-full mb-5" *ngFor="let match of matchToday, let ind=index">
                     <div *ngIf="ind<cardToShow" class="">
-                        <app-card-partita gameId={{gameId}}></app-card-partita>
+                        <app-card-partita gameId={{match}}></app-card-partita>
                     </div>
                 </div>
                 <div class="w-full h-auto mb-10 flex justify-center items-center">

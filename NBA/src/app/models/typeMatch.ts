@@ -3,7 +3,7 @@ export type match = {
     gameStartDate: string | null;
     teamHomeName: string | null;
     teamAwayName: string | null;
-    scoreTeamHome: null | null;
+    scoreTeamHome: number | null;
     scoreTeamAway: number | null;
     conferenceNameHome: string | null;
     conferenceNameAway: string | null;
@@ -77,3 +77,29 @@ export type matchStats = {
     homeTeam: stats;
     awayTeam: stats;
 };
+
+//valutare di lasciare solo l'id dentro l'oggetto
+export type matchDate = {
+    gameid: number;
+    gameStartDate: string;
+    teamHomeName: string;
+    teamAwayName: string;
+    scoreTeamHome: number;
+    scoreTeamAway: number;
+    conferenceNameHome: string;
+    conferenceNameAway: string;
+    divisionNameHome: string;
+    divisionNameAway: string;
+    teamIdHome: number;
+    teamIdAway: number;
+    allStarHome: boolean;
+    allStarAway: boolean;
+    nicknameHome: string;
+    nicknameAway: string;
+    logoHome: string;
+    logoAway: string;
+    cityHome: string;
+    cityAway: string;
+    codeHome: string;
+    codeAway: string;
+}[];

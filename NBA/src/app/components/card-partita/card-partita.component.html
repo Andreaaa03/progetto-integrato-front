@@ -5,21 +5,21 @@
                 <p class="font-bold text-2xl" *ngIf="match?.gameStartDate!=undefined">{{match.gameStartDate}}</p>
             </div>
             <div class="w-full h-1/5 flex justify-between">
-                <div class="w-1/4 flex justify-center">
+                <div class="w-1/4 mx-1 flex justify-center">
                     <img class="object-contain h-full" *ngIf="match?.logoAway!=undefined" src={{match.logoAway}} alt="immagine">
                 </div>
                 <div class="w-2/4 flex justify-between items-center">
                     <div>
-                        <p  class="text-2xl" *ngIf="match?.scoreTeamAway!=undefined">{{match.scoreTeamAway}}</p>
+                        <p  class="text-2xl" *ngIf="match?.scoreTeamAway!=undefined && match?.scoreTeamAway!=0">{{match.scoreTeamAway}}</p>
                     </div>
                     <div>
                         <p class="h-full text-4xl flex items-center p-0 m-0">-</p>
                     </div>
                     <div> 
-                        <p class="text-2xl" *ngIf="match?.scoreTeamHome!=undefined">{{match.scoreTeamHome}}</p>
+                        <p class="text-2xl" *ngIf="match?.scoreTeamHome!=undefined  && match?.scoreTeamHome!=0">{{match.scoreTeamHome}}</p>
                     </div>
                 </div>
-                <div class="w-1/4 flex justify-center">
+                <div class="w-1/4 mx-1 flex justify-center">
                     <img class="object-contain h-full" *ngIf="match?.logoHome!=undefined" src={{match.logoHome}} alt="immagine">
                 </div>
             </div>

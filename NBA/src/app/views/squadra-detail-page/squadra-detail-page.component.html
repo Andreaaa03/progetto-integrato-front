@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <section>
     <div class="flex h-full justify-center">
-        <div class="container h-full w-full flex flex-wrap justify-center">
+        <div class="h-full w-full flex flex-wrap justify-center">
             <div class="w-full flex flex-wrap justify-center">
                 <div class="w-full h-20 bg-primary flex justify-center items-center">
                     <h2 class=" text-white text-4xl font-bold">
@@ -28,30 +28,109 @@
                         <div class="w-1/2 h-28 border-r-2 border-white flex justify-around flex-nowrap bg-primary">
                             <div class="w-1/4 h-full flex justify-center items-center">
                                 <div class="rounded-full bg-white lg:w-24 w-12 lg:h-24 h-12">
-                                    <img src="../../../assets/logo-slam-stats.png" class="object-contain h-full" alt="">
+                                    <img src="{{teamStatistics!.team.logo}}" class="object-contain h-full" alt="">
                                 </div>
                             </div>
                             <div class="w-1/2 flex lg:flex-wrap flex-wrap justify-center items-center ">
-                                <p class="lg:w-full w-full text-sm h-1/2 text-white flex items-end lg:text-3xl">NOME SQUADRA</p>
-                                <p class="lg:w-full w-full text-sm h-1/2 text-white lg:text-2xl">N pos° East Conference</p>
+                                <p class="lg:w-full w-full text-sm h-1/2 text-white flex items-end lg:text-3xl">{{teamStatistics!.team.teamName | uppercase}}</p>
+                                <p class="lg:w-full w-full text-sm h-1/2 text-white lg:text-2xl">N pos°: {{teamStatistics?.conferenceRank}} ad {{teamStatistics!.team.conferenceName}}</p>
                             </div>
                         </div>
                         <div class="w-1/2 h-28 border-l-2 border-white text-white flex flex-wrap justify-center items-center bg-primary">
                             <ul class="px-8">
                                 <li class="lg:w-full w-full h-1/2 text-sm">
-                                    <p class="lg:text-xl text-xs"><b class="lg:text-2xl text-sm">Campo</b><span>:</span> TD Garden</p>
+                                    <p class="lg:text-xl text-xs"><b class="lg:text-2xl text-sm">Città</b><span>:</span> {{teamStatistics!.team.city}}</p>
                                 </li>
-                                <li class="lg:w-full w-full h-1/2 text-sm">
+                                <!-- <li class="lg:w-full w-full h-1/2 text-sm">
                                     <p class="lg:text-xl text-xs"><b class="lg:text-2xl text-sm">Località</b><span>:</span>
                                         Boston, Massachusetts, Stati Uniti,
                                         New Egland, Stati Uniti
                                     </p>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
-                        <div class="w-full h-full border-t-4 border-white">
-                            <div class="w-full flex flex-wrap justify-between">
-                                <div class="w-[30%] bg-white m-4" *ngFor="let item of jsonInfo; let i = index">{{jsonInfo[i].titolo}}</div>
+                        <div class="w-full h-auto border-t-4 border-white">
+                            <div class="w-full flex flex-wrap justify-center mt-8 mb-8">
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Partite Giocate</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.games}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Punti Segnati</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.points}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Tiri Realizzati</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.fgm}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Tiri Tentati</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.fga}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Percentuale al Tiro</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.fgp}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Tiri Liberi Segnati</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.ftm}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Tiri Liberi Tentati</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.fta}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Percentuale ai Liberi</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.ftp}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Tiri da Tre punti Segnati</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.tpm}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Tiri da Tre punti Tentati</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.tpa}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Percentuale da Tre Punti</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.tpp}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Rimbalzi Offensivi</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.offReb}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Rimbalzi Difensivi</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.defReb}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Rimbalzi Totali</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.totReb}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Assists</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.assists}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Palle Rubate</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.steals}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Palle Perse</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.turnovers}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Stoppate</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.blocks}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Plus/Minus di Squadra</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.plusMinus}}</p>
+                                </div>
+                                <div class="w-[25%] flex flex-wrap mb-4 mt-4 justify-center">
+                                    <p class="w-[60%] h-12 flex justify-center mb-1 bg-blue-300 font-bold items-center">Falli di Squadra</p>
+                                    <p class="w-[60%] flex justify-center bg-white">{{teamStatistics?.pfouls}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -65,46 +144,56 @@
                             <div class="w-full h-6 bg-secondary"></div>
                         </div>
                     </div>
-                    <div class="lg:w-[90%] w-full lg:flex lg:justify-center overflow-x-auto">
-                        <table class="w-full table-auto">
+                    <div class="lg:w-[90%] w-full flex justify-center">
+                        <table class="w-full">
                             <thead class="bg-primary text-white lg:w-full w-full">
                                 <tr>
-                                    <th class="lg:w-[5%]  w-auto">
+                                    <th class="lg:w-[5%]  w-[3%]">
                                         <p class="w-full text-center px-3">DATA</p>
                                     </th>
-                                    <th class="lg:w-[10%] w-auto">
-                                        <p class="w-full text-center px-3">ORARIO</p>
+                                    <th class="lg:w-[10%] w-[3%]">
+                                        <p class="lg:block w-full hidden text-center px-3">ORARIO</p>
+                                        <p class="lg:hidden text-center px-3">ORA</p>
                                     </th>
-                                    <th class="lg:w-[15%] w-auto">
-                                        <p class="w-full text-center px-3">AVVERSARIO</p>
+                                    <th class="lg:w-[15%] w-[2%]">
+                                        <p class="lg:block w-full hidden text-center px-3">AVVERSARIO</p>
+                                        <p class="lg:hidden text-center px-3">VS</p>
                                     </th>
-                                    <th class="lg:w-[10%] w-auto">
-                                        <p class="w-full text-center px-3">RISULTATO</p>
+                                    <th class="lg:w-[10%] w-[2%]">
+                                        <p class="lg:block w-full hidden text-center px-3">RISULTATO</p>
+                                        <p class="lg:hidden text-center px-3">RIS</p>
                                     </th>
-                                    <th class="lg:w-[15%] w-auto">
-                                        <p class="w-full text-center px-3">PUNTEGGIO</p>
+                                    <th class="lg:w-[15%] w-[56%]">
+                                        <p class="lg:block w-full hidden text-center px-3">PUNTEGGIO</p>
+                                        <p class="lg:hidden text-center px-3">PTS</p>
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="lg:w-full w-full">
-                                <tr *ngFor="let _ of ripetiArray.slice(0, cardToShow)">
-                                    <td class="lg:w-[15%] w-auto">
-                                        <p class="w-full text-center px-3">11/01/2024</p>
+                            <tbody class="lg:w-full w-full" *ngFor="let match of matchCalendar.totalMatch, let i = index">
+                                <tr *ngIf="i <= cardToShow">
+                                    <td class="lg:w-[15%] w-[3%]">
+                                        <p class="w-full text-center px-3">{{match?.matchDate}}</p>
                                     </td>
-                                    <td class="lg:w-[10%] w-auto">
-                                        <p class="w-full text-center px-3">02:00</p>
+                                    <td class="lg:w-[10%] w-[3%]">
+                                        <p class="w-full text-center px-3">{{match?.matchTime}}</p>
                                     </td>
-                                    <td class="lg:w-[5%]  w-auto">
-                                        <p class="w-full text-center px-3">LAL</p>
+                                    <td class="lg:w-[5%]  w-[2%]">
+                                        <p class="w-full text-center px-3" *ngIf="match?.codeHome !== teamStatistics!.team.code">{{match?.codeHome}}</p>
+                                        <p class="w-full text-center px-3" *ngIf="match?.codeAway !== teamStatistics!.team.code">{{match?.codeAway}}</p>
                                     </td>
-                                    <td class="lg:w-[10%] w-auto">
-                                        <p class="w-full text-center px-3">W</p>
+                                    <td class="lg:w-[10%] w-[2%]">
+                                        <p class="w-full text-center px-3" *ngIf="match?.codeHome !== teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamAway > match!.scoreTeamHome)">W</p>
+                                        <p class="w-full text-center px-3" *ngIf="match?.codeHome === teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamHome > match!.scoreTeamAway)">W</p>
+                                        <p class="w-full text-center px-3" *ngIf="match?.codeAway !== teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamAway > match!.scoreTeamHome)">L</p>
+                                        <p class="w-full text-center px-3" *ngIf="match?.codeAway === teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamHome > match!.scoreTeamAway)">L</p>
+                                   </td>
+                                    
+                                    <td class="lg:w-[10%] w-[56%]">
+                                        <p class="w-full text-center px-3">{{match?.scoreTeamAway}}-{{match?.scoreTeamHome}}</p>
                                     </td>
-                                    <td class="lg:w-[10%] w-auto">
-                                        <p class="w-full text-center px-3">88-91</p>
-                                    </td>
-                                    <td class="lg:w-[50%] w-auto">
-                                        <div class="w-full flex justify-end mx-2 lg:mx-0" routerLink="/tabellino"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
+                                    <td class="lg:w-[50%] w-[34%]">
+                                        <div class="w-full hidden lg:flex lg:justify-end lg:mx-0" routerLink="/tabellino"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
+                                        <div class="w-full flex lg:hidden lg:justify-end lg:mx-0" routerLink="/tabellino"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1 w-full">TAB</button></div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -121,12 +210,12 @@
                         <div class="w-full h-28 flex justify-around flex-nowrap bg-primary">
                             <div class="w-1/4 h-full flex justify-center items-center mr-4">
                                 <div class="rounded-full bg-white lg:w-24 w-12 lg:h-24 h-12">
-                                    <img src="../../../assets/logo-slam-stats.png" class="object-contain h-full" alt="">
+                                    <img src="{{teamStatistics!.team.logo}}" class="object-contain h-full" alt="">
                                 </div>
                             </div>
                             <div class="lg:w-full w-full flex flex-wrap justify-center items-center ">
-                                <p class="w-full h-1/2 text-white flex items-end lg:text-3xl text-sm">NOME SQUADRA</p>
-                                <p class="w-full h-1/2 text-white lg:text-2xl text-sm">N pos° East Conference</p>
+                                <p class="w-full h-1/2 text-white flex items-end lg:text-3xl text-sm">{{teamStatistics!.team.teamName | uppercase}}</p>
+                                <p class="w-full h-1/2 text-white lg:text-2xl text-sm">N pos°: {{teamStatistics?.conferenceRank}} ad {{teamStatistics!.team.conferenceName}}</p>
                             </div>
                         </div>
                     </div>

@@ -14,6 +14,8 @@ import { SquadraDetailPageComponent } from './views/squadra-detail-page/squadra-
 import { GetApiServiceSingleTeam } from './services/getApiSingleTeam.service';
 import { ArticoloDetailPageComponent } from './views/articolo-detail-page/articolo-detail-page.component';
 import { ProfiloPageComponent } from './views/profilo-page/profilo-page.component';
+import { GetApiServiceMatch } from './services/getApiMatch.service';
+
 
 const routes: Routes = [
   {
@@ -49,20 +51,23 @@ const routes: Routes = [
       ResolveSingleTeamPlayer: (route: ActivatedRouteSnapshot) => {
         return inject(GetApiServiceSingleTeam).getSearchSingleTeamPlayer(route.paramMap.get("id")!);
       }
-    }, title: "SLAM STATS - Squadra"
-  },
-  { path: "tabellino", component: PartitaPageComponent, title: "SLAM STATS - Tabellino" },
-  { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole" },
-  { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog" },
+    }, title: "SLAM STATS - Squadra"},
   {
+    path: "tabellino/:id", component: PartitaPageComponent, resolve: {
+      ResolveMatchStats: (route: ActivatedRouteSnapshot) => {
+        return inject(GetApiServiceMatch).getSearchMatchStats(route.paramMap.get("id")!);
+      }
+    }, title: "SLAM STATS - Tabellino"},
+  { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole"},
+  { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog"},
+    {
     path: "profilo", component: ProfiloPageComponent, resolve: {
       ResolveTeams: () => {
         return inject(GetApiServiceTeams).getSearchTeams();
       }
     }, title: "SLAM STATS - Profilo"
   },
-  
-  { path: "articolo", component: ArticoloDetailPageComponent, title: "SLAM STATS - Articolo" },
+  { path: "articolo", component: ArticoloDetailPageComponent, title: "SLAM STATS - Articolo"},
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore
   { path: "errore", component: ErrorePageComponent, pathMatch: "full" },
   { path: "**", component: ErrorePageComponent, title: "ERR. 404 - pagina non trovata" },

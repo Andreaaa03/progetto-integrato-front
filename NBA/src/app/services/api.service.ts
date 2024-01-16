@@ -29,4 +29,14 @@ export class ApiService {
     SearchSingleTeamPlayer(id:string){
         return this.http.get(this.baseURL + "player/teamId?Id="+ id);
     }
+
+    SearchMatch(id:string){
+        return this.http.get(this.baseURL + "games/gameId?Id="+ id);
+    }
+    SearchMatchStats(id:string){
+        return this.http.get(this.baseURL + "games/partitaStat?IdPartita="+ id);
+    }
+    SearchMatchDate(date:string){
+        return this.http.get(this.baseURL + "games/date?date="+ date);
+    }
 }

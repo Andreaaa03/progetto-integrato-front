@@ -37,15 +37,18 @@ export type teamStatistic = {
     blocks: number;
     plusMinus: number;
     pfouls: number;
+    conferenceRank: number;
 };
 
 export type teamCalendar = {
     gameid: number;
     gameStartDate: string;
+    matchDate: string;
+    matchTime: string;
     teamHomeName: string;
     teamAwayName: string;
     scoreTeamHome: number;
-    scoreTeamAway: null;
+    scoreTeamAway: number;
     conferenceNameHome: string;
     conferenceNameAway: string;
     divisionNameHome: string;

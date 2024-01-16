@@ -37,6 +37,7 @@ export type teamStatistic = {
     blocks: number;
     plusMinus: number;
     pfouls: number;
+    conferenceRank: number;
 };
 
 export type teamCalendar = {

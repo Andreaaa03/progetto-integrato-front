@@ -39,4 +39,7 @@ export class ApiService {
     SearchMatchDate(date:string){
         return this.http.get(this.baseURL + "games/date?date="+ date);
     }
+    SearchMatchDateLast20(date:string){
+        return this.http.get(this.baseURL + "games/Last20?date="+ date);
+    }
 }

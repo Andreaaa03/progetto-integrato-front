@@ -37,8 +37,22 @@ export class GetApiServiceMatch {
     getSearchMatchDate(date: string) {
         return this.apiService.SearchMatchDate(date).pipe(
             map((res: any) => {
-                console.log(res);
                 return res as matchDate;
+            })
+        )
+    }
+    mathLast20!: matchDate;
+    getSearchMatchDataLast20(date: string) {
+        this.mathLast20=[];
+        return this.apiService.SearchMatchDateLast20(date).pipe(
+            map((res: any) => {
+                res.reverse().forEach((singleMatch: any) => {
+                    if (this.mathLast20.length < 20) {
+                        singleMatch.gameStartDate = dayjs(singleMatch.gameStartDate).format("DD-MM-YY HH:mm");
+                        this.mathLast20.push(singleMatch);
+                    }
+                })
+                return this.mathLast20 as matchDate;
             })
         )
     }

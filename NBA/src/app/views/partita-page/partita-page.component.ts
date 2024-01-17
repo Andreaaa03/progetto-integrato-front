@@ -10,9 +10,7 @@ import { matchStats } from 'src/app/models/typeMatch';
 export class PartitaPageComponent implements OnInit {
   quarti: number[] = [1, 2, 3, 4];
   tabsSelected: string = "statics";
-  staticsToShow: number[] = [1, 2, 3, 4, 5, 6, 7, 7];
-  lato1 = 2;
-  lato2 = 2;
+  staticsToShow: number[] = [];
 
   matchStats!: matchStats;
 
@@ -22,14 +20,17 @@ export class PartitaPageComponent implements OnInit {
     this.activatedRoute.data.subscribe(
       ({ ResolveMatchStats }) => {
         this.matchStats = ResolveMatchStats;
-        console.log(this.matchStats);
+        console.log(this.matchStats.awayTeam.datiArray);
+        for(let i=0; i<this.matchStats.awayTeam.datiArray.length; i++) {
+          this.staticsToShow.push(i);
+        } 
       })
   }
 
   functionCalculatePercentage(lato1: number, lato2: number, whichLato: boolean): number {
     const sum = lato1 + lato2;
-    const percentage1 = Math.round((lato1 / sum) * 100);
-    const percentage2 = Math.round((lato2 / sum) * 100);
+    const percentage1 = Math.round((lato1 / sum) * 100)*1.3;
+    const percentage2 = Math.round((lato2 / sum) * 100)*1.3;
 
     return whichLato ? percentage1 : percentage2;
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as dayjs from 'dayjs';
+import { matchDate } from 'src/app/models/typeMatch';
 import { GetApiServiceMatch } from 'src/app/services/getApiMatch.service';
 
 @Component({
@@ -10,10 +11,9 @@ import { GetApiServiceMatch } from 'src/app/services/getApiMatch.service';
 export class CalendarioPageComponent implements OnInit {
 
   matchToday: number[] = [];
-  matchTodayLastTwenty: number[] = [];
+  matchTodayLast20!: matchDate;
   cardToShow: number = 3;
 
-  gameId="12478";
   changeCardToShow(cardToShow: number): void {
     if (cardToShow == 3)
       this.cardToShow = this.matchToday.length;
@@ -52,6 +52,7 @@ export class CalendarioPageComponent implements OnInit {
     this.getNoOfDaysRight();
     this.isToday(this.currentYearCentral, this.currentMonthCentral, this.daySelected);
     this.remainDay();
+    this.functionGetMatchDateLast20();
   }
   
   functionGetMatchDate(){
@@ -60,10 +61,15 @@ export class CalendarioPageComponent implements OnInit {
         this.matchToday=[];
         for(let i=0; i<game.length; i++){
           this.matchToday.push(game[i].gameid);
-          if (this.matchTodayLastTwenty.length <= 20){
-            this.matchTodayLastTwenty.push(game[i].gameid);
-          }
         }
+      }
+    )
+  }
+
+  functionGetMatchDateLast20(){
+    this.getApiServiceMatch.getSearchMatchDataLast20(this.finalDay).subscribe(
+      (game)=>{
+          this.matchTodayLast20=game;
       }
     )
   }

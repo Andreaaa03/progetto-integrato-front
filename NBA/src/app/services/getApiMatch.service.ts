@@ -30,15 +30,36 @@ export class GetApiServiceMatch {
                 res.awayTeam.playersStatistics.forEach((info: any) => {
                     info.min = info.min.split(":")[2];
                 })
+                for (let i = 0; i < 4; i++) {
+                    res.homeTeam.quartiArray = Object.values(res?.homeTeam?.qaurtiScoreResponse);
+                    res.awayTeam.quartiArray = Object.values(res?.awayTeam?.qaurtiScoreResponse);
+                }
+                res.homeTeam.datiArray = Object.entries(res.homeTeam.dati).map(entry => entry);
+                res.awayTeam.datiArray = Object.entries(res.awayTeam.dati).map(entry => entry);
                 return res as matchStats;
-            })
+            }
+            )
         )
     }
     getSearchMatchDate(date: string) {
         return this.apiService.SearchMatchDate(date).pipe(
             map((res: any) => {
-                console.log(res);
                 return res as matchDate;
+            })
+        )
+    }
+    mathLast20!: matchDate;
+    getSearchMatchDataLast20(date: string) {
+        this.mathLast20 = [];
+        return this.apiService.SearchMatchDateLast20(date).pipe(
+            map((res: any) => {
+                res.reverse().forEach((singleMatch: any) => {
+                    if (this.mathLast20.length < 20) {
+                        singleMatch.gameStartDate = dayjs(singleMatch.gameStartDate).format("DD-MM-YY HH:mm");
+                        this.mathLast20.push(singleMatch);
+                    }
+                })
+                return this.mathLast20 as matchDate;
             })
         )
     }

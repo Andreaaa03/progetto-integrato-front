@@ -54,7 +54,7 @@ type stats = {
     qaurtiScoreResponse: quarti;
     quartiArray: number[];
     dati: dati;
-    datiArray: [];
+    datiArray: [number,number][];
     playersStatistics: playerStats[];
 };
 type dati = {

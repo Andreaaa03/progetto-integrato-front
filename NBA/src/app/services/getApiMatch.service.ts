@@ -34,8 +34,8 @@ export class GetApiServiceMatch {
                     res.homeTeam.quartiArray = Object.values(res?.homeTeam?.qaurtiScoreResponse);
                     res.awayTeam.quartiArray = Object.values(res?.awayTeam?.qaurtiScoreResponse);
                 }
-                res.homeTeam.datiArray = Object.entries(res.awayTeam.dati).map(([key, value]) => ({ [key]: value }));
-                res.awayTeam.datiArray = Object.entries(res.awayTeam.dati).map(([key, value]) => ({ [key]: value }));
+                res.homeTeam.datiArray = Object.entries(res.homeTeam.dati).map(entry => entry);
+                res.awayTeam.datiArray = Object.entries(res.awayTeam.dati).map(entry => entry);
                 return res as matchStats;
             }
             )

@@ -169,19 +169,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="h-20 p-0" *ngFor="let _ of matchStats.homeTeam.datiArray">
+                        <tr class="h-20 p-0" *ngFor="let _ of staticsToShow, let i=index">
                             <td colspan="3" class="w-full p-0 border-b-4 border-white bg-[#ACDEFF]">
                                 <div class="flex flex-col flex-wrap justify-around items-center">
-                                    <p class="w-full text-center text-lg">tiri da 3 punti</p>
+                                    <p class="w-full text-center h-auto text-xl pb-2">{{matchStats.awayTeam.datiArray[i][0]}}</p>
                                     <div class="w-[80%] flex justify-center items-center flex-nowrap">
                                         <div class="w-[50%] flex justify-end bg-[#DCF1FF] rounded-l-full">
-                                            <div [style.width.%]="functionCalculatePercentage(lato1, lato2, true)" class="bg-red-500 rounded-l-full">
-                                                <p class="w-full text-center">{{ lato1 }}</p>
+                                            <div [style.width.%]="functionCalculatePercentage(matchStats.awayTeam.datiArray[i][1], matchStats.homeTeam.datiArray[i][1], true)" class="bg-red-500 rounded-l-full">
+                                                <p class="w-full text-center font-bold text-xl text-white">{{ matchStats.awayTeam.datiArray[i][1] }}</p>
                                             </div>
                                         </div>
                                         <div class="w-[50%] flex justify-start bg-[#DCF1FF] rounded-r-full">
-                                            <div [style.width.%]="functionCalculatePercentage(lato1, lato2, false)" class="bg-blue-500 rounded-r-full">
-                                                <p class="w-full text-center">{{ lato2 }}</p>
+                                            <div [style.width.%]="functionCalculatePercentage(matchStats.awayTeam.datiArray[i][1], matchStats.homeTeam.datiArray[i][1], false)" class="bg-blue-500 rounded-r-full">
+                                                <p class="w-full text-center font-bold text-xl text-white">{{ matchStats.homeTeam.datiArray[i][1] }}</p>
                                             </div>
                                         </div>
                                     </div>

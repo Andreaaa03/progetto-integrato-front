@@ -21,7 +21,7 @@ export class PartitaPageComponent implements OnInit {
       ({ ResolveMatchStats }) => {
         this.matchStats = ResolveMatchStats;
         console.log(this.matchStats.awayTeam.datiArray);
-        for(let i=0; i<this.matchStats.awayTeam.datiArray.length; i++) {
+        for(let i=0; i<this.matchStats.awayTeam.datiArray.length-1; i++) {
           this.staticsToShow.push(i);
         } 
       })
@@ -29,8 +29,8 @@ export class PartitaPageComponent implements OnInit {
 
   functionCalculatePercentage(lato1: number, lato2: number, whichLato: boolean): number {
     const sum = lato1 + lato2;
-    const percentage1 = Math.round((lato1 / sum) * 100)*1.3;
-    const percentage2 = Math.round((lato2 / sum) * 100)*1.3;
+    const percentage1 = Math.round((lato1 / sum) * 100);
+    const percentage2 = Math.round((lato2 / sum) * 100);
 
     return whichLato ? percentage1 : percentage2;
   }

@@ -52,7 +52,7 @@ type playerStats = {
 
 type stats = {
     qaurtiScoreResponse: quarti;
-    quartiArray: [];
+    quartiArray: number[];
     dati: dati;
     datiArray: [];
     playersStatistics: playerStats[];

@@ -15,7 +15,7 @@
                     <div class="h-1/4 w-full flex justify-center"></div>
                     <div class="h-1/4 w-full flex justify-center"><img src={{matchStats.calendarioDateResponse.logoAway}} alt="img"></div>
                     <div class="h-1/4 w-full flex justify-center">
-                        <p class="font-bold text-2xl">{{matchStats.calendarioDateResponse.teamAwayName}}</p>
+                        <p class="w-full font-bold text-center text-2xl">{{matchStats.calendarioDateResponse.teamAwayName}}</p>
                     </div>
                     <div class="h-1/4 w-full flex justify-center">
                         <p class="font-bold text-xl">(1-20)</p>
@@ -35,7 +35,7 @@
                     <div class="h-1/4 w-full flex justify-center"></div>
                     <div class="h-1/4 w-full flex justify-center"><img src={{matchStats.calendarioDateResponse.logoHome}} alt="img"></div>
                     <div class="h-1/4 w-full flex justify-center">
-                        <p class="font-bold text-2xl">{{matchStats.calendarioDateResponse.teamHomeName}}</p>
+                        <p class="w-full text-center font-bold text-2xl">{{matchStats.calendarioDateResponse.teamHomeName}}</p>
                     </div>
                     <div class="h-1/4 w-full flex justify-center">
                         <p class="font-bold text-xl">(17-3)</p>
@@ -49,16 +49,10 @@
                     </p>
                 </div>
                 <div class="lg:w-[42%] w-[35%]  bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
-                    <p *ngIf="i==0" class="text-xl">{{matchStats.homeTeam.qaurtiScoreResponse.q1Score}}</p>
-                    <p *ngIf="i==1" class="text-xl">{{matchStats.homeTeam.qaurtiScoreResponse.q2Score}}</p>
-                    <p *ngIf="i==2" class="text-xl">{{matchStats.homeTeam.qaurtiScoreResponse.q3Score}}</p>
-                    <p *ngIf="i==3" class="text-xl">{{matchStats.homeTeam.qaurtiScoreResponse.q4Score}}</p>
+                    <p class="text-xl">{{matchStats.awayTeam.quartiArray[i]}}</p>
                 </div>
                 <div class="lg:w-[42%] w-[35%]  bg-[#DCF1FF] h-12 rounded-3xl flex justify-center items-center">
-                    <p *ngIf="i==0" class="text-xl">{{matchStats.homeTeam.qaurtiScoreResponse.q1Score}}</p>
-                    <p *ngIf="i==1" class="text-xl">{{matchStats.homeTeam.qaurtiScoreResponse.q2Score}}</p>
-                    <p *ngIf="i==2" class="text-xl">{{matchStats.homeTeam.qaurtiScoreResponse.q3Score}}</p>
-                    <p *ngIf="i==3" class="text-xl">{{matchStats.homeTeam.qaurtiScoreResponse.q4Score}}</p>
+                    <p class="text-xl">{{matchStats.homeTeam.quartiArray[i]}}</p>
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@ export class PartitaPageComponent implements OnInit {
       ({ ResolveMatchStats }) => {
         this.matchStats = ResolveMatchStats;
         if(this.matchStats)
-          console.log(this.matchStats.homeTeam.quartiArray.length);
+          console.log(this.matchStats.homeTeam.quartiArray);
       })
   }
 

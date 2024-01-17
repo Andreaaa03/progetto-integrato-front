@@ -10,7 +10,6 @@ import { matchStats } from 'src/app/models/typeMatch';
 export class PartitaPageComponent implements OnInit {
   quarti: number[] = [1, 2, 3, 4];
   tabsSelected: string = "statics";
-  staticsToShow: number[] = [1, 2, 3, 4, 5, 6, 7, 7];
   lato1 = 2;
   lato2 = 2;
 
@@ -22,7 +21,8 @@ export class PartitaPageComponent implements OnInit {
     this.activatedRoute.data.subscribe(
       ({ ResolveMatchStats }) => {
         this.matchStats = ResolveMatchStats;
-        console.log(this.matchStats);
+        if(this.matchStats)
+          console.log(this.matchStats.homeTeam.quartiArray.length);
       })
   }
 

@@ -51,6 +51,13 @@ type playerStats = {
 };
 
 type stats = {
+    qaurtiScoreResponse: quarti;
+    quartiArray: [];
+    dati: dati;
+    datiArray: [];
+    playersStatistics: playerStats[];
+};
+type dati = {
     fgm: number;
     fga: number;
     fgp: number;
@@ -69,7 +76,13 @@ type stats = {
     turnovers: number;
     blocks: number;
     plusMinus: number;
-    playersStatistics: playerStats[];
+}
+
+type quarti={
+    q1Score: number,
+    q2Score: number,
+    q3Score: number,
+    q4Score: number
 };
 
 export type matchStats = {

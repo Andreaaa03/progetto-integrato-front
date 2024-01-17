@@ -30,6 +30,11 @@ export class GetApiServiceMatch {
                 res.awayTeam.playersStatistics.forEach((info: any) => {
                     info.min = info.min.split(":")[2];
                 })
+                res.homeTeam.quartiArray = Object.entries(res.homeTeam.qaurtiScoreResponse).map(([key, value]) => ({ [key]: value }));
+                res.awayTeam.quartiArray = Object.entries(res.awayTeam.qaurtiScoreResponse).map(([key, value]) => ({ [key]: value }));
+                res.homeTeam.datiArray = Object.entries(res.homeTeam.dati).map(([key, value]) => ({ [key]: value }));
+                res.awayTeam.datiArray = Object.entries(res.awayTeam.dati).map(([key, value]) => ({ [key]: value }));
+
                 return res as matchStats;
             })
         )

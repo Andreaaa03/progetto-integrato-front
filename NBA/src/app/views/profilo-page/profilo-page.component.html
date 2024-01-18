@@ -89,7 +89,30 @@
                         </h2>
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
+                    <div class="w-full flex flex-wrap justify-between my-10">
+                        <div class="w-[30%] rounded-md mx-2 my-4 border-blue-900" *ngFor="let _ of ripetiArray, let i = index"> 
+                            <div class="w-full h-[3/4] bg-secondary flex flex-wrap p-4">
+                                <div class="w-full flex flex-nowrap">
+                                    <div class="w-20 h-20 rounded-full bg-slate-500 ml-4">
 
+                                    </div>
+                                    <div class="flex flex-wrap ml-4">
+                                        <div class="w-full text-sm text-start text-white "><p>Luca</p></div>
+                                        <div class="w-full text-sm text-start text-white "><p>Badge</p></div>
+                                    </div>
+                                </div>
+                                <div class="w-full flex flex-wrap mt-4">
+                                    <div class="w-full lg:text-md text-white ">SONDAGGI INDOVINATI: 5</div>
+                                    <div class="w-full lg:text-md text-white ">SONDAGGI SBAGLIATI: 12</div>
+                                    <div class="w-full lg:text-md text-white ">PERCENTUALE DI RISPOSTE CORRETTE: 2,4%</div>
+                                    <div class="w-full lg:text-md text-white ">POSIZIONE IN CLASSIFICA: 70°</div>
+                                </div>   
+                            </div>
+                            <div class="w-full h-[1/4] bg-white flex justify-center ">
+                                <button class="w-[50%] rounded-md border-blue-900">SEGUI</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="" *ngIf="menuSelected==='preferiti'">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">

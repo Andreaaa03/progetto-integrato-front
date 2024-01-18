@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent {
 
+  modal: boolean = false;
+
   utente: string = 'admin';
   password: string = 'admin';
   errorMessage: string = '';

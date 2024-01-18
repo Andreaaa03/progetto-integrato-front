@@ -1,29 +1,38 @@
 <app-navbar></app-navbar>
 
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="max-w-md w-full p-6 bg-white rounded-md shadow-md">
-      <div class="text-center mb-6">
-        <h2 class="text-2xl font-semibold text-gray-800">Login</h2>
+<div class="flex items-center justify-center min-h-screen bg-gray-100" *ngIf="modal === true">
+  <div class="w-[80%] flex justify-center">
+    <p class="text-2xl font-bold">ACCEDI AL TUO ACCOUNT</p>
+  </div>
+  <div class="max-w-md w-full p-6 bg-white rounded-md shadow-md">
+    <form class="w-full flex flex-wrap" (submit)="login()" ngDefaultControl>
+      <div class="w-[90%] bg-white mb-4">
+        <label for="username" class="block text-sm font-medium text-gray-600">Username</label>
+        <input type="text" id="username" name="username" [(ngModel)]="utente" class="mt-1 p-2 w-full border rounded-md"
+          placeholder="Username: ">
       </div>
-      <form (submit)="login()" ngDefaultControl>
-        <div class="mb-4">
-          <label for="username" class="block text-sm font-medium text-gray-600">Username</label>
-          <input type="text" id="username" name="username" [(ngModel)]="utente" class="mt-1 p-2 w-full border rounded-md">
-        </div>
-        <div class="mb-4">
-          <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
-          <input type="password" id="password" name="password" [(ngModel)]="password" class="mt-1 p-2 w-full border rounded-md">
-        </div>
-        <button type="submit" class="w-full p-2 bg-primary text-white rounded-md hover:bg-blue-600">Login</button>
-      </form>
-      <div class="text-center mt-4">
-        <p class="text-sm text-gray-600">{{ errorMessage }}</p>
+      <div class="w-[90%] bg-white mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password"
+          class="mt-1 p-2 w-full border rounded-md" placeholder="Password: ">
       </div>
+      <button type="submit"
+        class="w-full flex justify-center p-2 bg-primary text-white rounded-md hover:bg-blue-600">ACCEDI</button>
+      <button type=""
+        class="w-full flex justify-center p-2 bg-white text-blue-950 rounded-md hover:bg-tertiary border-blue-900">Password
+        Dimenticata?</button>
+      <div class="w-[80%] flex justify-center">
+        <p class="text-base font-bold">Non sei ancora registrato?</p>
+        <button type="" class="w-full p-2  bg-primary text-white rounded-md hover:bg-blue-600">REGISTRATI</button>
+      </div>
+    </form>
+    <div class="text-center mt-4">
+      <p class="text-sm text-gray-600">{{ errorMessage }}</p>
     </div>
   </div>
-  
-      
-<footer class="">
-    <app-footer></app-footer>
-</footer>
+</div>
 
+
+<footer>
+  <app-footer></app-footer>
+</footer>

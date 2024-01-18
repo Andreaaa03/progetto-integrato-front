@@ -67,7 +67,14 @@ export class CalendarioPageComponent implements OnInit {
   }
 
   functionGetMatchDateLast20(){
-    this.getApiServiceMatch.getSearchMatchDataLast20(this.finalDay).subscribe(
+    let previousDay;
+    if (this.currentMonthCentral + 1 >= 1 && this.currentMonthCentral + 1 <= 9){
+      previousDay=this.currentYearCentral + "-0" + (this.currentMonthCentral+1) + "-" + (this.daySelected - 1)
+    }else{
+      previousDay=this.currentYearCentral + "-" + (this.currentMonthCentral+1) + "-" + (this.daySelected - 1)
+    }
+    console.log(previousDay);
+    this.getApiServiceMatch.getSearchMatchDataLast20(previousDay).subscribe(
       (game)=>{
           this.matchTodayLast20=game;
       }
@@ -107,7 +114,6 @@ export class CalendarioPageComponent implements OnInit {
     this.isTodayYear = Year;
     this.isTodayMonth = Month;
     this.isTodayDay = Day;
-    console.log(this.finalDay);
     this.functionGetMatchDate();
   };
   controlForIsToday(Year: number, Month: number, Day: number): boolean {

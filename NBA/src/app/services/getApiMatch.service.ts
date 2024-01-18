@@ -53,6 +53,7 @@ export class GetApiServiceMatch {
         this.mathLast20 = [];
         return this.apiService.SearchMatchDateLast20(date).pipe(
             map((res: any) => {
+                console.log(res);
                 res.reverse().forEach((singleMatch: any) => {
                     if (this.mathLast20.length < 20) {
                         singleMatch.gameStartDate = dayjs(singleMatch.gameStartDate).format("DD-MM-YY HH:mm");

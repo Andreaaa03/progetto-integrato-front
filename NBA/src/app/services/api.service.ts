@@ -11,12 +11,12 @@ export class ApiService {
 
     //classifica
     SearchStanding(){
-        return this.http.get(this.baseURL + "standings/All");
+        return this.http.get(this.baseURL + "standings/all");
     }
     
     //tutti i team
     SearchTeams(){
-        return this.http.get(this.baseURL + "teams/All");
+        return this.http.get(this.baseURL + "teams/all");
     }
 
     //statistiche singolo team, calendario singolo team, giocatori per team
@@ -27,14 +27,14 @@ export class ApiService {
         return this.http.get(this.baseURL + "games/teamId?teamId="+ id);
     }
     SearchSingleTeamPlayer(id:string){
-        return this.http.get(this.baseURL + "player/teamId?Id="+ id);
+        return this.http.get(this.baseURL + "player/teamId?id="+ id);
     }
 
     SearchMatch(id:string){
-        return this.http.get(this.baseURL + "games/gameId?Id="+ id);
+        return this.http.get(this.baseURL + "games/gameId?id="+ id);
     }
     SearchMatchStats(id:string){
-        return this.http.get(this.baseURL + "games/partitaStat?IdPartita="+ id);
+        return this.http.get(this.baseURL + "games/partitaStat?idPartita="+ id);
     }
     SearchMatchDate(date:string){
         return this.http.get(this.baseURL + "games/date?date="+ date);

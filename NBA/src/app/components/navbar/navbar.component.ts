@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-navbar',
@@ -6,11 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent{
-
+  dateToday = dayjs().format('YYYY-MM-DD');
   isMobileMenuOpen: boolean = false;
   modal:boolean=false;
   toggleMenu(isMobileMenuOpen: boolean) {
-    console.log(isMobileMenuOpen);
     this.isMobileMenuOpen = !isMobileMenuOpen;
+  }
+  stampa(){
+    console.log(this.dateToday);
   }
 }

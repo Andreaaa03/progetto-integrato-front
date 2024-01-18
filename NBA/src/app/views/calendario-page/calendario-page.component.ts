@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import * as dayjs from 'dayjs';
 import { matchDate } from 'src/app/models/typeMatch';
 import { GetApiServiceMatch } from 'src/app/services/getApiMatch.service';
@@ -44,7 +45,7 @@ export class CalendarioPageComponent implements OnInit {
   finalDay:string="";
   ripetiArray = new Array(10).fill(null);
 
-  constructor(private getApiServiceMatch: GetApiServiceMatch){}
+  constructor(private getApiServiceMatch: GetApiServiceMatch, private activatedRoute: ActivatedRoute){}
   ngOnInit(): void {
     this.initDate();
     this.getNoOfDaysLeft();
@@ -52,18 +53,15 @@ export class CalendarioPageComponent implements OnInit {
     this.getNoOfDaysRight();
     this.isToday(this.currentYearCentral, this.currentMonthCentral, this.daySelected);
     this.remainDay();
-    this.functionGetMatchDateLast20();
-  }
-  
-  functionGetMatchDate(){
-    this.getApiServiceMatch.getSearchMatchDate(this.finalDay).subscribe(
-      (game)=>{
-        this.matchToday=[];
-        for(let i=0; i<game.length; i++){
-          this.matchToday.push(game[i].gameid);
-        }
-      }
-    )
+    this.activatedRoute.data.subscribe(
+      ({ ResolveMatchData, ResolveMatchDataLast20 }) => {
+        ResolveMatchData.forEach((singleMatch:any)=>{
+          this.matchToday.push(singleMatch.gameid);
+        })
+        console.log(this.matchToday);
+        
+        this.functionGetMatchDateLast20();
+      })
   }
 
   functionGetMatchDateLast20(){
@@ -76,7 +74,7 @@ export class CalendarioPageComponent implements OnInit {
     console.log(previousDay);
     this.getApiServiceMatch.getSearchMatchDataLast20(previousDay).subscribe(
       (game)=>{
-          this.matchTodayLast20=game;
+          console.log(game);
       }
     )
   }
@@ -114,7 +112,6 @@ export class CalendarioPageComponent implements OnInit {
     this.isTodayYear = Year;
     this.isTodayMonth = Month;
     this.isTodayDay = Day;
-    this.functionGetMatchDate();
   };
   controlForIsToday(Year: number, Month: number, Day: number): boolean {
     let res: boolean = false;

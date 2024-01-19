@@ -37,8 +37,6 @@ export class GetApiServiceSingleTeam {
                     let matchTime = dayjs(singleTeam.gameStartDate).format('HH:mm').toString();
                     singleTeam.matchDate = matchDate;
                     singleTeam.matchTime = matchTime;
-                    console.log(matchDate, matchTime)
-
                    /*  console.log(singleTeam.gameid); */
                     this.match.totalMatch.push(singleTeam);
                     if (singleTeam.gameStartDate <= todayDate) {
@@ -55,7 +53,6 @@ export class GetApiServiceSingleTeam {
     getSearchSingleTeamPlayer(id: string) {
         return this.apiService.SearchSingleTeamPlayer(id).pipe(
             map((res: any) => {
-                console.log(res);
                 return res as allPlayer;
             })
         )

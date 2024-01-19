@@ -39,10 +39,10 @@
                                 <div *ngIf="blankdays_left.length!=blankday" class="text-center h-full px-4 pt-2"></div>
                                 <div *ngIf="blankdays_left.length===blankday" class="text-center h-full border-r px-4 pt-2"></div>
                             </div>
-                            <div *ngFor="let date of no_of_days_left" class="border-r border-b w-[14.28%]" id="no_of_days">
+                            <div *ngFor="let date of no_of_days_left" class="border-r border-b w-[14.28%]" id="no_of_days" (click)="daySelected=date; isToday(currentYearLeft, currentMonthLeft, daySelected); changeDate(currentYearLeft, currentMonthLeft,date)">
                                 <div class="py-2 hover:cursor-pointer" [ngClass]="{
                                                         'bg-black text-white': controlForIsToday(currentYearLeft, currentMonthLeft, date) }">
-                                    <div (click)="daySelected=date; isToday(currentYearLeft, currentMonthLeft, daySelected)" class="flex items-center justify-center cursor-pointer text-center">
+                                    <div class="flex items-center justify-center cursor-pointer text-center">
                                         <p class="w-full text-center">{{date}}</p>
                                     </div>
                                 </div>
@@ -89,10 +89,10 @@
                                 <div *ngIf="blankdays_central.length!=blankday" class="text-center h-full px-4 pt-2"></div>
                                 <div *ngIf="blankdays_central.length===blankday" class="text-center h-full border-r px-4 pt-2"></div>
                             </div>
-                            <div *ngFor="let date of no_of_days_central" class="border-r border-b w-[14.28%]" id="no_of_days">
-                                <div class="py-2 hover:cursor-pointer " [ngClass]="{
+                            <div *ngFor="let date of no_of_days_central" class="border-r border-b w-[14.28%]" id="no_of_days" (click)="daySelected=date; isToday(currentYearCentral, currentMonthCentral, daySelected); changeDate(currentYearCentral, currentMonthCentral,date)">
+                                <div class="py-2 hover:cursor-pointer " [ngClass]=" {
                                                         'bg-black text-white': controlForIsToday(currentYearCentral, currentMonthCentral, date) }">
-                                    <div (click)="daySelected=date; isToday(currentYearCentral, currentMonthCentral, daySelected)" class="flex items-center justify-center text-center">
+                                    <div class="flex items-center justify-center text-center">
                                         <p class="w-full text-center">{{date}}</p>
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="flex items-center w-[10%]">
                             <div class="w-12 h-12 bg-secondary">
-                                <button class="h-full w-full hover:cursor-pointer" (click)="incrementMonth(currentMonthLeft,currentMonthCentral, currentMonthRight);">
+                                <button class="h-full w-full hover:cursor-pointer" (click)="incrementMonth(currentMonthLeft,currentMonthCentral, currentMonthRight); ">
                                     <img src="./assets/icon/freccia-avanti-100.png" alt="">
                                 </button>
                             </div>
@@ -132,10 +132,10 @@
                                 <div *ngIf="blankdays_right.length!=blankday" class="text-center h-full px-4 pt-2"></div>
                                 <div *ngIf="blankdays_right.length===blankday" class="text-center h-full border-r px-4 pt-2"></div>
                             </div>
-                            <div *ngFor="let date of no_of_days_right" class="border-r border-b w-[14.28%]" id="no_of_days">
+                            <div *ngFor="let date of no_of_days_right" class="border-r border-b w-[14.28%]" id="no_of_days" (click)="daySelected=date; isToday(currentYearRight, currentMonthRight, daySelected); changeDate(currentYearRight, currentMonthRight,date)">
                                 <div class="py-2 hover:cursor-pointer" [ngClass]="{
                                                         'bg-black text-white': controlForIsToday(currentYearRight, currentMonthRight, date) }">
-                                    <div (click)="daySelected=date; isToday(currentYearRight, currentMonthRight, daySelected)" class="flex items-center justify-center cursor-pointer text-center">
+                                    <div class="flex items-center justify-center cursor-pointer text-center">
                                         <p class="w-full text-center">{{date}}</p>
                                     </div>
                                 </div>

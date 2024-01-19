@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as dayjs from 'dayjs';
 import { matchDate } from 'src/app/models/typeMatch';
+import { Location } from '@angular/common';
 import { GetApiServiceMatch } from 'src/app/services/getApiMatch.service';
 
 @Component({
@@ -44,7 +46,8 @@ export class CalendarioPageComponent implements OnInit {
   finalDay:string="";
   ripetiArray = new Array(10).fill(null);
 
-  constructor(private getApiServiceMatch: GetApiServiceMatch){}
+  dateURL="";
+  constructor(private router:Router,private location: Location, private activatedRoute: ActivatedRoute, private getApiServiceMatch: GetApiServiceMatch){}
   ngOnInit(): void {
     this.initDate();
     this.getNoOfDaysLeft();
@@ -52,40 +55,21 @@ export class CalendarioPageComponent implements OnInit {
     this.getNoOfDaysRight();
     this.isToday(this.currentYearCentral, this.currentMonthCentral, this.daySelected);
     this.remainDay();
-    this.functionGetMatchDateLast20();
-  }
-  
-  functionGetMatchDate(){
-    this.getApiServiceMatch.getSearchMatchDate(this.finalDay).subscribe(
-      (game)=>{
-        this.matchToday=[];
-        for(let i=0; i<game.length; i++){
-          this.matchToday.push(game[i].gameid);
-        }
-      }
-    )
-  }
-
-  functionGetMatchDateLast20(){
-    let previousDay;
-    if (this.currentMonthCentral + 1 >= 1 && this.currentMonthCentral + 1 <= 9){
-      previousDay=this.currentYearCentral + "-0" + (this.currentMonthCentral+1) + "-" + (this.daySelected - 1)
-    }else{
-      previousDay=this.currentYearCentral + "-" + (this.currentMonthCentral+1) + "-" + (this.daySelected - 1)
-    }
-    console.log(previousDay);
-    this.getApiServiceMatch.getSearchMatchDataLast20(previousDay).subscribe(
-      (game)=>{
-          this.matchTodayLast20=game;
-      }
-    )
+    this.activatedRoute.data.subscribe(
+      ({ ResolveMatchData, ResolveMatchDataLast20 }) => {
+        ResolveMatchData.forEach((singleMatch:any)=>{
+          this.matchToday.push(singleMatch.gameid);
+        })
+        this.matchTodayLast20=ResolveMatchDataLast20;
+      })
   }
   
   initDate() {
-    let today = new Date();
-    this.currentMonthCentral = this.isTodayMonth = today.getMonth();
-    this.currentYearCentral = this.isTodayYear = today.getFullYear();
-    this.daySelected = today.getDate();
+    this.dateURL = this.location.path().split('/')[2];
+
+    this.currentMonthCentral = Number(this.dateURL.split('-')[1])-1;
+    this.currentYearCentral = Number(this.dateURL.split('-')[0]);
+    this.daySelected = Number(this.dateURL.split('-')[2]);
     this.currentMonthLeft = this.currentMonthCentral - 1;
 
     if (this.currentMonthCentral + 1 >= 11) {
@@ -103,9 +87,27 @@ export class CalendarioPageComponent implements OnInit {
       this.currentYearLeft = this.currentYearCentral;
       this.currentMonthLeft = this.currentMonthCentral - 1;
     }
-    // this.datepickerValue = new Date(this.year, this.month, today.getDate()).toDateString();
   };
 
+
+  functionDateSelected(Year: number, Month: number, Day: number) {
+    let date: string;
+    if (Month + 1 >= 1 && Month + 1 <= 9)
+      date = Year + "-0" + (Month + 1) + "-" + Day;
+    else
+      date = Year + "-" + (Month + 1) + "-" + Day;
+    return date;
+  }
+  changeDate(Year: number, Month: number, Day: number): void {
+    const url = `/calendario/${this.functionDateSelected(Year,Month,Day)}`;
+    this.getApiServiceMatch.getSearchMatchDate(this.functionDateSelected(Year, Month, Day)).subscribe(match => {
+      this.router.navigateByUrl(url, { replaceUrl: true });
+      this.matchToday=[];
+      match.forEach((singleMatch: any) => {
+        this.matchToday.push(singleMatch.gameid);
+      })
+    })
+  };
   isToday(Year: number, Month: number, Day: number) {
     if(Month+1>=1 && Month+1<=9)
       this.finalDay = Year+"-0"+(Month+1)+"-"+Day;
@@ -114,7 +116,6 @@ export class CalendarioPageComponent implements OnInit {
     this.isTodayYear = Year;
     this.isTodayMonth = Month;
     this.isTodayDay = Day;
-    this.functionGetMatchDate();
   };
   controlForIsToday(Year: number, Month: number, Day: number): boolean {
     let res: boolean = false;

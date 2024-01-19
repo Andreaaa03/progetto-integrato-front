@@ -11,12 +11,12 @@ export class ApiService {
 
     //classifica
     SearchStanding(){
-        return this.http.get(this.baseURL + "standings/all");
+        return this.http.get(this.baseURL + "standings/All");
     }
     
     //tutti i team
     SearchTeams(){
-        return this.http.get(this.baseURL + "teams/all");
+        return this.http.get(this.baseURL + "teams/All");
     }
 
     //statistiche singolo team, calendario singolo team, giocatori per team
@@ -27,7 +27,7 @@ export class ApiService {
         return this.http.get(this.baseURL + "games/teamId?teamId="+ id);
     }
     SearchSingleTeamPlayer(id:string){
-        return this.http.get(this.baseURL + "player/teamId?id="+ id);
+        return this.http.get(this.baseURL + "player/teamId?Id="+ id);
     }
 
     SearchMatch(id:string){

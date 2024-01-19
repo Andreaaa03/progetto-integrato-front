@@ -17,7 +17,6 @@ export class CardPartitaComponent implements OnInit {
 
   match!: match;
   functionGetMatch(id: string) {
-    console.log(id);
     this.getApiService.getSearchMatch(id).subscribe(
       (match) => {
         this.match = match;

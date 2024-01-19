@@ -37,7 +37,11 @@ const routes: Routes = [
     path: "calendario/:data", component: CalendarioPageComponent, resolve: {
       ResolveMatchData: (route: ActivatedRouteSnapshot) => {
         return inject(GetApiServiceMatch).getSearchMatchDate(route.paramMap.get("data")!);
-      }, ResolveMatchDataLast20: (route: ActivatedRouteSnapshot) => { return inject(GetApiServiceMatch).getSearchMatchDataLast20(route.paramMap.get("data")!); }
+      }, 
+      ResolveMatchDataLast20: (route: ActivatedRouteSnapshot) => { 
+        let yesterday=dayjs().subtract(1, 'day').format('YYYY-MM-DD');
+        return inject(GetApiServiceMatch).getSearchMatchDataLast20(yesterday!); 
+      }
     }, title: "SLAM STATS - Calendario"
   },
   {

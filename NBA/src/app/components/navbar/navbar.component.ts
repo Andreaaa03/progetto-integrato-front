@@ -13,7 +13,4 @@ export class NavbarComponent{
   toggleMenu(isMobileMenuOpen: boolean) {
     this.isMobileMenuOpen = !isMobileMenuOpen;
   }
-  stampa(){
-    console.log(this.dateToday);
-  }
 }

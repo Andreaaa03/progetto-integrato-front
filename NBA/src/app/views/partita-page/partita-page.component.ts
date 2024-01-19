@@ -20,7 +20,6 @@ export class PartitaPageComponent implements OnInit {
     this.activatedRoute.data.subscribe(
       ({ ResolveMatchStats }) => {
         this.matchStats = ResolveMatchStats;
-        console.log(this.matchStats.awayTeam.datiArray);
         for(let i=0; i<this.matchStats.awayTeam.datiArray.length-1; i++) {
           this.staticsToShow.push(i);
         } 

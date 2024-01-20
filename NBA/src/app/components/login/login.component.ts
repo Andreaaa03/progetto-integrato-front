@@ -12,7 +12,7 @@ export class LoginPageComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  registrati: boolean = true;
+  registrati: boolean = false;
 
   registratiView(){
     this.registrati = !this.registrati;

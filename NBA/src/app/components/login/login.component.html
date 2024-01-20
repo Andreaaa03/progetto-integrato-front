@@ -1,5 +1,5 @@
-<div class="flex flex-wrap items-center justify-center h-full bg-gray-100 z-40">
-  <div class="w-full flex justify-center">
+<div class="flex flex-wrap items-center justify-center h-full z-40">
+  <div class="w-full flex flex-wrap justify-center" *ngIf="registrati === false">
     <form class="w-[80%] flex flex-wrap" (submit)="login()" >
       <div class="w-full flex justify-center">
         <div class="w-[80%] flex justify-center">
@@ -7,31 +7,31 @@
         </div>
       </div>
       <div class="w-full flex justify-center flex-wrap mt-4">
-        <div class="w-[90%] bg-white mb-4">
-          <input type="text" id="username" name="username" [(ngModel)]="utente" class="mt-1 p-2 w-full border rounded-md"
-            placeholder="Username: ">
+        <div class="w-[70%] mb-4">
+          <input type="text" id="username" name="username" maxlength="40" [(ngModel)]="utente" 
+            class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="USERNAME: ">
         </div>
-        <div class="w-[90%] bg-white mb-4">
+        <div class="w-[70%] mb-4">
           <input type="password" id="password" name="password" [(ngModel)]="password"
-            class="mt-1 p-2 w-full border rounded-md" placeholder="Password: ">
+            class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="PASSWORD: ">
         </div>
       </div>
       <div class="w-full flex justify-center">
         <button type="submit" (submit)="login()"
-          class="w-auto py-2 px-4 bg-primary text-white rounded-md hover:bg-blue-600">ACCEDI</button>
+          class="w-auto py-2 px-4 bg-primary text-white rounded-2xl hover:bg-blue-600">ACCEDI</button>
       </div>
     </form>
     <div class="w-full flex justify-center my-1">
-        <button type=""
-          class="w-[30%] p-2 bg-white my-4 text-blue-950 rounded-md hover:bg-tertiary border-blue-900">Password
-          Dimenticata?</button>
+        <button 
+          class="w-[30%] p-2 bg-white my-4 text-secondary font-bold rounded-2xl border-secondary border-4 hover:bg-tertiary">PASSWORD
+          DIMENTICATA?</button>
       </div>
-      <div class="w-full flex justify-center">
-        <p class="text-base font-bold mr-2">Non sei ancora registrato?</p>
-        <button type="" (click)="registratiView()" class="w-[30%] p-2 bg-primary text-white rounded-md hover:bg-blue-600">REGISTRATI</button>
+      <div class="w-[60%] flex justify-evenly items-center mt-10">
+        <p class="text-base text-center font-bold mr-2">Non sei ancora registrato?</p>
+        <button (click)="registratiView()" class="w-[30%] p-2 bg-primary text-white rounded-2xl hover:bg-blue-600">REGISTRATI</button>
       </div>
   </div>
-  <div class="w-full" *ngIf="registrati === false">
+  <div class="w-full" *ngIf="registrati === true">
     <form class="w-[80%] flex flex-wrap" (submit)="login()" >
       <div class="w-full flex justify-center">
         <div class="w-[80%] flex justify-center">

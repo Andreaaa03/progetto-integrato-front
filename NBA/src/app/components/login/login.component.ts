@@ -24,7 +24,11 @@ export class LoginPageComponent implements OnInit{
 
   constructor(private router: Router, private route: ActivatedRoute, private location: Location) { }
 
+  selectedOption: string = '';
 
+  onSelectionChange() {
+    console.log('Opzione selezionata:', this.selectedOption);
+  }
 
 
   login(): void {

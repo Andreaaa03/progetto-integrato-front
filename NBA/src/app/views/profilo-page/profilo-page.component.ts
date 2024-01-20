@@ -11,6 +11,7 @@ export class ProfiloPageComponent implements OnInit{
   menuSelected:string="preferiti";
   menuPreferitiSelected:string="tutti";
   showTeams: boolean=false;
+  ripetiArray: any[] = new Array(10).fill({}); 
   constructor(private activatedRoute: ActivatedRoute) { }
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(

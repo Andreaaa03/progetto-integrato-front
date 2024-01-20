@@ -28,8 +28,7 @@
 </nav> -->
 <div *ngIf="modal===true" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full flex justify-center items-center bg-[#acdeff81]">
     <div class="w-[80%] h-[80%] bg-[#ACDEFF] border-2 border-primary">
-        <div class="" routerLink="/profilo">ACCEDI</div>
-        <div (click)="modal=false" class="">X</div>
+        <app-login></app-login>
     </div>
 </div>
 <nav class="h-16 z-50">

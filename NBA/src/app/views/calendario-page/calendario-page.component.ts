@@ -26,7 +26,7 @@ export class CalendarioPageComponent implements OnInit {
   }
   MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  
+
   daySelected: number = 0;
   currentMonthCentral: number = 0;
   currentYearCentral: number = 2023;
@@ -43,7 +43,7 @@ export class CalendarioPageComponent implements OnInit {
   isTodayYear: number = 2023;
   isTodayMonth: number = 0;
   isTodayDay: number = 0;
-  finalDay:string="";
+  finalDay: string = "";
   ripetiArray = new Array(10).fill(null);
 
   dateURL="";
@@ -55,6 +55,7 @@ export class CalendarioPageComponent implements OnInit {
     this.getNoOfDaysRight();
     this.isToday(this.currentYearCentral, this.currentMonthCentral, this.daySelected);
     this.remainDay();
+
     this.activatedRoute.data.subscribe(
       ({ ResolveMatchData, ResolveMatchDataLast20 }) => {
         ResolveMatchData.forEach((singleMatch:any)=>{
@@ -63,7 +64,7 @@ export class CalendarioPageComponent implements OnInit {
         this.matchTodayLast20=ResolveMatchDataLast20;
       })
   }
-  
+
   initDate() {
     this.dateURL = this.location.path().split('/')[2];
 
@@ -109,10 +110,10 @@ export class CalendarioPageComponent implements OnInit {
     })
   };
   isToday(Year: number, Month: number, Day: number) {
-    if(Month+1>=1 && Month+1<=9)
-      this.finalDay = Year+"-0"+(Month+1)+"-"+Day;
+    if (Month + 1 >= 1 && Month + 1 <= 9)
+      this.finalDay = Year + "-0" + (Month + 1) + "-" + Day;
     else
-      this.finalDay = Year+"-"+(Month+1)+"-"+Day;
+      this.finalDay = Year + "-" + (Month + 1) + "-" + Day;
     this.isTodayYear = Year;
     this.isTodayMonth = Month;
     this.isTodayDay = Day;
@@ -191,20 +192,20 @@ export class CalendarioPageComponent implements OnInit {
     this.remainDay();
   }
 
-  remain_days_left:number[]=[];
-  remain_days_central:number[]=[];
-  remain_days_right:number[]=[];
-  remainDay(){
-    this.remain_days_left=[];
-    this.remain_days_central=[];
-    this.remain_days_right=[];
-    for(let i=this.blankdays_left.length+this.no_of_days_left.length; i<35; i++){
+  remain_days_left: number[] = [];
+  remain_days_central: number[] = [];
+  remain_days_right: number[] = [];
+  remainDay() {
+    this.remain_days_left = [];
+    this.remain_days_central = [];
+    this.remain_days_right = [];
+    for (let i = this.blankdays_left.length + this.no_of_days_left.length; i < 35; i++) {
       this.remain_days_left.push(i);
     }
-    for(let i=this.blankdays_central.length+this.no_of_days_central.length; i<35; i++){
+    for (let i = this.blankdays_central.length + this.no_of_days_central.length; i < 35; i++) {
       this.remain_days_central.push(i);
     }
-    for(let i=this.blankdays_right.length+this.no_of_days_right.length; i<35; i++){
+    for (let i = this.blankdays_right.length + this.no_of_days_right.length; i < 35; i++) {
       this.remain_days_right.push(i);
     }
   }

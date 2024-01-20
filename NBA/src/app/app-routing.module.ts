@@ -23,7 +23,11 @@ const routes: Routes = [
     path: "home", component: HomePageComponent, resolve: {
       ResolveStanding: () => {
         return inject(GetApiServiceStanding).getSearchStanding();
-      }
+      },
+      ResolveMatchData: (route: ActivatedRouteSnapshot) => {
+        const data=dayjs().format("YYYY-MM-DD");
+        return inject(GetApiServiceMatch).getSearchMatchDate(data!);
+      }, 
     }, title: "SLAM STATS"
   }, //title: "SLAM STATS"
   {

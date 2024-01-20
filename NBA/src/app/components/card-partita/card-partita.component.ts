@@ -17,10 +17,12 @@ export class CardPartitaComponent implements OnInit {
 
   match!: match;
   functionGetMatch(id: string) {
-    this.getApiService.getSearchMatch(id).subscribe(
-      (match) => {
-        this.match = match;
-      }
-    )
+    if (this.gameId != undefined) {
+      this.getApiService.getSearchMatch(id).subscribe(
+        (match) => {
+          this.match = match;
+        }
+      )
+    }
   }
 }

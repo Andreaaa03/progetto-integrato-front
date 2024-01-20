@@ -17,12 +17,10 @@ export class CalendarioPageComponent implements OnInit {
   cardToShow: number = 3;
 
   changeCardToShow(cardToShow: number): void {
-    if (cardToShow == 3)
+    if (cardToShow <= 3)
       this.cardToShow = this.matchToday.length;
     else
       this.cardToShow = 3;
-
-    console.log(this.cardToShow);
   }
   MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -60,6 +58,9 @@ export class CalendarioPageComponent implements OnInit {
       ({ ResolveMatchData, ResolveMatchDataLast20 }) => {
         ResolveMatchData.forEach((singleMatch:any)=>{
           this.matchToday.push(singleMatch.gameid);
+        })
+        ResolveMatchDataLast20.forEach((singleMatch:any)=>{
+          singleMatch.gameStartDate=dayjs(singleMatch.gameStartDate).format("YYYY-MM-DD HH:mm");
         })
         this.matchTodayLast20=ResolveMatchDataLast20;
       })

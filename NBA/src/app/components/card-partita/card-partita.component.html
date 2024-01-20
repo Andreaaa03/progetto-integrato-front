@@ -10,12 +10,12 @@
                 </div>
                 <div class="w-2/4 flex justify-between items-center">
                     <div>
-                        <p  class="text-2xl" *ngIf="match?.scoreTeamAway!=undefined && match?.scoreTeamAway!=0">{{match.scoreTeamAway}}</p>
+                        <p class="text-2xl" *ngIf="match?.scoreTeamAway!=undefined && match?.scoreTeamAway!=0">{{match.scoreTeamAway}}</p>
                     </div>
                     <div>
                         <p class="h-full text-4xl flex items-center p-0 m-0">-</p>
                     </div>
-                    <div> 
+                    <div>
                         <p class="text-2xl" *ngIf="match?.scoreTeamHome!=undefined  && match?.scoreTeamHome!=0">{{match.scoreTeamHome}}</p>
                     </div>
                 </div>
@@ -34,10 +34,8 @@
                     <div class="w-[50%] bg-blue-600 rounded-r-full"></div>
                 </div>
             </div>
-            <div class="w-full h-1/5 rounded-b-3xl flex justify-center items-center bg-primary">
-                <button *ngIf="match?.codeAway" [routerLink]=" ['/tabellino', match.gameid]">
-                    <p class="text-white">TABELLINO</p>
-                </button>
+            <div class="w-full h-1/5 rounded-b-3xl flex justify-center items-center bg-primary hover:cursor-pointer" *ngIf="match?.gameid!=undefined" [routerLink]=" ['/tabellino', match.gameid]">
+                <p class="text-white">TABELLINO</p>
             </div>
         </div>
         <div class="w-full h-[20%] flex justify-center my-4">

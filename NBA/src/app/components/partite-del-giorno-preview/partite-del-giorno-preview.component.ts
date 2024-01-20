@@ -6,9 +6,7 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
   styleUrls: ['./partite-del-giorno-preview.component.css']
 })
 export class PartiteDelGiornoPreviewComponent implements OnInit {
-  @Input() cards: any[] = [
-    1,2,3
-  ];
+  @Input() cards: any[] = [];
   idgame ="12478";
 
   isMobile: boolean = false;

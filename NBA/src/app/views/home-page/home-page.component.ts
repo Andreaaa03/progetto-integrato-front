@@ -15,7 +15,6 @@ export class HomePageComponent implements OnInit {
         ResolveMatchData.forEach((singleMatch: any) => {
           this.matchToday.push(singleMatch.gameid);
         })
-        console.log(this.matchToday);
       })
   }
 }

@@ -45,7 +45,7 @@
                 <ul class="hidden md:flex justify-around md:items-center h-full text-white">
                     <li routerLink="/home"><button>NBA</button></li>
                     <li routerLink="/classifica"><button>CLASSIFICA</button></li>
-                    <li routerLink="/calendario"><button>CALENDARIO</button></li>
+                    <li [routerLink]="['/calendario',dateToday]"><button>CALENDARIO</button></li>
                     <li routerLink="/squadre"><button>SQUADRE</button></li>
                     <li [routerLink]="['/storia&regole','regole']"><button>REGOLE & GLOSSARIO</button></li>
                     <li routerLink="/blog"><button>BLOG</button></li>
@@ -60,7 +60,7 @@
                 <ul class="md:hidden mobile-menu bg-secondary w-full h-auto text-white absolute top-[64px] pl-4 pb-10" [class.hidden]="!isMobileMenuOpen">
                     <li routerLink="/home"><button>NBA</button></li>
                     <li routerLink="/classifica"><button>CLASSIFICA</button></li>
-                    <li routerLink="/calendario"><button>CALENDARIO</button></li>
+                    <li [routerLink]="['/calendario',dateToday]"><button>CALENDARIO</button></li>
                     <li routerLink="/squadre"><button>SQUADRE</button></li>
                     <li [routerLink]="['/storia&regole','regole']"><button>REGOLE & GLOSSARIO</button></li>
                     <li routerLink="/blog"><button>BLOG</button></li>

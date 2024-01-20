@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -7,9 +7,10 @@ import { Location } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginPageComponent{
+export class LoginPageComponent implements OnInit{
 
-  modal: boolean = false;
+  ngOnInit(): void {
+  }
 
   registrati: boolean = true;
 
@@ -23,24 +24,11 @@ export class LoginPageComponent{
 
   constructor(private router: Router, private route: ActivatedRoute, private location: Location) { }
 
-  confrontUrl(){
-
-    const urlAttuale = this.router.url;
-
-    const urlDesiderato = 'localhost:4200/profilo'
-
-    if(urlAttuale === urlDesiderato){
-      location.reload();
-    }else{
-
-    }
-  }
 
 
 
   login(): void {
     if (this.utente === 'admin' && this.password === 'admin') {
-      console.log('ciao');
       this.router.navigate(['/profilo']);
     } else {
       this.errorMessage = 'Credenziali non valide. Riprova.';

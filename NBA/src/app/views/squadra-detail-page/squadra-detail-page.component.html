@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<section>
+<section class="mb-10">
     <div class="flex h-full justify-center">
         <div class="h-full w-full flex flex-wrap justify-center">
             <div class="w-full flex flex-wrap justify-center">
@@ -14,16 +14,16 @@
                 <div class="lg:w-[90%] w-full">
                     <div class="lg:h-16 h-10 w-full flex justify-around mt-10">
                         <ul class="w-full lg:h-16 h-10 flex flex-nowrap justify-around items-center">
-                            <li [ngClass]="{'bg-secondary': isSelectedTeam === true, 'border-secondary lg:border-4 border-2 hover:bg-[#DCF1FF]': isSelectedTeam === false}" class="lg:w-1/3 w-[45%] h-full flex justify-center items-center rounded-2xl">
-                                <button (click)="selectedTeam(true)" [class.text-white]="isSelectedTeam === true" class="w-full text-center text-white lg:text-3xl">SQUADRA & CALENDARIO</button>
+                            <li [ngClass]="{'bg-secondary': squadraCalendario === true, 'border-secondary lg:border-4 border-2 hover:bg-[#DCF1FF]': squadraCalendario === false}" class="lg:w-1/3 w-[45%] h-full flex justify-center items-center rounded-2xl">
+                                <button (click)="selectedTeam(true)" [class.text-white]="squadraCalendario === true" class="w-full text-center text-white lg:text-3xl">SQUADRA & CALENDARIO</button>
                             </li>
-                            <li [ngClass]="{'border-secondary lg:border-4 border-2 hover:bg-[#DCF1FF]': isSelectedTeam === true, 'bg-secondary': isSelectedTeam === false}" class="lg:w-1/3 w-[45%] h-full flex justify-center items-center rounded-2xl">
-                                <button (click)="selectedTeam(false)" [class.text-white]="isSelectedTeam === false" class="w-full text-center lg:text-3xl">GIOCATORI</button>
+                            <li [ngClass]="{'border-secondary lg:border-4 border-2 hover:bg-[#DCF1FF]': squadraCalendario === true, 'bg-secondary': squadraCalendario === false}" class="lg:w-1/3 w-[45%] h-full flex justify-center items-center rounded-2xl">
+                                <button (click)="selectedTeam(false)" [class.text-white]="squadraCalendario === false" class="w-full text-center lg:text-3xl">GIOCATORI</button>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="w-full flex justify-center flex-wrap" *ngIf="isSelectedTeam===true">
+                <div class="w-full flex justify-center flex-wrap" *ngIf="squadraCalendario===true">
                     <div class="h-auto w-full lg:w-[90%] bg-secondary flex flex-wrap my-10">
                         <div class="w-1/2 h-28 border-r-2 border-white flex justify-around flex-nowrap bg-primary">
                             <div class="w-1/4 h-full flex justify-center items-center">
@@ -143,7 +143,7 @@
                             <thead class="bg-primary text-white lg:w-full w-full">
                                 <tr>
                                     <th class="lg:w-[5%]  w-[3%]">
-                                        <p class="w-full text-center px-3">DATA</p>
+                                        <p class="w-full h-auto text-center px-3">DATA</p>
                                     </th>
                                     <th class="lg:w-[10%] w-[3%]">
                                         <p class="lg:block w-full hidden text-center px-3">ORARIO</p>
@@ -180,8 +180,7 @@
                                         <p class="w-full text-center px-3" *ngIf="match?.codeHome === teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamHome > match!.scoreTeamAway)">W</p>
                                         <p class="w-full text-center px-3" *ngIf="match?.codeAway !== teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamAway > match!.scoreTeamHome)">L</p>
                                         <p class="w-full text-center px-3" *ngIf="match?.codeAway === teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamHome > match!.scoreTeamAway)">L</p>
-                                   </td>
-                                    
+                                    </td>
                                     <td class="lg:w-[10%] w-[60%]">
                                         <p class="w-full text-center">{{match?.scoreTeamAway}}-{{match?.scoreTeamHome}}</p>
                                     </td>
@@ -199,43 +198,75 @@
                         </button>
                     </div>
                 </div>
-                <div class="w-full flex justify-center flex-wrap" *ngIf=" isSelectedTeam === false">
-                    <div class="h-28 w-full lg:w-[90%] bg-secondary flex flex-wrap my-10">
-                        <div class="w-full h-28 flex justify-around flex-nowrap bg-primary">
-                            <div class="w-1/4 h-full flex justify-center items-center mr-4">
+                <div class="w-full flex justify-center flex-wrap" *ngIf=" squadraCalendario === false">
+                    <div class="h-auto w-full lg:w-[90%] bg-secondary flex flex-wrap my-10">
+                        <div class="w-1/2 h-28 flex justify-around flex-nowrap bg-primary">
+                            <div class="w-1/4 h-full flex justify-center items-center">
                                 <div class="rounded-full bg-white lg:w-24 w-12 lg:h-24 h-12">
                                     <img src="{{teamStatistics!.team.logo}}" class="object-contain h-full" alt="">
                                 </div>
                             </div>
-                            <div class="lg:w-full w-full flex flex-wrap justify-center items-center ">
-                                <p class="w-full h-1/2 text-white flex items-end lg:text-3xl text-sm">{{teamStatistics!.team.teamName | uppercase}}</p>
-                                <p class="w-full h-1/2 text-white lg:text-2xl text-sm">N pos°: {{teamStatistics?.conferenceRank}} ad {{teamStatistics!.team.conferenceName}}</p>
+                            <div class="w-1/2 flex lg:flex-wrap flex-wrap justify-center items-center ">
+                                <p class="lg:w-full w-full text-sm h-1/2 text-white flex items-end lg:text-3xl">{{teamStatistics!.team.teamName | uppercase}}</p>
+                                <p class="lg:w-full w-full text-sm h-1/2 text-white lg:text-2xl">N pos°: {{teamStatistics?.conferenceRank}} ad {{teamStatistics!.team.conferenceName}}</p>
                             </div>
                         </div>
+                        <div class="w-1/2 h-28 text-white flex flex-wrap justify-center items-center bg-primary"></div>
                     </div>
-                    <div class="my-5 w-[90%]" *ngFor="let player of teamsPlayer">
-                        <div class="w-full h-auto flex lg:flex-nowrap flex-wrap justify-between">
-                            <div class="lg:w-1/3 w-full h-full border-primary flex justify-center flex-wrap">
-                                <p class="w-full text-center">{{player.lastName}} {{player.firstName}}</p>
-                                <p class="w-full text-center"></p>
-                                <p class="w-full text-center">RUOLO</p>
-                            </div>
-                            <div class="lg:w-1/3 w-full h-full border-x-2 border-primary flex justify-center flex-wrap">
-                                <div class="flex justify-center flex-wrap w-full">
-                                    <p class="w-full text-center">Data di nascita: {{player.birthDate}}</p>
-                                    <p class="w-full text-center">Età:{{player.birthDate}} </p>
-                                    <p class="w-full text-center">Paese di Nascita:{{player.birthCountry}} </p>
-                                    <p class="w-full text-center">Altezza e peso:{{player.heightMeters}} {{player.weightKg}}</p>
+                    <div class="mt-5 w-[90%] flex flex-wrap" *ngFor="let player of teamsPlayer">
+                        <div class="w-full h-auto flex lg:flex-nowrap flex-wrap justify-between items-center">
+                            <div class="lg:w-1/3 w-full lg:h-full h-auto flex justify-center flex-wrap items-center">
+                                <div class="lg:w-1/2 w-full flex justify-center lg:justify-start">
+
+                                </div>
+                                <div class="lg:w-1/2 w-full">
+                                    <p class="w-full h-auto px-4">{{player.lastName}} {{player.firstName}}</p>
+                                    <p class="w-full h-auto px-4">N° maglia: {{player.numeroMaglia}}</p>
+                                    <p class="w-full h-auto px-4">Ruolo: {{player.posizione}}</p>
                                 </div>
                             </div>
-                            <div class="lg:w-1/3 w-full h-full border-primary flex justify-center flex-wrap">
-                                <p class="w-full text-center">Anno di inizio: {{player.nbaStart}}</p>
-                                <p class="w-full text-center">College: {{player.college}}</p>
-                                <p class="w-full text-center"></p>
-                                <p class="w-full text-center"></p>
+                            <div class="lg:w-1/3 w-full lg:h-full h-auto lg:border-x-2 lg:border-primary flex justify-center flex-wrap items-center">
+                                <div class="flex justify-center flex-wrap w-full my-4">
+                                    <p class="lg:w-[80%] w-full h-auto px-4" *ngIf="player.birthCountry!='null'">Nato in: {{player.birthCountry}} </p>
+                                    <p class="lg:w-[80%] w-full h-auto px-4" *ngIf="player.birthDate!='null'">Data di nascita: {{player.birthDate}}</p>
+                                    <p class="lg:w-[80%] w-full h-auto px-4" *ngIf="player.age!=0">Età: {{player.age}} </p>
+                                    <p class="lg:w-[80%] w-full h-auto px-4" *ngIf="player.heightMeters!=0 && player.weightKg!=0">Altezza e peso:{{player.heightMeters}}mt. - {{player.weightKg}}kg.</p>
+                                </div>
+                            </div>
+                            <div class="lg:w-1/3 w-full lg:h-full h-auto flex justify-center flex-wrap items-center">
+                                <p class="w-full h-auto text-justify px-4"><b>{{player.lastName}} {{player.firstName}}</b> ha inizio a giocare a basket fin da ragazzino. Crescendo ha frequentato il college
+                                    al <b>{{player.college}}</b> facendosi le ossa per poi approdare nel mondo dell'NBA nell' anno <b>{{player.nbaStart}}</b>. In questi anni ha totalizzato
+                                    <b>{{player.points}} punti</b> con <b>{{player.assists}} assist</b>
+                                </p>
                             </div>
                         </div>
-                        <div class="w-full h-20 bg-primary"></div>
+                        <div class="mt-5 w-full h-10 bg-primary"></div>
+                        <!-- <div class="my-5 w-full">
+                            <table>
+                                <thead>
+                                    <td>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                    </td>
+                                </thead>
+                                <tbody>
+                                    <td>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                        <tr></tr>
+                                    </td>
+                                </tbody>
+                            </table>
+                        </div> -->
                     </div>
                 </div>
             </div>

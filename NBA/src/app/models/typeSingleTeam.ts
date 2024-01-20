@@ -100,6 +100,11 @@ export type teamPlayer = {
     weightKg: number;
     college: string;
     affiliation: string;
+    posizione: string;
+    numeroMaglia: number;
+    age: number;
+    assists: number;
+    points: number;
 }[];
 
 export type allPlayer={

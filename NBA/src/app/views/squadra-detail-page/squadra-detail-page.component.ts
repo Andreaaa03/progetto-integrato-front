@@ -17,7 +17,7 @@ interface glossaryItem{
 export class SquadraDetailPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
   cardToShow: number = 10;
-  isSelectedTeam: boolean = true;
+  squadraCalendario: boolean = true;
   
 
   
@@ -208,8 +208,8 @@ export class SquadraDetailPageComponent implements OnInit {
 
   
 
-  selectedTeam(isSelectedTeam: boolean) {
-    this.isSelectedTeam = isSelectedTeam;
+  selectedTeam(squadraCalendario: boolean) {
+    this.squadraCalendario = squadraCalendario;
   }
   showMore() {
     if (this.cardToShow < this.matchCalendar.totalMatch.length)
@@ -232,7 +232,7 @@ export class SquadraDetailPageComponent implements OnInit {
         this.teamStatistics = ResolveSingleTeamStatistics;
         this.matchCalendar.totalMatch = ResolveSingleTeamCalendar.totalMatch;
         this.teamsPlayer = ResolveSingleTeamPlayer;
-        console.log(this.teamStatistics?.team.code)
+        console.log(this.teamsPlayer);
         this.ripetiArray=new Array(this.matchCalendar.totalMatch.length).fill(null);
       })
   }

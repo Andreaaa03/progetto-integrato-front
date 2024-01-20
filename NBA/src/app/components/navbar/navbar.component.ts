@@ -11,7 +11,7 @@ export class NavbarComponent {
   constructor(private location: Location) { }
   dateToday = dayjs().format('YYYY-MM-DD');
   isMobileMenuOpen: boolean = false;
-  modal: boolean = true;
+  modal: boolean = false;
   toggleMenu(isMobileMenuOpen: boolean) {
     this.isMobileMenuOpen = !isMobileMenuOpen;
   }

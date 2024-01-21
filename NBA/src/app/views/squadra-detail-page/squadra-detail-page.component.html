@@ -184,9 +184,9 @@
                                     <td class="lg:w-[10%] w-[60%] bg-[#dcf1ff]">
                                         <p class="w-full text-center">{{match?.scoreTeamAway}}-{{match?.scoreTeamHome}}</p>
                                     </td>
-                                    <td class="lg:w-[50%] w-[30%] bg-white">
-                                        <div class="w-full hidden lg:flex lg:justify-end lg:mx-0" [routerLink]="['/tabellino',match?.gameid]"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
-                                        <div class="w-full flex lg:hidden lg:justify-end lg:mx-0" [routerLink]="['/tabellino',match?.gameid]"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1 w-full">TAB</button></div>
+                                    <td class="lg:w-[50%] h-full w-[30%] bg-white py-1">
+                                        <div class="w-full h-[90%] hidden lg:flex lg:justify-end lg:mx-0" [routerLink]="['/tabellino',match?.gameid]"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
+                                        <div class="w-full h-[90%] flex lg:hidden lg:justify-end lg:mx-0" [routerLink]="['/tabellino',match?.gameid]"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1 w-full">TAB</button></div>
                                     </td>
                                 </tr>
                             </tbody>

@@ -8,7 +8,7 @@ import { division } from 'src/app/models/typeTeams';
   styleUrls: ['./profilo-page.component.css']
 })
 export class ProfiloPageComponent implements OnInit{
-  menuSelected:string="preferiti";
+  menuSelected:string="amici";
   menuPreferitiSelected:string="tutti";
   showTeams: boolean=false;
   ripetiArray: any[] = new Array(10).fill({}); 

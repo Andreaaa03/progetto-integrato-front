@@ -240,25 +240,23 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="mt-5 w-full h-10 bg-primary"></div>
                         <div class="table-container w-full overflow-x-scroll">
                             <table class="w-full">
                                 <thead class="bg-primary text-white">
-                                    <!-- <tr class=" flex flex-nowrap bg-primary text-white" *ngFor="let _ of statisticToShow, let i = index">
-                                        <th class="w-[20%]">{{teamsPlayer[i].datiArray[i][0]}}</th>
-                                    </tr> -->
-                                    <tr>
-                                        <th class="w-[20%]">Ultimi 5 match:</th>
-                                        <th class="w-[20%]" *ngFor="let _ of statisticToShow, let i = index">{{teamsPlayer[i].datiArray[i][0]}}</th>
-                                    </tr> 
+                                    <tr class="w-full">
+                                        <th class="" *ngFor="let day of player.statisticsArray[0], let j=index">
+                                            <p class="w-28" *ngIf="j==0">Ultimi 5 gare</p>
+                                            <p *ngIf="j>1" class="w-20 text-center">{{day[0]}}</p>
+                                        </th>
+                                    </tr>
                                 </thead>
                                 <tbody class="">
-                                    <!-- <tr class="flex flex-nowrap" *ngFor="let _ of statisticToShow, let i = index">
-                                        <td class="w-[5%]">{{teamsPlayer[i].datiArray[i][1]}}</td>
-                                    </tr> -->
-                                    <tr>
-                                        <td class="w-[20%]"></td>
-                                        <td class="w-[20%]" *ngFor="let _ of statisticToShow, let i = index">{{teamsPlayer[i].datiArray[i][1]}}</td>
+                                    <tr class="" *ngFor="let singleStats of player.statisticsArray">
+                                        <td class="" *ngFor="let day of singleStats, let j=index">
+                                            <p class="w-28" *ngIf="j==0"></p>
+                                            <p *ngIf="j==1" class="w-0"></p>
+                                            <p *ngIf="j>1" class="w-20 text-center">{{day[1]}}</p>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

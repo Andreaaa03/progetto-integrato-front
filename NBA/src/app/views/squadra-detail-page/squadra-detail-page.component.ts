@@ -231,7 +231,7 @@ export class SquadraDetailPageComponent implements OnInit {
         this.teamStatistics = ResolveSingleTeamStatistics;
         this.matchCalendar.totalMatch = ResolveSingleTeamCalendar.totalMatch;
         this.teamsPlayer = ResolveSingleTeamPlayer;
-        console.log(this.teamsPlayer[0].datiArray);
+        console.log(this.teamsPlayer[0].statisticsArray[0]);
         let i = 0;
         this.teamsPlayer.forEach(() => {
           if(i >= 2){

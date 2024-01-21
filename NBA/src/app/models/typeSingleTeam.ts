@@ -1,30 +1,3 @@
-type playerStats = {
-    id: number;
-    nome: string;
-    points: number;
-    pos: string;
-    min: string;
-    fgm: number;
-    fga: number;
-    fgp: number;
-    ftm: number;
-    fta: number;
-    ftp: number;
-    tpm: number;
-    tpa: number;
-    tpp: number;
-    offReb: number;
-    defReb: number;
-    totReb: number;
-    assists: number;
-    pFouls: number;
-    steals: number;
-    turnovers: number;
-    blocks: number;
-    plusMinus: number;
-    pfouls: number;
-};
-
 export type teamStatistic = {
     team: {
         id: number;
@@ -100,6 +73,33 @@ export type matchCalendar = {
     totalMatch: teamCalendar[];
 };
 
+type playerStats = {
+    id: number;
+    nome: string;
+    points: number;
+    pos: string;
+    min: string;
+    fgm: number;
+    fga: number;
+    fgp: number;
+    ftm: number;
+    fta: number;
+    ftp: number;
+    tpm: number;
+    tpa: number;
+    tpp: number;
+    offReb: number;
+    defReb: number;
+    totReb: number;
+    assists: number;
+    pFouls: number;
+    steals: number;
+    turnovers: number;
+    blocks: number;
+    plusMinus: number;
+    pfouls: number;
+};
+
 export type teamPlayer = {
     team: {
         id: number;
@@ -132,8 +132,14 @@ export type teamPlayer = {
     age: number;
     assists: number;
     points: number;
-    statistics: playerStats;
-    datiArray: [number,number][];
+    statistics: playerStats[];
+    statisticsArray: [
+        giorno1: [number, number][],
+        giorno2: [number, number][],
+        giorno3: [number, number][],
+        giorno4: [number, number][],
+        giorno5: [number, number][],
+    ]
 }[];
 
 export type allPlayer={

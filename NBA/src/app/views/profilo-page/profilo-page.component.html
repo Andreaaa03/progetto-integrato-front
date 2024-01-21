@@ -50,7 +50,7 @@
 <section class="mb-20">
     <div class="flex justify-center h-full">
         <div class="container flex flex-wrap justify-center h-full">
-            <div class="w-[70%] my-10">
+            <div class="lg:w-[70%] w-full my-10">
                 <div class="" *ngIf="menuSelected==='profilo'">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
                         <h2 class=" text-white text-4xl font-bold">
@@ -104,26 +104,26 @@
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
                     <div class="w-full flex flex-wrap justify-between my-10">
-                        <div class="w-[30%] mx-2 my-4 border-solid border-[#1671AA]" *ngFor="let _ of ripetiArray, let i = index"> 
-                            <div class="w-full h-[3/4]  bg-secondary rounded-t-md flex flex-wrap p-4">
+                        <div class="lg:w-[30%] w-full mx-2 my-4 rounded-xl border-2 border-[#1671AA]" *ngFor="let _ of ripetiArray, let i = index"> 
+                            <div class="w-full h-[3/4]  bg-secondary rounded-t-lg flex flex-wrap p-4">
                                 <div class="w-full flex flex-nowrap">
-                                    <div class="w-20 h-20 rounded-full bg-slate-500 ml-4">
+                                    <div class="w-20 h-20 rounded-full bg-slate-500">
 
                                     </div>
                                     <div class="flex flex-wrap ml-4">
-                                        <div class="w-full text-sm text-start text-white "><p>Luca</p></div>
-                                        <div class="w-full text-sm text-start text-white "><p>Badge</p></div>
+                                        <div class="w-full text-lg text-white "><p>Luca</p></div>
+                                        <div class="w-full text-lg text-white "><p>Badge</p></div>
                                     </div>
                                 </div>
-                                <div class="w-full flex flex-wrap mt-4">
-                                    <div class="w-full lg:text-md text-white ">SONDAGGI INDOVINATI: 5</div>
-                                    <div class="w-full lg:text-md text-white ">SONDAGGI SBAGLIATI: 12</div>
-                                    <div class="w-full lg:text-md text-white ">PERCENTUALE DI RISPOSTE CORRETTE: 2,4%</div>
-                                    <div class="w-full lg:text-md text-white ">POSIZIONE IN CLASSIFICA: 70°</div>
+                                <div class="w-full flex flex-wrap my-4">
+                                    <p class="w-full lg:text-sm text-white py-1">SONDAGGI INDOVINATI: 5</p>
+                                    <p class="w-full lg:text-sm text-white py-1">SONDAGGI SBAGLIATI: 12</p>
+                                    <p class="w-full lg:text-sm text-white py-1">PERCENTUALE DI RISPOSTE CORRETTE: 2,4%</p>
+                                    <p class="w-full lg:text-sm text-white py-1">POSIZIONE IN CLASSIFICA: 70°</p>
                                 </div>   
                             </div>
-                            <div class="w-full h-[1/4] bg-white border-solid border-[#1671AA] rounded-b-md flex justify-center items-center">
-                                <button class="w-[25%] rounded-md border-2 my-1 border-blue-900">SEGUI</button>
+                            <div class="w-full h-[1/4] my-2 bg-white border-solid border-[#1671AA] flex justify-center items-center">
+                                <button class="rounded-full border-2 my-1 px-6 border-blue-900">SEGUI</button>
                             </div>
                         </div>
                     </div>

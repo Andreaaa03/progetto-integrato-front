@@ -10,12 +10,12 @@
     border-bottom: 2px solid white;
 }
 
-#tabella-giocatore tbody tr:nth-child(odd) td:first-child {
+#tabella-giocatore tbody tr:nth-child(odd) td {
     background-color: #acdeff;
 }
 
 #tabella-giocatore tbody tr td:first-child {
-    border-bottom: 2px solid #dcf1ff;
+    border-bottom: 2px solid white;
 }
 
 #tabella-giocatore tbody tr:last-child td {
@@ -42,6 +42,7 @@
     font-size: small;
 }
 
+#tabella-giocatore td:nth-child(1),#tabella-giocatore th:nth-child(1),
 #tabella-giocatore td:nth-child(2),#tabella-giocatore th:nth-child(2){
     width: 0;
     padding: 0;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as dayjs from 'dayjs';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private location: Location, private router: Router, private route: ActivatedRoute,) { }
+  constructor(private location: Location, private router: Router, private apiService: ApiService) { }
   dateToday = dayjs().format('YYYY-MM-DD');
   isMobileMenuOpen: boolean = false;
   modal: boolean = false;
@@ -34,10 +35,9 @@ export class NavbarComponent {
     this.registrati = !this.registrati;
   }
 
-  utente: string = 'admin';
-  password: string = 'admin';
+  email: string = 'giorgio.modeo@gmail.com';
+  password: string = 'sonoio';
   errorMessage: string = '';
-
 
   selectedOption: string = '';
 
@@ -45,12 +45,17 @@ export class NavbarComponent {
     console.log('Opzione selezionata:', this.selectedOption);
   }
 
-
   login(): void {
-    if (this.utente === 'admin' && this.password === 'admin') {
-      this.router.navigate(['/profilo']);
-    } else {
-      this.errorMessage = 'Credenziali non valide. Riprova.';
-    }
+    this.apiService.SendLogin(this.email, this.password).subscribe(
+      (risposta:any) => {
+        // Gestisci la risposta dal server dopo il login
+        console.log(risposta.token);
+        this.router.navigate(['/profilo']);
+      },
+      (errore) => {
+        // Gestisci gli errori durante il login
+        console.error('Errore durante il login:', errore);
+      }
+    );
   }
 }

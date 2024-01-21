@@ -68,6 +68,7 @@ export class CalendarioPageComponent implements OnInit {
 
   initDate() {
     this.dateURL = this.location.path().split('/')[2];
+    console.log(this.dateURL);
 
     this.currentMonthCentral = Number(this.dateURL.split('-')[1])-1;
     this.currentYearCentral = Number(this.dateURL.split('-')[0]);
@@ -82,13 +83,15 @@ export class CalendarioPageComponent implements OnInit {
       this.currentMonthRight = this.currentMonthCentral + 1;
     }
 
-    if (this.currentMonthLeft - 1 <= 0) {
+    console.log(this.currentYearLeft, this.currentMonthLeft)
+    if (this.currentMonthLeft < 0) {
       this.currentYearLeft = this.currentYearCentral - 1;
       this.currentMonthLeft = 11;
     } else {
       this.currentYearLeft = this.currentYearCentral;
       this.currentMonthLeft = this.currentMonthCentral - 1;
     }
+    console.log(this.currentYearLeft, this.currentMonthLeft)
   };
 
 

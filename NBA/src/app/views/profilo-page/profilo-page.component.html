@@ -19,7 +19,8 @@
                     <div class="w-full bg-primary box-shadow-for-menu">
                         <ul>
                             <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('profilo')">Profilo</li>
-                            <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('risultato')">Risultato Sondaggi</li>                            <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('amici')">Amici</li>
+                            <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('risultato')">Risultato Sondaggi</li>
+                            <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('amici')">Amici</li>
                             <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('preferiti')">Preferiti</li>
                             <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('impostazioni')">Impostazioni</li>
                         </ul>
@@ -93,7 +94,8 @@
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
                     <div class="w-full">
-                        <!-- <app-piechart></app-piechart> --> <!-- diagramma a torta -->
+                        <!-- <app-piechart></app-piechart> -->
+                        <!-- diagramma a torta -->
                     </div>
                 </div>
                 <div class="" *ngIf="menuSelected==='amici'">
@@ -104,15 +106,19 @@
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
                     <div class="w-full flex flex-wrap justify-between my-10">
-                        <div class="lg:w-[30%] w-full mx-2 my-4 rounded-xl border-2 border-[#1671AA]" *ngFor="let _ of ripetiArray, let i = index"> 
+                        <div class="lg:w-[30%] w-full mx-2 my-4 rounded-xl border-2 border-[#1671AA]" *ngFor="let _ of ripetiArray, let i = index">
                             <div class="w-full h-[3/4]  bg-secondary rounded-t-lg flex flex-wrap p-4">
                                 <div class="w-full flex flex-nowrap">
                                     <div class="w-20 h-20 rounded-full bg-slate-500">
 
                                     </div>
                                     <div class="flex flex-wrap ml-4">
-                                        <div class="w-full text-lg text-white "><p>Luca</p></div>
-                                        <div class="w-full text-lg text-white "><p>Badge</p></div>
+                                        <div class="w-full text-lg text-white ">
+                                            <p>Luca</p>
+                                        </div>
+                                        <div class="w-full text-lg text-white ">
+                                            <p>Badge</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="w-full flex flex-wrap my-4">
@@ -120,7 +126,7 @@
                                     <p class="w-full lg:text-sm text-white py-1">SONDAGGI SBAGLIATI: 12</p>
                                     <p class="w-full lg:text-sm text-white py-1">PERCENTUALE DI RISPOSTE CORRETTE: 2,4%</p>
                                     <p class="w-full lg:text-sm text-white py-1">POSIZIONE IN CLASSIFICA: 70°</p>
-                                </div>   
+                                </div>
                             </div>
                             <div class="w-full h-[1/4] my-2 bg-white border-solid border-[#1671AA] flex justify-center items-center">
                                 <button class="rounded-full border-2 my-1 px-6 border-blue-900">SEGUI</button>
@@ -608,7 +614,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="border-black border-2 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold">Attiva/Disattiva notifiche nuova puntata podcast (attivata)</p>
                             </div>
@@ -621,6 +627,14 @@
                                     <input type="submit" class="bg-secondary text-white px-4 py-2 h-10 rounded-full" value="Cambia">
                                 </div>
                             </form>
+                        </div>
+                        <div class="h-20 border-black border-2 w-full p-4 flex justify-between items-center">
+                            <div class="w-1/4">
+                                <p class="font-bold">LOG OUT</p>
+                            </div>
+                            <div class="w-1/2 flex justify-end items-center">
+                                <button (click)="removeToken()" class="bg-secondary text-white px-7 py-2 h-10 rounded-full">Esci</button>
+                            </div>
                         </div>
                     </div>
                 </div>

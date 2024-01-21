@@ -45,4 +45,9 @@ export class ProfiloPageComponent implements OnInit{
     Pacific: [],
   };
 
+  removeToken(){
+    localStorage.removeItem('authToken');
+    window.location.replace('/home');
+  }
+
 }

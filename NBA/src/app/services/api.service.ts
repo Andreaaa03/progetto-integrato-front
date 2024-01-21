@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -41,5 +41,12 @@ export class ApiService {
     }
     SearchMatchDateLast20(date:string){
         return this.http.get(this.baseURL + "games/Last20?date="+ date);
+    }
+    
+    SendLogin(email:string, password:string){
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+        });
+        return this.http.post(this.baseURL + "user/signin", { email: email, passwd: password }, {headers});
     }
 }

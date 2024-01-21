@@ -29,7 +29,6 @@ export class NavbarComponent implements OnInit{
   token: string | null = null;
   ngOnInit(): void {
     this.token = localStorage.getItem('authToken');
-    console.log(this.token)
   }
   
   //login e registrati
@@ -45,10 +44,6 @@ export class NavbarComponent implements OnInit{
   errorMessage: string = '';
 
   selectedOption: string = '';
-
-  onSelectionChange() {
-    console.log('Opzione selezionata:', this.selectedOption);
-  }
 
   login(): void {
     this.apiService.SendLogin(this.email, this.password).subscribe(

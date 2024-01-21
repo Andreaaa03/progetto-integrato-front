@@ -77,7 +77,13 @@ const routes: Routes = [
   },
   { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole" },
   { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog" },
-  { path: "profilo", component: ProfiloPageComponent, title: "SLAM STATS - Profilo" },
+  {
+    path: "profilo", component: ProfiloPageComponent, resolve: {
+      ResolveTeams: () => {
+        return inject(GetApiServiceTeams).getSearchTeams();
+      }
+    }, title: "SLAM STATS - Profilo"
+  },
   { path: "articolo", component: ArticoloDetailPageComponent, title: "SLAM STATS - Articolo" },
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore
   { path: "errore", component: ErrorePageComponent, pathMatch: "full" },

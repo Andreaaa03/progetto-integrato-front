@@ -24,20 +24,17 @@ export class GetApiServiceSingleTeam {
         totalMatch: [],
     }
     getSearchSingleTeamCalendar(id: string) {
-        this.match.previousMatch= [];
-        this.match.nextMatch= [];
-        this.match.totalMatch= [];
+        this.match.previousMatch = [];
+        this.match.nextMatch = [];
+        this.match.totalMatch = [];
         return this.apiService.SearchSingleTeamCalendar(id).pipe(
             map((res: any) => {
-                /* chiedere a giorgio per tutte le partite */
-                /* console.log(res.length); */
                 let todayDate = dayjs().format('YYYY-MM-DD HH:mm:ss');
                 res.forEach((singleTeam: any) => {
                     let matchDate = dayjs(singleTeam.gameStartDate).format('DD/MM/YY').toString();
                     let matchTime = dayjs(singleTeam.gameStartDate).format('HH:mm').toString();
                     singleTeam.matchDate = matchDate;
                     singleTeam.matchTime = matchTime;
-                   /*  console.log(singleTeam.gameid); */
                     this.match.totalMatch.push(singleTeam);
                     if (singleTeam.gameStartDate <= todayDate) {
                         this.match.previousMatch.unshift(singleTeam);
@@ -53,8 +50,16 @@ export class GetApiServiceSingleTeam {
     getSearchSingleTeamPlayer(id: string) {
         return this.apiService.SearchSingleTeamPlayer(id).pipe(
             map((res: any) => {
+                res.forEach((singlePlayer: any) => {
+                    singlePlayer.statistics.forEach((stats:any)=>{
+                        stats.min = stats.min.split(":")[2];
+                    });
+                    singlePlayer.statisticsArray = singlePlayer.statistics.map((stat:any) => Object.entries(stat));
+                });
+                console.log(res);
                 return res as allPlayer;
             })
-        )
+        );
+
     }
 }

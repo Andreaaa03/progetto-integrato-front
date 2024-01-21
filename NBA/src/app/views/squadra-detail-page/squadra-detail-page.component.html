@@ -139,7 +139,7 @@
                         </div>
                     </div>
                     <div class="lg:w-[90%] w-full flex justify-center">
-                        <table class="w-full">
+                        <table class="w-full" id="tabella-partite">
                             <thead class="bg-primary text-white lg:w-full w-full">
                                 <tr>
                                     <th class="lg:w-[5%]  w-[3%]">
@@ -163,32 +163,34 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="lg:w-full w-full" *ngFor="let match of matchCalendar.totalMatch, let i = index">
-                                <tr *ngIf="i <= cardToShow">
-                                    <td class="lg:w-[15%] w-[3%]">
-                                        <p class="w-full text-center px-3">{{match?.matchDate}}</p>
-                                    </td>
-                                    <td class="lg:w-[10%] w-[3%]">
-                                        <p class="w-full text-center px-3">{{match?.matchTime}}</p>
-                                    </td>
-                                    <td class="lg:w-[5%]  w-[2%]">
-                                        <p class="w-full text-center px-3" *ngIf="match?.codeHome !== teamStatistics!.team.code">{{match?.codeHome}}</p>
-                                        <p class="w-full text-center px-3" *ngIf="match?.codeAway !== teamStatistics!.team.code">{{match?.codeAway}}</p>
-                                    </td>
-                                    <td class="lg:w-[10%] w-[2%]">
-                                        <p class="w-full text-center px-3" *ngIf="match?.codeHome !== teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamAway > match!.scoreTeamHome)">W</p>
-                                        <p class="w-full text-center px-3" *ngIf="match?.codeHome === teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamHome > match!.scoreTeamAway)">W</p>
-                                        <p class="w-full text-center px-3" *ngIf="match?.codeAway !== teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamAway > match!.scoreTeamHome)">L</p>
-                                        <p class="w-full text-center px-3" *ngIf="match?.codeAway === teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamHome > match!.scoreTeamAway)">L</p>
-                                    </td>
-                                    <td class="lg:w-[10%] w-[60%]">
-                                        <p class="w-full text-center">{{match?.scoreTeamAway}}-{{match?.scoreTeamHome}}</p>
-                                    </td>
-                                    <td class="lg:w-[50%] w-[30%]">
-                                        <div class="w-full hidden lg:flex lg:justify-end lg:mx-0" [routerLink]="['/tabellino',match?.gameid]"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
-                                        <div class="w-full flex lg:hidden lg:justify-end lg:mx-0" [routerLink]="['/tabellino',match?.gameid]"><button class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1 w-full">TAB</button></div>
-                                    </td>
-                                </tr>
+                            <tbody class="lg:w-full w-full">
+                                <ng-container *ngFor="let match of matchCalendar.totalMatch, let i = index">
+                                    <tr *ngIf="i <= cardToShow">
+                                        <td class="lg:w-[15%] w-[3%]">
+                                            <p class="w-full text-center px-3">{{match?.matchDate}}</p>
+                                        </td>
+                                        <td class="lg:w-[10%] w-[3%] bg-[#dcf1ff]">
+                                            <p class="w-full text-center px-3">{{match?.matchTime}}</p>
+                                        </td>
+                                        <td class="lg:w-[5%]  w-[2%] bg-[#dcf1ff]">
+                                            <p class="w-full text-center px-3" *ngIf="match?.codeHome !== teamStatistics!.team.code">{{match?.codeHome}}</p>
+                                            <p class="w-full text-center px-3" *ngIf="match?.codeAway !== teamStatistics!.team.code">{{match?.codeAway}}</p>
+                                        </td>
+                                        <td class="lg:w-[10%] w-[2%] bg-[#dcf1ff]">
+                                            <p class="w-full text-center px-3" *ngIf="match?.codeHome !== teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamAway > match!.scoreTeamHome)">W</p>
+                                            <p class="w-full text-center px-3" *ngIf="match?.codeHome === teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamHome > match!.scoreTeamAway)">W</p>
+                                            <p class="w-full text-center px-3" *ngIf="match?.codeAway !== teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamAway > match!.scoreTeamHome)">L</p>
+                                            <p class="w-full text-center px-3" *ngIf="match?.codeAway === teamStatistics!.team.code && (match?.scoreTeamAway !== undefined && match?.scoreTeamHome !== undefined && match!.scoreTeamHome > match!.scoreTeamAway)">L</p>
+                                        </td>
+                                        <td class="lg:w-[10%] w-[60%] bg-[#dcf1ff]">
+                                            <p class="w-full text-center">{{match?.scoreTeamAway}}-{{match?.scoreTeamHome}}</p>
+                                        </td>
+                                        <td class="lg:w-[50%] w-[30%] bg-white">
+                                            <div class="w-full hidden lg:flex lg:justify-end lg:mx-0" ><button [routerLink]="['/tabellino',match?.gameid]" class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1">TABELLINO</button></div>
+                                            <div class="w-full flex lg:hidden lg:justify-end lg:mx-0" ><button [routerLink]="['/tabellino',match?.gameid]" class="bg-primary h-14 lg:px-10 px-2 rounded-xl text-white mb-1 w-full">TAB</button></div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
                             </tbody>
                         </table>
                     </div>
@@ -213,7 +215,7 @@
                         </div>
                         <div class="w-1/2 h-28 text-white flex flex-wrap justify-center items-center bg-primary"></div>
                     </div>
-                    <div class="mt-5 w-[90%] flex flex-wrap" *ngFor="let player of teamsPlayer">
+                    <div class="mt-5 mb-10 w-[90%] flex flex-wrap " *ngFor="let player of teamsPlayer">
                         <div class="w-full h-auto flex lg:flex-nowrap flex-wrap justify-between items-center">
                             <div class="lg:w-1/3 w-full lg:h-full h-auto flex justify-center flex-wrap items-center">
                                 <div class="lg:w-1/2 w-full flex justify-center lg:justify-start">
@@ -222,7 +224,6 @@
                                 <div class="lg:w-1/2 w-full">
                                     <p class="w-full h-auto px-4">{{player.lastName}} {{player.firstName}}</p>
                                     <p class="w-full h-auto px-4">N° maglia: {{player.numeroMaglia}}</p>
-                                    <p class="w-full h-auto px-4">Ruolo: {{player.posizione}}</p>
                                 </div>
                             </div>
                             <div class="lg:w-1/3 w-full lg:h-full h-auto lg:border-x-2 lg:border-primary flex justify-center flex-wrap items-center">
@@ -234,39 +235,31 @@
                                 </div>
                             </div>
                             <div class="lg:w-1/3 w-full lg:h-full h-auto flex justify-center flex-wrap items-center">
-                                <p class="w-full h-auto text-justify px-4"><b>{{player.lastName}} {{player.firstName}}</b> ha inizio a giocare a basket fin da ragazzino. Crescendo ha frequentato il college
+                                <p class="w-full h-auto text-justify px-4 py-2"><b>{{player.lastName}} {{player.firstName}}</b> ha inizio a giocare a basket fin da ragazzino. Crescendo ha frequentato il college
                                     al <b>{{player.college}}</b> facendosi le ossa per poi approdare nel mondo dell'NBA nell' anno <b>{{player.nbaStart}}</b>. In questi anni ha totalizzato
                                     <b>{{player.points}} punti</b> con <b>{{player.assists}} assist</b>
                                 </p>
                             </div>
                         </div>
-                        <div class="mt-5 w-full h-10 bg-primary"></div>
-                        <!-- <div class="my-5 w-full">
-                            <table>
-                                <thead>
-                                    <td>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                    </td>
+                        <h3 class="w-full text-center font-bold text-xl p-2">Ultime 5 gare</h3>
+                        <div id="tabella-giocatore" class="table-container w-full overflow-x-scroll">
+                            <table class="w-full">
+                                <thead class="bg-primary text-white">
+                                    <tr class="w-full">
+                                        <th class="" *ngFor="let day of player.statisticsArray[0], let j=index">
+                                            <p *ngIf="j>1" class="w-20 text-center">{{day[0]}}</p>
+                                        </th>
+                                    </tr>
                                 </thead>
-                                <tbody>
-                                    <td>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                    </td>
+                                <tbody class="">
+                                    <tr class="" *ngFor="let singleStats of player.statisticsArray">
+                                        <td class="" *ngFor="let day of singleStats, let j=index">
+                                            <p *ngIf="j>1" class="w-20 text-center">{{day[1]}}</p>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

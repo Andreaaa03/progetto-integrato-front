@@ -18,6 +18,7 @@ export class SquadraDetailPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
   cardToShow: number = 10;
   squadraCalendario: boolean = true;
+  statisticToShow: number[] = [];
   
 
   
@@ -216,15 +217,13 @@ export class SquadraDetailPageComponent implements OnInit {
       this.cardToShow += 10;
   }
 
-  
-
   teamStatistics?: teamStatistic;
   matchCalendar: matchCalendar = {
     previousMatch: [],
     nextMatch: [],
     totalMatch: [],
   }
-  teamsPlayer: teamPlayer | null = null;
+  teamsPlayer!: teamPlayer;
   ripetiArray: Array<any> = [] ;
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(
@@ -232,7 +231,15 @@ export class SquadraDetailPageComponent implements OnInit {
         this.teamStatistics = ResolveSingleTeamStatistics;
         this.matchCalendar.totalMatch = ResolveSingleTeamCalendar.totalMatch;
         this.teamsPlayer = ResolveSingleTeamPlayer;
-        console.log(this.teamsPlayer);
+        console.log(this.teamsPlayer[0].datiArray);
+        let i = 0;
+        this.teamsPlayer.forEach(() => {
+          if(i >= 2){
+            this.statisticToShow.push(i);
+          }
+            i++;
+        })
+        console.log(this.statisticToShow.length);
         this.ripetiArray=new Array(this.matchCalendar.totalMatch.length).fill(null);
       })
   }

@@ -241,32 +241,28 @@
                             </div>
                         </div>
                         <div class="mt-5 w-full h-10 bg-primary"></div>
-                        <!-- <div class="my-5 w-full">
-                            <table>
-                                <thead>
-                                    <td>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                    </td>
+                        <div class="table-container w-full overflow-x-scroll">
+                            <table class="w-full">
+                                <thead class="bg-primary text-white">
+                                    <!-- <tr class=" flex flex-nowrap bg-primary text-white" *ngFor="let _ of statisticToShow, let i = index">
+                                        <th class="w-[20%]">{{teamsPlayer[i].datiArray[i][0]}}</th>
+                                    </tr> -->
+                                    <tr>
+                                        <th class="w-[20%]">Ultimi 5 match:</th>
+                                        <th class="w-[20%]" *ngFor="let _ of statisticToShow, let i = index">{{teamsPlayer[i].datiArray[i][0]}}</th>
+                                    </tr> 
                                 </thead>
-                                <tbody>
-                                    <td>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                        <tr></tr>
-                                    </td>
+                                <tbody class="">
+                                    <!-- <tr class="flex flex-nowrap" *ngFor="let _ of statisticToShow, let i = index">
+                                        <td class="w-[5%]">{{teamsPlayer[i].datiArray[i][1]}}</td>
+                                    </tr> -->
+                                    <tr>
+                                        <td class="w-[20%]"></td>
+                                        <td class="w-[20%]" *ngFor="let _ of statisticToShow, let i = index">{{teamsPlayer[i].datiArray[i][1]}}</td>
+                                    </tr>
                                 </tbody>
                             </table>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

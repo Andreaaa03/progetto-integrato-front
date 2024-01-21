@@ -1,3 +1,30 @@
+type playerStats = {
+    id: number;
+    nome: string;
+    points: number;
+    pos: string;
+    min: string;
+    fgm: number;
+    fga: number;
+    fgp: number;
+    ftm: number;
+    fta: number;
+    ftp: number;
+    tpm: number;
+    tpa: number;
+    tpp: number;
+    offReb: number;
+    defReb: number;
+    totReb: number;
+    assists: number;
+    pFouls: number;
+    steals: number;
+    turnovers: number;
+    blocks: number;
+    plusMinus: number;
+    pfouls: number;
+};
+
 export type teamStatistic = {
     team: {
         id: number;
@@ -105,6 +132,8 @@ export type teamPlayer = {
     age: number;
     assists: number;
     points: number;
+    statistics: playerStats;
+    datiArray: [number,number][];
 }[];
 
 export type allPlayer={

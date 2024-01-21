@@ -53,6 +53,9 @@ export class GetApiServiceSingleTeam {
     getSearchSingleTeamPlayer(id: string) {
         return this.apiService.SearchSingleTeamPlayer(id).pipe(
             map((res: any) => {
+                res.forEach((singlePlayer: any) => {
+                    singlePlayer.datiArray = Object.entries(singlePlayer.statistics).map(entry => entry);
+                })
                 return res as allPlayer;
             })
         )

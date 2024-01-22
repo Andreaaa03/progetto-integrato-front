@@ -14,13 +14,13 @@ export class CalendarioPageComponent implements OnInit {
 
   matchToday: number[] = [];
   matchTodayLast20!: matchDate;
-  cardToShow: number = 3;
+  cardToShow: number = 0;
 
   changeCardToShow(cardToShow: number): void {
     if (cardToShow <= 3)
       this.cardToShow = this.matchToday.length;
     else
-      this.cardToShow = 3;
+      this.cardToShow = this.matchToday.length;
   }
   MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -66,7 +66,6 @@ export class CalendarioPageComponent implements OnInit {
       })
 
     this.cardToShow = this.matchToday.length;
-
   }
 
   initDate() {
@@ -119,7 +118,8 @@ export class CalendarioPageComponent implements OnInit {
       match.forEach((singleMatch: any) => {
         this.matchToday.push(singleMatch.gameid);
       })
-    })
+    });
+    this.cardToShow = this.matchToday.length;
   };
   isToday(Year: number, Month: number, Day: number) {
     if (Month + 1 >= 1 && Month + 1 <= 9)

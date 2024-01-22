@@ -38,7 +38,6 @@ export class SquadraDetailPageComponent implements OnInit {
         this.teamStatistics = ResolveSingleTeamStatistics;
         this.matchCalendar.totalMatch = ResolveSingleTeamCalendar.totalMatch;
         this.teamsPlayer = ResolveSingleTeamPlayer;
-        console.log(this.teamsPlayer[0].statisticsArray[0]);
         let i = 0;
         this.teamsPlayer.forEach(() => {
           if(i >= 2){
@@ -46,7 +45,7 @@ export class SquadraDetailPageComponent implements OnInit {
           }
             i++;
         })
-        console.log(this.statisticToShow.length);
+        console.log(this.teamsPlayer);
         this.ripetiArray=new Array(this.matchCalendar.totalMatch.length).fill(null);
       })
   }

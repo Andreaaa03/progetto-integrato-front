@@ -74,8 +74,9 @@ export class CalendarioPageComponent implements OnInit {
     this.currentYearCentral = Number(this.dateURL.split('-')[0]);
     this.daySelected = Number(this.dateURL.split('-')[2]);
     this.currentMonthLeft = this.currentMonthCentral - 1;
-
-    if (this.currentMonthCentral + 1 >= 11) {
+    
+    console.log(this.currentYearRight, this.currentMonthRight)
+    if (this.currentMonthCentral + 1 > 11) {
       this.currentYearRight = this.currentYearCentral + 1;
       this.currentMonthRight = 0;
     } else {
@@ -83,7 +84,6 @@ export class CalendarioPageComponent implements OnInit {
       this.currentMonthRight = this.currentMonthCentral + 1;
     }
 
-    console.log(this.currentYearLeft, this.currentMonthLeft)
     if (this.currentMonthLeft < 0) {
       this.currentYearLeft = this.currentYearCentral - 1;
       this.currentMonthLeft = 11;
@@ -91,7 +91,15 @@ export class CalendarioPageComponent implements OnInit {
       this.currentYearLeft = this.currentYearCentral;
       this.currentMonthLeft = this.currentMonthCentral - 1;
     }
-    console.log(this.currentYearLeft, this.currentMonthLeft)
+    
+    if (this.currentMonthRight < 0) {
+      this.currentYearRight = this.currentYearCentral + 1;
+      this.currentMonthRight = 11;
+    } else if(this.currentMonthRight > 11){
+      this.currentYearRight = this.currentYearCentral + 1;
+      this.currentMonthRight = 0;
+    }
+    console.log(this.currentYearRight, this.currentMonthRight)
   };
 
 

@@ -62,4 +62,8 @@ export class NavbarComponent implements OnInit{
       }
     );
   }
+
+  signin(){
+    console.log("regitstrato");
+  }
 }

@@ -2,7 +2,7 @@
     <div class="w-[80%] lg:h-[80%] h-[85%] bg-gray-100 border-4 border-primary z-40">
         <div class="flex flex-wrap items-center justify-center h-full z-40 mb-4">
             <div class="w-full flex flex-wrap justify-center" *ngIf="registrati === false">
-                <form class="lg:w-[80%] w-[90%] flex flex-wrap" (submit)="login()">
+                <div class="lg:w-[80%] w-[90%] flex flex-wrap" >
                     <div class="w-full flex justify-center">
                         <div class="w-[80%] flex justify-center">
                             <div class="w-full flex justify-between items-center">
@@ -14,29 +14,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full flex justify-center flex-wrap mt-4">
-                        <div class="w-[70%] mb-4">
-                            <input type="text" id="username" name="username" maxlength="40" [(ngModel)]="email" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="USERNAME: ">
+                    <form class="w-full flex flex-wrap" (submit)="login()">
+                        <div class="w-full flex justify-center flex-wrap mt-4">
+                            <div class="w-[70%] mb-4">
+                                <input type="text" id="username" name="username" maxlength="40" value="{{email}}" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="USERNAME: ">
+                            </div>
+                            <div class="w-[70%] mb-4">
+                                <input type="password" id="password" name="password" value="{{password}}" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="PASSWORD: ">
+                            </div>
                         </div>
-                        <div class="w-[70%] mb-4">
-                            <input type="password" id="password" name="password" [(ngModel)]="password" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="PASSWORD: ">
+                        <div class="w-full flex justify-center">
+                            <button type="submit" (submit)="login()" class="w-auto py-2 px-4 bg-secondary text-white rounded-2xl">ACCEDI</button>
                         </div>
-                    </div>
-                    <div class="w-full flex justify-center">
-                        <button type="submit" (submit)="login()" class="w-auto py-2 px-4 bg-primary text-white rounded-2xl hover:bg-blue-600">ACCEDI</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
                 <div class="w-full flex justify-center my-1">
                     <button class="lg:w-[30%] w-auto p-2 bg-white my-4 text-secondary font-bold rounded-2xl border-secondary border-4 hover:bg-tertiary">PASSWORD
                         DIMENTICATA?</button>
                 </div>
                 <div class="w-[60%] flex justify-evenly items-center mt-10">
                     <p class="w-auto lg:text-base text-xs lg:text-center font-bold mr-2">Non sei ancora registrato?</p>
-                    <button (click)="registratiView()" class="lg:w-[30%] w-auto p-2 bg-primary text-white rounded-2xl hover:bg-blue-600">REGISTRATI</button>
+                    <button (click)="registratiView()" class="lg:w-[30%] w-auto p-2 bg-secondary text-white rounded-2xl">REGISTRATI</button>
                 </div>
             </div>
             <div class="w-full flex flex-wrap justify-center" *ngIf="registrati === true">
-                <form class="lg:w-[80%] w-[90%] flex flex-wrap">
+                <div class="lg:w-[80%] w-[90%] flex flex-wrap justify-center">
                     <div class="w-full flex justify-center">
                         <div class="lg:w-[70%] w-[80%] flex justify-between items-center">
                             <div class="w-[15%] flex" (click)="registratiView()">
@@ -49,34 +51,43 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full flex justify-center flex-wrap mt-4">
-                        <div class="lg:w-[70%] w-[80%] mb-4">
-                            <input type="text" id="username" name="username" maxlength="40" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Username* ">
+                    <form class="lg:w-[70%] w-[80%] flex justify-center flex-wrap mt-4" action="signin()" (submit)="signin()">
+                        <div class="flex jus">
+                            <div class="lg:w-[45%] w-full mb-4">
+                                <input required type="text" id="nome" name="nome" minlength="1" maxlength="255" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Nome* ">
+                            </div>
+                            <div class="lg:w-[45%] w-full mb-4">
+                                <input required type="text" id="cognome" name="cognome" minlength="1" maxlength="255" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Cognome* ">
+                            </div>
                         </div>
-                        <div class="lg:w-[70%] w-[80%] mb-4">
-                            <input type="text" id="eta" name="eta" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Età ">
+                        <div class="lg:w-[45%] w-full mb-4">
+                            <input required type="text" id="username" name="username" minlength="1" maxlength="50" maxlength="40" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Username* ">
                         </div>
-                        <div class="lg:w-[70%] w-[80%] flex flex-nowrap mb-4 lg:justify-between justify-center">
+                        <div class="lg:w-[45%] w-full mb-4">
+                            <input type="number" id="eta" name="eta" max="99" min="16" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Età ">
+                        </div>
+                        <div class="w-full flex flex-nowrap mb-4 lg:justify-between justify-center">
                             <div class="w-full lg:flex hidden items-center">
                                 <div class="w-1/4 flex items-center ">
                                     <p class="px-4 w-full text-base">Sesso:</p>
                                 </div>
                                 <div class="w-1/4 flex items-center flex-nowrap">
-                                    <input type="radio" name="sesso" class="rounded-full w-5 h-5 bg-gray-400">
+                                    <input required type="radio" name="sesso" class="rounded-full w-5 h-5 bg-gray-400">
                                     <div class="px-4 flex justify-center border-primary border-4 ml-2">M</div>
                                 </div>
                                 <div class="w-1/4 flex items-center flex-nowrap">
-                                    <input type="radio" name="sesso" class="rounded-full w-5 h-5 bg-gray-400">
+                                    <input required type="radio" name="sesso" class="rounded-full w-5 h-5 bg-gray-400">
                                     <div class="px-4 flex justify-center border-primary border-4 ml-2">F</div>
                                 </div>
                                 <div class="w-1/4 flex items-center flex-nowrap">
-                                    <input type="radio" name="sesso" class="rounded-full w-5 h-5 bg-gray-400">
+                                    <input required type="radio" name="sesso" class="rounded-full w-5 h-5 bg-gray-400">
                                     <div class="px-4 flex justify-center border-primary border-4 ml-2">Altro</div>
                                 </div>
                             </div>
                             <div class="w-auto lg:hidden flex items-center ml-4">
                                 <div class="flex items-center w-full border-primary border-4">
-                                    <select id="select" class="border p-2" [(ngModel)]="selectedOption">
+                                    <p class="w-auto">Sesso: </p>
+                                    <select required="" id="select" class="border p-2">
                                         <option value="maschio">M</option>
                                         <option value="femmina">F</option>
                                         <option value="altro">Altro</option>
@@ -84,26 +95,26 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="lg:w-[70%] w-[80%] mb-4">
-                            <input type="email" id="email" name="email" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Eamil* ">
+                        <div class="w-full mb-4">
+                            <input required type="email" id="email" name="email" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Eamil* ">
                         </div>
-                        <div class="lg:w-[70%] w-[80%] mb-4">
-                            <input type="password" id="password" name="password" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Cellulare* ">
+                        <div class="w-full mb-4">
+                            <input required type="tel" id="tel" name="telefono" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Cellulare* ">
                         </div>
-                        <div class="lg:w-[70%] w-[80%] mb-4">
+                        <div class="w-full mb-4">
                             <div class="w-full flex lg:flex-nowrap flex-wrap">
-                                <input type="password" id="password" name="password" class="mt-1 px-4 py-1 lg:w-1/2 w-full lg:mr-2 border-primary border-4 rounded-full" placeholder="Password* ">
-                                <input type="password" id="password" name="password" class="mt-1 px-4 py-1 lg:w-1/2 w-full border-primary border-4 rounded-full" placeholder="Ripeti Password* ">
+                                <input required type="password" id="password1" name="password1" class="mt-1 px-4 py-1 lg:w-1/2 w-full lg:mr-2 border-primary border-4 rounded-full" placeholder="Password* ">
+                                <input required type="password" id="password2" name="password2" class="mt-1 px-4 py-1 lg:w-1/2 w-full border-primary border-4 rounded-full" placeholder="Ripeti Password* ">
                             </div>
                         </div>
                         <div class="w-full flex justify-center">
-                            <button type="submit" class="w-auto py-2 px-4 bg-primary text-white rounded-2xl hover:bg-blue-600">REGISTRATI</button>
+                            <input type="submit" class="w-auto py-2 px-4 bg-secondary text-white rounded-2xl" value="REGISTRATI"/>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
                 <!-- <div class="w-[60%] flex justify-evenly items-center mt-4">
                     <p class="text-base text-center font-bold mr-2">Hai già un account?</p>
-                    <button (click)="registratiView()" class="lg:w-[30%] w-auto p-2 bg-primary text-white rounded-2xl hover:bg-blue-600">ACCEDI</button>
+                    <button (click)="registratiView()" class="lg:w-[30%] w-auto p-2 bg-secondary text-white rounded-2xl">ACCEDI</button>
                 </div> -->
             </div>
 

@@ -65,15 +65,17 @@ export class NavbarComponent implements OnInit{
   // password: string = 'sonoio';
 
   login(): void {
-    console.log(this.signupForm.birthDate,this.signinForm.password);
     this.apiService.SendLogin(this.signinForm.mail, this.signinForm.password).subscribe(
       (risposta:any) => {
         this.token=risposta.token;
         localStorage.setItem('authToken', risposta.token);
+        this.succesfulMessage = risposta.error;
+        console.log('Registrazione andata a buon fine: ', risposta.status);
         this.router.navigate(['/profilo']);
       },
       (errore) => {
-        console.error('Errore durante il login:', errore);
+        this.errorMessage = "Accesso fallito! " + errore.error.error;
+        console.log('Accesso fallito: ', errore.error.error);
       }
     );
   }
@@ -84,15 +86,15 @@ export class NavbarComponent implements OnInit{
       this.apiService.SendSignup(this.signupForm.first_name, this.signupForm.last_name, this.signupForm.birthDate, this.signupForm.mail, this.signupForm.passwd, this.signupForm.numeroTelefono, this.signupForm.username, this.signupForm.sesso).subscribe(
         (risposta: any) => {
           this.succesfulMessage=risposta.error;
-          console.log('Registrazione andata a buon fine:', risposta.status);
+          console.log('Registrazione andata a buon fine: ', risposta.status);
         },
         (errore) => {
           if(errore.status>=200 && errore.status<=299){  
             this.succesfulMessage=errore.error;
-            console.log('Registrazione andata a buon fine:', errore.status);
+            console.log('Registrazione andata a buon fine: ', errore.status);
           }else{
-            this.errorMessage = "Registrazione fallita!" + errore.error;
-            console.log('Registrazione fallita:', errore.error.error);
+            this.errorMessage = "Registrazione fallita! " + errore.error.error;
+            console.log('Registrazione fallita: ', errore.error.error);
           }
         }
       )

@@ -1,14 +1,14 @@
 <div *ngIf="token==null && modal===true" class="fixed lg:top-1/2 top-[55%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full flex justify-center items-center bg-[#acdeff81]">
     <div class="w-[80%] lg:h-[80%] h-[85%] bg-gray-100 border-4 border-primary z-40">
-        <div class="flex flex-wrap items-center justify-center h-full z-40 mb-4">
+        <div class="flex flex-wrap items-center justify-center h-full z-40">
             <div class="w-full flex flex-wrap justify-center" *ngIf="registrati === false">
-                <div class="lg:w-[80%] w-[90%] flex flex-wrap" >
+                <div class="lg:w-[80%] w-[90%] flex flex-wrap">
                     <div class="w-full flex justify-center">
                         <div class="w-[80%] flex justify-center">
                             <div class="w-full flex justify-between items-center">
                                 <div class="w-[15%] flex justify-center"></div>
                                 <p class="w-[70%] flex justify-center text-2xl font-bold">ACCEDI AL TUO ACCOUNT</p>
-                                <div class="w-[15%] flex justify-center " (click)="modal=!modal">
+                                <div class="w-[15%] flex justify-center " (click)="modal=!modal; errorMessage=''; succesfulMessage=''">
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nO2VQQrCMBBFH2Q8nne0FLNpDlYV3HcVEaYg0pqPraFCP8wqf/I6zSQDu/5VR+AONIAJfgNa4OK5MmQAskdXgJl7Rv+gwm4vSSWYvUHGuCqgZiJxCmYzkGecFFAAzjMbJODgnljwSPr0tV1hTWkeubK8tJJvYWkJRIWlNSAUDj6vWU2scT7x181gNdo7CJcxCJe6yhPU1npU+02NCdzY+y9QB1/j40GG7NqWHrZCsVI4Fm8DAAAAAElFTkSuQmCC">
                                 </div>
                             </div>
@@ -35,6 +35,10 @@
                 <div class="w-[60%] flex justify-evenly items-center mt-10">
                     <p class="w-auto lg:text-base text-xs lg:text-center font-bold mr-2">Non sei ancora registrato?</p>
                     <button (click)="registratiView()" class="lg:w-[30%] w-auto p-2 bg-secondary text-white rounded-2xl">REGISTRATI</button>
+                </div>
+                <div class="text-center w-full h-10">
+                    <p *ngIf="errorMessage!=''" class="text-xl text-red-500">{{ errorMessage }}</p>
+                    <p *ngIf="succesfulMessage!=''" class="text-xl text-green-500">{{ succesfulMessage }}</p>
                 </div>
             </div>
             <div class="w-full flex flex-wrap justify-center" *ngIf="registrati === true">
@@ -101,7 +105,7 @@
                             <input required type="email" [(ngModel)]="signupForm.mail" id="email" name="mail" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Eamil* ">
                         </div>
                         <div class="w-full mb-4 border-primary border-4 rounded-full px-4 flex flex-wrap items-center">
-                            <p class="w-1/3">Data di nascita:</p> <input type="date" [(ngModel)]="signupForm.birthDate" id="dataDiNascita" name="dataDiNascita"  class="m-0 px-4 py-1 w-2/3 bg-transparent" placeholder="Data di nascita ">
+                            <p class="w-1/3">Data di nascita:</p> <input type="date" [(ngModel)]="signupForm.birthDate" id="dataDiNascita" name="dataDiNascita" class="m-0 px-4 py-1 w-2/3 bg-transparent" placeholder="Data di nascita ">
                         </div>
                         <div class="w-full mb-4">
                             <div class="w-full flex lg:flex-nowrap flex-wrap">
@@ -110,7 +114,7 @@
                             </div>
                         </div>
                         <div class="w-full flex justify-center">
-                            <input type="submit" class="w-auto py-2 px-4 bg-secondary text-white rounded-2xl" value="REGISTRATI"/>
+                            <input type="submit" class="w-auto py-2 px-4 bg-secondary text-white rounded-2xl" value="REGISTRATI" />
                         </div>
                     </form>
                 </div>
@@ -118,10 +122,10 @@
                     <p class="text-base text-center font-bold mr-2">Hai già un account?</p>
                     <button (click)="registratiView()" class="lg:w-[30%] w-auto p-2 bg-secondary text-white rounded-2xl">ACCEDI</button>
                 </div> -->
-            </div>
-
-            <div class="text-center mt-4">
-                <p class="text-sm text-gray-600">{{ errorMessage }}</p>
+                <div class="text-center w-full h-10">
+                    <p *ngIf="errorMessage!=''" class="text-xl text-red-500">{{ errorMessage }}</p>
+                    <p *ngIf="succesfulMessage!=''" class="text-xl text-green-500">{{ succesfulMessage }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -129,8 +133,6 @@
 <nav class="h-16 z-50">
     <div class="bg-secondary w-full flex flex-nowrap fixed top-0 h-16 z-50">
         <div class="md:flex-row flex flex-row-reverse w-full md:justify-normal justify-end">
-
-
             <div class="md:w-[10%] w-1/2 flex md:justify-center justify-start h-full items-center md:mr-20 pl-6 ">
                 <img routerLink="/home" class="object-contain h-[80%]" src="assets/logo-slam-stats.png" alt="">
             </div>
@@ -176,7 +178,7 @@
                 <button *ngIf="token==null" (click)="modal=!modal" class="h-16 lg:w-2/4 w-[50%]">
                     <img src="./assets/icon/profilo-arancione-3.png" alt="" class="object-contain w-auto">
                 </button>
-                <button *ngIf="token!=null" [routerLink]="['/profilo']" routerLinkActive="router-link-active"  class="h-16 lg:w-2/4 w-[50%]">
+                <button *ngIf="token!=null" [routerLink]="['/profilo']" routerLinkActive="router-link-active" class="h-16 lg:w-2/4 w-[50%]">
                     <img src="./assets/icon/profilo-arancione-3.png" alt="" class="object-contain w-auto">
                 </button>
             </div>

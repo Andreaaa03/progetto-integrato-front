@@ -8,6 +8,9 @@ export class ApiService {
     constructor(private http: HttpClient) { }
 
     baseURL ="http://localhost:8080/";
+    headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+    });
 
     //classifica
     SearchStanding(){
@@ -44,9 +47,12 @@ export class ApiService {
     }
     
     SendLogin(email:string, password:string){
-        const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-        });
-        return this.http.post(this.baseURL + "user/signin", { email: email, passwd: password }, {headers});
+        return this.http.post(this.baseURL + "user/signin", { email: email, passwd: password }, {headers: this.headers});
     }
+    SendSignup(first_name: string, last_name: string, birthDate: string, email: string, passwd: string, numeroTelefono: string, username: string, sesso: string){
+        return this.http.post(this.baseURL + "user/signup", { 
+            first_name: first_name, last_name: last_name, birthDate: birthDate, email: email, passwd: passwd, numeroTelefono: numeroTelefono, username: username, sesso: sesso 
+        }, {headers: this.headers});
+    }
+    
 }

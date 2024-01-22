@@ -52,19 +52,21 @@
                         </div>
                     </div>
                     <form class="lg:w-[70%] w-[80%] flex justify-center flex-wrap mt-4" action="signin()" (submit)="signin()">
-                        <div class="flex jus">
-                            <div class="lg:w-[45%] w-full mb-4">
+                        <div class="flex justify-between w-full">
+                            <div class="lg:w-[48%] w-full mb-4">
                                 <input required type="text" id="nome" name="nome" minlength="1" maxlength="255" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Nome* ">
                             </div>
-                            <div class="lg:w-[45%] w-full mb-4">
+                            <div class="lg:w-[48%] w-full mb-4">
                                 <input required type="text" id="cognome" name="cognome" minlength="1" maxlength="255" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Cognome* ">
                             </div>
                         </div>
-                        <div class="lg:w-[45%] w-full mb-4">
-                            <input required type="text" id="username" name="username" minlength="1" maxlength="50" maxlength="40" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Username* ">
-                        </div>
-                        <div class="lg:w-[45%] w-full mb-4">
-                            <input type="number" id="eta" name="eta" max="99" min="16" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Età ">
+                        <div class="flex justify-between w-full">
+                            <div class="lg:w-[48%] w-full mb-4">
+                                <input required type="text" id="username" name="username" minlength="1" maxlength="50" maxlength="40" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Username* ">
+                            </div>
+                            <div class="lg:w-[48%] w-full mb-4">
+                                <input type="number" id="eta" name="eta" max="99" min="16" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Età ">
+                            </div>
                         </div>
                         <div class="w-full flex flex-nowrap mb-4 lg:justify-between justify-center">
                             <div class="w-full lg:flex hidden items-center">

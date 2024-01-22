@@ -59,7 +59,7 @@
                         </h2>
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
-                    <div class="w-full h-full flex lg:justify-between mt-10">
+                    <div class="w-full h-full flex lg:justify-between justify-center mt-10">
                         <div class="lg:w-[45%] w-[90%] ">
                             <div class="bg-secondary rounded-xl flex justify-center">
                                 <div class="w-[90%] h-[90%]">
@@ -158,7 +158,7 @@
                         </div>
                     </div>
                     <div *ngIf="menuPreferitiSelected==='tutti'" class="w-full flex flex-wrap mt-5">
-                        <div class="lg:w-1/3 w-full flex flex-wrap my-8">
+                        <div class="lg:w-1/3 w-full flex justify-center flex-wrap my-8">
                             <p class="text-center text-base w-full justify-center flex mb-2">SQUADRE: </p>
                             <div class="w-[80%] bg-primary h-24 rounded-3xl flex flex-wrap">
                                 <div class="w-2/5 flex justify-center">
@@ -472,7 +472,8 @@
                         </div>
                         <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
-                                <p class="font-bold">Attiva/Disattiva notifiche follower (attivata)</p>
+                                <p class="font-bold hidden lg:block">Attiva/Disattiva notifiche follower (attivata)</p>
+                                <p class="font-bold lg:hidden">notifiche follower (attivata)</p>
                             </div>
                             <form action="" class="w-3/4 flex flex-nowrap justify-around pl-4">
 
@@ -487,7 +488,8 @@
                         </div>
                         <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
-                                <p class="font-bold">Attiva/Disattiva notifiche follower (disattivata)</p>
+                                <p class="font-bold hidden lg:block">Attiva/Disattiva notifiche follower (disattivata)</p>
+                                <p class="font-bold lg:hidden flex">notifiche follower (disattivata)</p>
                             </div>
                             <form action="" class="w-3/4 flex flex-nowrap justify-around pl-4">
 
@@ -502,7 +504,8 @@
                         </div>
                         <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
-                                <p class="font-bold">Attiva/Disattiva notifiche match (diattivata)</p>
+                                <p class="font-bold hidden lg:block">Attiva/Disattiva notifiche match (diattivata)</p>
+                                <p class="font-bold lg:hidden flex">notifiche match (diattivata)</p>
                             </div>
                             <form action="" class="w-3/4 flex flex-nowrap justify-around pl-4">
 
@@ -517,7 +520,8 @@
                         </div>
                         <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
-                                <p class="font-bold">Attiva/Disattiva notifiche nuovo articolo blog (attivata)</p>
+                                <p class="font-bold lg:flex hidden">Attiva/Disattiva notifiche nuovo articolo blog (attivata)</p>
+                                <p class="font-bold lg:hidden flex">notifiche blog (attivata)</p>
                             </div>
                             <form action="" class="w-3/4 flex flex-nowrap justify-around pl-4">
 
@@ -532,7 +536,8 @@
                         </div>
                         <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
-                                <p class="font-bold">Attiva/Disattiva notifiche nuova puntata podcast (attivata)</p>
+                                <p class="font-bold lg:flex hidden">Attiva/Disattiva notifiche nuova puntata podcast (attivata)</p>
+                                <p class="font-bold lg:hidden flex">notifiche podcast (attivata)</p>
                             </div>
                             <form action="" class="w-3/4 flex flex-nowrap justify-around pl-4">
                                 <div class="w-1/2 flex justify-center flex-wrap items-center">

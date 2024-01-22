@@ -32,7 +32,15 @@
                 </div>
                 <div class="w-[60%] flex justify-evenly items-center mt-10">
                     <p class="w-auto lg:text-base text-xs lg:text-center font-bold mr-2">Non sei ancora registrato?</p>
+<<<<<<< Updated upstream
                     <button (click)="registratiView()" class="lg:w-[30%] w-auto p-2 bg-primary text-white rounded-2xl hover:bg-blue-600">REGISTRATI</button>
+=======
+                    <button (click)="registratiView()" class="lg:w-[30%] w-auto p-2 bg-secondary text-white rounded-2xl">REGISTRATI</button>
+                </div>
+                <div class="text-center w-full h-10 mt-4">
+                    <p *ngIf="errorMessage!=''" class="text-xl text-red-500">{{ errorMessage }}</p>
+                    <p *ngIf="succesfulMessage!=''" class="text-xl text-green-500">{{ succesfulMessage }}</p>
+>>>>>>> Stashed changes
                 </div>
             </div>
             <div class="w-full flex flex-wrap justify-center" *ngIf="registrati === true">
@@ -105,10 +113,17 @@
                     <p class="text-base text-center font-bold mr-2">Hai già un account?</p>
                     <button (click)="registratiView()" class="lg:w-[30%] w-auto p-2 bg-primary text-white rounded-2xl hover:bg-blue-600">ACCEDI</button>
                 </div> -->
+<<<<<<< Updated upstream
             </div>
 
             <div class="text-center mt-4">
                 <p class="text-sm text-gray-600">{{ errorMessage }}</p>
+=======
+                <div class="text-center w-full h-10 mt-4">
+                    <p *ngIf="errorMessage!=''" class="text-xl text-red-500">{{ errorMessage }}</p>
+                    <p *ngIf="succesfulMessage!=''" class="text-xl text-green-500">{{ succesfulMessage }}</p>
+                </div>
+>>>>>>> Stashed changes
             </div>
         </div>
     </div>

@@ -33,22 +33,37 @@ export class ApiService {
         return this.http.get(this.baseURL + "player/teamId?id="+ id);
     }
 
+    //partite, 
     SearchMatch(id:string){
         return this.http.get(this.baseURL + "games/gameId?id="+ id);
     }
+    //statistiche della singola partita
     SearchMatchStats(id:string){
         return this.http.get(this.baseURL + "games/partitaStat?idPartita="+ id);
     }
+    //partite in una singolo giorno
     SearchMatchDate(date:string){
         return this.http.get(this.baseURL + "games/date?date="+ date);
     }
+    //ultime 20 partite da una data
     SearchMatchDateLast20(date:string){
         return this.http.get(this.baseURL + "games/Last20?date="+ date);
     }
+
+    //tutti gli articoli
+    SearchAllArticle(){
+        return this.http.get(this.baseURL + "blog/simple");
+    }
+    //dettaglio singolo articolo
+    SearchArticle(id:string){
+        return this.http.get(this.baseURL + "blog/completo?id=" +id);
+    }
     
+    //invio dati login
     SendLogin(email:string, password:string){
         return this.http.post(this.baseURL + "user/signin", { email: email, passwd: password }, {headers: this.headers});
     }
+    //invio dati registrati
     SendSignup(first_name: string, last_name: string, birthDate: string, email: string, passwd: string, numeroTelefono: string, username: string, sesso: string){
         return this.http.post(this.baseURL + "user/signup", { 
             first_name: first_name, last_name: last_name, birthDate: birthDate, email: email, passwd: passwd, numeroTelefono: numeroTelefono, username: username, sesso: sesso 

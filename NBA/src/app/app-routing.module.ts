@@ -16,6 +16,7 @@ import { ArticoloDetailPageComponent } from './views/articolo-detail-page/artico
 import { ProfiloPageComponent } from './views/profilo-page/profilo-page.component';
 import { GetApiServiceMatch } from './services/getApiMatch.service';
 import * as dayjs from 'dayjs';
+import { GetApiServiceArticle } from './services/getApiArticle.service';
 
 
 const routes: Routes = [
@@ -24,12 +25,15 @@ const routes: Routes = [
       ResolveStanding: () => {
         return inject(GetApiServiceStanding).getSearchStanding();
       },
-      ResolveMatchData: (route: ActivatedRouteSnapshot) => {
+      ResolveMatchData: () => {
         const data=dayjs().format("YYYY-MM-DD");
         return inject(GetApiServiceMatch).getSearchMatchDate(data!);
       }, 
+      ResolveAllArticle: () => {
+        return inject(GetApiServiceArticle).getSearchAllArticle();
+      }
     }, title: "SLAM STATS"
-  }, //title: "SLAM STATS"
+  },
   {
     path: "classifica", component: ClassificaPageComponent, resolve: {
       ResolveStanding: () => {
@@ -84,7 +88,11 @@ const routes: Routes = [
       }
     }, title: "SLAM STATS - Profilo"
   },
-  { path: "articolo", component: ArticoloDetailPageComponent, title: "SLAM STATS - Articolo" },
+  { path: "articolo/:id", component: ArticoloDetailPageComponent, resolve:{
+    ResolveArticle: (route:ActivatedRouteSnapshot) => {
+      return inject(GetApiServiceArticle).getSearchSingleArticle(route.paramMap.get("id")!);
+    }
+  }, title: "SLAM STATS - Articolo" },
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore
   { path: "errore", component: ErrorePageComponent, pathMatch: "full" },
   { path: "**", component: ErrorePageComponent, title: "ERR. 404 - pagina non trovata" },

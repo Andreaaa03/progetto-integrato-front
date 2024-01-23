@@ -7,6 +7,8 @@ type Article = {
     giorno: string;
     orario: string;
     numeroFoto: number;
+    tipo: string;
+    colori: string
 }
 
 export type cardArticle = Article[];

@@ -12,7 +12,7 @@
                     <div class="w-full h-6 bg-secondary"></div>
                 </div>
                 <div class="my-5">
-                    <img class="w-full object-contain" src="../../../assets/img-articolo/inizio 9.png" alt="">
+                    <img class="w-full object-contain" src="{{article.paragrafi[1].foto}}" alt="">
                 </div>
                 <div class="w-full h-20 bg-primary flex justify-center items-center">
                     <h2 class=" text-white text-xl font-bold">
@@ -24,15 +24,11 @@
                         {{article.paragrafi[0].testoParagrafo}}
                     </p>
                 </div>
-                <div class="my-5">
-                    <img class="w-full object-contain" src="../../../assets/img-articolo/download (9) 1.png" alt="">
-                </div>
+
                 <div class="text-2xl p-5 text-justify">
                     {{article.paragrafi[1].testoParagrafo}}
                 </div>
-                <div class="my-5">
-                    <img class="w-full object-contain" src="../../../assets/img-articolo/Basketball - Mens - 1971-1980 - 104 1.png" alt="">
-                </div>
+
                 <div class="w-full flex justify-around">
                     <div class="w-1/5 flex justify-center" *ngFor="let _ of CountCommentForArticle, let i = index">
                         <p class="border-primary border-4 bg-yellow-300 p-2 w-auto">{{article.tags[i] }}</p>
@@ -61,7 +57,7 @@
         </div>
     </div>
 </section>
-<section>
+<!-- <section>
     <div class="flex justify-center h-full">
         <div class="container flex justify-center h-full">
             <div class="w-[90%]">
@@ -82,5 +78,7 @@
             </div>
         </div>
     </div>
-</section>
-<app-navbar></app-navbar>
+</section> -->
+<footer class="mt-20">
+    <app-footer></app-footer>
+</footer>

@@ -118,11 +118,11 @@ export class ProfiloPageComponent implements OnInit {
       (err) => {
         if (err.status >= 200 && err.status <= 299) {
           this.getApiProfile.getSearchFavouriteTeams(localStorage.getItem('authToken') as string).subscribe(
-            (teams) => {
-              this.favouriteTeams = teams;
+            (team) => {
+              this.favouriteTeams = team;
               this.getApiTeams.getSearchTeams().subscribe(
-                teams => {
-                  this.updateTeams(teams, this.favouriteTeams);
+                allTeam => {
+                  this.updateTeams(allTeam, this.favouriteTeams);
                 }
               )
             }

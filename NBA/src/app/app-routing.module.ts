@@ -80,7 +80,11 @@ const routes: Routes = [
     }, title: "SLAM STATS - Tabellino"
   },
   { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole" },
-  { path: "blog", component: BlogPageComponent, title: "SLAM STATS - Blog" },
+  { path: "blog", component: BlogPageComponent, resolve:{
+    ResolveAllArticle: () => {
+      return inject(GetApiServiceArticle).getSearchAllArticle();
+    }
+  }, title: "SLAM STATS - Blog" },
   {
     path: "profilo", component: ProfiloPageComponent, resolve: {
       ResolveTeams: () => {

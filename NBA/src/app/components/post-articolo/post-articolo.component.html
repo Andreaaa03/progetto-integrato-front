@@ -6,7 +6,7 @@
             </div>
             <img class="top-0 h-full w-full" src="../../../assets/sfondo-home.png" alt="product image" />
             <div class="absolute bottom-0 h-auto w-full bg-primary">
-                <p class="font-bold text-xl flex items-center h-full px-4 py-2 text-white text-center w-full">{{singleArticle.blog.titolo}}</p>
+                <p class="font-bold text-xl flex items-center h-full px-4 py-2 text-white text-center w-full">{{singleArticle.blog.titolo | uppercase}}</p>
             </div>
         </div>
         <div class="">
@@ -16,7 +16,7 @@
             <div class="flex flex-nowrap justify-between mt-2 lg:mx-0 ml-2">
                 <div class="flex flex-nowrap">
                     <p class="text-sm flex items-center">
-                        da/ta/aa 16:23 I n°foto
+                       {{singleArticle.blog.giorno }} {{singleArticle.blog.orario }} {{singleArticle.blog.numeroFoto }}
                     </p>
                     <p class="flex items-center">
                         <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 30 30">
@@ -32,7 +32,7 @@
                     </p>
                 </div>
                 <div class="bg-secondary rounded-full text-white px-4 text-sm flex items-center">
-                    <button class="" routerLink="/articolo">Apri Articolo</button>
+                    <button class="" [routerLink]="['/articolo', singleArticle.blog.id]">Apri Articolo</button>
                 </div>
             </div>
         </div>
@@ -44,16 +44,16 @@
             <div class="absolute top-4 h-12 w-full bg-gradient-to-r from-green-500 via-green-500 to-transparent">
                 <p class="font-bold text-3xl flex items-center h-full pl-4">TEAM</p>
             </div>
-            <img class="top-0 h-full w-full" src="../../../assets/sfondo-home.png" alt="product image" />
+            <img class="top-0 h-full w-full object-cover" src="../../../assets/sfondo-home.png" alt="product image" />
         </div>
         <div class="w-3/5 h-auto">
             <div class="h-full flex flex-col">
                 <div class="h-auto w-full bg-primary">
-                    <p class="font-bold text-xl flex items-center h-full px-4 py-2 text-white justify-center">MILWAUKEE BUCKS ANCORA IN VETTA</p>
+                    <p class="font-bold text-xl flex items-center h-full px-4 py-2 text-white justify-center">{{singleArticle.blog.titolo | uppercase}}</p>
                 </div>
                 <div class="flex flex-col justify-between border-secondary border-r-4 h-full">
                     <div class="px-8">
-                        <p class="px-4 py-2">La National Basketball Association (NBA), una delle leghe sportive più prestigiose al mondo, ha una storia ricca e affascinante che ha avuto inizio il 6 giugno 1946 a New York City sotto il nome di Basketball Association of America (BAA)...</p>
+                        <p class="px-4 py-2">{{singleArticle.blog.riassunto}}</p>
                     </div>
                     <div class="flex justify-end mr-8">
                         <div class="bg-secondary rounded-full text-white px-4 text-sm flex items-center">
@@ -62,10 +62,10 @@
                     </div>
                     <div class="flex flex-nowrap justify-evenly w-full">
                         <p class="text-sm flex items-center">
-                            da/ta/aa
+                            {{singleArticle.blog.giorno }}
                         </p>
-                        <p class="text-sm flex items-center">16:23</p>
-                        <p class="text-sm flex items-center">I n°foto</p>
+                        <p class="text-sm flex items-center"> {{singleArticle.blog.orario }}</p>
+                        <p class="text-sm flex items-center">{{singleArticle.blog.numeroFoto }} n°foto</p>
                         <p class="flex items-center">
                             <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 30 30">
                                 <path d="M 23 3 A 4 4 0 0 0 19 7 A 4 4 0 0 0 19.09375 7.8359375 L 10.011719 12.376953 A 4 4 0 0 0 7 11 A 4 4 0 0 0 3 15 A 4 4 0 0 0 7 19 A 4 4 0 0 0 10.013672 17.625 L 19.089844 22.164062 A 4 4 0 0 0 19 23 A 4 4 0 0 0 23 27 A 4 4 0 0 0 27 23 A 4 4 0 0 0 23 19 A 4 4 0 0 0 19.986328 20.375 L 10.910156 15.835938 A 4 4 0 0 0 11 15 A 4 4 0 0 0 10.90625 14.166016 L 19.988281 9.625 A 4 4 0 0 0 23 11 A 4 4 0 0 0 27 7 A 4 4 0 0 0 23 3 z"></path>
@@ -93,18 +93,18 @@
             </div>
             <img class="top-0 h-full w-full" src="../../../assets/sfondo-home.png" alt="product image" />
             <div class="absolute bottom-0 h-auto w-full bg-primary">
-                <p class="font-bold text-xl flex items-center h-full px-4 py-2 text-white text-center w-full">MILWAUKEE BUCKS ANCORA IN VETTA</p>
+                <p class="font-bold text-xl flex items-center h-full px-4 py-2 text-white text-center w-full">{{singleArticle.blog.titolo | uppercase }}</p>
             </div>
         </div>
         <div class="">
             <div class="mt-2 bg-secondary">
-                <p class="px-4 py-2 text-white">La National Basketball Association (NBA), una delle leghe sportive più prestigiose al mondo, ha una storia ricca e affascinante che ha avuto inizio il 6 giugno 1946 a New York City sotto il nome di Basketball Association of America (BAA)...</p>
+                <p class="px-4 py-2 text-white">{{singleArticle.blog.riassunto }}</p>
             </div>
 
             <div class="flex flex-nowrap justify-between mt-2 lg:mx-0 ml-2">
                 <div class="flex flex-nowrap">
                     <p class="text-sm flex items-center">
-                        da/ta/aa 16:23 I n°foto
+                        {{singleArticle.blog.giorno }} {{singleArticle.blog.orario }} {{singleArticle.blog.numeroFoto }} n°foto
                     </p>
                     <p class="flex items-center">
                         <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 30 30">

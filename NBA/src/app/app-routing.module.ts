@@ -89,7 +89,10 @@ const routes: Routes = [
       },
       ResolveTeams: () => {
         return inject(GetApiServiceTeams).getSearchTeams();
-      }
+      },
+      ResolveFavouriteArticle: () => {
+        return inject(GetApiServiceProfilo).getSearchFavouriteArticle(localStorage.getItem('authToken')!);
+      },
     }, title: "SLAM STATS - Profilo"
   },
   { path: "articolo/:id", component: ArticoloDetailPageComponent, resolve:{

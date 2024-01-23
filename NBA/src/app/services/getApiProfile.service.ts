@@ -22,7 +22,7 @@ export class GetApiServiceProfilo {
     }
 
     getSearchFavouriteArticle(token: string) {
-        return this.apiService.SearchFavouriteTeams(token).pipe(
+        return this.apiService.SearchFavouriteArticle(token).pipe(
             map((res: any) => {
                 return res as detailArticle[];
             })

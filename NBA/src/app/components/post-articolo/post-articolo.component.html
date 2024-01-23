@@ -1,7 +1,7 @@
 <div *ngIf="extended===false" class="w-full my-5">
     <div class="w-full max-w-xl">
         <div class="relative -z-10">
-            <div class="absolute top-4 h-12 w-full bg-gradient-to-r from-green-500 via-green-500 to-transparent">
+            <div [style.background-color]="singleArticle.blog.colori" class="absolute top-4 h-12 w-full ">
                 <p class="font-bold text-3xl flex items-center h-full pl-4">{{singleArticle.blog.tipo | uppercase }}</p>
             </div>
             <img class="top-0 h-full w-full" src="{{singleArticle.blog.foto}}" alt="product image" />
@@ -41,7 +41,7 @@
 <div *ngIf="extended===true" class="hidden lg:block w-full my-10">
     <div class="w-full flex flex-nowrap h-full">
         <div class="relative -z-10 w-2/5">
-            <div class="absolute top-4 h-12 w-full bg-gradient-to-r from-green-500 via-green-500 to-transparent">
+            <div [style.background-color]="singleArticle.blog.colori" class="absolute top-4 h-12 w-full ">
                 <p class="font-bold text-3xl flex items-center h-full pl-4">{{singleArticle.blog.tipo | uppercase}}</p>
             </div>
             <img class="top-0 h-full w-full object-cover" src="{{singleArticle.blog.foto}}" alt="product image" />
@@ -88,8 +88,8 @@
 <div *ngIf="extended===true" class="lg:hidden w-full my-5">
     <div class="w-full max-w-xl">
         <div class="relative -z-10">
-            <div class="absolute top-4 h-12 w-full bg-gradient-to-r from-green-500 via-green-500 to-transparent">
-                <p class="font-bold text-3xl flex items-center h-full pl-4">{{singleArticle.blog.tipo}}</p>
+            <div [style.background-color]="singleArticle.blog.color" class="absolute top-4 h-12 w-full ">
+                <p class="font-bold text-3xl flex items-center h-full pl-4">{{singleArticle.blog.tipo | uppercase}}</p>
             </div>
             <img class="top-0 h-full w-full" src="{{singleArticle.blog.foto}}" alt="product image" />
             <div class="absolute bottom-0 h-auto w-full bg-primary">
@@ -120,7 +120,7 @@
                     </p>
                 </div>
                 <div class="bg-secondary rounded-full text-white px-4 text-sm flex items-center">
-                    <button class="" routerLink="/articolo">Apri Articolo</button>
+                    <button class="" [routerLink]="['/articolo', singleArticle.blog.id]">Apri Articolo</button>
                 </div>
             </div>
         </div>

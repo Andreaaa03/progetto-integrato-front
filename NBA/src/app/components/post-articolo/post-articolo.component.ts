@@ -7,10 +7,12 @@ import { GetApiServiceArticle } from 'src/app/services/getApiArticle.service';
   templateUrl: './post-articolo.component.html',
   styleUrls: ['./post-articolo.component.css']
 })
+
+
 export class PostArticoloComponent implements OnInit {
   @Input() extended: boolean = true;
   @Input() artId!: string;
-  singleArticle!: detailArticle;
+  singleArticle!: detailArticle | any;
   constructor(private getApiServiceArticle: GetApiServiceArticle) { }
   ngOnInit(): void {
     console.log(this.artId);
@@ -20,5 +22,14 @@ export class PostArticoloComponent implements OnInit {
         console.log(this.singleArticle.blog);
       }
       )
+  }
+
+  getGradientBg(): string {
+    if (this.singleArticle && this.singleArticle.blog && this.singleArticle.blog.colori) {
+      return 'linear-gradient(to right, #800080, #000000)';
+    } else {
+      // Ritorna un valore di fallback o gestisci il caso in cui le proprietà non sono definite.
+      return 'linear-gradient(to right, #800080, #000000)';
+    }
   }
 }

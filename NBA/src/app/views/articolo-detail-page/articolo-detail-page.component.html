@@ -5,7 +5,7 @@
             <div class="w-[90%]">
                 <div class="mt-10">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
-                        <h2 class=" text-white text-4xl font-bold">
+                        <h2 class=" text-white lg:text-4xl text-xl font-bold">
                             {{article.blog.titolo | uppercase}}
                         </h2>
                     </div>
@@ -15,17 +15,17 @@
                     <img class="w-full object-contain" src="{{article.paragrafi[1].foto}}" alt="">
                 </div>
                 <div class="w-full h-20 bg-primary flex justify-center items-center">
-                    <h2 class=" text-white text-xl font-bold">
+                    <h2 class=" text-white lg:text-xl text-xs font-bold">
                         {{article.blog.riassunto}}
                     </h2>
                 </div>
                 <div class="">
-                    <p class="text-2xl p-5 text-justify">
+                    <p class="lg:text-2xl text-sm p-5 text-justify">
                         {{article.paragrafi[0].testoParagrafo}}
                     </p>
                 </div>
 
-                <div class="text-2xl p-5 text-justify">
+                <div class="lg:text-2xl text-sm p-5 text-justify">
                     {{article.paragrafi[1].testoParagrafo}}
                 </div>
 

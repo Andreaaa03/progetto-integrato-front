@@ -172,9 +172,8 @@
                                 <p>{{squadra.lastTenWin}} <span>-</span> {{squadra.lastTenLoss}}</p>
                             </td>
                             <td class="lg:w-[8%] w-[6%]">
-                                <!-- <p class="" *ngIf="squadra.preferiti===true">❤️</p>
-                                <p class="" *ngIf="squadra.preferiti===false">🖤</p> -->
-                                <p class="">🖤</p>
+                                <p class="w-full hover:cursor-pointer text-center" *ngIf="squadra.favourite===true" (click)="aggiungiRimuoviPreferitiTeams(squadra.team.id); squadra.favourite=!squadra.favourite">❤️</p>
+                                <p class="w-full hover:cursor-pointer text-center" *ngIf="squadra.favourite!=true" (click)="aggiungiRimuoviPreferitiTeams(squadra.team.id); squadra.favourite=!squadra.favourite">🖤</p>
                             </td>
                         </tr>
                     </ng-container>
@@ -282,9 +281,8 @@
                                 <p>{{squadra.lastTenWin}} <span>-</span> {{squadra.lastTenLoss}}</p>
                             </td>
                             <td class="lg:w-[8%] w-[6%]">
-                                <!-- <p class="" *ngIf="squadra.preferiti===true">❤️</p>
-                                <p class="" *ngIf="squadra.preferiti===false">🖤</p> -->
-                                <p class="">🖤</p>
+                                <p class="w-full hover:cursor-pointer text-center" *ngIf="squadra.favourite===true" (click)="aggiungiRimuoviPreferitiTeams(squadra.team.id); squadra.favourite=!squadra.favourite">❤️</p>
+                                <p class="w-full hover:cursor-pointer text-center" *ngIf="squadra.favourite!=true" (click)="aggiungiRimuoviPreferitiTeams(squadra.team.id); squadra.favourite=!squadra.favourite">🖤</p>
                             </td>
                         </tr>
                     </ng-container>

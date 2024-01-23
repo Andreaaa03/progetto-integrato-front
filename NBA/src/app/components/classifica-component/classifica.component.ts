@@ -1,6 +1,9 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Classifica, StandingShow } from 'src/app/models/typeStanding';
+import { ApiService } from 'src/app/services/api.service';
+import { GetApiServiceProfilo } from 'src/app/services/getApiProfile.service';
+import { GetApiServiceStanding } from 'src/app/services/getApiStending.service';
 
 @Component({
   selector: 'app-classifica',
@@ -10,7 +13,7 @@ import { Classifica, StandingShow } from 'src/app/models/typeStanding';
 export class ClassificaComponent implements OnInit {
   @Input() isParziale!: boolean;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private getApiStanding: GetApiServiceStanding) {
 
   }
 
@@ -38,18 +41,39 @@ export class ClassificaComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(
       ({ ResolveStanding }) => {
-        this.standings.allStanding.eastConference = this.bubbleSort(ResolveStanding.allStanding.eastConference, 'winPercentage', false);
-        this.standings.allStanding.westConference = this.bubbleSort(ResolveStanding.allStanding.westConference, 'winPercentage', false);
-        this.standings.favouriteStandings.eastConference = this.bubbleSort(ResolveStanding.favouriteStandings.eastConference, 'winPercentage', false);
-        this.standings.favouriteStandings.westConference = this.bubbleSort(ResolveStanding.favouriteStandings.westConference, 'winPercentage', false);
-        this.standingToShow.eastConference = this.standings.allStanding.eastConference;
-        this.standingToShow.westConference = this.standings.allStanding.westConference;
+        this.updateStanding(ResolveStanding);
       })
     this.cambiaTesto();
     if (this.isParziale === true)
       this.countForStanding = 5;
     else
       this.countForStanding = 15;
+  }
+
+  updateStanding(ResolveStanding:Classifica){
+    this.standings.allStanding.eastConference = this.bubbleSort(ResolveStanding.allStanding.eastConference, 'winPercentage', false);
+    this.standings.allStanding.westConference = this.bubbleSort(ResolveStanding.allStanding.westConference, 'winPercentage', false);
+    this.standings.favouriteStandings.eastConference = this.bubbleSort(ResolveStanding.favouriteStandings.eastConference, 'winPercentage', false);
+    this.standings.favouriteStandings.westConference = this.bubbleSort(ResolveStanding.favouriteStandings.westConference, 'winPercentage', false);
+    this.standingToShow.eastConference = this.standings.allStanding.eastConference;
+    this.standingToShow.westConference = this.standings.allStanding.westConference;
+  }
+
+
+  aggiungiRimuoviPreferitiTeams(id: string) {
+    this.apiService.AddRemoveFavouriteTeams(localStorage.getItem('authToken') as string, id + "").subscribe(
+      () => { },
+      (err) => {
+        if (err.status >= 200 && err.status <= 299) {
+          this.getApiStanding.getSearchStanding().subscribe(
+            (team) => {
+              this.updateStanding(team);
+            }
+          )
+        }
+        console.log(err);
+      }
+    );
   }
 
   percentageStanding: boolean = true;

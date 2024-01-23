@@ -43,10 +43,13 @@ export class ProfiloPageComponent implements OnInit {
   }
 
   updateTeams(ResolveTeams: division, ResolveFavouriteTeams: team[]): void {
+    this.totalTeamEast=0;
+    this.totalTeamWest=0;
     for (let i = 0; i < ResolveTeams.NorthWest.length; i++) {
       for (let j = 0; j < ResolveFavouriteTeams.length; j++) {
         if (ResolveTeams.NorthWest[i].id == ResolveFavouriteTeams[j].id) {
           ResolveTeams.NorthWest[i].favourite = true;
+          this.totalTeamWest++;
         }
       }
     }
@@ -55,6 +58,7 @@ export class ProfiloPageComponent implements OnInit {
       for (let j = 0; j < ResolveFavouriteTeams.length; j++) {
         if (ResolveTeams.SouthWest[i].id == ResolveFavouriteTeams[j].id) {
           ResolveTeams.SouthWest[i].favourite = true;
+          this.totalTeamWest++;
         }
       }
     }
@@ -63,6 +67,7 @@ export class ProfiloPageComponent implements OnInit {
       for (let j = 0; j < ResolveFavouriteTeams.length; j++) {
         if (ResolveTeams.SoutHeast[i].id == ResolveFavouriteTeams[j].id) {
           ResolveTeams.SoutHeast[i].favourite = true;
+          this.totalTeamEast++;
         }
       }
     }
@@ -71,6 +76,7 @@ export class ProfiloPageComponent implements OnInit {
       for (let j = 0; j < ResolveFavouriteTeams.length; j++) {
         if (ResolveTeams.Atlantic[i].id == ResolveFavouriteTeams[j].id) {
           ResolveTeams.Atlantic[i].favourite = true;
+          this.totalTeamEast++;
         }
       }
     }
@@ -79,6 +85,7 @@ export class ProfiloPageComponent implements OnInit {
       for (let j = 0; j < ResolveFavouriteTeams.length; j++) {
         if (ResolveTeams.Central[i].id == ResolveFavouriteTeams[j].id) {
           ResolveTeams.Central[i].favourite = true;
+          this.totalTeamEast++;
         }
       }
     }
@@ -87,6 +94,7 @@ export class ProfiloPageComponent implements OnInit {
       for (let j = 0; j < ResolveFavouriteTeams.length; j++) {
         if (ResolveTeams.Pacific[i].id == ResolveFavouriteTeams[j].id) {
           ResolveTeams.Pacific[i].favourite = true;
+          this.totalTeamWest++;
         }
       }
     }

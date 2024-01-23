@@ -15,8 +15,7 @@ export class GetApiServiceProfilo {
     getSearchFavouriteTeams(token: string) {
         return this.apiService.SearchFavouriteTeams(token).pipe(
             map((res: any) => {
-                console.log(res);
-                return res as team[];
+                return res.reverse() as team[];
             })
         )
     }
@@ -24,10 +23,8 @@ export class GetApiServiceProfilo {
     getSearchFavouriteArticle(token: string) {
         return this.apiService.SearchFavouriteArticle(token).pipe(
             map((res: any) => {
-                return res as detailArticle[];
+                return res.reverse() as detailArticle[];
             })
         )
     }
-
-    // localStorage.getItem('authToken')
 }

@@ -28,6 +28,7 @@ export type SingleTeamStanding = {
     totalLoss: number;
     lastTenLoss: number;
     gamesBehind: number;
+    favourite: boolean;
 };
 
 export type Classifica = {

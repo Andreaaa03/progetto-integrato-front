@@ -77,11 +77,11 @@ export class SquadrePageComponent implements OnInit {
   updateTeams(ResolveTeams: division, ResolveFavouriteTeams: team[]): void {
     let lunghezzaMax: number = 10;
     if (localStorage.getItem('authToken')) {
+      console.log(ResolveFavouriteTeams.length);
       lunghezzaMax = ResolveFavouriteTeams.length;
 
       for (let i = 0; i < ResolveTeams.NorthWest.length; i++) {
         for (let j = 0; j < lunghezzaMax; j++) {
-          console.log(ResolveTeams);
           if (ResolveTeams.NorthWest[i].id == ResolveFavouriteTeams[j].id) {
             ResolveTeams.NorthWest[i].favourite = true;
           }

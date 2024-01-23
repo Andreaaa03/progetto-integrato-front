@@ -19,6 +19,8 @@ export class ProfiloPageComponent implements OnInit {
   showTeams: boolean = false;
   ripetiArray: any[] = new Array(10).fill({});
   favouriteTeams!: team[];
+  totalTeamWest:number=0;
+  totalTeamEast:number=0;
   favouriteArticles!: detailArticle[];
 
   teams: division = {

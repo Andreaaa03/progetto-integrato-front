@@ -1,6 +1,6 @@
 export type teamStatistic = {
     team: {
-        id: number;
+        id: string;
         nbaFranchise: boolean;
         teamName: string;
         city: string;
@@ -41,7 +41,7 @@ export type teamStatistic = {
 };
 
 export type teamCalendar = {
-    gameid: number;
+    gameid: string;
     gameStartDate: string;
     matchDate: string;
     matchTime: string;
@@ -74,7 +74,7 @@ export type matchCalendar = {
 };
 
 type playerStats = {
-    id: number;
+    id: string;
     nome: string;
     points: number;
     pos: string;
@@ -102,7 +102,7 @@ type playerStats = {
 
 export type teamPlayer = {
     team: {
-        id: number;
+        id: string;
         nbaFranchise: boolean;
         teamName: string;
         city: string;
@@ -113,7 +113,7 @@ export type teamPlayer = {
         conferenceName: string;
         divisionName: string;
     };
-    playerId: number;
+    playerId: string;
     firstName: string;
     lastName: string;
     birthDate: string;

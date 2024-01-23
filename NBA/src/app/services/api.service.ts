@@ -70,4 +70,16 @@ export class ApiService {
         }, {headers: this.headers});
     }
     
+    SearchFavouriteTeams(token:string){
+        return this.http.post(this.baseURL + "user/getTeamPreferiti", { token: token}, { headers: this.headers });
+    }
+    SearchFavouriteArticle(token:string){
+        return this.http.post(this.baseURL + "user/getArticoliPreferiti", { token: token}, { headers: this.headers });
+    }
+    AddRemoveFavouriteTeams(token: string, idTeam:string){
+        return this.http.post(this.baseURL + "user/teamPreferito", { token: token, idTeam: idTeam}, { headers: this.headers });
+    }
+    AddRemoveFavouriteArticle(token: string, idArticolo: string){
+        return this.http.post(this.baseURL + "user/articoloPreferito", { token: token, idArticolo: idArticolo }, { headers: this.headers });
+    }
 }

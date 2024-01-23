@@ -17,6 +17,7 @@ import { ProfiloPageComponent } from './views/profilo-page/profilo-page.componen
 import { GetApiServiceMatch } from './services/getApiMatch.service';
 import * as dayjs from 'dayjs';
 import { GetApiServiceArticle } from './services/getApiArticle.service';
+import { GetApiServiceProfilo } from './services/getApiProfile.service';
 
 
 const routes: Routes = [
@@ -87,9 +88,15 @@ const routes: Routes = [
   }, title: "SLAM STATS - Blog" },
   {
     path: "profilo", component: ProfiloPageComponent, resolve: {
+      ResolveFavouriteTeams:() => {
+        return inject(GetApiServiceProfilo).getSearchFavouriteTeams(localStorage.getItem('authToken')!);
+      },
       ResolveTeams: () => {
         return inject(GetApiServiceTeams).getSearchTeams();
-      }
+      },
+      ResolveFavouriteArticle: () => {
+        return inject(GetApiServiceProfilo).getSearchFavouriteArticle(localStorage.getItem('authToken')!);
+      },
     }, title: "SLAM STATS - Profilo"
   },
   { path: "articolo/:id", component: ArticoloDetailPageComponent, resolve:{

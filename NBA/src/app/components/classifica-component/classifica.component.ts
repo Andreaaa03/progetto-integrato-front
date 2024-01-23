@@ -67,6 +67,7 @@ export class ClassificaComponent implements OnInit {
         if (err.status >= 200 && err.status <= 299) {
           this.getApiStanding.getSearchStanding().subscribe(
             (team) => {
+              this.ToggleCheckedForReset();
               this.updateStanding(team);
             }
           )

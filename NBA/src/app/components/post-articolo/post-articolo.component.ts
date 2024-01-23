@@ -11,25 +11,14 @@ import { GetApiServiceArticle } from 'src/app/services/getApiArticle.service';
 
 export class PostArticoloComponent implements OnInit {
   @Input() extended: boolean = true;
-  @Input() artId!: string;
+  @Input() artId: string="";
   singleArticle!: detailArticle | any;
   constructor(private getApiServiceArticle: GetApiServiceArticle) { }
   ngOnInit(): void {
-    console.log(this.artId);
     this.getApiServiceArticle.getSearchSingleArticle(this.artId).subscribe(
       (art) => { 
-        this.singleArticle = art 
-        console.log(this.singleArticle.blog);
+        this.singleArticle = art;
       }
       )
-  }
-
-  getGradientBg(): string {
-    if (this.singleArticle && this.singleArticle.blog && this.singleArticle.blog.colori) {
-      return 'linear-gradient(to right, #800080, #000000)';
-    } else {
-      // Ritorna un valore di fallback o gestisci il caso in cui le proprietà non sono definite.
-      return 'linear-gradient(to right, #800080, #000000)';
-    }
   }
 }

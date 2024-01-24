@@ -19,7 +19,6 @@ export class HomePageComponent implements OnInit {
           this.matchToday.push(singleMatch.gameid);
         });
         this.article=ResolveAllArticle;
-        console.log(this.article);
       })
   }
 }

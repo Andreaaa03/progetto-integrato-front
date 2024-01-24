@@ -20,13 +20,13 @@ export class ProfiloPageComponent implements OnInit {
     this.activatedRoute.data.subscribe(
       ({ ResolveTeams, ResolveFavouriteTeams, ResolveFavouriteArticle, ResolveCommentForUser }) => {
         this.updateTeams(ResolveTeams, ResolveFavouriteTeams);
-        this.favouriteArticles=ResolveFavouriteArticle;
-        this.commenti=ResolveCommentForUser;
+        this.favouriteArticles = ResolveFavouriteArticle;
+        this.commenti = ResolveCommentForUser;
         console.log(this.commenti);
       })
   }
-  
-  commenti!:commento[];
+
+  commenti!: commento[];
 
   menuSelected: string = "profilo";
   menuPreferitiSelected: string = "squadre";
@@ -53,8 +53,8 @@ export class ProfiloPageComponent implements OnInit {
    * @param ResolveFavouriteTeams : team[]
    */
   updateTeams(ResolveTeams: division, ResolveFavouriteTeams: team[]): void {
-    this.totalTeamEast=0;
-    this.totalTeamWest=0;
+    this.totalTeamEast = 0;
+    this.totalTeamWest = 0;
     for (let i = 0; i < ResolveTeams.NorthWest.length; i++) {
       for (let j = 0; j < ResolveFavouriteTeams.length; j++) {
         if (ResolveTeams.NorthWest[i].id == ResolveFavouriteTeams[j].id) {
@@ -147,26 +147,26 @@ export class ProfiloPageComponent implements OnInit {
    * @param id : string
    */
   aggiungiRimuoviPreferitiTeams(id: string) {
-    if(localStorage.getItem('authToken')){
-    this.apiService.AddRemoveFavouriteTeams(localStorage.getItem('authToken') as string, id + "").subscribe(
-      () => { },
-      (err) => {
-        if (err.status >= 200 && err.status <= 299) {
-          this.getApiProfile.getSearchFavouriteTeams(localStorage.getItem('authToken') as string).subscribe(
-            (team) => {
-              this.favouriteTeams = team;
-              this.getApiTeams.getSearchTeams().subscribe(
-                allTeam => {
-                  this.updateTeams(allTeam, this.favouriteTeams);
-                }
-              )
-            }
-          )
+    if (localStorage.getItem('authToken')) {
+      this.apiService.AddRemoveFavouriteTeams(localStorage.getItem('authToken') as string, id + "").subscribe(
+        () => { },
+        (err) => {
+          if (err.status >= 200 && err.status <= 299) {
+            this.getApiProfile.getSearchFavouriteTeams(localStorage.getItem('authToken') as string).subscribe(
+              (team) => {
+                this.favouriteTeams = team;
+                this.getApiTeams.getSearchTeams().subscribe(
+                  allTeam => {
+                    this.updateTeams(allTeam, this.favouriteTeams);
+                  }
+                )
+              }
+            )
+          }
+          console.log(err);
         }
-        console.log(err);
-      }
-    );
-    }else{
+      );
+    } else {
       console.log("non sei loggato");
       this.removeToken();
     }
@@ -177,21 +177,21 @@ export class ProfiloPageComponent implements OnInit {
    * @param id : string
    */
   aggiungiRimuoviPreferitiArticles(id: string) {
-    if(localStorage.getItem('authToken')){
-    this.apiService.AddRemoveFavouriteArticle(localStorage.getItem('authToken') as string, id + "").subscribe(
-      () => { },
-      (err) => {
-        if (err.status >= 200 && err.status <= 299) {
-          this.getApiProfile.getSearchFavouriteArticle(localStorage.getItem('authToken') as string).subscribe(
-            (article) => {
-              this.favouriteArticles = article;
-            }
-          )
+    if (localStorage.getItem('authToken')) {
+      this.apiService.AddRemoveFavouriteArticle(localStorage.getItem('authToken') as string, id + "").subscribe(
+        () => { },
+        (err) => {
+          if (err.status >= 200 && err.status <= 299) {
+            this.getApiProfile.getSearchFavouriteArticle(localStorage.getItem('authToken') as string).subscribe(
+              (article) => {
+                this.favouriteArticles = article;
+              }
+            )
+          }
+          console.log(err);
         }
-        console.log(err);
-      }
-    );
-    }else{
+      );
+    } else {
       console.log("token non valido");
       this.removeToken();
     }

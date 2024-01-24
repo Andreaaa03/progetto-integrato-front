@@ -24,13 +24,16 @@ const routes: Routes = [
   {
     path: "home", component: HomePageComponent, resolve: {
       ResolveStanding: () => {
+        // classifica 
         return inject(GetApiServiceStanding).getSearchStanding();
       },
       ResolveMatchData: () => {
+        // data per giorno
         const data=dayjs().format("YYYY-MM-DD");
         return inject(GetApiServiceMatch).getSearchMatchDate(data!);
       }, 
       ResolveAllArticle: () => {
+        // articoli 
         return inject(GetApiServiceArticle).getSearchAllArticle();
       }
     }, title: "SLAM STATS"
@@ -38,6 +41,7 @@ const routes: Routes = [
   {
     path: "classifica", component: ClassificaPageComponent, resolve: {
       ResolveStanding: () => {
+        // classifica
         return inject(GetApiServiceStanding).getSearchStanding();
       }
     }, title: "SLAM STATS - Classifica"
@@ -45,9 +49,11 @@ const routes: Routes = [
   {
     path: "calendario/:data", component: CalendarioPageComponent, resolve: {
       ResolveMatchData: (route: ActivatedRouteSnapshot) => {
+        // partite per giorno
         return inject(GetApiServiceMatch).getSearchMatchDate(route.paramMap.get("data")!);
       }, 
       ResolveMatchDataLast20: (route: ActivatedRouteSnapshot) => { 
+        // ultimi 20 partite a partire da ieri
         let yesterday=dayjs().subtract(1, 'day').format('YYYY-MM-DD');
         return inject(GetApiServiceMatch).getSearchMatchDataLast20(yesterday!); 
       }
@@ -56,6 +62,7 @@ const routes: Routes = [
   {
     path: "squadre", component: SquadrePageComponent, resolve: {
       ResolveTeams: () => {
+        // tutte e squadre
         return inject(GetApiServiceTeams).getSearchTeams();
       }
     }, title: "SLAM STATS - Squadre"
@@ -63,12 +70,15 @@ const routes: Routes = [
   {
     path: "squadraDetail/:id", component: SquadraDetailPageComponent, resolve: {
       ResolveSingleTeamStatistics: (route: ActivatedRouteSnapshot) => {
+        // dati statistici singola squadra
         return inject(GetApiServiceSingleTeam).getSearchSingleTeamStatistics(route.paramMap.get("id")!);
       },
       ResolveSingleTeamCalendar: (route: ActivatedRouteSnapshot) => {
+        // calendario singola squadra
         return inject(GetApiServiceSingleTeam).getSearchSingleTeamCalendar(route.paramMap.get("id")!);
       },
       ResolveSingleTeamPlayer: (route: ActivatedRouteSnapshot) => {
+        // giocatori con info varie per singola squadra
         return inject(GetApiServiceSingleTeam).getSearchSingleTeamPlayer(route.paramMap.get("id")!);
       }
     }, title: "SLAM STATS - Squadra"
@@ -76,6 +86,7 @@ const routes: Routes = [
   {
     path: "tabellino/:id", component: PartitaPageComponent, resolve: {
       ResolveMatchStats: (route: ActivatedRouteSnapshot) => {
+        // statistiche di una partita
         return inject(GetApiServiceMatch).getSearchMatchStats(route.paramMap.get("id")!);
       }
     }, title: "SLAM STATS - Tabellino"
@@ -83,24 +94,29 @@ const routes: Routes = [
   { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole" },
   { path: "blog", component: BlogPageComponent, resolve:{
     ResolveAllArticle: () => {
+      // tutti gli articoli
       return inject(GetApiServiceArticle).getSearchAllArticle();
     }
   }, title: "SLAM STATS - Blog" },
   {
     path: "profilo", component: ProfiloPageComponent, resolve: {
       ResolveFavouriteTeams:() => {
+        // squadre preferite
         return inject(GetApiServiceProfilo).getSearchFavouriteTeams(localStorage.getItem('authToken')!);
       },
       ResolveTeams: () => {
+        // tutti le squadre
         return inject(GetApiServiceTeams).getSearchTeams();
       },
       ResolveFavouriteArticle: () => {
+        // articoli preferiti
         return inject(GetApiServiceProfilo).getSearchFavouriteArticle(localStorage.getItem('authToken')!);
       },
     }, title: "SLAM STATS - Profilo"
   },
   { path: "articolo/:id", component: ArticoloDetailPageComponent, resolve:{
     ResolveArticle: (route:ActivatedRouteSnapshot) => {
+      // tutte le info del singolo articolo
       return inject(GetApiServiceArticle).getSearchSingleArticle(route.paramMap.get("id")!);
     }
   }, title: "SLAM STATS - Articolo" },

@@ -4,7 +4,7 @@
         <div class="w-full flex justify-center h-full">
             <div class="w-full">
                 <div class="w-full h-20 bg-primary flex justify-center items-center">
-                    <h2 class=" text-white text-4xl font-bold">
+                    <h2 class=" text-white text-4xl font-bold tex-center">
                         PROFILO PERSONALE
                     </h2>
                 </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
                     <div class="w-full h-full flex lg:justify-between justify-center mt-10">
-                        <div class="lg:w-[45%] w-[90%] ">
+                        <div class="lg:w-[45%] w-[90%] " *ngFor="let commento of commenti">
                             <div class="bg-secondary rounded-xl flex justify-center">
                                 <div class="w-[90%] h-[90%]">
                                     <div class="w-full h-20 flex flex-nowrap">
@@ -68,13 +68,13 @@
                                             <div class="w-14 h-14 rounded-full bg-white"></div>
                                         </div>
                                         <div class="w-4/5 flex items-center">
-                                            <p class="text-white text-xl">Nome</p>
+                                            <p class="text-white text-xl">{{commento?.username}}</p>
                                         </div>
                                     </div>
                                     <div class="w-full ">
                                         <div class="bg-[#ACDEFF] rounded-xl mb-6">
                                             <p class="p-2">
-                                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt dicta tempore vel! Minima dolore qui quasi facere consectetur quas nisi?
+                                                {{commento?.commento}}
                                             </p>
                                         </div>
                                     </div>
@@ -87,6 +87,7 @@
                     </div>
                 </div>
                 <div class="" *ngIf="menuSelected==='risultato'">
+
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
                         <h2 class=" text-white text-4xl font-bold">
                             SONDAGGI
@@ -113,7 +114,7 @@
                             <thead class="w-full bg-primary text-white">
                                 <tr class="w-full border-primary border-4">
                                     <th class="w-[33.333%]">Nome</th>
-                                    <th class="w-[33.333%]">Numero Sondaggi</th>    
+                                    <th class="w-[33.333%]">Numero Sondaggi</th>
                                     <th class="w-[33.333%]">percentuale Sondaggi</th>
                                 </tr>
                             </thead>
@@ -132,6 +133,7 @@
                             </tbody>
                         </table>
                     </div>
+                    sotto sondaggi
                 </div>
                 <div class="" *ngIf="menuSelected==='amici'">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
@@ -321,13 +323,12 @@
                             <div class="w-1/4">
                                 <p class="font-bold">Password</p>
                             </div>
-                            <form action="" class="w-3/4 flex flex-nowrap justify-around pl-4">
-
-                                <div class="w-3/4 flex justify-around">
-                                    <input class="bg-gray-200 rounded-full text-center min-w-[40%]" type="text" placeholder="Nuovo password">
-                                    <input class="bg-gray-200 rounded-full text-center min-w-[40%]" type="text" placeholder="Ripeti nuova password">
+                            <form action="" class="w-3/4 flex flex-nowrap lg:justify-around justify-between lg:pl-4">
+                                <div class="lg:selection:w-3/4 w-[60%] flex lg:justify-around justify-between flex-wrap">
+                                    <input class="bg-gray-200 rounded-full text-center lg:min-w-[40%] mb-2 w-full" type="text" placeholder="Nuovo password">
+                                    <input class="bg-gray-200 rounded-full text-center lg:min-w-[40%] w-full" type="text" placeholder="Ripeti nuova password">
                                 </div>
-                                <div class="w-1/4 flex justify-end items-center">
+                                <div class="lg:w-1/4 flex justify-end items-center">
                                     <input type="submit" class="bg-secondary text-white px-4 py-2 h-10 rounded-full" value="Cambia">
                                 </div>
                             </form>

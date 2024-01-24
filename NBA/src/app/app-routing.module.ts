@@ -18,6 +18,8 @@ import { GetApiServiceMatch } from './services/getApiMatch.service';
 import * as dayjs from 'dayjs';
 import { GetApiServiceArticle } from './services/getApiArticle.service';
 import { GetApiServiceProfilo } from './services/getApiProfile.service';
+import { GetApiServiceComment } from './services/getApiComment.service';
+import { ApiService } from './services/api.service';
 
 
 const routes: Routes = [
@@ -88,6 +90,10 @@ const routes: Routes = [
       ResolveMatchStats: (route: ActivatedRouteSnapshot) => {
         // statistiche di una partita
         return inject(GetApiServiceMatch).getSearchMatchStats(route.paramMap.get("id")!);
+      },
+      ResolveCommentForGame: (route: ActivatedRouteSnapshot) => {
+        // tutte i commenti del singolo articolo
+        return inject(GetApiServiceComment).getSearchAllCommentsGame(route.paramMap.get("id")!);
       }
     }, title: "SLAM STATS - Tabellino"
   },
@@ -112,12 +118,20 @@ const routes: Routes = [
         // articoli preferiti
         return inject(GetApiServiceProfilo).getSearchFavouriteArticle(localStorage.getItem('authToken')!);
       },
+      ResolveCommentForUser: (route: ActivatedRouteSnapshot) => {
+        // tutte i commenti del singolo articolo
+        return inject(GetApiServiceComment).getSearchAllCommentsUser(localStorage.getItem('authToken')!);
+      }
     }, title: "SLAM STATS - Profilo"
   },
   { path: "articolo/:id", component: ArticoloDetailPageComponent, resolve:{
     ResolveArticle: (route:ActivatedRouteSnapshot) => {
       // tutte le info del singolo articolo
       return inject(GetApiServiceArticle).getSearchSingleArticle(route.paramMap.get("id")!);
+    },
+    ResolveCommentForArticle: (route:ActivatedRouteSnapshot) => {
+      // tutte i commenti del singolo articolo
+      return inject(GetApiServiceComment).getSearchAllCommentsArticle(route.paramMap.get("id")!);
     }
   }, title: "SLAM STATS - Articolo" },
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore

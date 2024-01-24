@@ -11,14 +11,15 @@ import { GetApiServiceArticle } from 'src/app/services/getApiArticle.service';
 
 export class PostArticoloComponent implements OnInit {
   @Input() extended: boolean = true;
-  @Input() artId: string="";
+  @Input() artId: string = "";
   singleArticle!: detailArticle | any;
   constructor(private getApiServiceArticle: GetApiServiceArticle) { }
   ngOnInit(): void {
+    // prendo le info generali del singolo articolo per la preview
     this.getApiServiceArticle.getSearchSingleArticle(this.artId).subscribe(
-      (art) => { 
+      (art) => {
         this.singleArticle = art;
       }
-      )
+    )
   }
 }

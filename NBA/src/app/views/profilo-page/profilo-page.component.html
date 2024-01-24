@@ -93,9 +93,44 @@
                         </h2>
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
-                    <div class="w-full">
-                        <!-- <app-piechart></app-piechart> -->
-                        <!-- diagramma a torta -->
+                    <!-- <div class="w-full mt-20">
+                        <div class="w-full flex justify-evenly lg:justify-between">
+                            <div class="w-[30%] rounded-xl border-primary border-4 ">
+                                <p class="text-base font-bold text-center">Sondaggi vinti: 3</p>
+                            </div>
+                            <div class="w-[30%] rounded-xl border-primary border-4 ">
+                                <p class="text-base font-bold text-center">Sondaggi persi: 2</p>    
+                            </div>
+                        </div>
+                        <div class="w-full flex justify-center">
+                            <app-pie-chart></app-pie-chart>
+                        </div>
+                        
+                    </div> -->
+
+                    <div class="w-full mt-20">
+                        <table class="w-full">
+                            <thead class="w-full bg-primary text-white">
+                                <tr class="w-full border-primary border-4">
+                                    <th class="w-[33.333%]">Nome</th>
+                                    <th class="w-[33.333%]">Numero Sondaggi</th>    
+                                    <th class="w-[33.333%]">percentuale Sondaggi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="w-full border-primary border-4" *ngFor="let _ of ripetiArray, let i = index">
+                                    <td class="w-[33.333%]">
+                                        <p class="text-base flex justify-start items-center"><span class="w-[50px] h-[50px] rounded-full bg-tertiary flex justify-center items-center">{{i + 1}}°</span> Nome Utente </p>
+                                    </td>
+                                    <td class="w-[33.333%]">
+                                        <p class="text-base flex justify-center items-center">{{i + 4}}</p>
+                                    </td>
+                                    <td class="w-[33.333%]">
+                                        <p class="text-base flex justify-center items-center"> {{100-(i*10)}}% </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="" *ngIf="menuSelected==='amici'">

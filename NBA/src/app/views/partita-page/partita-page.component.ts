@@ -26,6 +26,14 @@ export class PartitaPageComponent implements OnInit {
       })
   }
 
+  /**
+   * prendo i valori della singola partita e mi calcolo la percentuale da usare nel width nella sezione confronto. 
+   * è importante specificare quale lato ti riferisci perchè viene invocata nell'HTML; per lato si intende squadra di casa o trasferta
+   * @param lato1 : number
+   * @param lato2 : number
+   * @param whichLato : boolean
+   * @returns : number --> Rtiorna il valore che corrispondera alla percentuale del width nel div in HTML
+   */
   functionCalculatePercentage(lato1: number, lato2: number, whichLato: boolean): number {
     const sum = lato1 + lato2;
     const percentage1 = Math.round((lato1 / sum) * 100);

@@ -19,9 +19,10 @@ export class SquadrePageComponent implements OnInit {
     this.activatedRoute.data.subscribe(
       ({ ResolveTeams }) => {
         //se l'utente è loggato mostro i suoi preferiti
-        if (localStorage.getItem('authToken'))
+        if (localStorage.getItem('authToken')){
           this.functionGetAllFavouriteTeams();
-        this.updateTeams(ResolveTeams, this.favouriteTeams)
+        }else
+          this.updateTeams(ResolveTeams, this.favouriteTeams);
       })
   }
 
@@ -45,7 +46,6 @@ export class SquadrePageComponent implements OnInit {
   checkIfMobile(): void {
     this.isMobile = window.innerWidth < 768; // Cambia questo valore in base alle tue esigenze
   }
-
 
   // per selezionare una conference o l'altra
   isConferenceSelected: boolean = true;
@@ -102,7 +102,6 @@ export class SquadrePageComponent implements OnInit {
   updateTeams(ResolveTeams: division, ResolveFavouriteTeams: team[]): void {
     let lunghezzaMax: number = 10;
     if (localStorage.getItem('authToken')) {
-      console.log(ResolveFavouriteTeams.length);
       lunghezzaMax = ResolveFavouriteTeams.length;
 
       for (let i = 0; i < ResolveTeams.NorthWest.length; i++) {

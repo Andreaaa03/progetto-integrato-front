@@ -13,10 +13,10 @@ export class ArticoloDetailPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute){}
   article!:detailArticle;
   ngOnInit(): void {
+    //mi prendo i dati del singolo articolo
     this.activatedRoute.data.subscribe(
       ({ ResolveArticle }) => {
         this.article=ResolveArticle;
       })
-    console.log(this.article)
   }
 }

@@ -14,9 +14,9 @@ export class BlogPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute){}
 
   ngOnInit(): void {
+    //Mi prendo tutti gli articoli e passo l'id degli articoli che voglio visualizzare
     this.activatedRoute.data.subscribe(
       ({ResolveAllArticle }) => {
-        
         this.article=ResolveAllArticle;
       })
   }

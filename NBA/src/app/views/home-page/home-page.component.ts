@@ -13,6 +13,7 @@ export class HomePageComponent implements OnInit {
   constructor(private activatedRoute:ActivatedRoute){}
   ngOnInit(): void{
     this.activatedRoute.data.subscribe(
+      //Mi prendo i valori delle partite di oggi: ResolveMatchData e tutti gli articoli: ResolveAllArticle
       ({ ResolveMatchData, ResolveAllArticle }) => {
         ResolveMatchData.forEach((singleMatch: any) => {
           this.matchToday.push(singleMatch.gameid);

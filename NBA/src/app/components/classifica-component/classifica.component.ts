@@ -286,9 +286,8 @@ export class ClassificaComponent implements OnInit {
     return array;
   }
 
-  //prende il valore all'interno di un oggetto
   /**
-   * 
+   * prende il valore all'interno di un oggetto
    * @param obj 
    * @param key 
    * @returns 
@@ -308,7 +307,10 @@ export class ClassificaComponent implements OnInit {
   vinte: string = "Vinte";
   sconfitte: string = "Sconfitte";
 
-  private cambiaTesto() {
+  /**
+   * Cambio testo a delle varibili per ottimizzare la visibilità da mobile
+   */
+  cambiaTesto() {
     const isMobile = window.innerWidth < 1024;
 
     this.vittore = isMobile ? "% V." : "% Vittore";
@@ -316,6 +318,9 @@ export class ClassificaComponent implements OnInit {
     this.sconfitte = isMobile ? "S." : "Sconfitte";
   }
 
+  /**
+   * Disattivo o attivo il cuore dei preferiti
+   */
   toggleChecked() {
     let checkbox = document.getElementById('cuore') as HTMLInputElement;
     checkbox.checked = !checkbox.checked;
@@ -327,6 +332,10 @@ export class ClassificaComponent implements OnInit {
       checkbox.checked = !checkbox.checked;
   }
 
+  /**
+   * Controllo se il cuore è attivo o no
+   * @returns 
+   */
   ControlChecked():boolean {
     let checkbox = document.getElementById('cuore') as HTMLInputElement;
     if (checkbox.checked == true)

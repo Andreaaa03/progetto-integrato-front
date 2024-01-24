@@ -27,32 +27,27 @@ export class SigninForm {
 })
 export class NavbarComponent implements OnInit{
   constructor(private location: Location, private router: Router, private apiService: ApiService) { }
-  dateToday = dayjs().format('YYYY-MM-DD');
+  ngOnInit(): void {
+    this.token = localStorage.getItem('authToken');
+  }
+
+  dateToday = dayjs().format('YYYY-MM-DD'); //per settare la data di oggi quando entro nella pagina calendario
+
+  // per gestire la navbar da mobile e da desktop
   isMobileMenuOpen: boolean = false;
   toggleMenu(isMobileMenuOpen: boolean) {
     this.isMobileMenuOpen = !isMobileMenuOpen;
   }
-  confrontUrl() {
-    const urlAttuale = this.location.path().split("/")[1]
-    const urlDesiderato = 'profilo';
-    if (urlAttuale === urlDesiderato) {
-      this.modal = false
-    } else {
-      this.modal = true;
-    }
-  }
-  
+
   token: string | null = null;
-  ngOnInit(): void {
-    this.token = localStorage.getItem('authToken');
-  }
-  
+    
   //login e registrati
+  modal: boolean = false;
   signupForm: SignupForm = new SignupForm();
   signinForm: SigninForm = new SigninForm();
-  modal: boolean = false;
-  registrati: boolean = false;
 
+  // per gestire la vista del registrati o login
+  registrati: boolean = false;
   registratiView() {
     this.registrati = !this.registrati;
   }
@@ -64,37 +59,50 @@ export class NavbarComponent implements OnInit{
   // mail: string = 'giorgio.modeo@gmail.com';
   // password: string = 'sonoio';
 
+  /**
+   * per accedere al profilo, posso inserire: username, e-mail o numero di telefono
+   */
   login(): void {
     this.apiService.SendLogin(this.signinForm.mail, this.signinForm.password).subscribe(
       (risposta:any) => {
         this.token=risposta.token;
         localStorage.setItem('authToken', risposta.token);
         this.succesfulMessage = risposta.error;
-        console.log('Registrazione andata a buon fine: ', risposta.status);
+        console.log('Registrazione andata a buon fine');
+        // console.log('Registrazione andata a buon fine: ', risposta.status);
         this.router.navigate(['/profilo']);
       },
       (errore) => {
         this.errorMessage = "Accesso fallito! " + errore.error.error;
-        console.log('Accesso fallito: ', errore.error.error);
+        console.log('Accesso fallito');
+        // console.log('Accesso fallito: ', errore.error.error);
       }
     );
   }
 
+  /**
+   * creazione di un account
+   */
   signup(){
     if(this.signupForm.passwd === this.signupForm.ripetiPassword){
       console.log(this.signupForm.first_name+"-"+ this.signupForm.last_name+"-"+ this.signupForm.birthDate+"-"+ this.signupForm.mail+"-"+ this.signupForm.passwd+"-"+ this.signupForm.numeroTelefono+"-"+ this.signupForm.username+"-"+ this.signupForm.sesso)
       this.apiService.SendSignup(this.signupForm.first_name, this.signupForm.last_name, this.signupForm.birthDate, this.signupForm.mail, this.signupForm.passwd, this.signupForm.numeroTelefono, this.signupForm.username, this.signupForm.sesso).subscribe(
         (risposta: any) => {
           this.succesfulMessage=risposta.error;
-          console.log('Registrazione andata a buon fine: ', risposta.status);
+          console.log('Registrazione andata a buon fine');
+          this.registratiView();
+          // console.log('Registrazione andata a buon fine: ', risposta.status);
         },
         (errore) => {
           if(errore.status>=200 && errore.status<=299){  
             this.succesfulMessage=errore.error;
-            console.log('Registrazione andata a buon fine: ', errore.status);
+            console.log('Registrazione andata a buon fine');
+            this.registratiView();
+            // console.log('Registrazione andata a buon fine: ', errore.status);
           }else{
             this.errorMessage = "Registrazione fallita! " + errore.error.error;
-            console.log('Registrazione fallita: ', errore.error.error);
+            console.log('Registrazione fallita');
+            // console.log('Registrazione fallita: ', errore.error.error);
           }
         }
       )

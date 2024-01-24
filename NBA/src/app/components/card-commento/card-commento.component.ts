@@ -6,17 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-commento.component.css']
 })
 export class CardCommentoComponent implements OnInit {
-  countCommenti: number[] = [1,2,3,4,5];
+  countCommenti: number[] = [1, 2, 3, 4, 5];
   showResponseComment: boolean = false;
-  testoCommenti:string="Mostra Commenti";
+  testoCommenti: string = "Mostra Commenti";
   ngOnInit(): void {
     this.functionChangeTestoCommenti();
   }
-    functionChangeTestoCommenti() {
-      if(this.showResponseComment){
-        this.testoCommenti="Nascondi Commenti"
-      }else{
-        this.testoCommenti="Mostra Commenti";
-      }
+  /**
+   * cambio testo
+   */
+  functionChangeTestoCommenti() {
+    if (this.showResponseComment) {
+      this.testoCommenti = "Nascondi Commenti"
+    } else {
+      this.testoCommenti = "Mostra Commenti";
     }
+  }
 }

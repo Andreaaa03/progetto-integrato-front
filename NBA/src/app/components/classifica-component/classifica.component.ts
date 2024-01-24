@@ -13,10 +13,23 @@ import { GetApiServiceStanding } from 'src/app/services/getApiStending.service';
 export class ClassificaComponent implements OnInit {
   @Input() isParziale!: boolean;
 
-  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private getApiStanding: GetApiServiceStanding) {
+  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private getApiStanding: GetApiServiceStanding) {}
 
+  ngOnInit(): void {
+    this.activatedRoute.data.subscribe(
+      ({ ResolveStanding }) => {
+        //aggiorno la classifica
+        this.updateStanding(ResolveStanding);
+      })
+    this.cambiaTesto();
+    // nella home mostro 5 righe, in classifica 15(tutte)
+    if (this.isParziale === true)
+      this.countForStanding = 5;
+    else
+      this.countForStanding = 15;
   }
 
+  // mi salvo le 2 classifiche
   standings: Classifica = {
     allStanding: {
       eastConference: [],
@@ -27,10 +40,12 @@ export class ClassificaComponent implements OnInit {
       westConference: [],
     }
   }
+  // gli assegno la classifica che voglio mostrare
   standingToShow: StandingShow = {
     eastConference: [],
     westConference: [],
   }
+  //righe da mostrare della classifica
   countForStanding: number = 5;
 
   @HostListener('window:resize', ['$event'])
@@ -38,18 +53,11 @@ export class ClassificaComponent implements OnInit {
     this.cambiaTesto();
   }
 
-  ngOnInit(): void {
-    this.activatedRoute.data.subscribe(
-      ({ ResolveStanding }) => {
-        this.updateStanding(ResolveStanding);
-      })
-    this.cambiaTesto();
-    if (this.isParziale === true)
-      this.countForStanding = 5;
-    else
-      this.countForStanding = 15;
-  }
-
+  // assegno ai vari array di oggetti le squadre aggiornate, principalmente per i preferiti
+  /**
+   * 
+   * @param ResolveStanding : Classifica -->
+   */
   updateStanding(ResolveStanding:Classifica){
     this.standings.allStanding.eastConference = this.bubbleSort(ResolveStanding.allStanding.eastConference, 'winPercentage', false);
     this.standings.allStanding.westConference = this.bubbleSort(ResolveStanding.allStanding.westConference, 'winPercentage', false);

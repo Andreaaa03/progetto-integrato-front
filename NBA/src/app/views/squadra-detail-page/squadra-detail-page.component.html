@@ -247,14 +247,15 @@
                                 <thead class="bg-primary text-white">
                                     <tr class="w-full">
                                         <th class="" *ngFor="let day of player.statisticsArray[0], let j=index">
-                                            <p *ngIf="j>1" class="w-20 text-center">{{day[0]}}</p>
+                                            <p *ngIf="j>2" class="w-20 px-2 text-center">{{day[0]}}</p>
+                                            <p *ngIf="j==2" class="w-20 px-2 text-center">n° maglia</p>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody class="">
                                     <tr class="" *ngFor="let singleStats of player.statisticsArray">
                                         <td class="" *ngFor="let day of singleStats, let j=index">
-                                            <p *ngIf="j>1" class="w-20 text-center">{{day[1]}}</p>
+                                            <p *ngIf="j>1" class="w-20 px-2 text-center">{{day[1]}}</p>
                                         </td>
                                     </tr>
                                 </tbody>

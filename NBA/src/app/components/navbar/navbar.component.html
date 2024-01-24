@@ -1,10 +1,10 @@
-<div *ngIf="token==null && modal===true" class="fixed lg:top-1/2 top-[55%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full flex justify-center items-center bg-[#acdeff81]">
-    <div class="w-[80%] lg:h-[80%] h-[85%] bg-gray-100 border-4 border-primary z-40">
+<div *ngIf="token==null && modal===true" class="fixed z-40 lg:top-1/2 top-[55%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full flex justify-center items-center bg-[#acdeff81]">
+    <div class="w-[90%] lg:h-[80%] h-[85%] bg-gray-100 border-4 border-primary z-40">
         <div class="flex flex-wrap items-center justify-center h-full z-40">
             <div class="w-full flex flex-wrap justify-center" *ngIf="registrati === false">
                 <div class="lg:w-[80%] w-[90%] flex flex-wrap">
                     <div class="w-full flex justify-center">
-                        <div class="w-[80%] flex justify-center">
+                        <div class="lg:w-[80%] w-[90%] flex justify-center">
                             <div class="w-full flex justify-between items-center">
                                 <div class="w-[15%] flex justify-center"></div>
                                 <p class="w-[70%] flex justify-center text-2xl font-bold">ACCEDI AL TUO ACCOUNT</p>
@@ -16,10 +16,10 @@
                     </div>
                     <form class="w-full flex flex-wrap" (submit)="login()">
                         <div class="w-full flex justify-center flex-wrap mt-4">
-                            <div class="w-[70%] mb-4">
+                            <div class="lg:w-[70%] w-[90%] mb-4">
                                 <input type="text" id="mail" name="mail" maxlength="40" [(ngModel)]="signinForm.mail" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="USERNAME: ">
                             </div>
-                            <div class="w-[70%] mb-4">
+                            <div class="lg:w-[70%] w-[90%] mb-4">
                                 <input type="password" id="password" name="password" [(ngModel)]="signinForm.password" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="PASSWORD: ">
                             </div>
                         </div>
@@ -44,18 +44,18 @@
             <div class="w-full flex flex-wrap justify-center" *ngIf="registrati === true">
                 <div class="lg:w-[80%] w-[90%] flex flex-wrap justify-center">
                     <div class="w-full flex justify-center">
-                        <div class="lg:w-[70%] w-[80%] flex justify-between items-center">
+                        <div class="lg:w-[70%] w-[90%] flex justify-between items-center">
                             <div class="w-[15%] flex" (click)="registratiView()">
                                 <div class="w-auto lg:flex hidden justify-center items-center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAs0lEQVR4nNXWPQoCMRCG4fcEWsgq+AOKlXowj6mlhZ2uhWujNuolVhYiLJIUwpcPHJj6IZNkZuBPYgKcgC3QzYlcgDrkDuiokTFQtZBPrpXIKIGUQE+FDMKd1F95BoZKpIwgVThlVuQKTFVIP4HcgJkSOUaQOzBXIocI8gAWKqRIIE9gqUKa2EeQF7BSIlaocJXO9hisz9v6Ya0tyNpUrWPCOviso9y6nNDCmpJtcq5bP8UbhdWADWvaLVIAAAAASUVORK5CYII="> indietro </div>
                                 <div class="w-auto lg:hidden flex justify-center items-center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAs0lEQVR4nNXWPQoCMRCG4fcEWsgq+AOKlXowj6mlhZ2uhWujNuolVhYiLJIUwpcPHJj6IZNkZuBPYgKcgC3QzYlcgDrkDuiokTFQtZBPrpXIKIGUQE+FDMKd1F95BoZKpIwgVThlVuQKTFVIP4HcgJkSOUaQOzBXIocI8gAWKqRIIE9gqUKa2EeQF7BSIlaocJXO9hisz9v6Ya0tyNpUrWPCOviso9y6nNDCmpJtcq5bP8UbhdWADWvaLVIAAAAASUVORK5CYII="> </div>
                             </div>
-                            <p class="w-[70%] flex justify-center text-2xl font-bold">REGISTRATI</p>
+                            <p class="lg:w-[70%] w-[90%] flex justify-center text-2xl font-bold">REGISTRATI</p>
                             <div class="w-[15%] flex justify-end" (click)="modal=!modal">
                                 <img class="w-auto" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsUlEQVR4nO2VQQrCMBBFH2Q8nne0FLNpDlYV3HcVEaYg0pqPraFCP8wqf/I6zSQDu/5VR+AONIAJfgNa4OK5MmQAskdXgJl7Rv+gwm4vSSWYvUHGuCqgZiJxCmYzkGecFFAAzjMbJODgnljwSPr0tV1hTWkeubK8tJJvYWkJRIWlNSAUDj6vWU2scT7x181gNdo7CJcxCJe6yhPU1npU+02NCdzY+y9QB1/j40GG7NqWHrZCsVI4Fm8DAAAAAElFTkSuQmCC">
                             </div>
                         </div>
                     </div>
-                    <form class="lg:w-[70%] w-[80%] flex justify-center flex-wrap mt-4" (submit)="signup()">
+                    <form class="lg:w-[70%] w-[90%] flex justify-center flex-wrap mt-4" (submit)="signup()">
                         <div class="flex justify-between w-full">
                             <div class="lg:w-[48%] w-full mb-4">
                                 <input required type="text" [(ngModel)]="signupForm.first_name" id="nome" name="first_name" minlength="1" maxlength="255" class="mt-1 px-4 py-1 w-full border-primary border-4 rounded-full" placeholder="Nome* ">
@@ -91,9 +91,9 @@
                                 </div>
                             </div>
                             <div class="w-auto lg:hidden flex items-center ml-4">
-                                <div class="flex items-center w-full border-primary border-4">
+                                <div class="flex items-center w-full border-primary border-4 rounded-full px-4">
                                     <p class="w-auto">Sesso: </p>
-                                    <select required="" name="sesso" [(ngModel)]="signupForm.sesso" id="select" class="border p-2">
+                                    <select required="" name="sesso" [(ngModel)]="signupForm.sesso" id="select" class="p-2">
                                         <option value="m">M</option>
                                         <option value="f">F</option>
                                         <option value="a">Altro</option>

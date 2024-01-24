@@ -5,10 +5,10 @@
         </div>
         <div class="w-full">
             <div class="flex justify-between  w-full p-2">
-                <div class="">NOME</div>
-                <div class="">DATA</div>
+                <div class="">{{commento?.username}}</div>
+                <div class="">{{commento?.ngiorno}} {{commento?.giorno}} - {{commento?.ora}}</div>
             </div>
-            <div class="w-full min-h-20 rounded-[25px]  bg-white p-2">{{'@'}} contenuto del commento</div>
+            <div class="w-full min-h-20 rounded-[25px]  bg-white p-2">{{commento?.commento}}</div>
         </div>
     </div>
 </div>

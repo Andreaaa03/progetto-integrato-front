@@ -82,4 +82,24 @@ export class ApiService {
     AddRemoveFavouriteArticle(token: string, idArticolo: string){
         return this.http.post(this.baseURL + "user/articoloPreferito", { token: token, idArticolo: idArticolo }, { headers: this.headers });
     }
+
+    // tutti i commenti per articolo
+    SearchCommentForArticle(id:string){
+        return this.http.get(this.baseURL + "blog/commentiBlog?id="+id);
+    }
+    SearchCommentForGame(id:string){
+        return this.http.get(this.baseURL + "games/commentiPartita?id="+id);
+    }
+    SearchCommentForUser(token:string){
+        return this.http.post(this.baseURL + "commenti/commentiUtente", { token: token }, { headers: this.headers });
+    }
+    AddCommentArticle(token:string, id_blog: string, testo:string){
+        return this.http.post(this.baseURL + "commenti/add", { token: token, id_blog: id_blog, testo: testo}, { headers: this.headers });
+    }
+    AddCommentGame(token:string, id_games: string, testo:string){
+        return this.http.post(this.baseURL + "commenti/add", { token: token, id_games: id_games, testo: testo}, { headers: this.headers });
+    }
+    AddCommentResponse(token:string, id_commento_padre: string, testo:string){
+        return this.http.post(this.baseURL + "commenti/add", { token: token, id_commento_padre: id_commento_padre, testo: testo}, { headers: this.headers });
+    }
 }

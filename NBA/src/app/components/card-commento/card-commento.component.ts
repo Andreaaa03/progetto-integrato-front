@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { commento } from 'src/app/models/typeComment';
+
+
 
 @Component({
   selector: 'app-card-commento',
@@ -6,12 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-commento.component.css']
 })
 export class CardCommentoComponent implements OnInit {
-  countCommenti: number[] = [1, 2, 3, 4, 5];
+  @Input() commento!: commento;
   showResponseComment: boolean = false;
   testoCommenti: string = "Mostra Commenti";
   ngOnInit(): void {
+    // console.log(this.commento);
     this.functionChangeTestoCommenti();
   }
+
+
   /**
    * cambio testo
    */

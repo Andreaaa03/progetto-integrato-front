@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { detailArticle } from 'src/app/models/typeArticle';
+import { commento } from 'src/app/models/typeComment';
 import { team } from 'src/app/models/typeStanding';
 import { division } from 'src/app/models/typeTeams';
 import { ApiService } from 'src/app/services/api.service';
@@ -17,12 +18,15 @@ export class ProfiloPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private getApiProfile: GetApiServiceProfilo, private getApiTeams: GetApiServiceTeams) { }
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(
-      ({ ResolveTeams, ResolveFavouriteTeams, ResolveFavouriteArticle }) => {
+      ({ ResolveTeams, ResolveFavouriteTeams, ResolveFavouriteArticle, ResolveCommentForUser }) => {
         this.updateTeams(ResolveTeams, ResolveFavouriteTeams);
         this.favouriteArticles=ResolveFavouriteArticle;
-        console.log(this.favouriteArticles);
+        this.commenti=ResolveCommentForUser;
+        console.log(this.commenti);
       })
   }
+  
+  commenti!:commento[];
 
   menuSelected: string = "profilo";
   menuPreferitiSelected: string = "squadre";
@@ -192,5 +196,7 @@ export class ProfiloPageComponent implements OnInit {
       this.removeToken();
     }
   }
+
+
 
 }

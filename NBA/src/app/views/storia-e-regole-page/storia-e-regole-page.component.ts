@@ -33,16 +33,18 @@ export class StoriaERegolePageComponent implements OnInit {
       
   }
 
+  //Funzione che cambia il valore della variabile booleana per cambiare vista della pagina
   functionSelectionRegole(selectedRegole: boolean) {
     this.selectedRegole = selectedRegole;
   }
 
+  //Funzione che doveva ridurre un articolo in mobile che abbiamo deciso di non implementare
   functionIsShorter(isShorter: boolean){
     this.isShorter = !isShorter;
   }
 
  
-  
+  //json contenente le informazione della view glossario
   jsonInfo: glossaryItem[] = [
     {
       "titolo": "GP",
@@ -233,11 +235,12 @@ export class StoriaERegolePageComponent implements OnInit {
   ]
 
 
-
+  //funzione che permette lo scroll della vista al punto desiderato
   scrollToSection(i: number): void {
     this.selectedSection = i;
     const section = document.getElementById('' + this.jsonInfo[i].id);
 
+    //confronta il valore selezionato corrisponda a uno di quelli presenti ed esegue lo scoll
     if (section) {
       section.scrollIntoView({ behavior: 'smooth', block : 'center' });
     }

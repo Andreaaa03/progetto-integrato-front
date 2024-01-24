@@ -14,13 +14,23 @@ import { GetApiServiceTeams } from 'src/app/services/getApiTeams.service';
   styleUrls: ['./profilo-page.component.css']
 })
 export class ProfiloPageComponent implements OnInit {
+  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private getApiProfile: GetApiServiceProfilo, private getApiTeams: GetApiServiceTeams) { }
+  ngOnInit(): void {
+    this.activatedRoute.data.subscribe(
+      ({ ResolveTeams, ResolveFavouriteTeams, ResolveFavouriteArticle }) => {
+        this.updateTeams(ResolveTeams, ResolveFavouriteTeams);
+        this.favouriteArticles=ResolveFavouriteArticle;
+        console.log(this.favouriteArticles);
+      })
+  }
+
   menuSelected: string = "profilo";
   menuPreferitiSelected: string = "squadre";
   showTeams: boolean = false;
   ripetiArray: any[] = new Array(10).fill({});
   favouriteTeams!: team[];
-  totalTeamWest:number=0;
-  totalTeamEast:number=0;
+  totalTeamWest: number = 0;
+  totalTeamEast: number = 0;
   favouriteArticles!: detailArticle[];
 
   teams: division = {
@@ -32,16 +42,12 @@ export class ProfiloPageComponent implements OnInit {
     Pacific: [],
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private getApiProfile: GetApiServiceProfilo, private getApiTeams: GetApiServiceTeams) { }
-  ngOnInit(): void {
-    this.activatedRoute.data.subscribe(
-      ({ ResolveTeams, ResolveFavouriteTeams, ResolveFavouriteArticle }) => {
-        this.updateTeams(ResolveTeams, ResolveFavouriteTeams);
-        this.favouriteArticles=ResolveFavouriteArticle;
-        console.log(this.favouriteArticles);
-      })
-  }
-
+  /**
+   * Aggiorno le squadre dopo averne aggiunta/rimossa qualcuna dalla lista preferiti per vedere l'elenco in tempo reale. 
+   * Funzione invocata o nell'onInit o solo quando viene aggiunta/rimossoa una squadra
+   * @param ResolveTeams : division
+   * @param ResolveFavouriteTeams : team[]
+   */
   updateTeams(ResolveTeams: division, ResolveFavouriteTeams: team[]): void {
     this.totalTeamEast=0;
     this.totalTeamWest=0;
@@ -102,27 +108,42 @@ export class ProfiloPageComponent implements OnInit {
     this.favouriteTeams = ResolveFavouriteTeams;
   }
 
+  /**
+   * in base alla parola che mi arriva la assegno ad una variabile che poi controllo per accedere ad un menu del profilo
+   * @param word :string
+   */
   functionChangeManu(word: string) {
     this.menuSelected = word;
   }
+  /**
+   * in base alla parola che mi arriva la assegno ad una variabile che poi controllo per accedere ad un menu dei preferiti
+   * @param word : string
+   */
   functionChangeManuPreferiti(word: string) {
     this.menuPreferitiSelected = word;
   }
 
+  //per le squadre in mobile, ancora non implementata ma pronta
   isConferenceSelected: boolean = true;
   functionChangeConferenceSelected() {
     this.isConferenceSelected = !this.isConferenceSelected;
   }
 
-
-
+  /**
+   * Rimuove il token dalla sessione
+   */
   removeToken() {
     localStorage.removeItem('authToken');
     window.location.replace('/home');
   }
 
 
+  /**
+   * Aggiungo e rimuovo le squadre preferite, se il token non è valido svuoto la sessione
+   * @param id : string
+   */
   aggiungiRimuoviPreferitiTeams(id: string) {
+    if(localStorage.getItem('authToken')){
     this.apiService.AddRemoveFavouriteTeams(localStorage.getItem('authToken') as string, id + "").subscribe(
       () => { },
       (err) => {
@@ -141,9 +162,18 @@ export class ProfiloPageComponent implements OnInit {
         console.log(err);
       }
     );
+    }else{
+      console.log("non sei loggato");
+      this.removeToken();
+    }
   }
 
+  /**
+   * Aggiungo e rimuovo gli articoli preferite, se il token non è valido svuoto la sessione
+   * @param id : string
+   */
   aggiungiRimuoviPreferitiArticles(id: string) {
+    if(localStorage.getItem('authToken')){
     this.apiService.AddRemoveFavouriteArticle(localStorage.getItem('authToken') as string, id + "").subscribe(
       () => { },
       (err) => {
@@ -157,6 +187,10 @@ export class ProfiloPageComponent implements OnInit {
         console.log(err);
       }
     );
+    }else{
+      console.log("token non valido");
+      this.removeToken();
+    }
   }
 
 }

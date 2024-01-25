@@ -96,12 +96,14 @@ export class NavbarComponent implements OnInit{
         },
         (errore) => {
           if(errore.status>=200 && errore.status<=299){  
-            this.succesfulMessage=errore.error;
+            this.succesfulMessage="Registrazione effettuata";
+            this.errorMessage="";
             console.log('Registrazione andata a buon fine');
             this.registratiView();
             // console.log('Registrazione andata a buon fine: ', errore.status);
           }else{
             this.errorMessage = "Registrazione fallita! " + errore.error.error;
+            this.succesfulMessage="";
             console.log('Registrazione fallita');
             // console.log('Registrazione fallita: ', errore.error.error);
           }

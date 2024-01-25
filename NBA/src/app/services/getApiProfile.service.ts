@@ -4,7 +4,7 @@ import { map } from 'rxjs';
 import * as dayjs from 'dayjs';
 import { detailArticle } from '../models/typeArticle';
 import { team } from '../models/typeStanding';
-import { profilo } from '../models/typeProfilo';
+import { otherUser, profilo } from '../models/typeProfilo';
 
 
 @Injectable({
@@ -31,8 +31,19 @@ export class GetApiServiceProfilo {
 
     getSearchInfoUser(token: string) {
         return this.apiService.SearchInfoUser(token).pipe(
-            map((res)=>{
+            map((res:any)=>{
                 return res as profilo;
+            })
+        )
+    }
+    
+    getSearchSeguiti(token: string) {
+        return this.apiService.Seguiti(token).pipe(
+            map((res:any)=>{
+                res.forEach((user:any)=>{
+                    user.stato="NON SEGUIRE";
+                })
+                return res as otherUser[];
             })
         )
     }

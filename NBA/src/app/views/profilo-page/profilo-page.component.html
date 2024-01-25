@@ -150,8 +150,14 @@
                         </h2>
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
-                    <div class="w-full flex flex-wrap justify-between my-10">
-                        <div class="lg:w-[30%] w-full mx-2 my-4 rounded-xl border-2 border-[#1671AA]" *ngFor="let _ of ripetiArray, let i = index">
+                    <div class="w-full flex flex-wrap justify-between my-5">
+                        <div *ngIf="!showCard" (click)="showCard=!showCard" class="flex w-full lg:h-8 h-8 lg:mt-10 mt-5 lg:mb-5 mb-4 lg:justify-normal justify-evenly">
+                            <button class="rounded-full lg:mx-2 lg:px-6 px-3 lg:py-1 text-sm bg-secondary text-white">Mostra Dettagli</button>
+                        </div>
+                        <div *ngIf="showCard" (click)="showCard=!showCard" class="flex w-full lg:h-8 h-8 lg:mt-10 mt-5 lg:mb-5 mb-4 lg:justify-normal justify-evenly">
+                            <button class="rounded-full lg:mx-2 lg:px-6 px-3 lg:py-1 text-sm bg-secondary text-white">Nascondi Dettagli</button>
+                        </div>
+                        <div class="lg:w-[30%] w-full mx-2 my-4 rounded-xl border-2 border-[#1671AA]" *ngFor="let user of seguiti, let i = index">
                             <div class="w-full h-[3/4]  bg-secondary rounded-t-lg flex flex-wrap p-4">
                                 <div class="w-full flex flex-nowrap">
                                     <div class="w-20 h-20 rounded-full bg-slate-500">
@@ -159,14 +165,16 @@
                                     </div>
                                     <div class="flex flex-wrap ml-4">
                                         <div class="w-full text-lg text-white ">
-                                            <p>Luca</p>
+                                            <p>{{user.username}}</p>
                                         </div>
                                         <div class="w-full text-lg text-white ">
-                                            <p>Badge</p>
+                                            <p>{{user.role}}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="w-full flex flex-wrap my-4">
+                                <div *ngIf="showCard===true" class="w-full flex flex-wrap my-4 ">
+                                    <p class="w-1/2 text-center lg:text-sm text-white py-1">SEGUITI: {{user.following}}</p>
+                                    <p class="w-1/2 text-center lg:text-sm text-white py-1 pb-3">FOLLOWER: {{user.follower}}</p>
                                     <p class="w-full lg:text-sm text-white py-1">SONDAGGI INDOVINATI: 5</p>
                                     <p class="w-full lg:text-sm text-white py-1">SONDAGGI SBAGLIATI: 12</p>
                                     <p class="w-full lg:text-sm text-white py-1">PERCENTUALE DI RISPOSTE CORRETTE: 2,4%</p>
@@ -174,7 +182,8 @@
                                 </div>
                             </div>
                             <div class="w-full h-[1/4] my-2 bg-white border-solid border-[#1671AA] flex justify-center items-center">
-                                <button class="rounded-full border-2 my-1 px-6 border-blue-900">FOLLOW</button>
+                                <button *ngIf="stringFollowForCard===true" class="rounded-full border-2 my-1 px-6 border-blue-900" (click)="aggiungiRimuoviUtenti(user.seguito.toString()); stringFollowForCard=!stringFollowForCard">NON SEGUIRE</button>
+                                <button *ngIf="stringFollowForCard===false" class="rounded-full border-2 my-1 px-6 border-blue-900" (click)="aggiungiRimuoviUtenti(user.seguito.toString()); stringFollowForCard=!stringFollowForCard">SEGUI</button>
                             </div>
                         </div>
                     </div>
@@ -187,7 +196,7 @@
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
                     <div class="w-full">
-                        <div class="flex lg:w-full w-80% lg:h-8 h-5 lg:mt-10 mt-5 lg:mb-5 mb-4 lg:justify-normal justify-evenly">
+                        <div class="flex lg:w-full w-80% lg:h-8 h-8 lg:mt-10 mt-5 lg:mb-5 mb-4 lg:justify-normal justify-evenly">
                             <!-- <button (click)="functionChangeManuPreferiti('tutti')" class="rounded-full lg:mr-2 lg:px-6 px-3 lg:py-1 text-sm" [ngClass]="{'bg-secondary': menuPreferitiSelected === 'tutti', 'bg-[#ACDEFF]': menuPreferitiSelected !== 'tutti', 'text-white': menuPreferitiSelected === 'tutti'}">
                                 TUTTI
                             </button> -->

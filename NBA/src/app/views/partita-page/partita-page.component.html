@@ -20,7 +20,7 @@
                 </div>
                 <div class="w-1/3 flex flex-wrap justify-center items-center">
                     <div class="h-1/4 w-full flex justify-center items-center">
-                        <p class="font-bold text-xl">{{matchStats.calendarioDateResponse.gameStartDate}}</p>
+                        <p class="font-bold text-center text-xl">{{matchStats.calendarioDateResponse.gameStartDate}}</p>
                     </div>
                     <div class="h-1/3 w-full flex justify-between items-center">
                         <p class="w-full text-center font-bold text-4xl">{{matchStats.calendarioDateResponse.scoreTeamAway}}</p>
@@ -204,16 +204,16 @@
                         <app-card-commento [commento]="commento" class="my-5"></app-card-commento>
                     </div>
                 </div>
-                <div class="bg-[#ACDEFF] w-full min-h-[25vh]  flex flex-nowrap mt-4">
-                    <div class="w-2/3 p-5">
+                <div class="bg-[#ACDEFF] w-full min-h-[25vh] flex lg:flex-nowrap flex-wrap mt-4">
+                    <div class="lg:w-2/3 w-full p-5">
                         <textarea class="w-full min-h-full p-4 rounded-[25px]" [(ngModel)]="newComment.commento" placeholder="inserisci il commento" name="" id="">
                             </textarea>
                     </div>
-                    <div class="w-1/3 m-5">
-                        <div class="w-full p-5 flex justify-center ">
+                    <div class="lg:w-1/3 w-full m-5">
+                        <!-- <div class="w-full px-5 flex justify-center ">
                             <input class="w-full rounded-full" type="text" placeholder="tag nome utente per la risposta">
-                        </div>
-                        <div class="w-full p-5 flex justify-center">
+                        </div> -->
+                        <div class="w-full px-5 flex justify-center">
                             <button class="py-2 px-4 bg-secondary rounded-full text-white" (click)="functionNewComment()">Rispondi</button>
                         </div>
                     </div>

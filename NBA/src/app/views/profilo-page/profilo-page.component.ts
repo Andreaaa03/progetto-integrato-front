@@ -169,8 +169,8 @@ export class ProfiloPageComponent implements OnInit {
                 )
               }
             )
-          }
-          console.log(err);
+          }else
+            console.log(err);
         }
       );
     } else {

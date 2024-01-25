@@ -29,6 +29,7 @@ export class PartiteDelGiornoPreviewComponent implements OnInit {
    * @param increment 
    */
   functionCambiaCard(increment: number) {
+    console.log(increment);
     this.currentIndex = (this.currentIndex + increment + this.cards.length) % this.cards.length;
     const lastIndex = this.cards.length - 1;
     this.currentIndexAfter = (this.currentIndex + 1) % this.cards.length;

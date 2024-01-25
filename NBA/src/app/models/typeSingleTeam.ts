@@ -132,16 +132,19 @@ export type teamPlayer = {
     age: number;
     assists: number;
     points: number;
+    fotoPng: string;
+    fotoAvif: string;
+    fotoWebp: string;
     statistics: playerStats[];
     statisticsArray: [
         giorno1: [number, number][],
         giorno2: [number, number][],
         giorno3: [number, number][],
         giorno4: [number, number][],
-        giorno5: [number, number][],
-    ]
+        giorno5: [number, number][]
+    ];
 }[];
 
-export type allPlayer={
+export type allPlayer = {
     players: teamPlayer[];
-}
+};

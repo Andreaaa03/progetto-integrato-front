@@ -9,6 +9,7 @@ type Article = {
     numeroFoto: number;
     tipo: string;
     colori: string;
+    favourite: boolean;
 }
 
 export type cardArticle = Article[];

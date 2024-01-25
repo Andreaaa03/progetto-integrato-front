@@ -4,6 +4,7 @@ import { map } from 'rxjs';
 import * as dayjs from 'dayjs';
 import { detailArticle } from '../models/typeArticle';
 import { team } from '../models/typeStanding';
+import { profilo } from '../models/typeProfilo';
 
 
 @Injectable({
@@ -24,6 +25,14 @@ export class GetApiServiceProfilo {
         return this.apiService.SearchFavouriteArticle(token).pipe(
             map((res: any) => {
                 return res.reverse() as detailArticle[];
+            })
+        )
+    }
+
+    getSearchInfoUser(token: string) {
+        return this.apiService.SearchInfoUser(token).pipe(
+            map((res)=>{
+                return res as profilo;
             })
         )
     }

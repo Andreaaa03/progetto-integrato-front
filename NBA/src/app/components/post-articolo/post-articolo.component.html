@@ -4,7 +4,7 @@
             <div *ngIf="singleArticle?.blog?.colori" [style.background-color]="singleArticle?.blog?.colori" class="absolute top-4 h-12 w-full from- via-transparent ">
                 <p class="font-bold text-3xl flex items-center h-full pl-4">{{singleArticle?.blog?.tipo | uppercase }}</p>
             </div>
-            <img class="top-0 h-full w-full" src="{{singleArticle?.blog?.foto}}" alt="product image" />
+            <img class="top-0 h-80 w-full object-cover" src={{singleArticle?.blog?.foto}} alt="product image" />
             <div class="absolute bottom-0 h-auto w-full bg-primary">
                 <p class="font-bold text-xl flex items-center h-full px-4 py-2 text-white text-center w-full">{{singleArticle?.blog?.titolo | uppercase}}</p>
             </div>
@@ -14,9 +14,15 @@
                 <p class="px-4 py-2 text-white">{{singleArticle?.blog?.riassunto}}...</p>
             </div>
             <div class="flex flex-nowrap justify-between mt-2 lg:mx-0 ml-2">
-                <div class="flex flex-nowrap">
+                <div class="w-full flex flex-nowrap justify-around items-center">
                     <p class="text-sm flex items-center">
-                        {{singleArticle?.blog?.giorno }}   {{singleArticle?.blog?.orario }}   {{singleArticle?.blog?.numeroFoto }} n°foto
+                        {{singleArticle?.blog?.giorno }}
+                    </p>
+                    <p class="text-sm flex items-center">
+                        {{singleArticle?.blog?.orario }}
+                    </p>
+                    <p class="text-sm flex items-center">
+                        {{singleArticle?.blog?.numeroFoto }} n°foto
                     </p>
                     <!-- <p class="flex items-center">
                         <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 30 30">
@@ -30,6 +36,8 @@
                         </svg>
                         33
                     </p>
+                    <p class="w-auto hover:cursor-pointer text-center" *ngIf="singleArticle?.blog.favourite===true" (click)="aggiungiRimuoviPreferitiArticles(singleArticle?.blog?.id); singleArticle.blog.favourite=!singleArticle.blog.favourite">❤️</p>
+                    <p class="w-auto hover:cursor-pointer text-center" *ngIf="singleArticle?.blog.favourite!=true" (click)="aggiungiRimuoviPreferitiArticles(singleArticle?.blog?.id); singleArticle.blog.favourite=!singleArticle.blog.favourite">🖤</p>
                 </div>
                 <div class="bg-secondary rounded-full text-white px-4 text-sm flex items-center">
                     <button class="" [routerLink]="['/articolo', singleArticle?.blog?.id]">Apri Articolo</button>
@@ -60,7 +68,7 @@
                             <button class="" [routerLink]="['/articolo', singleArticle?.blog?.id]">Apri Articolo</button>
                         </div>
                     </div>
-                    <div class="flex flex-nowrap justify-evenly w-full">
+                    <div class="flex flex-nowrap justify-evenly w-full items-center">
                         <p class="text-sm flex items-center">
                             {{singleArticle?.blog?.giorno }}
                         </p>
@@ -78,6 +86,8 @@
                             </svg>
                             33
                         </p>
+                        <p class="w-auto hover:cursor-pointer text-center" *ngIf="singleArticle?.blog.favourite===true" (click)="aggiungiRimuoviPreferitiArticles(singleArticle?.blog?.id); singleArticle.blog.favourite=!singleArticle.blog.favourite">❤️</p>
+                        <p class="w-auto hover:cursor-pointer text-center" *ngIf="singleArticle?.blog.favourite!=true" (click)="aggiungiRimuoviPreferitiArticles(singleArticle?.blog?.id); singleArticle.blog.favourite=!singleArticle.blog.favourite">🖤</p>
                     </div>
                 </div>
             </div>
@@ -90,7 +100,7 @@
         <div class="relative -z-10">
             <div *ngIf="singleArticle?.blog?.colori" [style.background-color]="singleArticle?.blog?.colori" class="absolute top-4 h-12 w-full  ">
                 <p class="font-bold text-3xl flex items-center h-full pl-4">{{singleArticle?.blog?.tipo | uppercase}}</p>
-            </div>           
+            </div>
             <img class="top-0 h-full w-full" src={{singleArticle?.blog?.foto}} alt="product image" />
             <div class="absolute bottom-0 h-auto w-full bg-primary">
                 <p class="font-bold text-xl flex items-center h-full px-4 py-2 text-white text-center w-full">{{singleArticle?.blog?.titolo | uppercase }}</p>
@@ -102,9 +112,15 @@
             </div>
 
             <div class="flex flex-nowrap justify-between mt-2 lg:mx-0 ml-2">
-                <div class="flex flex-nowrap">
+                <div class="w-full flex flex-nowrap justify-around items-center">
                     <p class="text-sm flex items-center">
-                        {{singleArticle?.blog?.giorno }} {{singleArticle?.blog?.orario }} {{singleArticle?.blog?.numeroFoto }} n°foto
+                        {{singleArticle?.blog?.giorno }}
+                    </p>
+                    <p class="text-sm flex items-center">
+                        {{singleArticle?.blog?.orario }}
+                    </p>
+                    <p class="text-sm flex items-center">
+                        {{singleArticle?.blog?.numeroFoto }} n°foto
                     </p>
                     <!-- <p class="flex items-center">
                         <svg class="mx-1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 30 30">
@@ -118,6 +134,8 @@
                         </svg>
                         33
                     </p>
+                    <p class="w-auto hover:cursor-pointer text-center" *ngIf="singleArticle?.blog.favourite===true" (click)="aggiungiRimuoviPreferitiArticles(singleArticle?.blog?.id); singleArticle.blog.favourite=!singleArticle.blog.favourite">❤️</p>
+                    <p class="w-auto hover:cursor-pointer text-center" *ngIf="singleArticle?.blog.favourite!=true" (click)="aggiungiRimuoviPreferitiArticles(singleArticle?.blog?.id); singleArticle.blog.favourite=!singleArticle.blog.favourite">🖤</p>
                 </div>
                 <div class="bg-secondary rounded-full text-white px-4 text-sm flex items-center">
                     <button class="" [routerLink]="['/articolo', singleArticle?.blog?.id]">Apri Articolo</button>

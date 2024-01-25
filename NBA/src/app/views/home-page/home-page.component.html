@@ -47,9 +47,9 @@
             <img class="object-cover lg:w-[50%] w-[90%] rounded-full -z-10" src="../../../assets/foto-spotify.png" alt="">
         </div>
         <div class="flex justify-center items-end -z-40">
-            <button class="lg:w-[40%] w-[80%] rounded-full lg:h-[70px] h-[50px] relative -z-30 bottom-6 bg-secondary lg:px-8 px-5 pt-6 text-white font-bold text-sm lg:text-xl hover:underline" [routerLink]="['/']">
+            <a class="lg:w-[40%] w-[80%] rounded-full lg:h-[70px] h-[50px] relative -z-30 bottom-6 bg-secondary lg:px-8 px-5 pt-6 text-white font-bold text-sm lg:text-xl hover:underline" href="https://podcasters.spotify.com/pod/show/riccardo083">
                 SCOPRI IL NOSTRO PODCACAST
-            </button>
+            </a>
         </div>
     </div>
 </section>
@@ -65,8 +65,8 @@
                 </div>
                 <div class="w-full h-6 bg-secondary"></div>
                 <div class="mt-10 flex flex-wrap justify-center lg:justify-between">
-                    <app-post-articolo [artId]="article[3].id" [extended]="true"></app-post-articolo>
-                    <app-post-articolo [artId]="article[1].id" [extended]="false"></app-post-articolo>
+                    <app-post-articolo [artId]="article[2].id" [extended]="true"></app-post-articolo>
+                    <app-post-articolo [artId]="article[3].id" [extended]="false"></app-post-articolo>
                     <app-post-articolo [artId]="article[0].id" [extended]="false"></app-post-articolo>
                 </div>
             </div>

@@ -4,7 +4,7 @@
         <div class="w-full flex justify-center h-full">
             <div class="w-full">
                 <div class="w-full h-20 bg-primary flex justify-center items-center">
-                    <h2 class=" text-white text-4xl font-bold tex-center">
+                    <h2 class=" text-white lg:text-4xl text-2xl font-bold tex-center">
                         PROFILO PERSONALE
                     </h2>
                 </div>
@@ -14,11 +14,11 @@
     </div>
     <div class="flex justify-center h-full">
         <div class="container flex flex-wrap justify-center h-full">
-            <div class="lg:w-[70%] w-full flex lg:justify-normal justify-start flex-nowrap mt-20">
-                <div class="lg:w-[25%] w-[50%] h-full ">
+            <div class="lg:w-[70%] w-full flex lg:justify-normal justify-center flex-wrap lg:flex-nowrap mt-5 lg:mt-20">
+                <div class="lg:w-[25%] w-[80%] h-auto order-2 lg:order-1">
                     <div class="w-full bg-primary box-shadow-for-menu">
                         <ul>
-                            <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('profilo')">Profilo</li>
+                            <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('interazioni')">Interazioni</li>
                             <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('risultato')">Risultato Sondaggi</li>
                             <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('amici')">Amici</li>
                             <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('preferiti')">Preferiti</li>
@@ -26,21 +26,24 @@
                         </ul>
                     </div>
                 </div>
-                <div class="w-[75%] h-full  flex flex-wrap justify-center items-center lg:py-10">
-                    <div class="h-[20vmin] w-[20vmin]">
-                        <div class="h-[20vmin] w-[20vmin] rounded-full bg-gray-500">
-
+                <div class="lg:w-[75%] w-full h-auto flex flex-wrap lg:justify-evenly justify-center items-center mt-5 mb-10 lg:mb-0  order-1 lg:order-2">
+                    <div class="h-[20vmin]">
+                        <div class="h-[20vmin] w-[20vmin] ">
+                            <div class="h-[20vmin] w-[20vmin] rounded-full bg-gray-500">
+                            </div>
                         </div>
                     </div>
-                    <div class="lg:block hidden  w-[10px] h-full bg-black ml-20 mr-20"></div>
-                    <div class="lg:w-auto w-[50%] mx-10 flex items-center">
+                    <div class="lg:block hidden w-2 h-full bg-black "></div>
+                    <div class="lg:w-auto w-[90%] lg:mx-10 flex lg:items-center">
                         <ul>
-                            <li class="p-2 text-xl font-bold">Nome</li>
-                            <li class="p-2 text-xl font-bold">Età</li>
-                            <li class="p-2 text-xl font-bold">Sesso</li>
-                            <li class="p-2 text-xl font-bold">1k followers</li>
-                            <li class="p-2 text-xl font-bold">Data di iscrizione</li>
-                            <li class="p-2 text-xl font-bold">Badge</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Username: </span> {{infoUser.username}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Età: </span> {{infoUser.eta}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Sesso: </span> {{infoUser.sesso}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Follower: </span> {{infoUser.follower}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">E-mail: </span>{{infoUser.email}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Tel: </span> {{infoUser.numeroTelefono}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Iscritto il </span>{{infoUser.dataIscrizione}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Ruolo: </span> {{infoUser.ruolo}}</li>
                         </ul>
                     </div>
                 </div>
@@ -52,44 +55,45 @@
     <div class="flex justify-center h-full">
         <div class="container flex flex-wrap justify-center h-full">
             <div class="lg:w-[70%] w-full my-10">
-                <div class="" *ngIf="menuSelected==='profilo'">
+                <div class="scroll-m-20" *ngIf="menuSelected==='interazioni'" id="Interazioni">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
-                        <h2 class=" text-white text-4xl font-bold">
+                        <h2 class=" text-white lg:text-4xl text-2xl font-bold text-center">
                             ULTIME INTERAZIONI FATTE
                         </h2>
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
-                    <div class="w-full h-full flex lg:justify-between justify-center mt-10">
-                        <div class="lg:w-[45%] w-[90%] " *ngFor="let commento of commenti">
-                            <div class="bg-secondary rounded-xl flex justify-center">
-                                <div class="w-[90%] h-[90%]">
-                                    <div class="w-full h-20 flex flex-nowrap">
-                                        <div class="w-1/5 flex items-center">
-                                            <div class="w-14 h-14 rounded-full bg-white"></div>
+                    <div class="w-full h-auto flex flex-wrap lg:justify-between justify-center mt-10">
+                        <div class="lg:w-1/3 w-[90%] mb-4" *ngFor="let commento of commenti, let i=index">
+                            <div class="w-full lg:flex lg:flex-wrap" [ngClass]="{'lg:justify-start': i % 3 === 0, 'lg:justify-end': i % 3 === 2, 'lg:justify-center': i % 3 === 1}">
+                                <div class="bg-secondary rounded-xl flex justify-center">
+                                    <div class="w-[90%] h-[90%]">
+                                        <div class="w-full h-20 flex flex-nowrap">
+                                            <div class="w-1/5 flex items-center">
+                                                <div class="w-14 h-14 rounded-full bg-white"></div>
+                                            </div>
+                                            <div class="w-4/5 flex items-center">
+                                                <p class="text-white text-xl px-4">{{commento?.username}}</p>
+                                            </div>
                                         </div>
-                                        <div class="w-4/5 flex items-center">
-                                            <p class="text-white text-xl">{{commento?.username}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="w-full ">
-                                        <div class="bg-[#ACDEFF] rounded-xl mb-6">
-                                            <p class="p-2">
-                                                {{commento?.commento}}
-                                            </p>
+                                        <div class="w-full ">
+                                            <div class="bg-[#ACDEFF] rounded-xl mb-6">
+                                                <p class="p-2">
+                                                    {{commento?.commento}}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="flex justify-end w-full mt-2">
-                                <button class="font-bold hover:underline text-xl">Vai all'articolo</button>
+                                <!-- <div class="flex justify-end w-full mt-2">
+                                    <button class="font-bold hover:underline text-xl">Vai all'articolo</button>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="" *ngIf="menuSelected==='risultato'">
-
+                <div class="scroll-m-20" *ngIf="menuSelected==='risultato'" id="Sondaggi">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
-                        <h2 class=" text-white text-4xl font-bold">
+                        <h2 class=" text-white lg:text-4xl text-2xl font-bold">
                             SONDAGGI
                         </h2>
                     </div>
@@ -108,36 +112,40 @@
                         </div>
                         
                     </div> -->
-
                     <div class="w-full mt-20">
                         <table class="w-full">
                             <thead class="w-full bg-primary text-white">
-                                <tr class="w-full border-primary border-4">
-                                    <th class="w-[33.333%]">Nome</th>
-                                    <th class="w-[33.333%]">Numero Sondaggi</th>
-                                    <th class="w-[33.333%]">percentuale Sondaggi</th>
+                                <tr class="w-full border-primary lg:border-4 border-b-4 h-12">
+                                    <th class="w-1/6"></th>
+                                    <th class="w-1/4">Nome</th>
+                                    <th class="w-1/4">Numero Sondaggi</th>
+                                    <th class="w-1/4">percentuale Sondaggi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="w-full border-primary border-4" *ngFor="let _ of ripetiArray, let i = index">
-                                    <td class="w-[33.333%]">
-                                        <p class="text-base flex justify-start items-center"><span class="w-[50px] h-[50px] rounded-full bg-tertiary flex justify-center items-center">{{i + 1}}°</span> Nome Utente </p>
+                                <tr class="w-full border-primary lg:border-4 border-b-4 h-12" *ngFor="let _ of ripetiArray, let i = index">
+                                    <td class="w-1/6 h-full bg-tertiary">
+                                        <div class="w-full h-full flex justify-center items-center">
+                                            <p class="w-full h-full text-center">{{i+1}}°</p>
+                                        </div>
                                     </td>
-                                    <td class="w-[33.333%]">
+                                    <td class="w-1/4">
+                                        <p class="text-base flex justify-center items-center"> Nome Utente </p>
+                                    </td>
+                                    <td class="w-1/4">
                                         <p class="text-base flex justify-center items-center">{{i + 4}}</p>
                                     </td>
-                                    <td class="w-[33.333%]">
+                                    <td class="w-1/4">
                                         <p class="text-base flex justify-center items-center"> {{100-(i*10)}}% </p>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    sotto sondaggi
                 </div>
-                <div class="" *ngIf="menuSelected==='amici'">
+                <div class="scroll-m-20" *ngIf="menuSelected==='amici'" id="Amici">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
-                        <h2 class=" text-white text-4xl font-bold">
+                        <h2 class=" text-white lg:text-4xl text-2xl font-bold">
                             AMICI
                         </h2>
                     </div>
@@ -171,9 +179,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="" *ngIf="menuSelected==='preferiti'">
+                <div class="scroll-m-20" *ngIf="menuSelected==='preferiti'" id="Preferiti">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
-                        <h2 class=" text-white text-4xl font-bold">
+                        <h2 class=" text-white lg:text-4xl text-2xl font-bold">
                             I TUOI PREFERITI
                         </h2>
                     </div>
@@ -257,15 +265,15 @@
                         </ng-container>
                     </div>
                 </div>
-                <div class="" *ngIf="menuSelected==='impostazioni'">
+                <div class="scroll-m-20" *ngIf="menuSelected==='impostazioni'" id="Impostazioni">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
-                        <h2 class=" text-white text-4xl font-bold">
+                        <h2 class=" text-white lg:text-4xl text-2xl font-bold">
                             IMPOSTAZIONI
                         </h2>
                     </div>
                     <div class="w-full h-6 bg-secondary"></div>
                     <div class="w-full mt-10">
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold">Nome Utente</p>
                             </div>
@@ -278,7 +286,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold">Età</p>
                             </div>
@@ -291,7 +299,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold">Numero di Telefono</p>
                             </div>
@@ -304,7 +312,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold">Sesso</p>
                             </div>
@@ -319,7 +327,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold">Password</p>
                             </div>
@@ -333,17 +341,17 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold">Squadre preferite</p>
                             </div>
-                            <form action="" class="w-3/4 flex flex-nowrap justify-around pl-4">
+                            <form action="" class="w-3/4 flex flex-nowrap justify-around pl-4 ">
                                 <!-- si deve aprire un riquadro con tutto l'elenco delle squadre e l'utente sceglie le 5 squadre per conference, se gia scelte deve mostrare ovviamente le 5 scelte e deseleziona cosi ha uno slot libero per selezionare una nuova. puo avere piu slot liberi -->
-                                <div *ngIf="showTeams===true" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] border-primary bg-[#ACDEFF] flex justify-center flex-wrap items-center">
-                                    <div class="w-full h-full flex flex-wrap justify-center ">
+                                <div *ngIf="showTeams===true" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] lg:h-auto border-primary bg-[#ACDEFF] flex justify-center flex-wrap items-center">
+                                    <div class="w-full h-full flex flex-wrap justify-center overflow-y-scroll ">
                                         <div class="w-full flex flex-wrap lg:flex-nowrap lg:justify-between my-8 h-full">
-                                            <div class="lg:w-1/6 w-full flex flex-wrap justify-center">
-                                                <div class="lg:w-[80%] w-full">
+                                            <div class="lg:w-1/6 w-1/2 flex flex-wrap justify-center order-0">
+                                                <div class="w-[80%]">
                                                     <div class="flex justify-center">
                                                         <ul class="w-[90%] flex-col">
                                                             <li class="h-20 flex justify-center my-4" *ngFor="let team of teams.SoutHeast">
@@ -360,8 +368,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="lg:w-1/6 w-full flex flex-wrap justify-center">
-                                                <div class="lg:w-[80%] w-full">
+                                            <div class="lg:w-1/6 w-1/2 flex flex-wrap justify-center order-2 lg:order-1">
+                                                <div class="w-[80%]">
                                                     <div class="flex justify-center">
                                                         <ul class="w-[90%] flex-col">
                                                             <li class="h-20 flex justify-center my-4" *ngFor="let team of teams.Atlantic">
@@ -378,8 +386,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="lg:w-1/6 w-full flex flex-wrap justify-center">
-                                                <div class="lg:w-[80%] w-full">
+                                            <div class="lg:w-1/6 w-1/2 flex flex-wrap justify-center order-4 lg:order-2">
+                                                <div class="w-[80%]">
                                                     <div class="flex justify-center">
                                                         <ul class="w-[90%] flex-col">
                                                             <li class="h-20 flex justify-center my-4" *ngFor="let team of teams.Central">
@@ -396,8 +404,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="lg:w-1/6 w-full flex flex-wrap justify-center border-l-2 border-dotted border-black">
-                                                <div class="lg:w-[80%] w-full">
+                                            <div class="lg:w-1/6 w-1/2 flex flex-wrap justify-center border-l-2 border-dotted border-black order-1 lg:order-3">
+                                                <div class="w-[80%]">
                                                     <div class="flex justify-center">
                                                         <ul class="w-[90%] flex-col">
                                                             <li class="h-20 flex justify-center my-4" *ngFor="let team of teams.SouthWest">
@@ -414,8 +422,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="lg:w-1/6 w-full flex flex-wrap justify-center">
-                                                <div class="lg:w-[80%] w-full">
+                                            <div class="lg:w-1/6 w-1/2 flex flex-wrap justify-center border-l-2 border-dotted border-black lg:border-0 order-3 lg:order-4">
+                                                <div class="w-[80%]">
                                                     <div class="flex justify-center">
                                                         <ul class="w-[90%] flex-col">
                                                             <li class="h-20 flex justify-center my-4" *ngFor="let team of teams.NorthWest">
@@ -432,8 +440,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="lg:w-1/6 w-full flex flex-wrap justify-center">
-                                                <div class="lg:w-[80%] w-full">
+                                            <div class="lg:w-1/6 w-1/2 flex flex-wrap justify-center border-l-2 border-dotted border-black lg:border-0 order-5">
+                                                <div class="w-[80%]">
                                                     <div class="flex justify-center">
                                                         <ul class="w-[90%] flex-col">
                                                             <li class="h-20 flex justify-center my-4" *ngFor="let team of teams.Pacific">
@@ -450,14 +458,25 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="w-full flex flex-wrap justify-center items-center mb-8 order-6 lg:hidden">
+                                                <div class="w-1/2">
+                                                    <p class="text-xl font-bold text-center">slot liberi: {{5-totalTeamEast}}</p>
+                                                    <p class="text-xl font-bold text-center">team scelti: {{totalTeamEast}}</p>
+                                                </div>
+                                                <div class="w-1/2 border-l-2 border-dotted border-black lg:border-0">
+                                                    <p class="text-xl font-bold text-center">slot liberi: {{5-totalTeamWest}}</p>
+                                                    <p class="text-xl font-bold text-center">team scelti: {{totalTeamWest}}</p>
+                                                </div>
+                                                <div class="w-full flex justify-center my-5"><button class="bg-secondary rounded-full px-4 py-2 text-white" (click)="showTeams=false">CHIUDI E CONFERMA</button></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full flex justify-around items-center mb-8">
-                                        <p class="text-xl font-bold">slot liberi: {{5-totalTeamEast}}</p>
-                                        <p class="text-xl font-bold">squadre scelte: {{totalTeamEast}}</p>
-                                        <button class="bg-secondary rounded-full px-4 py-2 text-white" (click)="showTeams=false">CHIUDI E CONFERMA</button>
-                                        <p class="text-xl font-bold">slot liberi: {{5-totalTeamWest}}</p>
-                                        <p class="text-xl font-bold">squadre scelte: {{totalTeamWest}}</p>
+                                        <div class="w-full justify-around items-center mb-8 hidden lg:flex">
+                                            <p class="text-xl font-bold">slot liberi: {{5-totalTeamEast}}</p>
+                                            <p class="text-xl font-bold">squadre scelte: {{totalTeamEast}}</p>
+                                            <button class="bg-secondary rounded-full px-4 py-2 text-white" (click)="showTeams=false">CHIUDI E CONFERMA</button>
+                                            <p class="text-xl font-bold">slot liberi: {{5-totalTeamWest}}</p>
+                                            <p class="text-xl font-bold">squadre scelte: {{totalTeamWest}}</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="w-full flex justify-end items-center">
@@ -465,7 +484,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold hidden lg:block">Attiva/Disattiva notifiche follower (attivata)</p>
                                 <p class="font-bold lg:hidden">notifiche follower (attivata)</p>
@@ -480,7 +499,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold hidden lg:block">Attiva/Disattiva notifiche follower (disattivata)</p>
                                 <p class="font-bold lg:hidden flex">notifiche follower (disattivata)</p>
@@ -496,7 +515,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold hidden lg:block">Attiva/Disattiva notifiche match (diattivata)</p>
                                 <p class="font-bold lg:hidden flex">notifiche match (diattivata)</p>
@@ -512,7 +531,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold lg:flex hidden">Attiva/Disattiva notifiche nuovo articolo blog (attivata)</p>
                                 <p class="font-bold lg:hidden flex">notifiche blog (attivata)</p>
@@ -528,7 +547,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 border-b-0 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 border-b-0 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold lg:flex hidden">Attiva/Disattiva notifiche nuova puntata podcast (attivata)</p>
                                 <p class="font-bold lg:hidden flex">notifiche podcast (attivata)</p>
@@ -543,7 +562,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="h-20 border-black border-2 w-full p-4 flex justify-between items-center">
+                        <div class="h-20 border-black lg:border-2 border-y-2 w-full p-4 flex justify-between items-center">
                             <div class="w-1/4">
                                 <p class="font-bold">LOG OUT</p>
                             </div>

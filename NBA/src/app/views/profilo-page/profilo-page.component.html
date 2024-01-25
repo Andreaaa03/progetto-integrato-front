@@ -14,11 +14,11 @@
     </div>
     <div class="flex justify-center h-full">
         <div class="container flex flex-wrap justify-center h-full">
-            <div class="lg:w-[70%] w-full flex lg:justify-normal justify-start flex-nowrap mt-20">
-                <div class="lg:w-[25%] w-[50%] h-full ">
+            <div class="lg:w-[70%] w-full flex lg:justify-normal justify-center flex-wrap lg:flex-nowrap mt-5 lg:mt-20">
+                <div class="lg:w-[25%] w-[80%] h-auto order-2 lg:order-1">
                     <div class="w-full bg-primary box-shadow-for-menu">
                         <ul>
-                            <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('profilo')">Interazioni</li>
+                            <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('interazioni')">Interazioni</li>
                             <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('risultato')">Risultato Sondaggi</li>
                             <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('amici')">Amici</li>
                             <li class="p-5 text-2xl text-white font-bold hover:underline focus:underline" (click)="functionChangeManu('preferiti')">Preferiti</li>
@@ -26,21 +26,24 @@
                         </ul>
                     </div>
                 </div>
-                <div class="w-[75%] h-full  flex flex-wrap justify-center items-center lg:py-10">
-                    <div class="h-[20vmin] w-[20vmin]">
-                        <div class="h-[20vmin] w-[20vmin] rounded-full bg-gray-500">
-
+                <div class="lg:w-[75%] w-full h-auto flex flex-wrap lg:justify-evenly justify-center items-center mt-5 mb-10 lg:mb-0  order-1 lg:order-2">
+                    <div class="h-[20vmin]">
+                        <div class="h-[20vmin] w-[20vmin] ">
+                            <div class="h-[20vmin] w-[20vmin] rounded-full bg-gray-500">
+                            </div>
                         </div>
                     </div>
-                    <div class="lg:block hidden  w-[10px] h-full bg-black ml-20 mr-20"></div>
-                    <div class="lg:w-auto w-[50%] mx-10 flex items-center">
+                    <div class="lg:block hidden w-2 h-full bg-black "></div>
+                    <div class="lg:w-auto w-[90%] lg:mx-10 flex lg:items-center">
                         <ul>
-                            <li class="p-2 text-xl font-bold">Nome</li>
-                            <li class="p-2 text-xl font-bold">Età</li>
-                            <li class="p-2 text-xl font-bold">Sesso</li>
-                            <li class="p-2 text-xl font-bold">1k followers</li>
-                            <li class="p-2 text-xl font-bold">Data di iscrizione</li>
-                            <li class="p-2 text-xl font-bold">Badge</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Username: </span> {{infoUser.username}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Età: </span> {{infoUser.eta}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Sesso: </span> {{infoUser.sesso}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Follower: </span> {{infoUser.follower}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">E-mail: </span>{{infoUser.email}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Tel: </span> {{infoUser.numeroTelefono}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Iscritto il </span>{{infoUser.dataIscrizione}}</li>
+                            <li class="p-2 text-xl"><span class="font-bold">Ruolo: </span> {{infoUser.ruolo}}</li>
                         </ul>
                     </div>
                 </div>
@@ -52,7 +55,7 @@
     <div class="flex justify-center h-full">
         <div class="container flex flex-wrap justify-center h-full">
             <div class="lg:w-[70%] w-full my-10">
-                <div class="" *ngIf="menuSelected==='profilo'">
+                <div class="scroll-m-20" *ngIf="menuSelected==='interazioni'" id="Interazioni">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
                         <h2 class=" text-white lg:text-4xl text-2xl font-bold text-center">
                             ULTIME INTERAZIONI FATTE
@@ -61,7 +64,7 @@
                     <div class="w-full h-6 bg-secondary"></div>
                     <div class="w-full h-auto flex flex-wrap lg:justify-between justify-center mt-10">
                         <div class="lg:w-1/3 w-[90%] mb-4" *ngFor="let commento of commenti, let i=index">
-                            <div class="w-full flex flex-wrap" [ngClass]="{'lg:justify-start': i % 3 === 0, 'lg:justify-end': i % 3 === 2, 'lg:justify-center': i % 3 === 1}">
+                            <div class="w-full lg:flex lg:flex-wrap" [ngClass]="{'lg:justify-start': i % 3 === 0, 'lg:justify-end': i % 3 === 2, 'lg:justify-center': i % 3 === 1}">
                                 <div class="bg-secondary rounded-xl flex justify-center">
                                     <div class="w-[90%] h-[90%]">
                                         <div class="w-full h-20 flex flex-nowrap">
@@ -88,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="" *ngIf="menuSelected==='risultato'">
+                <div class="scroll-m-20" *ngIf="menuSelected==='risultato'" id="Sondaggi">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
                         <h2 class=" text-white lg:text-4xl text-2xl font-bold">
                             SONDAGGI
@@ -140,7 +143,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="" *ngIf="menuSelected==='amici'">
+                <div class="scroll-m-20" *ngIf="menuSelected==='amici'" id="Amici">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
                         <h2 class=" text-white lg:text-4xl text-2xl font-bold">
                             AMICI
@@ -176,7 +179,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="" *ngIf="menuSelected==='preferiti'">
+                <div class="scroll-m-20" *ngIf="menuSelected==='preferiti'" id="Preferiti">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
                         <h2 class=" text-white lg:text-4xl text-2xl font-bold">
                             I TUOI PREFERITI
@@ -262,7 +265,7 @@
                         </ng-container>
                     </div>
                 </div>
-                <div class="" *ngIf="menuSelected==='impostazioni'">
+                <div class="scroll-m-20" *ngIf="menuSelected==='impostazioni'" id="Impostazioni">
                     <div class="w-full h-20 bg-primary flex justify-center items-center">
                         <h2 class=" text-white lg:text-4xl text-2xl font-bold">
                             IMPOSTAZIONI

@@ -69,6 +69,10 @@ export class ApiService {
             first_name: first_name, last_name: last_name, birthDate: birthDate, email: email, passwd: passwd, numeroTelefono: numeroTelefono, username: username, sesso: sesso
         }, { headers: this.headers });
     }
+    // info utente loggato
+    SearchInfoUser(token:string){
+        return this.http.post(this.baseURL + "user/profilo", { token: token}, { headers: this.headers });
+    }
 
     //squadre preferite
     SearchFavouriteTeams(token: string) {

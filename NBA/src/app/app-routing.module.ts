@@ -54,7 +54,7 @@ const routes: Routes = [
         // partite per giorno
         return inject(GetApiServiceMatch).getSearchMatchDate(route.paramMap.get("data")!);
       }, 
-      ResolveMatchDataLast20: (route: ActivatedRouteSnapshot) => { 
+      ResolveMatchDataLast20: () => { 
         // ultimi 20 partite a partire da ieri
         let yesterday=dayjs().subtract(1, 'day').format('YYYY-MM-DD');
         return inject(GetApiServiceMatch).getSearchMatchDataLast20(yesterday!); 
@@ -118,9 +118,12 @@ const routes: Routes = [
         // articoli preferiti
         return inject(GetApiServiceProfilo).getSearchFavouriteArticle(localStorage.getItem('authToken')!);
       },
-      ResolveCommentForUser: (route: ActivatedRouteSnapshot) => {
+      ResolveCommentForUser: () => {
         // tutte i commenti del singolo articolo
         return inject(GetApiServiceComment).getSearchAllCommentsUser(localStorage.getItem('authToken')!);
+      }, 
+      ResolveInfoUser: ()=>{
+        return inject(GetApiServiceProfilo).getSearchInfoUser(localStorage.getItem('authToken')!);
       }
     }, title: "SLAM STATS - Profilo"
   },

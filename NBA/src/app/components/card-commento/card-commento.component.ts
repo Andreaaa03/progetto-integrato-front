@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { commento } from 'src/app/models/typeComment';
+import { ApiService } from 'src/app/services/api.service';
 
 
 
@@ -9,15 +10,15 @@ import { commento } from 'src/app/models/typeComment';
   styleUrls: ['./card-commento.component.css']
 })
 export class CardCommentoComponent implements OnInit {
+  constructor(private apiService: ApiService){}
   @Input() commento!: commento;
-  showResponseComment: boolean = false;
-  testoCommenti: string = "Mostra Commenti";
   ngOnInit(): void {
     // console.log(this.commento);
     this.functionChangeTestoCommenti();
   }
-
-
+  
+  showResponseComment: boolean = false;
+  testoCommenti: string = "Mostra Commenti";
   /**
    * cambio testo
    */
@@ -28,4 +29,5 @@ export class CardCommentoComponent implements OnInit {
       this.testoCommenti = "Mostra Commenti";
     }
   }
+
 }

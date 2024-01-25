@@ -80,6 +80,13 @@ export class ClassificaComponent implements OnInit {
           this.getApiStanding.getSearchStanding().subscribe(
             (team) => {
               this.ToggleCheckedForReset();
+              this.percentageStanding = true;
+              this.nameStanding = false;
+              this.crescente = false;
+              this.winStanding = false;
+              this.lossStanding = false;
+              this.favouriteStanding = false;
+              this.functionChangeFilterStanding(this.percentageStanding, this.nameStanding, this.winStanding, this.lossStanding, this.crescente);
               this.updateStanding(team);
             }
           )

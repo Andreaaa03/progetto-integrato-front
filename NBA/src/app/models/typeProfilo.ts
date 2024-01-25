@@ -9,3 +9,13 @@ export type profilo = {
     dataIscrizione: string;
     ruolo: string;
 };
+
+export type otherUser = {
+    seguito: number;
+    username: string;
+    amico: boolean;
+    role: string;
+    follower: number;
+    following: number;
+    stato: string;
+};

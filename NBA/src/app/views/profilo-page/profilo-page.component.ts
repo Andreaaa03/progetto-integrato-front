@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { detailArticle } from 'src/app/models/typeArticle';
 import { commento } from 'src/app/models/typeComment';
-import { profilo } from 'src/app/models/typeProfilo';
+import { otherUser, profilo } from 'src/app/models/typeProfilo';
 import { team } from 'src/app/models/typeStanding';
 import { division } from 'src/app/models/typeTeams';
 import { ApiService } from 'src/app/services/api.service';
@@ -19,17 +19,21 @@ export class ProfiloPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private apiService: ApiService, private getApiProfile: GetApiServiceProfilo, private getApiTeams: GetApiServiceTeams) { }
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(
-      ({ ResolveTeams, ResolveFavouriteTeams, ResolveFavouriteArticle, ResolveCommentForUser, ResolveInfoUser }) => {
+      ({ ResolveTeams, ResolveFavouriteTeams, ResolveFavouriteArticle, ResolveCommentForUser, ResolveInfoUser, ResolveSeguiti }) => {
         this.updateTeams(ResolveTeams, ResolveFavouriteTeams);
         this.favouriteArticles = ResolveFavouriteArticle;
         this.commenti = ResolveCommentForUser;
         this.infoUser = ResolveInfoUser;
+        this.seguiti = ResolveSeguiti;
         console.log(this.commenti);
       })
   }
 
   infoUser!: profilo;
   commenti!: commento[];
+  seguiti!: otherUser[];
+  stringFollowForCard: boolean = true;
+  showCard: boolean = false;
 
   menuSelected: string = "interazioni";
   menuPreferitiSelected: string = "squadre";
@@ -190,8 +194,8 @@ export class ProfiloPageComponent implements OnInit {
                 this.favouriteArticles = article;
               }
             )
-          }
-          console.log(err);
+          }else
+            console.log(err);
         }
       );
     } else {
@@ -200,6 +204,25 @@ export class ProfiloPageComponent implements OnInit {
     }
   }
 
-
+  /**
+   * Aggiungo e rimuovo gli utenti dai miei seguiti, se il token non è valido svuoto la sessione
+   * @param id 
+   */
+  aggiungiRimuoviUtenti(id: string){
+    if(localStorage.getItem('authToken')){
+      this.apiService.AddRemoveUser(localStorage.getItem('authToken') as string, id).subscribe(
+        ()=>{},
+        (err)=>{
+          if (err.status >= 200 && err.status <= 299) {
+            console.log("aggiornato");
+          }else
+            console.log(err);
+        }
+      )
+    }else{
+      console.log("token non valido");
+      this.removeToken();
+    }
+  }
 
 }

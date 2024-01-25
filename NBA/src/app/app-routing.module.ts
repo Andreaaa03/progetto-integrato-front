@@ -31,9 +31,9 @@ const routes: Routes = [
       },
       ResolveMatchData: () => {
         // data per giorno
-        const data=dayjs().format("YYYY-MM-DD");
+        const data = dayjs().format("YYYY-MM-DD");
         return inject(GetApiServiceMatch).getSearchMatchDate(data!);
-      }, 
+      },
       ResolveAllArticle: () => {
         // articoli 
         return inject(GetApiServiceArticle).getSearchAllArticle();
@@ -53,11 +53,11 @@ const routes: Routes = [
       ResolveMatchData: (route: ActivatedRouteSnapshot) => {
         // partite per giorno
         return inject(GetApiServiceMatch).getSearchMatchDate(route.paramMap.get("data")!);
-      }, 
-      ResolveMatchDataLast20: () => { 
+      },
+      ResolveMatchDataLast20: () => {
         // ultimi 20 partite a partire da ieri
-        let yesterday=dayjs().subtract(1, 'day').format('YYYY-MM-DD');
-        return inject(GetApiServiceMatch).getSearchMatchDataLast20(yesterday!); 
+        let yesterday = dayjs().subtract(1, 'day').format('YYYY-MM-DD');
+        return inject(GetApiServiceMatch).getSearchMatchDataLast20(yesterday!);
       }
     }, title: "SLAM STATS - Calendario"
   },
@@ -98,15 +98,17 @@ const routes: Routes = [
     }, title: "SLAM STATS - Tabellino"
   },
   { path: "storia&regole/:page", component: StoriaERegolePageComponent, title: "SLAM STATS - Storia&Regole" },
-  { path: "blog", component: BlogPageComponent, resolve:{
-    ResolveAllArticle: () => {
-      // tutti gli articoli
-      return inject(GetApiServiceArticle).getSearchAllArticle();
-    }
-  }, title: "SLAM STATS - Blog" },
+  {
+    path: "blog", component: BlogPageComponent, resolve: {
+      ResolveAllArticle: () => {
+        // tutti gli articoli
+        return inject(GetApiServiceArticle).getSearchAllArticle();
+      }
+    }, title: "SLAM STATS - Blog"
+  },
   {
     path: "profilo", component: ProfiloPageComponent, resolve: {
-      ResolveFavouriteTeams:() => {
+      ResolveFavouriteTeams: () => {
         // squadre preferite
         return inject(GetApiServiceProfilo).getSearchFavouriteTeams(localStorage.getItem('authToken')!);
       },
@@ -121,22 +123,27 @@ const routes: Routes = [
       ResolveCommentForUser: () => {
         // tutte i commenti del singolo articolo
         return inject(GetApiServiceComment).getSearchAllCommentsUser(localStorage.getItem('authToken')!);
-      }, 
-      ResolveInfoUser: ()=>{
+      },
+      ResolveInfoUser: () => {
         return inject(GetApiServiceProfilo).getSearchInfoUser(localStorage.getItem('authToken')!);
+      },
+      ResolveSeguiti: () => {
+        return inject(GetApiServiceProfilo).getSearchSeguiti(localStorage.getItem('authToken')!);
       }
     }, title: "SLAM STATS - Profilo"
   },
-  { path: "articolo/:id", component: ArticoloDetailPageComponent, resolve:{
-    ResolveArticle: (route:ActivatedRouteSnapshot) => {
-      // tutte le info del singolo articolo
-      return inject(GetApiServiceArticle).getSearchSingleArticle(route.paramMap.get("id")!);
-    },
-    ResolveCommentForArticle: (route:ActivatedRouteSnapshot) => {
-      // tutte i commenti del singolo articolo
-      return inject(GetApiServiceComment).getSearchAllCommentsArticle(route.paramMap.get("id")!);
-    }
-  }, title: "SLAM STATS - Articolo" },
+  {
+    path: "articolo/:id", component: ArticoloDetailPageComponent, resolve: {
+      ResolveArticle: (route: ActivatedRouteSnapshot) => {
+        // tutte le info del singolo articolo
+        return inject(GetApiServiceArticle).getSearchSingleArticle(route.paramMap.get("id")!);
+      },
+      ResolveCommentForArticle: (route: ActivatedRouteSnapshot) => {
+        // tutte i commenti del singolo articolo
+        return inject(GetApiServiceComment).getSearchAllCommentsArticle(route.paramMap.get("id")!);
+      }
+    }, title: "SLAM STATS - Articolo"
+  },
   { path: "", redirectTo: "home", pathMatch: "full" }, //prima di pagina d'errore
   { path: "errore", component: ErrorePageComponent, pathMatch: "full" },
   { path: "**", component: ErrorePageComponent, title: "ERR. 404 - pagina non trovata" },

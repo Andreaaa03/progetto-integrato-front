@@ -17,14 +17,25 @@ export class PostArticoloComponent implements OnInit {
   singleArticle!: detailArticle | any;
   constructor(private getApiServiceArticle: GetApiServiceArticle, private apiService: ApiService, private getApiProfile: GetApiServiceProfilo) { }
   ngOnInit(): void {
+<<<<<<< Updated upstream
     this.functionOnInit();
   }
 
   functionOnInit(){
+=======
+<<<<<<< Updated upstream
+=======
+    this.functionOnInit();
+  }
+
+  functionOnInit() {
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     // prendo le info generali del singolo articolo per la preview
     this.getApiServiceArticle.getSearchSingleArticle(this.artId).subscribe(
       (art) => {
         this.singleArticle = art;
+<<<<<<< Updated upstream
         this.getApiProfile.getSearchFavouriteArticle(localStorage.getItem('authToken') as string).subscribe(
           (article) => {
             this.favouriteArticles = article;
@@ -40,6 +51,32 @@ export class PostArticoloComponent implements OnInit {
   }
   favouriteArticles!: detailArticle[];
   
+=======
+<<<<<<< Updated upstream
+      }
+    )
+  }
+=======
+        if (localStorage.getItem('authToken')) {
+          this.getApiProfile.getSearchFavouriteArticle(localStorage.getItem('authToken') as string).subscribe(
+            (article) => {
+              this.favouriteArticles = article;
+              this.favouriteArticles.forEach((article) => {
+                if (article.blog.id == this.singleArticle.blog.id) {
+                  this.singleArticle.blog.favourite = true;
+                }
+              })
+            }
+          )
+        } else {
+          console.log("token non valido");
+        }
+      }
+    )
+  }
+  favouriteArticles!: detailArticle[];
+
+>>>>>>> Stashed changes
   /**
    * Aggiungo e rimuovo gli articoli preferite, se il token non è valido svuoto la sessione
    * @param id : string
@@ -59,4 +96,8 @@ export class PostArticoloComponent implements OnInit {
       console.log("token non valido");
     }
   }
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }

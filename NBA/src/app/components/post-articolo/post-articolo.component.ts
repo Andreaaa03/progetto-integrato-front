@@ -20,26 +20,31 @@ export class PostArticoloComponent implements OnInit {
     this.functionOnInit();
   }
 
-  functionOnInit(){
+  functionOnInit() {
     // prendo le info generali del singolo articolo per la preview
     this.getApiServiceArticle.getSearchSingleArticle(this.artId).subscribe(
       (art) => {
         this.singleArticle = art;
-        this.getApiProfile.getSearchFavouriteArticle(localStorage.getItem('authToken') as string).subscribe(
-          (article) => {
-            this.favouriteArticles = article;
-            this.favouriteArticles.forEach((article) => {
-              if (article.blog.id == this.singleArticle.blog.id) {
-                this.singleArticle.blog.favourite = true;
-              }
-            })
-          }
-        )
+        if (localStorage.getItem('authToken')) {
+          this.getApiProfile.getSearchFavouriteArticle(localStorage.getItem('authToken') as string).subscribe(
+            (article) => {
+              this.favouriteArticles = article;
+              this.favouriteArticles.forEach((article) => {
+                if (article.blog.id == this.singleArticle.blog.id) {
+                  this.singleArticle.blog.favourite = true;
+                }
+              })
+            }
+          )
+        } else {
+          console.log("token non valido");
+        }
       }
     )
   }
+          
   favouriteArticles!: detailArticle[];
-  
+
   /**
    * Aggiungo e rimuovo gli articoli preferite, se il token non è valido svuoto la sessione
    * @param id : string

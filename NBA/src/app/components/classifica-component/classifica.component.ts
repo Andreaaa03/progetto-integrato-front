@@ -324,7 +324,6 @@ export class ClassificaComponent implements OnInit {
   toggleChecked() {
     let checkbox = document.getElementById('cuore') as HTMLInputElement;
     checkbox.checked = !checkbox.checked;
-    console.log(checkbox.checked);
   }
   ToggleCheckedForReset() {
     let checkbox = document.getElementById('cuore') as HTMLInputElement;

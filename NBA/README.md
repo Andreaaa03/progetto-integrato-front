@@ -129,18 +129,8 @@ Per permettere il completo utilizzo del nostro servizio l'utente deve essere for
 -[XAMPP](https://www.apachefriends.org/it/index.html)
 -[Visual_Studio](https://code.visualstudio.com/download)
 
-Per iniziare la procedura di avvio, una volta installati questi tre programmi, l'utente dovrà caricare il file [SlamStats]()
+Per iniziare la procedura di avvio, una volta installati questi tre programmi, l'utente dovrà avviare XAMPP e assicurarsi di avere la porta 8080 libera. Dopodichè dovrà eseguire, con il tasto start, Apache e mySQL. Successivamente attraverso il bottone admin l'utente deve accedere a phpmyAdmin, attraverso la sezione importa, l'utente dovrà importare il databese fornito denominato nba.
+A questo punto si deve aprire IntelliJ, precedentemente installato, e su di questo aprire il file denominato SlamStats e seguire questo [percorso](SlamStats/src/main/java/com.SlamDunkers.SlamStats/SlamStatsApplication) ed avviare il back-end del nostro prodotto.
+In ultimo luogo l'utente deve accedere su Visual Studio eseguire con la tastiera il comando (Ctrl+j/Command+j) per aprire il terminale, una volta aperto si deve dirigere all'interno della cartella NBA eseguendo il comando (cd+percorso_richiesto_per_raggiungere_la_cartella). Una volta entrati nella cartella del progetto bisogna eseguire, sempre a terminale, il comando (npm install) per installare il pacchetto node_modules. Successivamente assicurarsi di avere installaro angular e se non si è fatto eseguire (npm install @angular/cli@16.2.10) e avviare il progetto con i comandi(npm start --open e ng serve --open).
 
 
-1 xampp
-2 assicurarsi la porta 8080 ()
-3 accedi a php 
-4 importi il db
-5 apri intellij
-6 apri slamstats
-7 esegui slamstatsapplication
-8 accedi su vs
-9 a terminale entri nella cartella NBA
-10 esgui npm i
-11 npx ng install angular/cli@16.2.10 
-12 esegui npm start --open oppure ng serve --open

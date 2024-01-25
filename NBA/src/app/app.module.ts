@@ -12,7 +12,7 @@ import { PartiteDelGiornoPreviewComponent } from './components/partite-del-giorn
 import { CardPartitaComponent } from './components/card-partita/card-partita.component';
 import { PostArticoloComponent } from './components/post-articolo/post-articolo.component';
 import { CardCommentoComponent } from './components/card-commento/card-commento.component';
-import { PieChartComponent } from './components/pie-chart/pie-chart.component'; //grafico a torta
+/* import { PieChartComponent } from './components/pie-chart/pie-chart.component'; */ //grafico a torta
 
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { ClassificaPageComponent } from './views/classifica-page/classifica-page.component';
@@ -37,7 +37,7 @@ import { ProfiloPageComponent } from './views/profilo-page/profilo-page.componen
     ClassificaComponent,
     PartiteDelGiornoPreviewComponent,
     CardPartitaComponent,
-    PieChartComponent,  //grafico a torta
+    /* PieChartComponent, */  //grafico a torta
 
     ErrorePageComponent,
     PartitaPageComponent,

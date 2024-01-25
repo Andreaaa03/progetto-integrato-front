@@ -10,6 +10,7 @@
     2. [Backend](#back-end)
     3. [Digital](#digital)
 5. [Usage](#usage)
+6. [Conclusioni](#conclusioni)
 
 
 ## Introduzione
@@ -133,4 +134,7 @@ Per iniziare la procedura di avvio, una volta installati questi tre programmi, l
 A questo punto si deve aprire IntelliJ, precedentemente installato, e su di questo aprire il file denominato SlamStats e seguire questo [percorso](SlamStats/src/main/java/com.SlamDunkers.SlamStats/SlamStatsApplication) ed avviare il back-end del nostro prodotto.
 In ultimo luogo l'utente deve accedere su Visual Studio eseguire con la tastiera il comando (Ctrl+j/Command+j) per aprire il terminale, una volta aperto si deve dirigere all'interno della cartella NBA eseguendo il comando (cd+percorso_richiesto_per_raggiungere_la_cartella). Una volta entrati nella cartella del progetto bisogna eseguire, sempre a terminale, il comando (npm install) per installare il pacchetto node_modules. Successivamente assicurarsi di avere installaro angular e se non si è fatto eseguire (npm install @angular/cli@16.2.10) e avviare il progetto con i comandi(npm start --open e ng serve --open).
 
+## Conclusioni
+
+Il gruppo di lavoro SlamDunkers ringrazia per l'attenzione e si augura che la vostra esperienza utente sia piacevole e che l'obiettivo sia stato raggiunto.
 
